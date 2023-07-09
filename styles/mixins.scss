@@ -1,0 +1,116 @@
+/****************| Media Query Mixins |****************/
+@mixin xxl {
+  @media (max-width: 1679px) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (max-width: 1479px) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: 991px) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin xs {
+  @media (max-width: 575px) {
+    @content;
+  }
+}
+
+@mixin xxs {
+  @media (max-width: 399px) {
+    @content;
+  }
+}
+
+@mixin sw {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+/****************| Centering Mixin |****************/
+@mixin center($type: flex) {
+  @if ($type == flex) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } @else if ($type == position) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else {
+    margin: {
+      left: auto;
+      right: auto;
+    }
+  }
+  text-align: center;
+}
+
+/****************| main box shadow |****************/
+@mixin boxShadow {
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/****************| Add Font Mixin |****************/
+@mixin addFont($name, $path) {
+  @font-face {
+    font-family: $name;
+    src: url($path);
+  }
+}
+
+/****************| Fixed Background Mixin |****************/
+@mixin fixedBack($imgPath) {
+  background: url($img) fixed no-repeat;
+  background-size: cover;
+}
+
+/****************| Overlay Mixin |****************/
+@mixin overlay($color, $opacity) {
+  width: 100%;
+  height: 100%;
+  background: rgba($color, $opacity);
+}
+
+/****************| Float Clearfix Mixin |****************/
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+/****************| Reverse Bg Color Function |****************/
+@function setTxtColor($bgColor, $light: #fff, $dark: #333) {
+  @if (lightness($bgColor) > 70) {
+    @return $dark;
+  } @else {
+    @return $light;
+  }
+}
+
+@mixin setBgColor($bgColor, $txtLight: #fff, $txtDark: #333) {
+  background: $bgColor;
+  color: setTxtColor($bgColor, $txtLight, $txtDark);
+}

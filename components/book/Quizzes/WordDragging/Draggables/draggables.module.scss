@@ -1,0 +1,25 @@
+.draggables {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+  background-color: rgb(210, 237, 248);
+  padding: 10px;
+  border-radius: 0 0 10px 10px;
+  .item {
+    padding: 3px 15px;
+    background-color: rgb(135, 198, 135);
+    border: 1px dashed green;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: url('../../../../../public/images/quizzes/point.png'), move;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    i {
+      color: var(--delete-warn);
+      display: none;
+    }
+  }
+}

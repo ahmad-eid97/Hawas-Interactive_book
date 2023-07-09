@@ -1,0 +1,481 @@
+.flippy_container {
+  overflow: hidden;
+  // margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: width 0.3s;
+
+  .flippy {
+    position: relative;
+    transition: transform 0.5s, width 0.3s, box-shadow 0.3s;
+
+    &.bookOpen {
+      &::after {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -25px;
+        width: calc(100% + 50px);
+        height: calc(100% + 20px);
+        background-color: var(--flippyBackSkin);
+        border-radius: 5px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    .page_changer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 10px;
+      height: 100%;
+      cursor: pointer;
+      z-index: 9;
+      visibility: hidden;
+
+      .edge {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        border-radius: 10px;
+        box-shadow: -1px -1px 5px rgba($color: #000000, $alpha: .15);
+        height: 100%;
+        background: var(--flippyPaperSkin);
+        background-size: cover;
+        margin-right: 2px;
+
+        &:nth-child(2) {
+          left: 3px;
+        }
+
+        &:nth-child(3) {
+          left: 6px;
+        }
+
+        &:nth-child(4) {
+          left: 9px;
+        }
+      }
+
+      .flipped_page {
+        position: absolute;
+        top: 0;
+        width: 0;
+        height: 100%;
+        background: var(--flippyPaperSkin);
+        background-size: cover;
+        z-index: 99;
+        box-shadow: inset -10px 0 30px -7px rgba(0, 0, 0, .35);
+        transition: width var(--flippyFlippingTime), right var(--flippyFlippingTime), left var(--flippyFlippingTime);
+        overflow: hidden;
+
+        &>div {
+          opacity: 0;
+        }
+
+        &.flipping {
+          &>div {
+            opacity: 1 !important;
+          }
+        }
+      }
+
+      &.page_changer_right {
+        left: unset;
+        right: -10px;
+
+        .flipped_page {
+          right: 10px !important;
+        }
+
+        &:hover {
+          .flipped_page {
+            left: unset;
+            right: 15px !important;
+            width: 15px !important;
+          }
+        }
+      }
+
+      &.page_changer_left {
+        right: unset;
+        left: -10px;
+        box-shadow: none;
+
+        .flipped_page {
+          left: 10px !important;
+        }
+
+        &:hover {
+          .flipped_page {
+            right: unset;
+            left: 15px !important;
+            width: 15px !important;
+          }
+        }
+      }
+    }
+
+    .page {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      perspective: 2500px;
+
+      .face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        color: #4d4d4d;
+        border: 4px solid var(--flippyBackSkin);
+        border-left-width: 15px;
+        background: var(--flippyPaperSkin);
+        background-size: cover;
+        overflow: hidden;
+
+        &.front {
+          width: 50%;
+          isolation: isolate;
+          z-index: 1;
+          box-shadow: inset -10px 0 30px -7px rgba(0, 0, 0, .35);
+          border: none;
+        }
+
+        &.back {
+          width: 50%;
+          left: 50%;
+          isolation: isolate;
+          z-index: 0;
+          box-shadow: inset 10px 0 20px -7px rgba(0, 0, 0, .35);
+          border: none;
+        }
+
+        * {
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -o-user-select: none;
+          user-select: none;
+        }
+      }
+
+      &.full_width {
+        .face.front {
+          width: 100%;
+        }
+      }
+
+      &.cover,
+      &.cover_end {
+        cursor: pointer;
+      }
+
+      &.cover {
+        .face {
+          border: 5px solid var(--flippyBackSkin);
+          border-left-width: 15px;
+          border-left-style: outset;
+          width: 100%;
+          box-shadow: none;
+          left: 0 !important;
+          transition: transform .5s;
+          transform-origin: left;
+
+          &.front {
+            z-index: 1;
+            backface-visibility: hidden;
+          }
+
+          &.back {
+            z-index: 0;
+            border-color: transparent;
+          }
+
+          &.front2 {
+            border-color: transparent;
+            border: 10px solid var(--flippyBackSkin);
+            border-left: none;
+            border-radius: 5px;
+          }
+        }
+      }
+
+      &.cover_end {
+        border: 5px solid var(--flippyBackSkin);
+        border-right-width: 15px;
+        border-right-style: outset;
+        width: 50%;
+        left: 0%;
+        visibility: hidden;
+
+        &.atBreakpoint {
+          width: 100%;
+          left: 0;
+        }
+
+        .face {
+          width: 100%;
+          transition: transform .5s;
+          transform-origin: right;
+        }
+
+        .face.front {
+          z-index: 1;
+          backface-visibility: hidden;
+        }
+
+        .face.back {
+          z-index: 0;
+          border-color: transparent;
+          left: 20px !important;
+        }
+
+        .face.front2 {
+          border-color: transparent;
+          left: 0 !important;
+        }
+
+        .face:not(.front2) {
+          transform: rotateY(180deg);
+        }
+      }
+
+      &.flipped:not(.cover):not(.cover_end) {
+        z-index: -1 !important;
+      }
+
+      &.flipped.cover {
+        width: 50%;
+        left: 50%;
+
+        &.atBreakpoint {
+          width: 100%;
+          left: 0;
+        }
+
+        .face:not(.front2) {
+          transform: rotateY(-180deg);
+        }
+
+        .face.front2 {
+          border: none;
+          box-shadow: inset 10px 0 20px -7px rgb(0 0 0 / 35%);
+        }
+
+        .face.back {
+          border: none;
+          box-shadow: inset 10px 0 30px -7px rgb(0 0 0 / 35%);
+
+          &>div {
+            transform: rotateY(180deg);
+          }
+        }
+      }
+
+      &.flipped.cover_end {
+        width: 100%;
+        left: 0 !important;
+
+        .face {
+          box-shadow: none;
+          left: 0 !important;
+        }
+
+        .face:not(.front2) {
+          transform: rotateY(0deg);
+        }
+      }
+
+      &.flipping .face {
+        filter: blur(8px);
+      }
+    }
+
+    &.rtl * {
+      direction: rtl;
+      text-align: right;
+    }
+
+    &.rtl {
+      direction: rtl;
+      text-align: right;
+
+      .page_changer {
+        right: unset;
+        left: 0;
+
+        .edge {
+          left: unset;
+          right: 0;
+          margin-right: 0;
+          margin-left: 2px;
+          box-shadow: 3px 0px 3px rgba($color: #000000, $alpha: .15);
+
+          &:nth-child(2) {
+            left: unset;
+            right: 3px;
+          }
+
+          &:nth-child(3) {
+            left: unset;
+            right: 6px;
+          }
+
+          &:nth-child(4) {
+            left: unset;
+            right: 9px;
+          }
+        }
+
+        &.page_changer_right {
+          right: unset;
+          left: -10px;
+
+          .flipped_page {
+            right: unset !important;
+            left: 10px !important;
+          }
+
+          &:hover {
+            .flipped_page {
+              right: unset !important;
+              left: 15px !important;
+            }
+          }
+        }
+
+        &.page_changer_left {
+          left: unset;
+          right: -12px;
+
+          .flipped_page {
+            left: unset !important;
+            right: 10px !important;
+          }
+
+          &:hover {
+            .flipped_page {
+              left: unset !important;
+              right: 15px !important;
+            }
+          }
+        }
+      }
+
+      .page {
+        left: unset;
+        right: 0;
+
+        .face {
+          left: unset;
+          right: 0;
+          border-left-width: 5px;
+          border-right-width: 15px;
+
+          &.front {
+            box-shadow: inset 10px 0 15px -7px rgba(0, 0, 0, .35);
+          }
+
+          &.back {
+            left: unset;
+            right: 50%;
+            box-shadow: inset -15px 0 35px -7px rgba(0, 0, 0, .2);
+          }
+        }
+
+        &.cover {
+          .face {
+            border-left-width: 5px;
+            border-left-style: solid;
+            border-right-width: 15px;
+            border-right-style: outset;
+            left: unset !important;
+            right: 0 !important;
+            transform-origin: right;
+
+            &.front2 {
+              border-left: 10px solid var(--flippyBackSkin);
+              border-right: none;
+            }
+          }
+        }
+
+        &.cover_end {
+          border-right-width: 5px;
+          border-right-style: solid;
+          border-left-width: 15px;
+          border-left-style: outset;
+          left: unset;
+          right: 0%;
+
+          .face {
+            transform-origin: left;
+          }
+
+          .face.back {
+            left: unset !important;
+            right: 20px !important;
+          }
+
+          .face.front2 {
+            right: unset !important;
+            left: 0 !important;
+          }
+
+          .face:not(.front2) {
+            transform: rotateY(-180deg);
+          }
+        }
+
+        &.flipped.cover {
+          left: unset;
+          right: 50%;
+
+          &.atBreakpoint {
+            left: 0;
+            right: unset;
+          }
+
+          .face:not(.front2) {
+            transform: rotateY(180deg);
+          }
+
+          .face.front2 {
+            border: none;
+            box-shadow: inset -10px 0 20px -7px rgb(0 0 0 / 35%);
+          }
+
+          .face.back {
+            border: none;
+            box-shadow: inset -10px 0 30px -7px rgb(0 0 0 / 35%);
+
+            &>div {
+              transform: rotateY(180deg);
+            }
+          }
+        }
+
+        &.flipped.cover_end {
+          left: unset !important;
+          right: 0 !important;
+
+          .face {
+            box-shadow: none;
+            left: unset !important;
+            right: 0 !important;
+          }
+
+          .face:not(.front2) {
+            transform: rotateY(0deg);
+          }
+        }
+      }
+    }
+  }
+}

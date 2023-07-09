@@ -1,0 +1,16 @@
+.item {
+  background-color: var(--main-color);
+  width: auto;
+  min-width: 200px;
+  border-radius: 2px;
+  padding: 8px 20px;
+  font-size: 1.1rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: grab;
+  border-radius: 5px;
+  transition: none !important;
+  background: url('../../../../../public/images/quizzes/05.jpg');
+  background-position: 0% 0%;
+  background-size: cover;
+  margin: 5px 0;
+}

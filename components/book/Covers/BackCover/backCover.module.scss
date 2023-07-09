@@ -1,0 +1,14 @@
+.backCover {
+  display: grid;
+  place-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--main-color);
+  position: relative;
+  z-index: 100;
+
+  h1 {
+    text-align: center !important;
+    color: var(--text-inside);
+  }
+}

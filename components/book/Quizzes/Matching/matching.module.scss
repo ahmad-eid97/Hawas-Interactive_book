@@ -1,0 +1,150 @@
+.matching {
+  --dir: rtl;
+  --align: right;
+  padding: 20px;
+  background-image: url('https://alarabeyya.com//UploadedFiles/hayya/Images/aam/background/green/5.png');
+  background-size: cover;
+  color: #fff;
+  width: 450px;
+  direction: var(--dir);
+  text-align: var(--align);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+
+  .righthand,
+  .lefthand {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    h3 {
+      margin: 0;
+      margin-bottom: 5px;
+      border: 1px solid #000;
+      border-radius: 5px;
+      text-align: center !important;
+      padding: 7px 0;
+      background-color: #7ED321;
+      color: #000;
+    }
+
+    p {
+      margin: 0;
+      margin-bottom: 5px;
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      background-color: rgb(224, 232, 241);
+      color: #000;
+      border-radius: 5px;
+      padding: 7px 20px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0);
+
+      span.matching_box {
+        content: '';
+        width: 18px;
+        height: 18px;
+        border: 1px solid #000;
+        background-color: #17A2B8;
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+      }
+    }
+  }
+
+  .righthand {
+    flex: 2;
+    direction: var(--dir);
+    text-align: var(--align);
+  }
+
+  .lefthand {
+    flex: 2;
+    direction: var(--dir);
+    text-align: var(--align);
+
+    p {
+      padding-inline-start: 50px;
+
+      span.matching_box {
+        right: 15px;
+        left: unset;
+      }
+    }
+  }
+
+  &.ltr {
+    direction: ltr !important;
+
+    .righthand,
+    .lefthand {
+
+      p span.matching_box {
+        right: 15px;
+        left: unset;
+      }
+    }
+
+    .righthand {
+      text-align: left;
+
+      p {
+        padding-inline-start: 50px;
+      }
+    }
+
+    .lefthand {
+      text-align: left;
+
+      p {
+        padding-inline-end: 50px;
+      }
+
+      p span.matching_box {
+        left: 15px;
+        right: unset;
+      }
+    }
+  }
+
+  .matching_area {
+    direction: var(--dir);
+    text-align: var(--align);
+    flex: 1;
+
+    svg {
+      --line-color: red;
+      --hover-color: green;
+      --arrow-color: var(--line-color);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      color: var(--arrow-color);
+
+      line,
+      path {
+        stroke: var(--line-color);
+        fill: none;
+        stroke-width: 4;
+        position: relative;
+        z-index: 1000;
+        cursor: pointer;
+
+        &.hoverable {
+          &:hover {
+            stroke: var(--hover-color);
+          }
+        }
+      }
+    }
+  }
+}

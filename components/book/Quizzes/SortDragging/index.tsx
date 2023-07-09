@@ -1,0 +1,48 @@
+"use client";
+//== Modules
+import {
+  DndContext,
+  closestCenter
+} from "@dnd-kit/core";
+import {
+  SortableContext,
+  verticalListSortingStrategy
+} from "@dnd-kit/sortable";
+//== Components
+import SortableItem from './SortableItem';
+//== Component Logic
+import useLogic from './logic';
+//== Styles
+import styles from "./sortDragging.module.scss";
+
+
+function ListSort() {
+  const { languages, handleDragEnd } = useLogic();
+
+  return (
+    <div className={styles.sorting}>
+      <DndContext
+        collisionDetection={closestCenter}
+        onDragEnd={(e) => handleDragEnd(e)}
+        // ts-ignore@
+        onDragStart={(e) => console.log(e)}
+      >
+        <div>
+          <SortableContext
+            items={languages}
+            strategy={verticalListSortingStrategy}
+          >
+            {/* We need components that use the useSortable hook */}
+            {languages.map(language =>
+              <div>
+                <SortableItem key={language} id={language} />
+              </div>
+            )}
+          </SortableContext>
+        </div>
+      </DndContext>
+    </div>
+  );
+}
+
+export default ListSort;
