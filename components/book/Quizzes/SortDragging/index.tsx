@@ -34,9 +34,7 @@ function ListSort() {
           >
             {/* We need components that use the useSortable hook */}
             {languages.map(language =>
-              <div>
-                <SortableItem key={language} id={language} />
-              </div>
+              <SortableItem key={language} id={language} />
             )}
           </SortableContext>
         </div>

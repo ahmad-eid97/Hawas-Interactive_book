@@ -16,7 +16,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <Script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js' strategy="beforeInteractive" />
+      <Script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js' />
       <Script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js' />
       <form className={styles.loginForm}>
         <div className={styles.svgContainer} id="svgContainer">
