@@ -1,3 +1,4 @@
+"use client";
 //== Types
 import { Choice } from '../../types';
 //== Styles

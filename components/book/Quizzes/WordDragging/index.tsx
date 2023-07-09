@@ -1,3 +1,4 @@
+"use client";
 //== Components
 import { Droppables, Draggables } from '@/components';
 //== Component Logic

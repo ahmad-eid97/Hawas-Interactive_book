@@ -1,5 +1,5 @@
 //== Components
-import BookPages from "@/components/book/BookPages";
+import { BookPages, NextButton } from "@/components";
 
 export const metadata = {
   title: 'Hawas | book',
@@ -10,6 +10,7 @@ const Book = () => {
   return (
     <>
       <BookPages />
+      <NextButton />
     </>
   )
 }

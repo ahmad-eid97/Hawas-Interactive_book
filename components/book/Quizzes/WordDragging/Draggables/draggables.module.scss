@@ -1,8 +1,10 @@
 .draggables {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 100px;
+  column-gap: 100px;
+  row-gap: 20px;
   background-color: rgb(210, 237, 248);
   padding: 10px;
   border-radius: 0 0 10px 10px;

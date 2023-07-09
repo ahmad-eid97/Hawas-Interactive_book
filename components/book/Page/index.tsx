@@ -1,5 +1,8 @@
+"use client";
 //== Modules
 import { Matching } from '@/components';
+//== Components
+import { Pagination } from '@/components';
 //== Styles
 import styles from './page.module.scss';
 
@@ -71,6 +74,7 @@ const Page = () => {
         onMatch={(matches) => console.log(matches)}
         onUnMatch={(matches) => console.log(matches)}
       />
+      <Pagination />
     </div>
   )
 }

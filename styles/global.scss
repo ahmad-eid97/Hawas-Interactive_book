@@ -48,3 +48,23 @@ ul {
   margin: 0;
   list-style: none;
 }
+
+.MuiPagination-ul {
+  li {
+    .Mui-selected {
+      background-color: var(--main-color);
+      color: var(--text-inside);
+      border-color: var(--main-color);
+    }
+    &:first-of-type {
+      button {
+        transform: rotate(180deg)
+      }
+    }
+    &:last-of-type {
+      button {
+        transform: rotate(180deg)
+      }
+    }
+  }
+}

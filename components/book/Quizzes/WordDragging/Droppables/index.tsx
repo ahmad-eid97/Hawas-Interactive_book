@@ -1,3 +1,4 @@
+"use client";
 //== Styles
 import styles from './droppables.module.scss';
 //== Component Interface
