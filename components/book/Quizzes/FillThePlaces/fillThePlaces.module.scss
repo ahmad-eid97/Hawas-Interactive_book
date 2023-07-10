@@ -1,0 +1,13 @@
+@import '../../../../styles/extends.scss';
+
+.fillThePlaces {
+  @extend %quizFrame;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 20px;
+  padding: 0;
+}

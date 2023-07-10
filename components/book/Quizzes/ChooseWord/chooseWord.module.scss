@@ -1,0 +1,52 @@
+@import '../../../../styles/extends.scss';
+
+.chooseLetter {
+  h2 {
+    margin-bottom: 20px;
+  }
+  .itemsWrapper {
+    @extend %quizFrame;
+    max-width: 600px;
+    width: 90%;
+    border-radius: 20px;
+    background: url('../../../../public/images/quizzes/13.jpg');
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 15px;
+    .item {
+      i {
+        font-size: 1.2rem;
+        color: var(--delete-warn);
+      }
+      .choices {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        span {
+          font-size: 1.2rem;
+          font-weight: 600;
+          cursor: pointer;
+          padding: 0 10px;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          gap: 3px;
+          &.active {
+            border: 2px solid rgb(72, 139, 95);
+            background-color: rgb(184, 233, 134);
+          }
+          .wrong {
+            color: var(--delete-warn);
+          }
+          .correct {
+            color: var(--success);
+          }
+          &:hover {
+            color: var(--main-color);
+          }
+        }
+      }
+    }
+  }
+}

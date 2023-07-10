@@ -1,6 +1,6 @@
 "use client";
 //== Modules
-import { Flippy, FrontCover, BackCover, Page, SortDragging, TableDragging, WordDragging } from "@/components";
+import { Flippy, FrontCover, BackCover, Page, SortDragging, TableDragging, WordDragging, ChooseLetter, FillThePlaces, ChooseWord, ChooseAdjective, ContinueTyping } from "@/components";
 //== Component Logic
 import logic from "./logic";
 //== Styles
@@ -36,6 +36,21 @@ const BookPages = () => {
           <div style={{ padding: "20px 10px" }}>
             <h3>إختر الإجابه الصحيحه</h3>
             <WordDragging />
+          </div>
+          <div style={{ padding: "20px 10px" }}>
+            <ChooseLetter />
+          </div>
+          <div style={{ padding: "20px 10px" }}>
+            <FillThePlaces />
+          </div>
+          <div style={{ padding: "20px 10px" }}>
+            <ChooseWord />
+          </div>
+          <div style={{ padding: "20px 10px" }}>
+            <ChooseAdjective />
+          </div>
+          <div style={{ padding: "20px 10px" }}>
+            <ContinueTyping />
           </div>
           <BackCover />
         </Flippy>
