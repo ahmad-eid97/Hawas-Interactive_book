@@ -1,5 +1,6 @@
 //== Common Components
 export { default as Pagination } from './Common/Pagination';
+export { default as RadioGroup } from './Common/RadioGroup';
 //== Login Components
 export { default as LoginForm } from './login/LoginForm';
 //== Book Components
@@ -8,6 +9,7 @@ export { default as FrontCover } from './book/Covers/FrontCover';
 export { default as BackCover } from './book/Covers/BackCover';
 export { default as BookPages } from './book/BookPages';
 export { default as Page } from './book/Page';
+export { default as Lesson } from './book/Lesson';
 export { default as NextButton } from './book/NextButton';
 //== Quizzes
 export { default as Matching } from './book/Quizzes/Matching';
@@ -24,3 +26,14 @@ export { default as FillDroppables } from './book/Quizzes/FillThePlaces/FillDrop
 export { default as ChooseWord } from './book/Quizzes/ChooseWord';
 export { default as ChooseAdjective } from './book/Quizzes/ChooseAdjective';
 export { default as ContinueTyping } from './book/Quizzes/ContinueTyping';
+export { default as ArrangeWords } from './book/Quizzes/ArrangeWords';
+export { default as ArrangeDraggables } from './book/Quizzes/ArrangeWords/ArrangeDraggables';
+export { default as ArrangeDroppables } from './book/Quizzes/ArrangeWords/ArrangeDroppables';
+export { default as Choosing } from './book/Quizzes/Choosing';
+export { default as SignleChoose } from './book/Quizzes/SignleChoose';
+export { default as ImageChoose } from './book/Quizzes/ImageChoose';
+export { default as ImageTyping } from './book/Quizzes/ImageTyping';
+export { default as FillFields } from './book/Quizzes/FillFields';
+export { default as CompleteWords } from './book/Quizzes/CompleteWords';
+export { default as CompleteDraggables } from './book/Quizzes/CompleteWords/CompleteDraggables';
+export { default as CompleteDroppables } from './book/Quizzes/CompleteWords/CompleteDroppables';

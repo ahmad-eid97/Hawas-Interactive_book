@@ -4,6 +4,7 @@
   @extend %quizFrame;
   background: url('../../../../public/images/quizzes/13.jpg');
   margin-top: 20px;
+  max-width: 550px;
   .items {
     display: flex;
     flex-direction: column;

@@ -6,7 +6,7 @@ export default function Logic() {
   const [pageLoaded, setPageLoaded] = useState(false);
   const [bookWidth, setBookWidth] = useState(650);
   const [bookHeight, setBookHeight] = useState(750);
-  const [pageNum, setPageNum] = useState(1);
+  const [pageNum, setPageNum] = useState<number>(1);
   let flippy = useRef(null);
 
   useEffect(() => {
@@ -35,7 +35,9 @@ export default function Logic() {
     });
   }, [bookWidth, bookHeight]);
 
-  const goToNextPage = async (pageNum: number) => {
+  const goToNextPage = async (event: any, pageNum: number) => {
+    setPageNum(pageNum);
+    console.log(pageNum);
   };
 
   return {

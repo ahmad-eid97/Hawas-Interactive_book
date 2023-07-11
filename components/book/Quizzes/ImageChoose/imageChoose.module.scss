@@ -1,0 +1,40 @@
+@import '../../../../styles/extends.scss';
+
+.imageChoose {
+  max-width: 550px;
+  h2 {
+    margin-bottom: 20px;
+  }
+  .choices {
+    @extend %quizFrame;
+    border-color: var(--main-color);
+    background: url('../../../../public/images/quizzes/04.jpg');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    img {
+      height: 200px;
+      padding: 20px;
+      object-fit: contain;
+      border-radius: 10px;
+      cursor: url('../../../../public/images/quizzes/point.png'), move;
+      &.choosed {
+        border: 3px solid var(--main-color);
+      }
+    }
+    p {
+      text-align: center !important;
+      i {
+        font-size: 1.5rem;
+      }
+      .correct {
+        color: var(--success);
+      }
+      .wrong {
+        color: var(--delete-warn);
+      }
+    }
+  }
+}

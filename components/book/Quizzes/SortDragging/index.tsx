@@ -16,7 +16,7 @@ import useLogic from './logic';
 import styles from "./sortDragging.module.scss";
 
 
-function ListSort() {
+function SortDragging() {
   const { languages, handleDragEnd } = useLogic();
 
   return (
@@ -43,4 +43,4 @@ function ListSort() {
   );
 }
 
-export default ListSort;
+export default SortDragging;

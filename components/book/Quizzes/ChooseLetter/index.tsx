@@ -12,7 +12,7 @@ const ChooseLetter = () => {
       <div className={styles.itemsWrapper}>
         {items.map((item, idx) => (
           <div className={styles.item} key={idx}>
-            <img src={item.image} alt="quiz-image" />
+            <img src={item.image} alt="quiz-image" loading='lazy' />
             <div className={styles.choices}>
               {item.letters.map((letter, index) => (
                 <>

@@ -5,7 +5,8 @@
   background-image: url('https://alarabeyya.com//UploadedFiles/hayya/Images/aam/background/green/5.png');
   background-size: cover;
   color: #fff;
-  width: 450px;
+  width: 100%;
+  max-width: 550px;
   direction: var(--dir);
   text-align: var(--align);
   display: flex;

@@ -1,0 +1,32 @@
+.draggables {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 50px;
+  row-gap: 10px;
+  padding: 20px;
+  border-radius: 0 0 10px 10px;
+  background: url('../../../../../public/images/quizzes/05.jpg');
+  background-position: 100% 100%;
+  background-size: cover;
+  width: 100%;
+  border-bottom: 3px solid var(--main-color);
+  .item {
+    padding: 3px 15px;
+    background-color: #d3ecf6;
+    border: 1px dashed #000;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: url('../../../../../public/images/quizzes/point.png'), move;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    i {
+      color: var(--delete-warn);
+      display: none;
+    }
+  }
+}

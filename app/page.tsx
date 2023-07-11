@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { CompleteWords } from "@/components";
 
 export default function Home() {
   return (
@@ -9,6 +10,8 @@ export default function Home() {
         <Link href="/book">Book</Link>
       </div>
       <Link href="/login">Login</Link>
+
+      <CompleteWords />
     </main>
   )
 }

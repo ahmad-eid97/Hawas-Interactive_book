@@ -1,0 +1,59 @@
+@import '../../../../styles/extends.scss';
+
+.chooseLetter {
+  max-width: 550px;
+  h2 {
+    margin-bottom: 20px;
+  }
+  .itemsWrapper {
+    max-width: 600px;
+    width: 90%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 15px;
+    .item {
+      &:not(:last-of-type) {
+        border-bottom: 2px dashed var(--delete-warn);
+        padding-bottom: 30px;
+      }
+      h2 {
+        margin-bottom: 10px;
+        font-weight: 700;
+      }
+      .choices {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        border: 3px solid var(--main-color);
+        padding: 20px;
+        border-radius: 20px;
+        background-color: rgb(215, 225, 237);
+        span {
+          font-size: 1.2rem;
+          font-weight: 600;
+          cursor: pointer;
+          padding: 5px 20px;
+          border-radius: 50px;
+          display: flex;
+          align-items: center;
+          gap: 3px;
+          &.active {
+            border: 2px solid rgb(72, 139, 95);
+          }
+          .wrong {
+            color: var(--delete-warn);
+          }
+          .correct {
+            color: var(--success);
+          }
+          &:hover {
+            color: var(--main-color);
+          }
+        }
+      }
+    }
+  }
+}
