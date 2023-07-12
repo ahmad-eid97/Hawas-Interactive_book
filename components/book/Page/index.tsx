@@ -16,7 +16,7 @@ const Page = ({ pageNum, goToNextPage }: CProps) => {
 
   return (
     <div className={styles.page}>
-      {ComponentRendered[pageNum - 1]}
+      {ComponentRendered[pageNum]}
       <Pagination pageNum={pageNum} goToNextPage={goToNextPage} />
     </div>
   )
