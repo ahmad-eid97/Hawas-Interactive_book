@@ -1,3 +1,5 @@
+//== Hooks
+import { Fragment } from 'react';
 //== Component Logic
 import useLogic from './logic';
 //== Styles
@@ -15,14 +17,14 @@ const ChooseLetter = () => {
             <div className={styles.choices}>
               <i className="fa-duotone fa-star"></i>
               {item.words.map((word, index) => (
-                <>
+                <Fragment>
                   {index > 0 && '، '}
                   <span key={index} onClick={() => addToChoices(idx, word)} className={choices[idx] === word ? styles.active : ''}>
                     {word}
                     {item.correct !== choices[idx] && choices[idx] === word && item.correct !== word && <i className={`fa-duotone fa-triangle-exclamation ${styles.wrong}`}></i>}
                     {item.correct === choices[idx] && item.correct === word && <i className={`fa-duotone fa-circle-check ${styles.correct}`}></i>}
                   </span>
-                </>
+                </Fragment>
               ))}
             </div>
           </div>

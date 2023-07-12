@@ -11,7 +11,7 @@ const ImageChoose = () => {
       <h2>ضَعْ مُرَبَّعًا حَوْلَ الصُّورَةِ الّتي تُعَبِّرُ عَنِ الدَّرْسِ!</h2>
       <div className={styles.choices}>
         {items.map((item, idx) => (
-          <div>
+          <div key={idx}>
             <img src={item.image} alt="choice" loading='lazy' key={item.id} onClick={() => setChoosedAnswer(item.id)} className={choosedAnswer === item.id ? styles.choosed : ''} />
             <p>
               {!item.correct && choosedAnswer === item.id && <i className={`fa-duotone fa-triangle-exclamation ${styles.wrong}`}></i>}

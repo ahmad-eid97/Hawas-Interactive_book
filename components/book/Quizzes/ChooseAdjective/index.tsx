@@ -1,3 +1,5 @@
+//== Hooks
+import { Fragment } from 'react';
 //== Component Logic
 import useLogic from './logic';
 //== Styles
@@ -28,10 +30,10 @@ const ChooseAdjective = () => {
               <div className={styles.choices}>
                 (
                 {item.choices.map((choice, index) => (
-                  <>
+                  <Fragment key={index}>
                     {index > 0 && '، '}
                     <span onClick={() => addAnswer(idx, choice)} className={answers[idx] === choice ? styles.active : ''}>{choice}</span>
-                  </>
+                  </Fragment>
                 ))}
                 )
               </div>
