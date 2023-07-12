@@ -17,7 +17,7 @@ const ChooseLetter = () => {
             <div className={styles.choices}>
               <i className="fa-duotone fa-star"></i>
               {item.words.map((word, index) => (
-                <Fragment>
+                <Fragment key={index}>
                   {index > 0 && '، '}
                   <span key={index} onClick={() => addToChoices(idx, word)} className={choices[idx] === word ? styles.active : ''}>
                     {word}
