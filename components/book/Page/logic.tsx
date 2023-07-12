@@ -53,7 +53,7 @@ export default function useLogic() {
       ]
     }
   }
-  const [ComponentRendered, setComponentRendered] = useState<any[]>([
+  const [ComponentRendered, setComponentRendered] = useState([
     <Matching
       matchingData={dataRtl}
       options={{
