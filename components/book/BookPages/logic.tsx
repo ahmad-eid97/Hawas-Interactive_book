@@ -4,8 +4,8 @@ import { useEffect, useState, useRef } from "react";
 
 export default function useLogic() {
   const [pageLoaded, setPageLoaded] = useState(false);
-  const [bookWidth, setBookWidth] = useState(650);
-  const [bookHeight, setBookHeight] = useState(750);
+  const [bookWidth, setBookWidth] = useState(600);
+  const [bookHeight, setBookHeight] = useState(700);
   let flippy = useRef(null);
 
   useEffect(() => {

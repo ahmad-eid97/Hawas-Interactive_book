@@ -15,25 +15,26 @@
     gap: 15px;
     .item {
       &:not(:last-of-type) {
-        border-bottom: 2px dashed var(--delete-warn);
+        border-bottom: 2px dashed var(--box-background);
         padding-bottom: 30px;
       }
       h2 {
         margin-bottom: 10px;
         font-weight: 700;
+        font-size: 1.3rem;
       }
       .choices {
         display: flex;
         flex-direction: column;
         gap: 15px;
-        border: 3px solid var(--main-color);
+        border: 2px dashed var(--main-color);
         padding: 20px;
         border-radius: 20px;
         background: url('../../../../public/images/quizzes/small.svg');
         background-position: center;
         background-size: cover;
         span {
-          font-size: 1.2rem;
+          font-size: 1.1rem;
           font-weight: 600;
           cursor: pointer;
           border-radius: 50px;
