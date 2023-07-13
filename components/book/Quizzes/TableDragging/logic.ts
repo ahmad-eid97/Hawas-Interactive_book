@@ -21,19 +21,19 @@ export default function useLogic() {
   const dragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.stopPropagation();
     e.preventDefault();
-    e.currentTarget.style.backgroundColor = "green";
+    e.currentTarget.style.backgroundColor = "#00b894";
     // drop(e);
   }
 
   const dragLeave = (e: React.DragEvent<HTMLDivElement>) => {
     e.stopPropagation();
-    e.currentTarget.style.backgroundColor = "var(--main-color)";
+    e.currentTarget.style.backgroundColor = "var(--third-color)";
   }
 
   const drop = (e: React.DragEvent<HTMLDivElement>) => {
     e.stopPropagation();
     e.preventDefault();
-    e.currentTarget.style.backgroundColor = "var(--main-color)";
+    e.currentTarget.style.backgroundColor = "var(--third-color)";
     if (draggableItem) e.currentTarget.appendChild(draggableItem);
   }
 

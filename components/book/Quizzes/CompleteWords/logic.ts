@@ -46,7 +46,7 @@ export default function useLogic() {
 
   const dragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
-    e.currentTarget.style.backgroundColor = "green";
+    e.currentTarget.style.backgroundColor = "#00b894";
   }
 
   const dragLeave = (e: React.DragEvent<HTMLDivElement>) => {

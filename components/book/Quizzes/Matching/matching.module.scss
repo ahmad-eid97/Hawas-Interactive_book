@@ -4,7 +4,8 @@
   --dir: rtl;
   --align: right;
   @extend %quizFrame;
-  background-image: url('https://alarabeyya.com//UploadedFiles/hayya/Images/aam/background/green/5.png');
+  background-image: url('../../../../public/images/quizzes/waves.svg');
+  background-position: center;
   background-size: cover;
   color: #fff;
   width: 550px;
@@ -28,12 +29,11 @@
     h3 {
       margin: 0;
       margin-bottom: 5px;
-      border: 1px solid #000;
       border-radius: 5px;
       text-align: center !important;
       padding: 7px 0;
-      background-color: #7ED321;
-      color: #000;
+      background-color: var(--box-background);
+      color: var(--text-inside);
     }
 
     p {
@@ -125,7 +125,7 @@
 
     svg {
       --line-color: red;
-      --hover-color: green;
+      --hover-color: #00b894;
       --arrow-color: var(--line-color);
       position: absolute;
       top: 0;

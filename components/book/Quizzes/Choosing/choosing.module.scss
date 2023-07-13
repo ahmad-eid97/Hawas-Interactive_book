@@ -30,7 +30,9 @@
         border: 3px solid var(--main-color);
         padding: 20px;
         border-radius: 20px;
-        background-color: rgb(215, 225, 237);
+        background: url('../../../../public/images/quizzes/small.svg');
+        background-position: center;
+        background-size: cover;
         span {
           font-size: 1.2rem;
           font-weight: 600;

@@ -22,8 +22,26 @@
 }
 
 %quizFrame {
-  border: 3px solid rgb(72, 139, 95);
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-  padding: 20px;
+  padding: 30px;
+  position: relative;
+  z-index: 2;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    z-index: -1;
+    background-image: repeating-linear-gradient(90deg, #090761 0, #090761 50%, transparent 0, transparent),
+      repeating-linear-gradient(90deg, #090761 0, #090761 50%, transparent 0, transparent),
+      repeating-linear-gradient(180deg, #090761 0, #090761 50%, transparent 0, transparent),
+      repeating-linear-gradient(180deg, #090761 0, #090761 50%, transparent 0, transparent);
+    background-position: 0 0, 0 100%, 0 0, 100% 0;
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+    background-size: 20px 2px, 20px 2px, 2px 20px, 2px 20px;
+    border-radius: 8px;
+  }
 }

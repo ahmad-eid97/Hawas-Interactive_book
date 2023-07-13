@@ -6,7 +6,7 @@
     margin-bottom: 20px;
   }
   .wrapper {
-    background: url('../../../../public/images/quizzes/10.png');
+    background: url('../../../../public/images/quizzes/chart.svg');
     background-position: center;
     background-size: cover;
     @extend %quizFrame;
@@ -20,7 +20,7 @@
       gap: 10px;
       font-size: 1.2rem;
       i {
-        color: var(--delete-warn);
+        color: var(--box-background);
         grid-column: span 1;
       }
       span {

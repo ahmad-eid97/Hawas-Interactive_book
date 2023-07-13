@@ -16,7 +16,7 @@ const BookPages = () => {
           pageWidth={bookWidth}
           pageHeight={bookHeight}
           rtl={true}
-          backSkin="#000"
+          backSkin="#34495e"
           pageSkin="#eee"
           breakpoint={992}
           flippingTime={500}

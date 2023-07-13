@@ -9,7 +9,7 @@
     @extend %quizFrame;
     max-width: 600px;
     width: 90%;
-    background: url('../../../../public/images/quizzes/13.jpg');
+    background: url('../../../../public/images/quizzes/chart.svg');
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -17,7 +17,7 @@
     .item {
       i {
         font-size: 1.2rem;
-        color: var(--delete-warn);
+        color: var(--box-background);
       }
       .choices {
         display: flex;

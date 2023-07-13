@@ -9,7 +9,9 @@
     @extend %quizFrame;
     max-width: 600px;
     width: 90%;
-    background: url('../../../../public/images/quizzes/13.jpg');
+    background: url('../../../../public/images/quizzes/03.svg');
+    background-position: 100% 100%;
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;

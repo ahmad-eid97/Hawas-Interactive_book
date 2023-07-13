@@ -1,27 +1,31 @@
+@import '../../../../styles/extends.scss';
+
 .dragging {
   max-width: 99%;
   h2 {
     margin-bottom: 20px;
   }
   .words {
-    border-radius: 20px;
-    padding: 5px 20px;
-    border: 3px solid var(--main-color);
-    background-color: rgb(210, 237, 248);
+    @extend %quizFrame;
+    background: url('../../../../public/images/quizzes/03.svg');
+    background-position: 100% 100%;
+    background-size: cover;
     h2 {
       font-size: 1.5rem;
       font-weight: 600;
+      margin-bottom: 10px;
     }
   }
   .item {
-    background-color: #fff;
+    background-color: var(--box-background);
     padding: 5px 20px;
     margin-bottom: 5px;
     cursor: move;
     max-width: 250px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    border: 1px solid var(--main-color);
+    // border: 1px solid var(--main-color);
     font-size: 1.2rem;
+    color: var(--text-inside);
   }
 }

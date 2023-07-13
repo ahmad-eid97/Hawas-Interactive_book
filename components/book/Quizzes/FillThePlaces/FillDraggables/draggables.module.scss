@@ -6,14 +6,15 @@
   column-gap: 30px;
   row-gap: 10px;
   padding: 20px;
-  border-radius: 0 0 10px 10px;
-  background: url('../../../../../public/images/quizzes/9.png');
+  border-radius: 10px;
+  // background: url('../../../../../public/images/quizzes/9.png');
+  background-color: var(--third-color);
   width: 100%;
-  border-bottom: 3px solid rgb(44, 104, 44);
   .item {
     padding: 3px 15px;
-    background-color: rgb(135, 198, 135);
-    border: 1px dashed green;
+    background-color: var(--box-background);
+    border: 1px dashed var(--main-color);
+    color: var(--text-inside);
     font-size: 1.2rem;
     border-radius: 10px;
     cursor: url('../../../../../public/images/quizzes/point.png'), move;

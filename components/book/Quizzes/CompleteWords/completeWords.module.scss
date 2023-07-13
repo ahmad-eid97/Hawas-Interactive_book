@@ -3,12 +3,12 @@
 .fillThePlaces {
   max-width: 98%;
   @extend %quizFrame;
-  border-color: var(--main-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   margin-top: 20px;
-  padding: 0;
+  background: url('../../../../public/images/quizzes/polygon.svg');
+  padding: 15px 20px;
 }

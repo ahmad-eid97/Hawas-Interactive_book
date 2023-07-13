@@ -1,5 +1,6 @@
 .item {
-  background-color: var(--main-color);
+  // background-color: var(--box-background);
+  background-color: var(--third-color);
   width: auto;
   min-width: 200px;
   border-radius: 2px;
@@ -10,8 +11,9 @@
   cursor: grab;
   border-radius: 5px;
   transition: none !important;
-  background: url('../../../../../public/images/quizzes/05.jpg');
+  // background: url('../../../../../public/images/quizzes/05.svg');
   background-position: 0% 0%;
   background-size: cover;
-  margin: 5px 0;
+  margin: 10px 0;
+  // color: #fff;
 }

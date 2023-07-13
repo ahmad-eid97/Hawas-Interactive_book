@@ -2,7 +2,7 @@
 
 .chooseAdjective {
   @extend %quizFrame;
-  background: url('../../../../public/images/quizzes/13.jpg');
+  background: url('../../../../public/images/quizzes/chart.svg');
   margin-top: 20px;
   max-width: 90%;
   .items {
@@ -16,7 +16,7 @@
       font-size: 1.2rem;
       i {
         font-size: 1.2rem;
-        color: var(--delete-warn);
+        color: var(--box-background);
       }
       .box {
         height: 50px;
