@@ -2,12 +2,17 @@
 //== Modules
 import { Flippy, FrontCover, BackCover, Page, Lesson } from "@/components";
 //== Component Logic
-import logic from "./logic";
+import useLogic from "./logic";
 //== Styles
 import styles from "./bookPages.module.scss";
+import { useEffect } from "react";
 
 const BookPages = () => {
-  const { pageLoaded, bookWidth, bookHeight, pageNum, goToNextPage, flippy } = logic();
+  const { pageLoaded, bookWidth, bookHeight, pageNum, changePage, flippy } = useLogic();
+
+  useEffect(() => {
+    console.log('------------->', pageNum);
+  }, [pageNum])
 
   return (
     <div className={styles.bookPages}>
@@ -26,8 +31,8 @@ const BookPages = () => {
           ref={flippy}
         >
           <FrontCover />
-          {/* <Lesson /> */}
-          <Page pageNum={pageNum} goToNextPage={goToNextPage} />
+          <Lesson />
+          <Page pageNum={pageNum} changePage={changePage} />
           <BackCover />
         </Flippy>
       }

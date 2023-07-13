@@ -21,7 +21,7 @@ export default function SortableItem(props: any) {
 
   return (
     <div ref={setNodeRef} style={style} {...attributes} {...listeners} className={styles.item}>
-      <div className="m-3">{props.id}</div>
+      {props.id}
     </div>
   )
 }

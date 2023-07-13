@@ -20,26 +20,29 @@ function SortDragging() {
   const { languages, handleDragEnd } = useLogic();
 
   return (
-    <div className={styles.sorting}>
-      <DndContext
-        collisionDetection={closestCenter}
-        onDragEnd={(e) => handleDragEnd(e)}
-        // ts-ignore@
-        onDragStart={(e) => console.log(e)}
-      >
-        <div>
-          <SortableContext
-            items={languages}
-            strategy={verticalListSortingStrategy}
-          >
-            {/* We need components that use the useSortable hook */}
-            {languages.map(language =>
-              <SortableItem key={language} id={language} />
-            )}
-          </SortableContext>
-        </div>
-      </DndContext>
-    </div>
+    <>
+      <h2>رَتِّبِ الْجُمَلَ التّالِيَةَ حَسْبَ التَّسَلْسُلِ الزَّمَنِيِّ في النَّصِّ!</h2>
+      <div className={styles.sorting}>
+        <DndContext
+          collisionDetection={closestCenter}
+          onDragEnd={(e) => handleDragEnd(e)}
+          // ts-ignore@
+          onDragStart={(e) => console.log(e)}
+        >
+          <div>
+            <SortableContext
+              items={languages}
+              strategy={verticalListSortingStrategy}
+            >
+              {/* We need components that use the useSortable hook */}
+              {languages.map(language =>
+                <SortableItem key={language} id={language} />
+              )}
+            </SortableContext>
+          </div>
+        </DndContext>
+      </div>
+    </>
   );
 }
 

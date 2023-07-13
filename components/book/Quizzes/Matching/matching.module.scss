@@ -1,12 +1,13 @@
+@import '../../../../styles/extends.scss';
+
 .matching {
   --dir: rtl;
   --align: right;
-  padding: 20px;
+  @extend %quizFrame;
   background-image: url('https://alarabeyya.com//UploadedFiles/hayya/Images/aam/background/green/5.png');
   background-size: cover;
   color: #fff;
-  width: 100%;
-  max-width: 550px;
+  width: 550px;
   direction: var(--dir);
   text-align: var(--align);
   display: flex;
@@ -14,6 +15,7 @@
   align-items: center;
   position: relative;
   z-index: 1;
+  margin-top: 20px;
 
   .righthand,
   .lefthand {

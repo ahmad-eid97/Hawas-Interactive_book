@@ -1,15 +1,14 @@
 @import '../../../../styles/extends.scss';
 
 .fillThePlaces {
+  max-width: 98%;
   @extend %quizFrame;
   border-color: var(--main-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
   overflow: hidden;
   margin-top: 20px;
   padding: 0;
-  max-width: 550px;
 }

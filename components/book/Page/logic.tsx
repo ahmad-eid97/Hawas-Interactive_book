@@ -54,7 +54,7 @@ export default function useLogic() {
     }
   }
   const [ComponentRendered, setComponentRendered] = useState<{ [index: number]: JSX.Element }>({
-    1: < Matching
+    '1': < Matching
       matchingData={dataRtl}
       options={{
         linesColor: '#ffffff',
@@ -69,21 +69,21 @@ export default function useLogic() {
       onMatch={(matches) => console.log(matches)}
       onUnMatch={(matches) => console.log(matches)}
     />,
-    2: < SortDragging />,
-    3: <TableDragging />,
-    4: <WordDragging />,
-    5: <ChooseLetter />,
-    6: <FillThePlaces />,
-    7: <ChooseWord />,
-    8: <ChooseAdjective />,
-    9: <ContinueTyping />,
-    10: <ArrangeWords />,
-    11: <Choosing />,
-    12: <SignleChoose />,
-    13: <ImageChoose />,
-    14: <ImageTyping />,
-    15: <FillFields />,
-    16: <CompleteWords />
+    '2': <SortDragging />,
+    '3': <TableDragging />,
+    '4': <WordDragging />,
+    '5': <ChooseLetter />,
+    '6': <FillThePlaces />,
+    '7': <ChooseWord />,
+    '8': <ChooseAdjective />,
+    '9': <ContinueTyping />,
+    '10': <ArrangeWords />,
+    '11': <Choosing />,
+    '12': <SignleChoose />,
+    '13': <ImageChoose />,
+    '14': <ImageTyping />,
+    '15': <FillFields />,
+    '16': <CompleteWords />
   });
 
   return {

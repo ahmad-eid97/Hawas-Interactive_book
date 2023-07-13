@@ -2,7 +2,7 @@
 //== Utils
 import { useEffect, useState, useRef } from "react";
 
-export default function Logic() {
+export default function useLogic() {
   const [pageLoaded, setPageLoaded] = useState(false);
   const [bookWidth, setBookWidth] = useState(650);
   const [bookHeight, setBookHeight] = useState(750);
@@ -11,7 +11,7 @@ export default function Logic() {
 
   useEffect(() => {
     setPageLoaded(true);
-  });
+  }, []);
 
   useEffect(() => {
     if (window.innerWidth <= 550) {
@@ -35,7 +35,7 @@ export default function Logic() {
     });
   }, [bookWidth, bookHeight]);
 
-  const goToNextPage = async (event: any, pageNum: number) => {
+  const changePage = async (event: any, pageNum: number) => {
     setPageNum(pageNum);
     console.log(pageNum);
   };
@@ -45,7 +45,7 @@ export default function Logic() {
     bookWidth,
     bookHeight,
     pageNum,
-    goToNextPage,
+    changePage,
     flippy
   }
 }

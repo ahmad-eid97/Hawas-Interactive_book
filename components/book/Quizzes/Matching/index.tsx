@@ -343,70 +343,73 @@ function Matching({
   }
 
   return (
-    <div className={`${classes.matching} ${className} ${dir === 'ltr' ? classes.ltr : ''}`} onMouseMove={handleMouseMove} onMouseUp={(event) => handleStopMatching(null, event)}>
-      {/* Right Hand Items */}
-      <div className={classes.righthand}>
-        <h3>{matchingData.righthand.title}</h3>
-        {
-          matchingData.righthand.items.length ?
-            (
-              matchingData.righthand.items.map((matchingItem, index) => (
-                <p key={index} className={options?.itemsClassName || ''}>
-                  {matchingItem[keyWord]}
-                  <span className={`matching-start-point ${classes.matching_box}`} onMouseDown={handleMouseDown}></span>
-                </p>)
-              )
-            ) : null
-        }
+    <>
+      <h2>مُدَّ خَطًّا بَيْنَ الْكَلِمَةِ وَجَمْعِها!</h2>
+      <div className={`${classes.matching} ${className} ${dir === 'ltr' ? classes.ltr : ''}`} onMouseMove={handleMouseMove} onMouseUp={(event) => handleStopMatching(null, event)}>
+        {/* Right Hand Items */}
+        <div className={classes.righthand}>
+          <h3>{matchingData.righthand.title}</h3>
+          {
+            matchingData.righthand.items.length ?
+              (
+                matchingData.righthand.items.map((matchingItem, index) => (
+                  <p key={index} className={options?.itemsClassName || ''}>
+                    {matchingItem[keyWord]}
+                    <span className={`matching-start-point ${classes.matching_box}`} onMouseDown={handleMouseDown}></span>
+                  </p>)
+                )
+              ) : null
+          }
+        </div>
+        {/* Matching Area Items */}
+        <div className={classes.matching_area} onDoubleClick={handleRemoveLine}>
+          <svg
+            height={svgDims.height}
+            width={svgDims.width}
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            style={{
+              // @ts-ignore
+              '--arrow-color': options?.linesColor || '--line-color'
+            }}
+            id="temp-container"
+          >
+          </svg>
+          <svg
+            height={svgDims.height}
+            width={svgDims.innerWidth}
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: dir === 'ltr' ? svgDims.leftXOffset : 'unset',
+              right: dir === 'rtl' ? svgDims.rightXOffset : 'unset',
+              zIndex: 100,
+              // @ts-ignore
+              '--arrow-color': options?.linesColor || '--line-color'
+            }}
+            id="line-container"
+          >
+          </svg>
+        </div>
+        {/* Left Hand Items */}
+        <div className={classes.lefthand}>
+          <h3>{matchingData.lefthand.title}</h3>
+          {
+            matchingData.lefthand.items.length ?
+              (
+                matchingData.lefthand.items.map((matchingItem, index) => (
+                  <p key={index} onMouseUp={handleMouseUp} className={options?.itemsClassName || ''}>
+                    {matchingItem[keyWord]}
+                    <span className={`matching-end-point ${classes.matching_box}`}></span>
+                  </p>)
+                )
+              ) : null
+          }
+        </div>
       </div>
-      {/* Matching Area Items */}
-      <div className={classes.matching_area} onDoubleClick={handleRemoveLine}>
-        <svg
-          height={svgDims.height}
-          width={svgDims.width}
-          xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-          style={{
-            // @ts-ignore
-            '--arrow-color': options?.linesColor || '--line-color'
-          }}
-          id="temp-container"
-        >
-        </svg>
-        <svg
-          height={svgDims.height}
-          width={svgDims.innerWidth}
-          xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: dir === 'ltr' ? svgDims.leftXOffset : 'unset',
-            right: dir === 'rtl' ? svgDims.rightXOffset : 'unset',
-            zIndex: 100,
-            // @ts-ignore
-            '--arrow-color': options?.linesColor || '--line-color'
-          }}
-          id="line-container"
-        >
-        </svg>
-      </div>
-      {/* Left Hand Items */}
-      <div className={classes.lefthand}>
-        <h3>{matchingData.lefthand.title}</h3>
-        {
-          matchingData.lefthand.items.length ?
-            (
-              matchingData.lefthand.items.map((matchingItem, index) => (
-                <p key={index} onMouseUp={handleMouseUp} className={options?.itemsClassName || ''}>
-                  {matchingItem[keyWord]}
-                  <span className={`matching-end-point ${classes.matching_box}`}></span>
-                </p>)
-              )
-            ) : null
-        }
-      </div>
-    </div>
+    </>
   )
 }
 

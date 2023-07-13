@@ -5,19 +5,24 @@ import useLogic from "./logic";
 import { Pagination } from '@/components';
 //== Styles
 import styles from './page.module.scss';
+import { useEffect } from "react";
 //== Component Interface
 interface CProps {
   pageNum: number
-  goToNextPage: (e: any, pageNum: number) => void
+  changePage: (e: any, pageNum: number) => void
 }
 
-const Page = ({ pageNum, goToNextPage }: CProps) => {
+const Page = ({ pageNum, changePage }: CProps) => {
   const { ComponentRendered } = useLogic();
+
+  useEffect(() => {
+    console.log('===========>', pageNum)
+  }, [pageNum])
 
   return (
     <div className={styles.page}>
       {ComponentRendered[pageNum]}
-      <Pagination pageNum={pageNum} goToNextPage={goToNextPage} />
+      <Pagination pageNum={pageNum} changePage={changePage} />
     </div>
   )
 }

@@ -11,6 +11,7 @@ const TableDragging = () => {
 
   return (
     <div className={styles.dragging}>
+      <h2>ضع الكلمات المناسبة في كل جدول</h2>
       <div className={styles.words}>
         <h2>الكلمات</h2>
         <p

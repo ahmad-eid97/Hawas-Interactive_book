@@ -7,14 +7,15 @@ import styles from './pagination.module.scss';
 //== Component Interface
 interface CProps {
   pageNum: number
-  goToNextPage: (e: any, pageNum: number) => void
+  changePage: (e: any, pageNum: number) => void
 }
 
-const PagePagination = ({ pageNum, goToNextPage }: CProps) => {
+const PagePagination = ({ pageNum, changePage }: CProps) => {
+
   return (
     <div className={styles.pagination}>
       <Stack spacing={2}>
-        <Pagination count={16} variant="outlined" shape="rounded" page={pageNum} onChange={goToNextPage} />
+        <Pagination count={16} variant="outlined" shape="rounded" onChange={changePage} />
       </Stack>
     </div>
   )

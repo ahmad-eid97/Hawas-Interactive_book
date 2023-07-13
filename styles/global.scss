@@ -54,10 +54,18 @@ ul {
     button {
       border-color: var(--main-color);
       color: var(--main-color);
+      &:hover {
+        background-color: var(--main-color);
+        color: var(--text-inside);
+      }
     }
     .Mui-selected {
       background-color: var(--main-color);
       color: var(--text-inside);
+      &:hover {
+        background-color: var(--main-color);
+        color: var(--text-inside);
+      }
     }
     &:first-of-type {
       button {

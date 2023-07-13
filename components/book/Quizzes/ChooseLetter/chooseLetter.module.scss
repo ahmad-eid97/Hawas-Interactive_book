@@ -1,7 +1,7 @@
 @import '../../../../styles/extends.scss';
 
 .chooseLetter {
-  max-width: 550px;
+  max-width: 100%;
   h2 {
     margin-bottom: 20px;
   }
@@ -9,7 +9,6 @@
     @extend %quizFrame;
     max-width: 600px;
     width: 90%;
-    border-radius: 20px;
     background: url('../../../../public/images/quizzes/13.jpg');
     display: flex;
     align-items: center;
