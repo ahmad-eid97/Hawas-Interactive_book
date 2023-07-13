@@ -1,5 +1,5 @@
 "use client";
-//== Hooks 
+//== Hooks
 import { useState } from "react";
 
 export default function useLogic() {

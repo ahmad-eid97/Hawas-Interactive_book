@@ -37,6 +37,9 @@
       .correct {
         color: var(--success) !important;
       }
+      .wrong {
+        color: var(--delete-warn) !important;
+      }
       .choices {
         display: flex;
         align-items: center;
