@@ -9,8 +9,8 @@ const colors_list = [
   "#0C134F",
   "#5C469C",
   "#116D6E",
-  "#4E3636",
-  "#CD1818",
+  "#2ecc71",
+  "#f39c12",
   "#000000",
   "#735F32",
   "#C69749",
@@ -165,7 +165,7 @@ function Matching({
     PATH.setAttribute('id', ID);
 
     const pathConfig = {
-      x1: "0",
+      x1: "10",
       y1: "0",
       x2: "0",
       y2: "0",
@@ -174,7 +174,8 @@ function Matching({
       c3: 0
     };
 
-    if (dir === 'rtl') pathConfig.x1 = svgDims.innerWidth.toFixed(0);
+    // if (dir === 'rtl') pathConfig.x1 = svgDims.innerWidth.toFixed(0);
+    if (dir === 'rtl') pathConfig.x1 = (svgDims.innerWidth - 10).toFixed(0);
     else pathConfig.x1 = "0";
     pathConfig.y1 = startPosition.y.toFixed(0);
 

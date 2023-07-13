@@ -52,8 +52,9 @@
         content: '';
         width: 18px;
         height: 18px;
-        border: 1px solid #000;
-        background-color: #17A2B8;
+        // border: 1px solid #000;
+        border-radius: 50%;
+        background-color: var(--box-background);
         position: absolute;
         left: 15px;
         top: 50%;

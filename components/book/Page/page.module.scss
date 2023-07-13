@@ -4,4 +4,18 @@
   padding: 20px;
   overflow-y: auto;
   overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 6px !important;
+    /* width of the entire scrollbar */
+  }
+  &::-webkit-scrollbar-track {
+    background: rgb(239, 239, 239);
+    /* color of the tracking area */
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--third-color);
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* creates padding around scroll thumb */
+  }
 }
