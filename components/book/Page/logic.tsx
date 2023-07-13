@@ -5,6 +5,8 @@ import { useState } from "react";
 import { Matching, SortDragging, TableDragging, WordDragging, ChooseLetter, FillThePlaces, ChooseWord, ChooseAdjective, ContinueTyping, ArrangeWords, Choosing, SignleChoose, ImageChoose, ImageTyping, FillFields, CompleteWords } from "@/components";
 
 export default function useLogic() {
+  const [pageNum, setPageNum] = useState<number>(1);
+
   const dataRtl = {
     righthand: {
       title: 'الكلمة',
@@ -54,7 +56,7 @@ export default function useLogic() {
     }
   }
   const [ComponentRendered, setComponentRendered] = useState<{ [index: number]: JSX.Element }>({
-    '1': < Matching
+    '1': <Matching
       matchingData={dataRtl}
       options={{
         linesColor: '#ffffff',
@@ -86,7 +88,14 @@ export default function useLogic() {
     '16': <CompleteWords />
   });
 
+  const changePage = async (event: any, pageNum: number) => {
+    setPageNum(pageNum);
+    console.log(pageNum);
+  };
+
   return {
-    ComponentRendered
+    ComponentRendered,
+    pageNum,
+    changePage
   }
 }

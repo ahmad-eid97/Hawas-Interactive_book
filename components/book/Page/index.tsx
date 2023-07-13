@@ -6,18 +6,9 @@ import { Pagination } from '@/components';
 //== Styles
 import styles from './page.module.scss';
 import { useEffect } from "react";
-//== Component Interface
-interface CProps {
-  pageNum: number
-  changePage: (e: any, pageNum: number) => void
-}
 
-const Page = ({ pageNum, changePage }: CProps) => {
-  const { ComponentRendered } = useLogic();
-
-  useEffect(() => {
-    console.log('===========>', pageNum)
-  }, [pageNum])
+const Page = () => {
+  const { ComponentRendered, pageNum, changePage } = useLogic();
 
   return (
     <div className={styles.page}>

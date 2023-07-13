@@ -6,7 +6,6 @@ export default function useLogic() {
   const [pageLoaded, setPageLoaded] = useState(false);
   const [bookWidth, setBookWidth] = useState(650);
   const [bookHeight, setBookHeight] = useState(750);
-  const [pageNum, setPageNum] = useState<number>(1);
   let flippy = useRef(null);
 
   useEffect(() => {
@@ -35,17 +34,10 @@ export default function useLogic() {
     });
   }, [bookWidth, bookHeight]);
 
-  const changePage = async (event: any, pageNum: number) => {
-    setPageNum(pageNum);
-    console.log(pageNum);
-  };
-
   return {
     pageLoaded,
     bookWidth,
     bookHeight,
-    pageNum,
-    changePage,
-    flippy
+    flippy,
   }
 }
