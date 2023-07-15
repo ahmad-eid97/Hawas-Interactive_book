@@ -6,16 +6,16 @@ import Stack from '@mui/material/Stack';
 import styles from './pagination.module.scss';
 //== Component Interface
 interface CProps {
-  pageNum: number
+  count: number
   changePage: (e: any, pageNum: number) => void
 }
 
-const PagePagination = ({ pageNum, changePage }: CProps) => {
+const PagePagination = ({ count, changePage }: CProps) => {
 
   return (
     <div className={styles.pagination}>
       <Stack spacing={2}>
-        <Pagination count={16} variant="outlined" shape="rounded" onChange={changePage} />
+        <Pagination count={count} variant="outlined" shape="rounded" onChange={changePage} />
       </Stack>
     </div>
   )

@@ -2,7 +2,7 @@
 //== Hooks
 import { useState } from "react";
 //== Modules
-import { Matching, SortDragging, TableDragging, WordDragging, ChooseLetter, FillThePlaces, ChooseWord, ChooseAdjective, ContinueTyping, ArrangeWords, Choosing, SignleChoose, ImageChoose, ImageTyping, FillFields, CompleteWords } from "@/components";
+import { Matching, SortDragging, TableDragging, WordDragging, ChooseLetter, FillThePlaces, ChooseWord, ChooseAdjective, ContinueTyping, ArrangeWords, Choosing, SignleChoose, ImageChoose, ImageTyping, FillFields, CompleteWords, Drawing, ImageColoring } from "@/components";
 
 export default function useLogic() {
   const [pageNum, setPageNum] = useState<number>(1);
@@ -85,12 +85,13 @@ export default function useLogic() {
     '13': <ImageChoose />,
     '14': <ImageTyping />,
     '15': <FillFields />,
-    '16': <CompleteWords />
+    '16': <CompleteWords />,
+    '17': <Drawing />,
+    '18': <ImageColoring />
   });
 
   const changePage = async (event: any, pageNum: number) => {
     setPageNum(pageNum);
-    console.log(pageNum);
   };
 
   return {

@@ -37,3 +37,5 @@ export { default as FillFields } from './book/Quizzes/FillFields';
 export { default as CompleteWords } from './book/Quizzes/CompleteWords';
 export { default as CompleteDraggables } from './book/Quizzes/CompleteWords/CompleteDraggables';
 export { default as CompleteDroppables } from './book/Quizzes/CompleteWords/CompleteDroppables';
+export { default as Drawing } from './book/Quizzes/Drawing';
+export { default as ImageColoring } from './book/Quizzes/ImageColoring';

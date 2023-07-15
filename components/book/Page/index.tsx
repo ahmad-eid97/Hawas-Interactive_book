@@ -13,7 +13,7 @@ const Page = () => {
   return (
     <div className={styles.page}>
       {ComponentRendered[pageNum]}
-      <Pagination pageNum={pageNum} changePage={changePage} />
+      <Pagination count={Object.keys(ComponentRendered).length} changePage={changePage} />
     </div>
   )
 }
