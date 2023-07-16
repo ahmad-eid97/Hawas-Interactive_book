@@ -39,3 +39,9 @@ export { default as CompleteDraggables } from './book/Quizzes/CompleteWords/Comp
 export { default as CompleteDroppables } from './book/Quizzes/CompleteWords/CompleteDroppables';
 export { default as Drawing } from './book/Quizzes/Drawing';
 export { default as ImageColoring } from './book/Quizzes/ImageColoring';
+export { default as DraggingParts } from './book/Quizzes/DraggingParts';
+export { default as PartsDraggables } from './book/Quizzes/DraggingParts/PartsDraggables';
+export { default as PartsDroppables } from './book/Quizzes/DraggingParts/PartsDroppables';
+export { default as ImageDragging } from './book/Quizzes/ImageDragging';
+export { default as ImageDraggables } from './book/Quizzes/ImageDragging/ImageDraggables';
+export { default as ImageDroppables } from './book/Quizzes/ImageDragging/ImageDroppables'; 

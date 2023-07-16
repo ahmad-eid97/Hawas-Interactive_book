@@ -1,0 +1,59 @@
+.dropables {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 1.1rem;
+  gap: 5px;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+  background-image: url('../../../../../public/images/quizzes/quiz2.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  min-height: 400px;
+  position: relative;
+  .dropable {
+    min-width: 60px;
+    min-height: 75px;
+    // background-color: rgb(250, 250, 212);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 10px;
+    position: absolute;
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    i {
+      color: var(--delete-warn);
+      cursor: pointer;
+    }
+    &:first-of-type {
+      top: 45px;
+      right: 160px;
+    }
+    &:nth-of-type(2) {
+      top: 28px;
+      left: 195px;
+    }
+    &:nth-of-type(3) {
+      top: 145px;
+      right: 140px;
+    }
+    &:nth-of-type(4) {
+      top: 135px;
+      left: 185px;
+    }
+    &:nth-of-type(5) {
+      top: 245px;
+      right: 180px;
+    }
+    &:nth-of-type(6) {
+      top: 235px;
+      left: 175px;
+    }
+  }
+}
