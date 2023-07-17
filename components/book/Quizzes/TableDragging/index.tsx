@@ -1,4 +1,6 @@
 "use client";
+//== Hooks
+import { Fragment } from 'react';
 //== Components
 import { Boxes } from '@/components';
 //== Component Logic
@@ -7,7 +9,7 @@ import useLogic from './logic';
 import styles from './dragging.module.scss';
 
 const TableDragging = () => {
-  const { dragStart, dragEnd, dragOver, dragLeave, drop } = useLogic();
+  const { dragStart, dragEnd, dragOver, dragLeave, drop, correctAnswer, showCorrection } = useLogic();
 
   return (
     <div className={styles.dragging}>
@@ -64,6 +66,22 @@ const TableDragging = () => {
         </p>
       </div>
       <Boxes dragOver={dragOver} dragLeave={dragLeave} drop={drop} />
+      {showCorrection &&
+        <div className={`correctData ${showCorrection.correct ? 'correct' : 'wrong'}`}>
+          {showCorrection.data.map((one, idx) => (
+            <Fragment key={idx}>
+              {idx === 0 ?
+                <p><i className="fa-solid fa-lightbulb-on"></i> {one}</p>
+                :
+                <p key={idx}>{one}</p>
+              }
+            </Fragment>
+          ))}
+        </div>
+      }
+      <div className="checkAnswer">
+        <button onClick={correctAnswer}>فحص الإجابات</button>
+      </div>
     </div>
   )
 }

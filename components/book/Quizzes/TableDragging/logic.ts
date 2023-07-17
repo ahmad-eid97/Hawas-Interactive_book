@@ -1,9 +1,26 @@
 "use client";
 //== Hooks
 import { useState } from "react";
+//== Store
+import { useAppDispatch } from "@/store/hooks";
+import { checkAnswer, checkWrong } from "@/store/slices/common";
 
 export default function useLogic() {
   const [draggableItem, setDraggableItem] = useState<HTMLParagraphElement | null>(null);
+  const [correctData, setCorrectData] = useState<any>({
+    0: [
+      "أسد",
+      "تمساح",
+      "حصان"
+    ],
+    1: [
+      "بومة",
+      "عصفورة"
+    ]
+  })
+  const [studentAnswer, setStudentAnswer] = useState<any>({ 0: [], 1: [] });
+  const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
+  const dispatch = useAppDispatch();
 
   const dragStart = (e: React.DragEvent<HTMLParagraphElement>) => {
     e.stopPropagation();
@@ -30,11 +47,68 @@ export default function useLogic() {
     e.currentTarget.style.backgroundColor = "var(--third-color)";
   }
 
-  const drop = (e: React.DragEvent<HTMLDivElement>) => {
+  const drop = (e: React.DragEvent<HTMLDivElement>, index: number) => {
     e.stopPropagation();
     e.preventDefault();
     e.currentTarget.style.backgroundColor = "var(--third-color)";
     if (draggableItem) e.currentTarget.appendChild(draggableItem);
+    setStudentAnswer({
+      ...studentAnswer,
+      [index]: [...studentAnswer[index], draggableItem?.innerText]
+    })
+  }
+
+
+  const areArraysEqual = (arr1: any, arr2: any) => {
+    if (arr1.length !== arr2.length) {
+      return false;
+    }
+
+    const resultArray: any = []
+
+    for (let i = 0; i < arr1.length; i++) {
+      arr2.forEach((element: string) => {
+        if (element === arr1[i]) {
+          resultArray.push(element)
+        }
+      })
+    }
+
+    if (resultArray.length !== arr2.length) {
+      return false;
+    }
+
+    return true;
+  }
+
+  const correctAnswer = () => {
+    if (areArraysEqual(studentAnswer[0], correctData[0]) && areArraysEqual(studentAnswer[1], correctData[1])) {
+      dispatch(checkAnswer(true))
+      setTimeout(() => {
+        dispatch(checkAnswer(false))
+      }, 3500)
+      setShowCorrection({
+        correct: true,
+        data: [
+          "أحسنت",
+          "لقد حصلت على علامة كاملة",
+          "العلامة المُستحقّة هي : 10"
+        ]
+      })
+    } else {
+      dispatch(checkWrong(true))
+      setTimeout(() => {
+        dispatch(checkWrong(false))
+      }, 3500)
+      setShowCorrection({
+        correct: false,
+        data: [
+          "حاول مرة اخري",
+          "بعض الإجابات غير صحيحة",
+          "العلامة المُستحقّة هي : 5"
+        ]
+      })
+    }
   }
 
   return {
@@ -42,6 +116,8 @@ export default function useLogic() {
     dragEnd,
     dragOver,
     dragLeave,
-    drop
+    drop,
+    correctAnswer,
+    showCorrection
   }
 }

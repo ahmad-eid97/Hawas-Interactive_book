@@ -1,5 +1,7 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
+//== Component Logic
+import useLogic from './logic';
 //= Styles
 import classes from './matching.module.scss';
 
@@ -51,6 +53,8 @@ function Matching({
   const [startPosition, setStartPosition] = useState<{ x: number, y: number }>({ x: 0, y: 0 });
   const [svgDims, setSvgDims] = useState({ width: 0, height: 0, innerWidth: 0, rightXOffset: 0, leftXOffset: 0 });
   const [randomColor, setRandomColor] = useState(generate_random_color(0));
+  // Component Logic
+  const { correctAnswer, showCorrection, setStudentAnswer } = useLogic();
 
   useEffect(() => {
     const width = document.querySelector(`.${classes.matching}`)!.getBoundingClientRect().width;
@@ -220,12 +224,15 @@ function Matching({
 
     IsMatching = false;
 
-    if (onMatch) {
-      onMatch({
-        from: matchingData.righthand.items.find(item => item[keyWord] === selectedElement.textContent?.trim()),
-        to: matchingData.lefthand.items.find(item => item[keyWord] === event.currentTarget.textContent?.trim())
-      })
+    const item = {
+      from: matchingData.righthand.items.find(item => item[keyWord] === selectedElement.textContent?.trim())?.[keyWord],
+      to: matchingData.lefthand.items.find(item => item[keyWord] === event.currentTarget.textContent?.trim())?.[keyWord]
     }
+
+    if (onMatch) {
+      onMatch(item)
+    }
+    setStudentAnswer((prev: object[]) => [...prev, item])
   }
 
 
@@ -304,12 +311,16 @@ function Matching({
         const from = matchingElement.querySelector<HTMLParagraphElement>(`.${classes.righthand} p#${ID}`)!;
         const to = matchingElement.querySelector<HTMLParagraphElement>(`.${classes.lefthand} p#${ID}`)!;
 
-        if (from && to) {
-          onUnMatch({
-            from: matchingData.righthand.items.find(item => item[keyWord] === from.textContent?.trim()),
-            to: matchingData.lefthand.items.find(item => item[keyWord] === to.textContent?.trim())
-          });
+        const item = {
+          from: matchingData.righthand.items.find(item => item[keyWord] === from.textContent?.trim())?.[keyWord],
+          to: matchingData.lefthand.items.find(item => item[keyWord] === to.textContent?.trim())?.[keyWord]
         }
+
+        if (from && to) {
+          onUnMatch(item);
+        }
+        // @ts-ignore
+        setStudentAnswer((prev: object[]) => prev.filter(one => one.from !== item.from && one.to !== item.to));
       }
 
       if (options?.enableElementsColorEffects) {
@@ -410,6 +421,22 @@ function Matching({
           }
         </div>
       </div>
+      {showCorrection &&
+        <div className={`correctData ${showCorrection.correct ? 'correct' : 'wrong'}`}>
+          {showCorrection.data.map((one, idx) => (
+            <Fragment key={idx}>
+              {idx === 0 ?
+                <p><i className="fa-solid fa-lightbulb-on"></i> {one}</p>
+                :
+                <p key={idx}>{one}</p>
+              }
+            </Fragment>
+          ))}
+        </div>
+      }
+      <div className="checkAnswer">
+        <button onClick={correctAnswer}>فحص الإجابات</button>
+      </div>
     </>
   )
 }
@@ -445,8 +472,8 @@ interface IProps {
   }
   className?: string;
   dir?: 'ltr' | 'rtl';
-  onMatch?: (matches: { from: MatchingItem | undefined, to: MatchingItem | undefined }) => any;
-  onUnMatch?: (matches: { from: MatchingItem | undefined, to: MatchingItem | undefined }) => any;
+  onMatch?: (matches: { from: string | undefined, to: string | undefined }) => any;
+  onUnMatch?: (matches: { from: string | undefined, to: string | undefined }) => any;
 }
 
 interface MatchingItem {

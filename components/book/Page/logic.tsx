@@ -3,9 +3,12 @@
 import { useState } from "react";
 //== Modules
 import { Matching, SortDragging, TableDragging, WordDragging, ChooseLetter, FillThePlaces, ChooseWord, ChooseAdjective, ContinueTyping, ArrangeWords, Choosing, SignleChoose, ImageChoose, ImageTyping, FillFields, CompleteWords, Drawing, ImageColoring, DraggingParts, ImageDragging } from "@/components";
+//== Store
+import { useAppSelector } from "@/store/hooks";
 
 export default function useLogic() {
   const [pageNum, setPageNum] = useState<number>(1);
+  const { correctAnswer, wrongAnswer } = useAppSelector((state: any) => state.common)
 
   const dataRtl = {
     righthand: {
@@ -99,6 +102,8 @@ export default function useLogic() {
   return {
     ComponentRendered,
     pageNum,
-    changePage
+    changePage,
+    correctAnswer,
+    wrongAnswer
   }
 }

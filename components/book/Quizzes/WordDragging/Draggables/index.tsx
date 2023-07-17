@@ -9,10 +9,11 @@ interface CProps {
   droppingArea: React.MutableRefObject<HTMLDivElement | null>
   dragStart: (e: React.DragEvent<HTMLParagraphElement>) => void
   dragEnd: (e: React.DragEvent<HTMLParagraphElement>) => void
-  removeChoice: (e: React.MouseEvent<HTMLElement, MouseEvent>, idx: number) => void
+  removeChoice: (e: React.MouseEvent<HTMLElement, MouseEvent>, idx: number, questionIndex: number) => void
+  questionIndex: number
 }
 
-const Draggables = ({ choices, droppingArea, dragStart, dragEnd, removeChoice }: CProps) => {
+const Draggables = ({ choices, droppingArea, dragStart, dragEnd, removeChoice, questionIndex }: CProps) => {
   return (
     <div className={styles.draggables} ref={droppingArea}>
       {choices.map((choice, idx) => (
@@ -24,7 +25,7 @@ const Draggables = ({ choices, droppingArea, dragStart, dragEnd, removeChoice }:
           key={choice.id}
         >
           {choice.text}
-          <i className="fa-duotone fa-ban" onClick={(e) => removeChoice(e, idx)}></i>
+          <i className="fa-duotone fa-ban" onClick={(e) => removeChoice(e, idx, questionIndex)}></i>
         </p>
       ))}
     </div>

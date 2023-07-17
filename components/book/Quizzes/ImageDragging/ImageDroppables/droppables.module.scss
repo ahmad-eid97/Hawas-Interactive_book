@@ -10,7 +10,8 @@
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  min-height: 400px;
+  width: 550px;
+  height: 400px;
   position: relative;
   .dropable {
     min-width: 60px;
@@ -41,7 +42,7 @@
     }
     &:nth-of-type(3) {
       top: 145px;
-      right: 140px;
+      right: 150px;
     }
     &:nth-of-type(4) {
       top: 135px;

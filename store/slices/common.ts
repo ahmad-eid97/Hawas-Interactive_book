@@ -1,25 +1,31 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type StateType = {
-  name: string
+  correctAnswer: boolean,
+  wrongAnswer: boolean,
 }
 
 const initialState: StateType = {
-  name: 'ahmad eid'
+  correctAnswer: false,
+  wrongAnswer: false,
 }
 
 export const common = createSlice({
   name: 'commonSlice',
   initialState,
   reducers: {
-    test: (state, action: PayloadAction<string>) => {
-      state.name = action.payload
+    checkAnswer: (state, action: PayloadAction<boolean>) => {
+      state.correctAnswer = action.payload
+    },
+    checkWrong: (state, action: PayloadAction<boolean>) => {
+      state.wrongAnswer = action.payload
     }
   }
 });
 
 export const {
-  test
+  checkAnswer,
+  checkWrong
 } = common.actions;
 
 export default common.reducer;

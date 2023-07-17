@@ -13,6 +13,10 @@ body {
   overflow-x: hidden;
 }
 
+button {
+  font-family: 'Cairo', sans-serif;
+}
+
 * {
   // transition: all 0.2s ease-in-out;
   font-weight: 400;
@@ -77,5 +81,38 @@ ul {
         transform: rotate(180deg)
       }
     }
+  }
+}
+
+.checkAnswer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  button {
+    background-color: #218838;
+    color: var(--text-inside);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: #1e7531;
+    }
+  }
+}
+
+.correctData {
+  margin-top: 20px;
+  background-color: #c1e3ca;
+  border: 1px solid #1e7531;
+  padding: 10px 20px;
+  border-radius: 5px;
+  p {
+    color: #10521e;
+  }
+  &.wrong {
+    background-color: #fdf1c8;
+    border-color: #ffdd6e;
   }
 }

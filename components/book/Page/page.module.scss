@@ -1,7 +1,6 @@
 .page {
   height: 83%;
-  // overflow-y: scroll;
-  padding: 20px;
+  padding: 20px 40px;
   overflow-y: auto;
   overflow-x: hidden;
   &::-webkit-scrollbar {
