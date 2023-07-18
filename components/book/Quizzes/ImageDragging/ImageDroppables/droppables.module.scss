@@ -10,7 +10,7 @@
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  width: 550px;
+  width: 500px;
   height: 400px;
   position: relative;
   .dropable {
@@ -34,27 +34,27 @@
     }
     &:first-of-type {
       top: 45px;
-      right: 160px;
+      right: 130px;
     }
     &:nth-of-type(2) {
       top: 28px;
-      left: 195px;
+      left: 170px;
     }
     &:nth-of-type(3) {
       top: 145px;
-      right: 150px;
+      right: 120px;
     }
     &:nth-of-type(4) {
       top: 135px;
-      left: 185px;
+      left: 160px;
     }
     &:nth-of-type(5) {
       top: 245px;
-      right: 180px;
+      right: 160px;
     }
     &:nth-of-type(6) {
       top: 235px;
-      left: 175px;
+      left: 150px;
     }
   }
 }

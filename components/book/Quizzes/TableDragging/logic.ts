@@ -20,6 +20,7 @@ export default function useLogic() {
   })
   const [studentAnswer, setStudentAnswer] = useState<any>({ 0: [], 1: [] });
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
+  const [rendered, setRendered] = useState(true);
   const dispatch = useAppDispatch();
 
   const dragStart = (e: React.DragEvent<HTMLParagraphElement>) => {
@@ -103,12 +104,21 @@ export default function useLogic() {
       setShowCorrection({
         correct: false,
         data: [
-          "حاول مرة اخري",
+          "حاول مرّة أخرى",
           "بعض الإجابات غير صحيحة",
           "العلامة المُستحقّة هي : 5"
         ]
       })
     }
+  }
+
+  const retry = () => {
+    setRendered(false);
+    setShowCorrection(null);
+    setStudentAnswer({ 0: [], 1: [] });
+    setTimeout(() => {
+      setRendered(true)
+    }, 20)
   }
 
   return {
@@ -118,6 +128,8 @@ export default function useLogic() {
     dragLeave,
     drop,
     correctAnswer,
-    showCorrection
+    showCorrection,
+    retry,
+    rendered
   }
 }

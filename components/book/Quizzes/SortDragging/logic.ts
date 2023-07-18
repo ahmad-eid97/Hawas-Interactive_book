@@ -13,6 +13,7 @@ export default function useLogic() {
   const [items, setItems] = useState(["طير عادل بالونه ليجري وراءه", "حزن عادل علي البالون", "طار البالون بعيدا"]);
   const [correctData, setCorrectData] = useState<string[] | null>(["طير عادل بالونه ليجري وراءه", "طار البالون بعيدا", "حزن عادل علي البالون",]);
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
+  const [rendered, setRendered] = useState(true);
   const dispatch = useAppDispatch();
 
   function handleDragEnd(event: any) {
@@ -37,7 +38,7 @@ export default function useLogic() {
         setShowCorrection({
           correct: false,
           data: [
-            "حاول مرة اخري",
+            "حاول مرّة أخرى",
             "بعض الإجابات غير صحيحة",
             "العلامة المُستحقّة هي : 5"
           ]
@@ -60,10 +61,20 @@ export default function useLogic() {
     })
   }
 
+  const retry = () => {
+    setRendered(false);
+    setShowCorrection(null);
+    setTimeout(() => {
+      setRendered(true)
+    }, 20)
+  }
+
   return {
     items,
     handleDragEnd,
     correctAnswer,
-    showCorrection
+    showCorrection,
+    retry,
+    rendered
   }
 }

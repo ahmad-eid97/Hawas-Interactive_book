@@ -1,10 +1,40 @@
 "use client";
 //== Hooks 
 import { useState, useRef } from "react";
+//== Store
+import { useAppDispatch } from "@/store/hooks";
+import { checkAnswer, checkWrong } from "@/store/slices/common";
 
 export default function useLogic() {
   const [draggableItem, setDraggableItem] = useState<HTMLParagraphElement | null>(null);
+  const [correctData, setCorrectData] = useState<any>({
+    0: {
+      0: "رأي",
+      1: "عثمان",
+      2: "عشا",
+      3: "علي",
+      4: "الشجرة"
+    },
+    1: {
+      0: "رأي",
+      1: "عثمان",
+      2: "عشا",
+      3: "علي",
+      4: "الشجرة"
+    },
+    2: {
+      0: "رأي",
+      1: "عثمان",
+      2: "عشا",
+      3: "علي",
+      4: "الشجرة"
+    },
+  })
+  const [studentAnswer, setStudentAnswer] = useState<any>({});
+  const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
+  const [rendered, setRendered] = useState(true);
   const droppingArea = useRef<HTMLDivElement | null>(null);
+  const dispatch = useAppDispatch();
 
   const choices = [
     {
@@ -20,11 +50,11 @@ export default function useLogic() {
       text: "عثمان"
     },
     {
-      id: 3,
+      id: 4,
       text: "رأي"
     },
     {
-      id: 3,
+      id: 5,
       text: "الشجرة"
     }
   ]
@@ -49,14 +79,79 @@ export default function useLogic() {
     e.currentTarget.style.backgroundColor = "rgb(250, 250, 212)";
   }
 
-  const drop = (e: React.DragEvent<HTMLDivElement>) => {
+  const drop = (e: React.DragEvent<HTMLDivElement>, index: number, droppapleIndex: number) => {
     e.preventDefault();
     e.currentTarget.style.backgroundColor = "rgb(250, 250, 212)";
     if (draggableItem && !e.currentTarget.children.length) e.currentTarget.appendChild(draggableItem);
+    setStudentAnswer({ ...studentAnswer, [index]: { ...studentAnswer[index], [droppapleIndex]: draggableItem?.innerText } })
   }
 
   const removeChoice = (e: React.MouseEvent<HTMLElement, MouseEvent>, idx: number) => {
     if (e.currentTarget.parentElement) droppingArea.current?.insertBefore(e.currentTarget.parentElement, droppingArea?.current.children[idx]);
+    const answers = studentAnswer
+    for (const key in answers) {
+      const innerObj = answers[key];
+      for (const innerKey in innerObj) {
+        if (innerObj[innerKey] === e.currentTarget.parentElement?.innerText) {
+          delete answers[key][innerKey];
+          break;
+        }
+      }
+    }
+    setStudentAnswer({ ...answers })
+  }
+
+  const compareObjects = (object1: any, object2: any) => {
+    if (!object2) return false;
+    if (Object.keys(object1)?.length !== Object.keys(object2).length) return false;
+    for (let i = 0; i < Object.keys(object1).length; i++) {
+      if (object1[i] !== object2[i]) return false;
+    }
+    return true;
+  }
+
+  const correctAnswer = () => {
+    console.log(studentAnswer)
+    const answers = []
+    for (let i = 0; i < Object.keys(correctData).length; i++) {
+      answers.push(compareObjects(correctData[i], studentAnswer[i]))
+    }
+    if (answers.every((answer) => answer === true)) {
+      dispatch(checkAnswer(true))
+      setTimeout(() => {
+        dispatch(checkAnswer(false))
+      }, 3500)
+      setShowCorrection({
+        correct: true,
+        data: [
+          "أحسنت",
+          "لقد حصلت على علامة كاملة",
+          "العلامة المُستحقّة هي : 10"
+        ]
+      })
+    } else {
+      dispatch(checkWrong(true))
+      setTimeout(() => {
+        dispatch(checkWrong(false))
+      }, 3500)
+      setShowCorrection({
+        correct: false,
+        data: [
+          "حاول مرّة أخرى",
+          "بعض الإجابات غير صحيحة",
+          "العلامة المُستحقّة هي : 5"
+        ]
+      })
+    }
+  }
+
+  const retry = () => {
+    setRendered(false);
+    setShowCorrection(null);
+    setStudentAnswer({});
+    setTimeout(() => {
+      setRendered(true)
+    }, 20)
   }
 
   return {
@@ -67,6 +162,10 @@ export default function useLogic() {
     dragOver,
     dragLeave,
     drop,
-    removeChoice
+    removeChoice,
+    correctAnswer,
+    showCorrection,
+    retry,
+    rendered
   }
 }

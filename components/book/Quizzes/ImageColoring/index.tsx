@@ -17,7 +17,7 @@ const ImageColoring = () => {
       <div className={styles.wrapper}>
         <div className={styles.coloredImage}>
           <svg width="250" height="300" viewBox="-100 -100 200 200">
-            <g stroke="black" stroke-width="2">
+            <g stroke="black" strokeWidth="2">
               <circle cx="0" cy="-45" r="8" fill="#4F6D7A" />
               <circle cx="0" cy="50" r="15" fill="#F79257" />
               <path
@@ -29,7 +29,7 @@ const ImageColoring = () => {
         </div>
         <div className={styles.targetImage}>
           <svg width="250" height="300" viewBox="-100 -100 200 200">
-            <g stroke="black" stroke-width="2">
+            <g stroke="black" strokeWidth="2">
               <circle cx="0" cy="-45" r="8" fill="#fff" onClick={fillElement} />
               <circle cx="0" cy="50" r="15" fill="#fff" onClick={fillElement} />
               <path

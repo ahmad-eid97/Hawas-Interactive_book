@@ -16,6 +16,7 @@ export default function useLogic() {
     { from: 'جبل', to: 'جبال' }
   ]);
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
+  const [rendered, setRendered] = useState(true);
   const dispatch = useAppDispatch();
 
   const areArraysEqual = (arr1: any, arr2: any) => {
@@ -63,7 +64,7 @@ export default function useLogic() {
       setShowCorrection({
         correct: false,
         data: [
-          "حاول مرة اخري",
+          "حاول مرّة أخرى",
           "بعض الإجابات غير صحيحة",
           "العلامة المُستحقّة هي : 5"
         ]
@@ -71,9 +72,20 @@ export default function useLogic() {
     }
   }
 
+  const retry = () => {
+    setRendered(false);
+    setShowCorrection(null);
+    setStudentAnswer([]);
+    setTimeout(() => {
+      setRendered(true)
+    }, 20)
+  }
+
   return {
     correctAnswer,
     showCorrection,
-    setStudentAnswer
+    setStudentAnswer,
+    retry,
+    rendered
   }
 }

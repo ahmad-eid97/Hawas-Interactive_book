@@ -24,6 +24,7 @@ export default function useLogic() {
   const [studentAnswer, setStudentAnswer] = useState<any>({})
   const droppingArea = useRef<HTMLDivElement | null>(null);
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
+  const [rendered, setRendered] = useState(true);
   const dispatch = useAppDispatch();
 
   const choices = [
@@ -72,7 +73,7 @@ export default function useLogic() {
     if (e.currentTarget.parentElement) droppingArea.current?.insertBefore(e.currentTarget.parentElement, droppingArea?.current.children[idx]);
     // Delete object by it's value
     const values = Object.values(studentAnswer[questionIndex]);
-    const index = values.indexOf(draggableItem?.innerText);
+    const index = values.indexOf(e.currentTarget.parentElement?.innerText);
     if (index !== -1) {
       const keys = Object.keys(studentAnswer[questionIndex]);
       const key = keys[index];
@@ -83,6 +84,7 @@ export default function useLogic() {
 
   const compareObjects = (object1: any, object2: any) => {
     console.log(object1, object2)
+    if (!object2) return false;
     if (Object.keys(object1)?.length !== Object.keys(object2).length) return false;
     for (let i = 0; i < Object.keys(object1).length; i++) {
       if (object1[i] !== object2[i]) return false;
@@ -117,12 +119,21 @@ export default function useLogic() {
       setShowCorrection({
         correct: false,
         data: [
-          "حاول مرة اخري",
+          "حاول مرّة أخرى",
           "بعض الإجابات غير صحيحة",
           "العلامة المُستحقّة هي : 5"
         ]
       })
     }
+  }
+
+  const retry = () => {
+    setRendered(false);
+    setShowCorrection(null);
+    setStudentAnswer({});
+    setTimeout(() => {
+      setRendered(true)
+    }, 20)
   }
 
   return {
@@ -135,6 +146,8 @@ export default function useLogic() {
     drop,
     removeChoice,
     correctAnswer,
-    showCorrection
+    showCorrection,
+    retry,
+    rendered
   }
 }

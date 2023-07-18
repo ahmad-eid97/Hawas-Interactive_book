@@ -9,8 +9,9 @@ import useLogic from './logic';
 import styles from './dragging.module.scss';
 
 const WordDragging = () => {
-  const { droppingArea, choices, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, correctAnswer, showCorrection } = useLogic();
+  const { droppingArea, choices, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, correctAnswer, showCorrection, retry, rendered } = useLogic();
 
+  if (!rendered) return null;
   return (
     <>
       <h2>اِخْتَرْ الْكَلِمَةَ النَّاقِصَةَ!</h2>
@@ -48,7 +49,8 @@ const WordDragging = () => {
         </div>
       }
       <div className="checkAnswer">
-        <button onClick={correctAnswer}>فحص الإجابات</button>
+        <button onClick={correctAnswer}><i className="fa-regular fa-badge-check"></i> فحص الإجابات</button>
+        <button onClick={retry}><i className="fa-regular fa-arrows-rotate"></i> إعادة المحاولة</button>
       </div>
     </>
   )

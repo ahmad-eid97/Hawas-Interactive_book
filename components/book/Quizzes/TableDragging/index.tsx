@@ -9,8 +9,9 @@ import useLogic from './logic';
 import styles from './dragging.module.scss';
 
 const TableDragging = () => {
-  const { dragStart, dragEnd, dragOver, dragLeave, drop, correctAnswer, showCorrection } = useLogic();
+  const { dragStart, dragEnd, dragOver, dragLeave, drop, correctAnswer, showCorrection, retry, rendered } = useLogic();
 
+  if (!rendered) return null;
   return (
     <div className={styles.dragging}>
       <h2>ضع الكلمات المناسبة في كل جدول</h2>
@@ -80,7 +81,8 @@ const TableDragging = () => {
         </div>
       }
       <div className="checkAnswer">
-        <button onClick={correctAnswer}>فحص الإجابات</button>
+        <button onClick={correctAnswer}><i className="fa-regular fa-badge-check"></i> فحص الإجابات</button>
+        <button onClick={retry}><i className="fa-regular fa-arrows-rotate"></i> إعادة المحاولة</button>
       </div>
     </div>
   )

@@ -18,8 +18,9 @@ import useLogic from './logic';
 import styles from "./sortDragging.module.scss";
 
 function SortDragging() {
-  const { items, handleDragEnd, correctAnswer, showCorrection } = useLogic();
+  const { items, handleDragEnd, correctAnswer, showCorrection, retry, rendered } = useLogic();
 
+  if (!rendered) return null;
   return (
     <>
       <h2>رَتِّبِ الْجُمَلَ التّالِيَةَ حَسْبَ التَّسَلْسُلِ الزَّمَنِيِّ في النَّصِّ!</h2>
@@ -55,7 +56,8 @@ function SortDragging() {
         </div>
       }
       <div className="checkAnswer">
-        <button onClick={correctAnswer}>فحص الإجابات</button>
+        <button onClick={correctAnswer}><i className="fa-regular fa-badge-check"></i> فحص الإجابات</button>
+        <button onClick={retry}><i className="fa-regular fa-arrows-rotate"></i> إعادة المحاولة</button>
       </div>
     </>
   );

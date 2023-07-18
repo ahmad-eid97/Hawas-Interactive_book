@@ -1,10 +1,25 @@
 "use client";
 //== Hooks 
 import { useState, useRef } from "react";
+//== Store
+import { useAppDispatch } from "@/store/hooks";
+import { checkAnswer, checkWrong } from "@/store/slices/common";
 
 export default function useLogic() {
   const [draggableItem, setDraggableItem] = useState<HTMLParagraphElement | null>(null);
+  const [correctData, setCorrectData] = useState<any>({
+    0: "مساعدة",
+    1: "محبة",
+    2: "صداقة",
+    3: "تفهم",
+    4: "عطف",
+    5: "تقبل",
+  });
+  const [studentAnswer, setStudentAnswer] = useState<any>({});
+  const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
+  const [rendered, setRendered] = useState(true);
   const droppingArea = useRef<HTMLDivElement | null>(null);
+  const dispatch = useAppDispatch();
 
   const choices = [
     {
@@ -61,14 +76,71 @@ export default function useLogic() {
     // e.currentTarget.style.backgroundColor = "rgb(250, 250, 212)";
   }
 
-  const drop = (e: React.DragEvent<HTMLDivElement>) => {
+  const drop = (e: React.DragEvent<HTMLDivElement>, index: number) => {
     e.preventDefault();
     // e.currentTarget.style.backgroundColor = "rgb(250, 250, 212)";
     if (draggableItem && !e.currentTarget.children.length) e.currentTarget.appendChild(draggableItem);
+    setStudentAnswer({ ...studentAnswer, [index]: draggableItem?.innerText })
   }
 
   const removeChoice = (e: React.MouseEvent<HTMLElement, MouseEvent>, idx: number) => {
     if (e.currentTarget.parentElement) droppingArea.current?.insertBefore(e.currentTarget.parentElement, droppingArea?.current.children[idx]);
+    const answers = { ...studentAnswer };
+    for (const key in answers) {
+      if (answers[key] === e.currentTarget.parentElement?.innerText) {
+        delete answers[key];
+        break;
+      }
+    }
+    setStudentAnswer({ ...answers })
+  }
+
+  const compareObjects = (obj1: any, obj2: any) => {
+    for (const key in obj1) {
+      if (obj1[key] !== obj2[key]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  const correctAnswer = () => {
+    if (compareObjects(correctData, studentAnswer)) {
+      dispatch(checkAnswer(true))
+      setTimeout(() => {
+        dispatch(checkAnswer(false))
+      }, 3500)
+      setShowCorrection({
+        correct: true,
+        data: [
+          "أحسنت",
+          "لقد حصلت على علامة كاملة",
+          "العلامة المُستحقّة هي : 10"
+        ]
+      })
+    } else {
+      dispatch(checkWrong(true))
+      setTimeout(() => {
+        dispatch(checkWrong(false))
+      }, 3500)
+      setShowCorrection({
+        correct: false,
+        data: [
+          "حاول مرّة أخرى",
+          "بعض الإجابات غير صحيحة",
+          "العلامة المُستحقّة هي : 5"
+        ]
+      })
+    }
+  }
+
+  const retry = () => {
+    setRendered(false);
+    setShowCorrection(null);
+    setStudentAnswer({});
+    setTimeout(() => {
+      setRendered(true)
+    }, 20)
   }
 
   return {
@@ -79,6 +151,10 @@ export default function useLogic() {
     dragOver,
     dragLeave,
     drop,
-    removeChoice
+    removeChoice,
+    showCorrection,
+    correctAnswer,
+    retry,
+    rendered
   }
 }

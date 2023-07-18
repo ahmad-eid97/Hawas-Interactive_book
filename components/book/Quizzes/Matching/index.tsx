@@ -54,7 +54,7 @@ function Matching({
   const [svgDims, setSvgDims] = useState({ width: 0, height: 0, innerWidth: 0, rightXOffset: 0, leftXOffset: 0 });
   const [randomColor, setRandomColor] = useState(generate_random_color(0));
   // Component Logic
-  const { correctAnswer, showCorrection, setStudentAnswer } = useLogic();
+  const { correctAnswer, showCorrection, setStudentAnswer, retry, rendered } = useLogic();
 
   useEffect(() => {
     const width = document.querySelector(`.${classes.matching}`)!.getBoundingClientRect().width;
@@ -354,6 +354,7 @@ function Matching({
     return result ? result.map(i => parseInt(i, 16)).slice(1) : null
   }
 
+  if (!rendered) return null;
   return (
     <>
       <h2>مُدَّ خَطًّا بَيْنَ الْكَلِمَةِ وَجَمْعِها!</h2>
@@ -435,7 +436,8 @@ function Matching({
         </div>
       }
       <div className="checkAnswer">
-        <button onClick={correctAnswer}>فحص الإجابات</button>
+        <button onClick={correctAnswer}><i className="fa-regular fa-badge-check"></i> فحص الإجابات</button>
+        <button onClick={retry}><i className="fa-regular fa-arrows-rotate"></i> إعادة المحاولة</button>
       </div>
     </>
   )

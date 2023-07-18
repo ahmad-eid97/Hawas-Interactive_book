@@ -43,7 +43,7 @@
           gap: 3px;
           &.active {
             border: 2px solid rgb(72, 139, 95);
-            background-color: rgb(184, 233, 134);
+            background-color: var(--third-color);
           }
           .wrong {
             color: var(--delete-warn);
