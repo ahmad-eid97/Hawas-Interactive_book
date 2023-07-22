@@ -83,7 +83,6 @@ export default function useLogic() {
   }
 
   const compareObjects = (object1: any, object2: any) => {
-    console.log(object1, object2)
     if (!object2) return false;
     if (Object.keys(object1)?.length !== Object.keys(object2).length) return false;
     for (let i = 0; i < Object.keys(object1).length; i++) {
@@ -97,7 +96,6 @@ export default function useLogic() {
     for (let i = 0; i < Object.keys(correctData).length; i++) {
       answers.push(compareObjects(correctData[i], studentAnswer[i]))
     }
-    console.log(answers)
     if (answers.every((answer) => answer === true)) {
       dispatch(checkAnswer(true))
       setTimeout(() => {

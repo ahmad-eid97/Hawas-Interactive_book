@@ -1,7 +1,11 @@
 "use client";
 import React, { useState, useEffect, Fragment } from 'react';
+//== Components
+import { PageLoader } from '@/components';
 //== Component Logic
 import useLogic from './logic';
+//== Types
+import { QuestionData } from '../types';
 //= Styles
 import classes from './matching.module.scss';
 
@@ -36,7 +40,7 @@ const colors_list = [
 ]
 
 function Matching({
-  matchingData,
+  // columnsData,
   keyWord = "content",
   options = {
     linesColor: '#ff0000',
@@ -47,16 +51,18 @@ function Matching({
   className,
   dir = 'rtl',
   onMatch,
-  onUnMatch
+  onUnMatch,
+  questionData
 }: IProps) {
   const [selectedElement, setSelectedElement] = useState<HTMLParagraphElement | null>(null);
   const [startPosition, setStartPosition] = useState<{ x: number, y: number }>({ x: 0, y: 0 });
   const [svgDims, setSvgDims] = useState({ width: 0, height: 0, innerWidth: 0, rightXOffset: 0, leftXOffset: 0 });
   const [randomColor, setRandomColor] = useState(generate_random_color(0));
   // Component Logic
-  const { correctAnswer, showCorrection, setStudentAnswer, retry, rendered } = useLogic();
+  const { correctAnswer, showCorrection, setStudentAnswer, retry, rendered, columnsData, isLoading } = useLogic({ questionData });
 
   useEffect(() => {
+    if (isLoading) return;
     const width = document.querySelector(`.${classes.matching}`)!.getBoundingClientRect().width;
     const innerWidth = document.querySelector(`.${classes.matching_area}`)!.getBoundingClientRect().width + 20;
     const rightXOffset = document.querySelector(`.${classes.righthand}`)!.getBoundingClientRect().width + 20;
@@ -225,8 +231,8 @@ function Matching({
     IsMatching = false;
 
     const item = {
-      from: matchingData.righthand.items.find(item => item[keyWord] === selectedElement.textContent?.trim())?.[keyWord],
-      to: matchingData.lefthand.items.find(item => item[keyWord] === event.currentTarget.textContent?.trim())?.[keyWord]
+      from: columnsData?.righthand?.items?.find((item: any) => item[keyWord] === selectedElement.textContent?.trim())?.[keyWord],
+      to: columnsData?.lefthand?.items?.find((item: any) => item[keyWord] === event.currentTarget.textContent?.trim())?.[keyWord]
     }
 
     if (onMatch) {
@@ -312,8 +318,8 @@ function Matching({
         const to = matchingElement.querySelector<HTMLParagraphElement>(`.${classes.lefthand} p#${ID}`)!;
 
         const item = {
-          from: matchingData.righthand.items.find(item => item[keyWord] === from.textContent?.trim())?.[keyWord],
-          to: matchingData.lefthand.items.find(item => item[keyWord] === to.textContent?.trim())?.[keyWord]
+          from: columnsData.righthand.items.find((item: any) => item[keyWord] === from.textContent?.trim())?.[keyWord],
+          to: columnsData.lefthand.items.find((item: any) => item[keyWord] === to.textContent?.trim())?.[keyWord]
         }
 
         if (from && to) {
@@ -355,17 +361,18 @@ function Matching({
   }
 
   if (!rendered) return null;
+  if (isLoading) return <PageLoader />
   return (
     <>
-      <h2>مُدَّ خَطًّا بَيْنَ الْكَلِمَةِ وَجَمْعِها!</h2>
+      <h2>{questionData.title}</h2>
       <div className={`${classes.matching} ${className} ${dir === 'ltr' ? classes.ltr : ''}`} onMouseMove={handleMouseMove} onMouseUp={(event) => handleStopMatching(null, event)}>
         {/* Right Hand Items */}
         <div className={classes.righthand}>
-          <h3>{matchingData.righthand.title}</h3>
+          <h3>{columnsData.righthand.title}</h3>
           {
-            matchingData.righthand.items.length ?
+            columnsData.righthand.items.length ?
               (
-                matchingData.righthand.items.map((matchingItem, index) => (
+                columnsData.righthand.items.map((matchingItem: any, index: number) => (
                   <p key={index} className={options?.itemsClassName || ''}>
                     {matchingItem[keyWord]}
                     <span className={`matching-start-point ${classes.matching_box}`} onMouseDown={handleMouseDown}></span>
@@ -408,11 +415,11 @@ function Matching({
         </div>
         {/* Left Hand Items */}
         <div className={classes.lefthand}>
-          <h3>{matchingData.lefthand.title}</h3>
+          <h3>{columnsData.lefthand.title}</h3>
           {
-            matchingData.lefthand.items.length ?
+            columnsData.lefthand.items.length ?
               (
-                matchingData.lefthand.items.map((matchingItem, index) => (
+                columnsData.lefthand.items.map((matchingItem: any, index: number) => (
                   <p key={index} onMouseUp={handleMouseUp} className={options?.itemsClassName || ''}>
                     {matchingItem[keyWord]}
                     <span className={`matching-end-point ${classes.matching_box}`}></span>
@@ -454,16 +461,16 @@ function offset(element: HTMLParagraphElement | HTMLElement | Element) {
 }
 
 interface IProps {
-  matchingData: {
-    righthand: {
-      title: string;
-      items: MatchingItem[];
-    };
-    lefthand: {
-      title: string;
-      items: MatchingItem[];
-    };
-  };
+  // columnsData: {
+  //   righthand: {
+  //     title: string;
+  //     items: MatchingItem[];
+  //   };
+  //   lefthand: {
+  //     title: string;
+  //     items: MatchingItem[];
+  //   };
+  // };
   keyWord?: string;
   options?: {
     randomizeLineColor?: boolean;
@@ -476,6 +483,7 @@ interface IProps {
   dir?: 'ltr' | 'rtl';
   onMatch?: (matches: { from: string | undefined, to: string | undefined }) => any;
   onUnMatch?: (matches: { from: string | undefined, to: string | undefined }) => any;
+  questionData: QuestionData
 }
 
 interface MatchingItem {

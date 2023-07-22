@@ -6,7 +6,11 @@ import useLogic from "./logic";
 //== Styles
 import styles from "./bookPages.module.scss";
 
-const BookPages = () => {
+interface CProps {
+  data: { content: any[], quizzes: any[] }
+}
+
+const BookPages = ({ data }: CProps) => {
   const { pageLoaded, bookWidth, bookHeight, flippy } = useLogic();
 
   return (
@@ -26,8 +30,8 @@ const BookPages = () => {
           ref={flippy}
         >
           <FrontCover />
-          <Lesson />
-          <Page />
+          <Lesson content={data.content} />
+          <Page quizzes={data.quizzes} />
           <BackCover />
         </Flippy>
       }

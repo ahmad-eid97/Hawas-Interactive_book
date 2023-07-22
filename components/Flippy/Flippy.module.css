@@ -140,10 +140,10 @@
   background-position: 0 0px;
   background-repeat: no-repeat;
   height: 300px;
-  width: 28px;
+  width: 30px;
   position: absolute;
   right: calc(50% - 15px);
-  top: 17%;
+  top: 14.5%;
   /* transform: translateY(-50%) scale(0.9); */
   z-index: 9;
 }

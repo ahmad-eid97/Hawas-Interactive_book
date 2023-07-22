@@ -1,3 +1,5 @@
+//== Utils
+import Providers from './providers';
 //== Modules
 import ThemeContextProvider from '@/styles/theme/theme';
 import StoreProvider from '@/store/provider';
@@ -21,11 +23,13 @@ export default function RootLayout({
         <link rel="icon" href="/book.png" />
       </head>
       <body>
-        <StoreProvider>
-          <ThemeContextProvider>
-            {children}
-          </ThemeContextProvider>
-        </StoreProvider>
+        <Providers>
+          <StoreProvider>
+            <ThemeContextProvider>
+              {children}
+            </ThemeContextProvider>
+          </StoreProvider>
+        </Providers>
       </body>
     </html>
   )

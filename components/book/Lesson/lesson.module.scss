@@ -1,5 +1,22 @@
 .lesson {
+  height: 90%;
   padding: 40px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 6px !important;
+    /* width of the entire scrollbar */
+  }
+  &::-webkit-scrollbar-track {
+    background: rgb(220, 220, 220);
+    /* color of the tracking area */
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--third-color);
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* creates padding around scroll thumb */
+  }
   .inside {
     border: 3px solid var(--main-color);
     border-radius: 20px;

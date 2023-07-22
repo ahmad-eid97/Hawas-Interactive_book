@@ -12,18 +12,26 @@ import {
 } from "@dnd-kit/sortable";
 //== Components
 import SortableItem from './SortableItem';
+import { PageLoader } from '@/components';
 //== Component Logic
 import useLogic from './logic';
+//== Types
+import { QuestionData } from "../types";
 //== Styles
 import styles from "./sortDragging.module.scss";
 
-function SortDragging() {
-  const { items, handleDragEnd, correctAnswer, showCorrection, retry, rendered } = useLogic();
+interface Cprops {
+  questionData: QuestionData
+}
+
+function SortDragging({ questionData }: Cprops) {
+  const { items, handleDragEnd, correctAnswer, showCorrection, retry, rendered, isLoading } = useLogic({ questionData });
 
   if (!rendered) return null;
+  if (isLoading) return <PageLoader />
   return (
     <>
-      <h2>رَتِّبِ الْجُمَلَ التّالِيَةَ حَسْبَ التَّسَلْسُلِ الزَّمَنِيِّ في النَّصِّ!</h2>
+      <h2>{questionData.title}</h2>
       <div className={styles.sorting}>
         <DndContext
           collisionDetection={closestCenter}

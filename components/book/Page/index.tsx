@@ -6,13 +6,17 @@ import { Pagination, Success, Fail } from '@/components';
 //== Styles
 import styles from './page.module.scss';
 
-const Page = () => {
-  const { ComponentRendered, pageNum, changePage, correctAnswer, wrongAnswer } = useLogic();
+interface CProps {
+  quizzes: any[]
+}
+
+const Page = ({ quizzes }: CProps) => {
+  const { renderQuiz, pageNum, changePage, correctAnswer, wrongAnswer } = useLogic({ quizzes });
 
   return (
     <div className={styles.page}>
-      {ComponentRendered[pageNum]}
-      <Pagination count={Object.keys(ComponentRendered).length} changePage={changePage} />
+      {renderQuiz()}
+      <Pagination count={quizzes.length} changePage={changePage} />
       {correctAnswer && <Success />}
       {wrongAnswer && <Fail />}
     </div>

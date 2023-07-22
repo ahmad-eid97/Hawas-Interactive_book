@@ -8,12 +8,13 @@ import styles from './pagination.module.scss';
 interface CProps {
   count: number
   changePage: (e: any, pageNum: number) => void
+  position?: string
 }
 
-const PagePagination = ({ count, changePage }: CProps) => {
+const PagePagination = ({ count, changePage, position }: CProps) => {
 
   return (
-    <div className={styles.pagination}>
+    <div className={`${styles.pagination} ${position === 'top' ? styles.top : ''}`}>
       <Stack spacing={2}>
         <Pagination count={count} variant="outlined" shape="rounded" onChange={changePage} />
       </Stack>

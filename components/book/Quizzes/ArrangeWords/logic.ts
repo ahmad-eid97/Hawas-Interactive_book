@@ -111,7 +111,6 @@ export default function useLogic() {
   }
 
   const correctAnswer = () => {
-    console.log(studentAnswer)
     const answers = []
     for (let i = 0; i < Object.keys(correctData).length; i++) {
       answers.push(compareObjects(correctData[i], studentAnswer[i]))

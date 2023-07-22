@@ -1,23 +1,69 @@
 "use client";
 //== Hooks
 import { useState } from "react";
+//== Modules
+import { useQuery } from "@tanstack/react-query";
 //== Store
 import { useAppDispatch } from "@/store/hooks";
 import { checkAnswer, checkWrong } from "@/store/slices/common";
+//== Types
+import { QuestionData } from "../types";
+//== API
+import { getQuestion } from "@/API/quizzes";
 
-export default function useLogic() {
+interface CProps {
+  questionData: QuestionData
+}
+
+export default function useLogic({ questionData }: CProps) {
+  const [columnsData, setColumnsData] = useState<any>({
+    righthand: {
+      title: '',
+      items: []
+    },
+    lefthand: {
+      title: '',
+      items: []
+    }
+  });
   const [studentAnswer, setStudentAnswer] = useState<any>([]);
   const [correctData, setCorrectAnswer] = useState<any>([
-    { from: 'بيت', to: 'بيوت' },
-    { from: 'قلم', to: 'أقلام' },
-    { from: 'باب', to: 'أبواب' },
-    { from: 'ولد', to: 'أولاد' },
-    { from: 'بنت', to: 'بنات' },
-    { from: 'جبل', to: 'جبال' }
   ]);
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [rendered, setRendered] = useState(true);
   const dispatch = useAppDispatch();
+
+  const getQuestionData = () => {
+    return getQuestion(questionData.id)
+  }
+
+  const { data, isLoading } = useQuery(['questionData'], getQuestionData, {
+    onSuccess: (data) => {
+      const correct = data.data.data.answers.map((item: any) => ({ from: item.title, to: item.answer_two_gap_match }));
+      setCorrectAnswer(correct)
+      const items = data.data.data.answers.map((item: any) => item)
+      function shuffleArray(items: object[]) {
+        function compareRandom() {
+          return Math.random() - 0.5;
+        }
+        items.sort(compareRandom);
+      }
+      const answers = items.map((item: any) => item.answer_two_gap_match);
+      shuffleArray(answers);
+      const releasedItems = {
+        righthand: {
+          title: data.data.data.title_right,
+          items: items.map((item: any) => ({ content: item.title })),
+        },
+
+        lefthand: {
+          title: data.data.data.title_left,
+          items: answers.map((item: any) => ({ content: item })),
+        }
+      }
+      setColumnsData(releasedItems)
+    }
+  })
 
   const areArraysEqual = (arr1: any, arr2: any) => {
     if (arr1.length !== arr2.length) {
@@ -86,6 +132,8 @@ export default function useLogic() {
     showCorrection,
     setStudentAnswer,
     retry,
-    rendered
+    rendered,
+    columnsData,
+    isLoading
   }
 }

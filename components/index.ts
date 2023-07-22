@@ -1,4 +1,5 @@
 //== Common Components
+export { default as PageLoader } from './Common/PageLoader';
 export { default as Pagination } from './Common/Pagination';
 export { default as RadioGroup } from './Common/RadioGroup';
 export { default as Success } from './Common/Success';
@@ -47,3 +48,6 @@ export { default as PartsDroppables } from './book/Quizzes/DraggingParts/PartsDr
 export { default as ImageDragging } from './book/Quizzes/ImageDragging';
 export { default as ImageDraggables } from './book/Quizzes/ImageDragging/ImageDraggables';
 export { default as ImageDroppables } from './book/Quizzes/ImageDragging/ImageDroppables';
+//== Lesson Sections
+export { default as TextSection } from './book/LessonSections/TextSection';
+export { default as ImageSection } from './book/LessonSections/ImageSection';

@@ -8,6 +8,7 @@ export default function useLogic() {
   const [bookHeight, setBookHeight] = useState(700);
   let flippy = useRef(null);
 
+
   useEffect(() => {
     setPageLoaded(true);
   }, []);
