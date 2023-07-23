@@ -9,61 +9,23 @@ import { checkAnswer, checkWrong } from "@/store/slices/common";
 //== Types
 import { QuestionData } from "../types";
 //== API
-import { getQuestion } from "@/API/quizzes";
+import { getMatchingQuestion } from "@/API/quizzes";
 
 interface CProps {
   questionData: QuestionData
 }
 
 export default function useLogic({ questionData }: CProps) {
-  const [columnsData, setColumnsData] = useState<any>({
-    righthand: {
-      title: '',
-      items: []
-    },
-    lefthand: {
-      title: '',
-      items: []
-    }
-  });
   const [studentAnswer, setStudentAnswer] = useState<any>([]);
-  const [correctData, setCorrectAnswer] = useState<any>([
-  ]);
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [rendered, setRendered] = useState(true);
   const dispatch = useAppDispatch();
 
   const getQuestionData = async () => {
-    return await getQuestion(questionData.id)
+    return await getMatchingQuestion(questionData.id);
   }
 
-  const { data, isLoading } = useQuery(['matchingQuestion'], getQuestionData, {
-    onSuccess: (data) => {
-      const correct = data.data.data.answers.map((item: any) => ({ from: item.title, to: item.answer_two_gap_match }));
-      setCorrectAnswer(correct)
-      const items = data.data.data.answers.map((item: any) => item)
-      function shuffleArray(items: object[]) {
-        function compareRandom() {
-          return Math.random() - 0.5;
-        }
-        items.sort(compareRandom);
-      }
-      const answers = items.map((item: any) => item.answer_two_gap_match);
-      shuffleArray(answers);
-      const releasedItems = {
-        righthand: {
-          title: data.data.data.title_right,
-          items: items.map((item: any) => ({ content: item.title })),
-        },
-
-        lefthand: {
-          title: data.data.data.title_left,
-          items: answers.map((item: any) => ({ content: item })),
-        }
-      }
-      setColumnsData(releasedItems)
-    }
-  })
+  const { data, isLoading } = useQuery(['matchingQuestion'], getQuestionData)
 
   const areArraysEqual = (arr1: any, arr2: any) => {
     if (arr1.length !== arr2.length) {
@@ -89,7 +51,7 @@ export default function useLogic({ questionData }: CProps) {
   }
 
   const correctAnswer = () => {
-    if (areArraysEqual(studentAnswer, correctData)) {
+    if (areArraysEqual(studentAnswer, data?.correctAnswers)) {
       dispatch(checkAnswer(true))
       setTimeout(() => {
         dispatch(checkAnswer(false))
@@ -133,7 +95,7 @@ export default function useLogic({ questionData }: CProps) {
     setStudentAnswer,
     retry,
     rendered,
-    columnsData,
+    columnsData: data?.columnsData,
     isLoading
   }
 }

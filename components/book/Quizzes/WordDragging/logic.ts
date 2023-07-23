@@ -4,8 +4,13 @@ import { useState, useRef } from "react";
 //== Store
 import { useAppDispatch } from "@/store/hooks";
 import { checkAnswer, checkWrong } from "@/store/slices/common";
+//== API
+import { getGroupFillBlanksQuestion } from "@/API/quizzes";
+//== Types
+import { QuestionData } from "../types";
+import { useQuery } from "@tanstack/react-query";
 
-export default function useLogic() {
+export default function useLogic({ questionData }: { questionData: QuestionData }) {
   const [draggableItem, setDraggableItem] = useState<HTMLParagraphElement | null>(null);
   const [correctData, setCorrectData] = useState<any>({
     0: {
@@ -26,6 +31,12 @@ export default function useLogic() {
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [rendered, setRendered] = useState(true);
   const dispatch = useAppDispatch();
+
+  const getQuestion = async () => {
+    return await getGroupFillBlanksQuestion(questionData.id);
+  }
+
+  const { data, isLoading } = useQuery(["groupFillBlankQuestion"], getQuestion);
 
   const choices = [
     {
@@ -146,6 +157,7 @@ export default function useLogic() {
     correctAnswer,
     showCorrection,
     retry,
-    rendered
+    rendered,
+    isLoading
   }
 }

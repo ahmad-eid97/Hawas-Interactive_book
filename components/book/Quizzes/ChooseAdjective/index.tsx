@@ -2,15 +2,17 @@
 import { Fragment } from 'react';
 //== Component Logic
 import useLogic from './logic';
+//== Types
+import { QuestionData } from '../types';
 //== Styles
 import styles from './chooseAdjective.module.scss';
 
-const ChooseAdjective = () => {
-  const { items, answers, addAnswer, removeAnswer } = useLogic();
+const ChooseAdjective = ({ questionData }: { questionData: QuestionData }) => {
+  const { items, answers, addAnswer, removeAnswer } = useLogic({ questionData });
 
   return (
     <>
-      <h2>اِخْتَرْ صِفَةً مُناسِبَةً لِكُلِّ اسْمٍ مِنَ الأسْماءِ التَّالِيَةِ!</h2>
+      <h2>{questionData.title}</h2>
       <div className={styles.chooseAdjective}>
         <div className={styles.items}>
           {items.map((item, idx) => (

@@ -1,8 +1,14 @@
 "use client";
 //== Hooks
 import { useState } from "react";
+//== Modules
+import { useQuery } from "@tanstack/react-query";
+//== API
+import { getImageSingleChoiceQuestion } from "@/API/quizzes";
+//== Types
+import { QuestionData } from "../types";
 
-export default function useLogic() {
+export default function useLogic({ questionData }: { questionData: QuestionData }) {
   const [items, setItems] = useState([
     {
       image: '/images/quizzes/1.png',
@@ -27,6 +33,12 @@ export default function useLogic() {
   ])
   const [choices, setChoices] = useState<{ [index: number]: string }>({});
 
+  const getQuestion = async () => {
+    return await getImageSingleChoiceQuestion(questionData.id);
+  }
+
+  const { data, isLoading } = useQuery(['imageSingleChoiceQuestion'], getQuestion);
+
   const addToChoices = (index: number, letter: string) => {
     setChoices(prev => ({ ...prev, [index]: letter }));
   }
@@ -34,6 +46,7 @@ export default function useLogic() {
   return {
     items,
     choices,
-    addToChoices
+    addToChoices,
+    isLoading
   }
 }

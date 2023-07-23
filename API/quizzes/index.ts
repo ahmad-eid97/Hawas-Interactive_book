@@ -1,9 +1,47 @@
 //== Utils
 import api from "../handlers";
 
-export async function getQuestion(questionId: number) {
+export async function getMatchingQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
-  if (response) return response;
+  const correctAnswers = response.data.data.answers.map((item: any) => ({ from: item.title, to: item.answer_two_gap_match }));
+  const items = response.data.data.answers.map((item: any) => item)
+  function shuffleArray(items: object[]) {
+    function compareRandom() {
+      return Math.random() - 0.5;
+    }
+    items.sort(compareRandom);
+  }
+  const answers = items.map((item: any) => item.answer_two_gap_match);
+  shuffleArray(answers);
+  const columnsData = {
+    righthand: {
+      title: response.data.data.title_right,
+      items: items.map((item: any) => ({ content: item.title })),
+    },
+
+    lefthand: {
+      title: response.data.data.title_left,
+      items: answers.map((item: any) => ({ content: item })),
+    }
+  }
+  const data = { correctAnswers, columnsData };
+  if (response) return data;
+}
+
+export async function getSortingQuestion(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  const answers = response.data.data.answers.map((item: any) => item.title)
+  function shuffleArray(answers: string[]) {
+    function compareRandom(a: string, b: string) {
+      return Math.random() - 0.5;
+    }
+    answers.sort(compareRandom);
+  }
+  shuffleArray(answers);
+  const items = answers;
+  const correctAnswers = response.data.data.answers.map((item: any) => item.title);
+  const data = { items, correctAnswers };
+  if (response) return data;
 }
 
 export async function getQuestionImageWithPosition(questionId: number) {
@@ -33,4 +71,23 @@ export async function getMatchingWithTableQuestion(questionId: number) {
   }
   const data = { titles, items, correctAnswer };
   if (response) return data;
+}
+
+export async function getGroupFillBlanksQuestion(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  console.log(response)
+
+  if (response) return response;
+}
+
+export async function getImageSingleChoiceQuestion(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  console.log(response)
+  if (response) return response;
+}
+
+export async function getGroupSingleWordChoice(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  console.log(response)
+  if (response) return response;
 }

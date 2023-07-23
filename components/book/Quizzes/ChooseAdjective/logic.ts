@@ -1,8 +1,14 @@
 "use client";
 //== Hooks
-import { useState } from "react"
+import { useState } from "react";
+//== Modules
+import { useQuery } from "@tanstack/react-query";
+//== API
+import { getGroupSingleWordChoice } from "@/API/quizzes";
+//== Types
+import { QuestionData } from "../types";
 
-export default function useLogic() {
+export default function useLogic({ questionData }: { questionData: QuestionData }) {
   const [items, setItems] = useState([
     {
       id: 1,
@@ -30,6 +36,12 @@ export default function useLogic() {
     },
   ])
   const [answers, setAnswers] = useState<{ [index: number]: string }>({});
+
+  const getQuestion = async () => {
+    return await getGroupSingleWordChoice(questionData.id);
+  };
+
+  const { data, isLoading } = useQuery(['groupWordSingleChoiceQuestion'], getQuestion);
 
   const addAnswer = (index: number, answer: string) => {
     setAnswers(prev => ({ ...prev, [index]: answer }));

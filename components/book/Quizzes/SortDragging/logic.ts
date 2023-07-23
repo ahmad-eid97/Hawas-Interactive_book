@@ -10,7 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useAppDispatch } from "@/store/hooks";
 import { checkAnswer, checkWrong } from "@/store/slices/common";
 //== API
-import { getQuestion } from "@/API/quizzes";
+import { getSortingQuestion } from "@/API/quizzes";
 //== Types
 import { QuestionData } from "../types";
 
@@ -20,27 +20,17 @@ interface LogicProps {
 
 export default function useLogic({ questionData }: LogicProps) {
   const [items, setItems] = useState([""]);
-  const [correctData, setCorrectData] = useState<string[] | null>(["طير عادل بالونه ليجري وراءه", "طار البالون بعيدا", "حزن عادل علي البالون",]);
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [rendered, setRendered] = useState(true);
   const dispatch = useAppDispatch();
 
-  const getQuestionData = () => {
-    return getQuestion(questionData.id)
+  const getQuestionData = async () => {
+    return await getSortingQuestion(questionData.id)
   }
 
   const { data, isLoading } = useQuery(['sortingQuestion'], getQuestionData, {
     onSuccess: (data) => {
-      const answers = data.data.data.answers.map((item: any) => item.title)
-      function shuffleArray(answers: string[]) {
-        function compareRandom(a: string, b: string) {
-          return Math.random() - 0.5;
-        }
-        answers.sort(compareRandom);
-      }
-      shuffleArray(answers);
-      setItems(answers);
-      setCorrectData(data.data.data.answers.map((item: any) => item.title));
+      setItems(data?.items);
     }
   })
 
@@ -56,9 +46,9 @@ export default function useLogic({ questionData }: LogicProps) {
   }
 
   const correctAnswer = () => {
-    if (!correctData) return;
+    if (!data?.correctAnswers) return;
     for (let i = 0; i < items.length; i++) {
-      if (items[i] !== correctData[i]) {
+      if (items[i] !== data?.correctAnswers[i]) {
         dispatch(checkWrong(true))
         setTimeout(() => {
           dispatch(checkWrong(false))
@@ -96,7 +86,7 @@ export default function useLogic({ questionData }: LogicProps) {
   }
 
   return {
-    items,
+    items: items.length > 1 ? items : data?.items,
     handleDragEnd,
     correctAnswer,
     showCorrection,

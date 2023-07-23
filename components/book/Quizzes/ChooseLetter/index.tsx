@@ -1,16 +1,21 @@
 //== Hooks
 import { Fragment } from 'react';
+//== Components
+import { PageLoader } from '@/components';
 //== Component Logic
 import useLogic from './logic';
+//== Types
+import { QuestionData } from '../types';
 //== Styles
 import styles from './chooseLetter.module.scss';
 
-const ChooseLetter = () => {
-  const { items, choices, addToChoices } = useLogic();
+const ChooseLetter = ({ questionData }: { questionData: QuestionData }) => {
+  const { items, choices, addToChoices, isLoading } = useLogic({ questionData });
 
+  if (isLoading) return <PageLoader />
   return (
     <div className={styles.chooseLetter}>
-      <h2>اِخْتَرِ الْحَرْفَ الأَوَّلَ الّذي يَبْدَأُ بِهِ اسْمُ الصّورَةِ!</h2>
+      <h2>{questionData.title}</h2>
       <div className={styles.itemsWrapper}>
         {items.map((item, idx) => (
           <div className={styles.item} key={idx}>
