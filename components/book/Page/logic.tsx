@@ -45,7 +45,7 @@ export default function useLogic({ quizzes }: any) {
       '17': <Drawing />,
       '18': <ImageColoring />,
       '19': <DraggingParts />,
-      '20': <ImageDragging />
+      'matching_with_position': <ImageDragging questionData={quizzes[pageNum - 1]} />
     }
     return ComponentRendered[quizzes[pageNum - 1]["question_type"]]
   }

@@ -2,32 +2,36 @@
 //== Hooks
 import { Fragment } from 'react';
 //== Components
-import { ImageDroppables, ImageDraggables } from '@/components';
+import { ImageDroppables, ImageDraggables, PageLoader } from '@/components';
 //== Component Logic
 import useLogic from './logic';
+//== Types
+import { QuestionData } from '../types';
 //== Styles
 import styles from './draggingParts.module.scss';
 
-const ArrangeWords = () => {
-  const { droppingArea, choices, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, showCorrection, correctAnswer, retry, rendered } = useLogic();
+const ImageDragging = ({ questionData }: { questionData: QuestionData }) => {
+  const { droppingArea, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, showCorrection, correctAnswer, retry, rendered, isLoading, questionDetails } = useLogic({ questionData });
 
   if (!rendered) return null;
+  if (isLoading) return <PageLoader />
   return (
     <>
-      <h2>ضع الكلمات المناسبة في شجرة المشاعر والأحاسيس</h2>
+      <h2>{questionData.title}</h2>
       <div className={styles.arrangeWords}>
         <div className={styles.wrapper}>
           <ImageDroppables
             dragOver={dragOver}
             dragLeave={dragLeave}
             drop={drop}
+            questionDetails={questionDetails}
           />
           <ImageDraggables
             droppingArea={droppingArea}
-            choices={choices}
             dragStart={dragStart}
             dragEnd={dragEnd}
             removeChoice={removeChoice}
+            questionDetails={questionDetails}
           />
         </div>
       </div>
@@ -52,4 +56,4 @@ const ArrangeWords = () => {
   )
 }
 
-export default ArrangeWords;
+export default ImageDragging;

@@ -33,11 +33,11 @@ export default function useLogic({ questionData }: CProps) {
   const [rendered, setRendered] = useState(true);
   const dispatch = useAppDispatch();
 
-  const getQuestionData = () => {
-    return getQuestion(questionData.id)
+  const getQuestionData = async () => {
+    return await getQuestion(questionData.id)
   }
 
-  const { data, isLoading } = useQuery(['questionData'], getQuestionData, {
+  const { data, isLoading } = useQuery(['matchingQuestion'], getQuestionData, {
     onSuccess: (data) => {
       const correct = data.data.data.answers.map((item: any) => ({ from: item.title, to: item.answer_two_gap_match }));
       setCorrectAnswer(correct)

@@ -1,21 +1,19 @@
 "use client";
-//== Types
-import { Choice } from '../../types';
 //== Styles
 import styles from './draggables.module.scss';
 //== Component Interface
 interface CProps {
-  choices: Choice[]
-  droppingArea: React.MutableRefObject<HTMLDivElement | null>
-  dragStart: (e: React.DragEvent<HTMLParagraphElement>) => void
-  dragEnd: (e: React.DragEvent<HTMLParagraphElement>) => void
-  removeChoice: (e: React.MouseEvent<HTMLElement, MouseEvent>, idx: number) => void
+  droppingArea: React.MutableRefObject<HTMLDivElement | null>;
+  dragStart: (e: React.DragEvent<HTMLParagraphElement>) => void;
+  dragEnd: (e: React.DragEvent<HTMLParagraphElement>) => void;
+  removeChoice: (e: React.MouseEvent<HTMLElement, MouseEvent>, idx: number) => void;
+  questionDetails: any;
 }
 
-const Draggables = ({ choices, droppingArea, dragStart, dragEnd, removeChoice }: CProps) => {
+const Draggables = ({ droppingArea, dragStart, dragEnd, removeChoice, questionDetails }: CProps) => {
   return (
     <div className={styles.draggables} ref={droppingArea}>
-      {choices.map((choice, idx) => (
+      {questionDetails?.choices.map((choice: any, idx: number) => (
         <p
           className={`${styles.item} item`}
           draggable={true}
@@ -23,7 +21,7 @@ const Draggables = ({ choices, droppingArea, dragStart, dragEnd, removeChoice }:
           onDragEnd={(e) => dragEnd(e)}
           key={choice.id}
         >
-          {choice.text}
+          {choice.title}
           <i className="fa-duotone fa-ban" onClick={(e) => removeChoice(e, idx)}></i>
         </p>
       ))}

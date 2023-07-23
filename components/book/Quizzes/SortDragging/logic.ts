@@ -29,7 +29,7 @@ export default function useLogic({ questionData }: LogicProps) {
     return getQuestion(questionData.id)
   }
 
-  const { data, isLoading } = useQuery(['questionData'], getQuestionData, {
+  const { data, isLoading } = useQuery(['sortingQuestion'], getQuestionData, {
     onSuccess: (data) => {
       const answers = data.data.data.answers.map((item: any) => item.title)
       function shuffleArray(answers: string[]) {

@@ -1,11 +1,15 @@
 "use client";
 //== Hooks 
 import { useState, useRef } from "react";
+//== Modules
+import { useQuery } from "@tanstack/react-query";
 //== Store
 import { useAppDispatch } from "@/store/hooks";
 import { checkAnswer, checkWrong } from "@/store/slices/common";
+//== API
+import { getQuestionImageWithPosition } from "@/API/quizzes";
 
-export default function useLogic() {
+export default function useLogic({ questionData }: { questionData: any }) {
   const [draggableItem, setDraggableItem] = useState<HTMLParagraphElement | null>(null);
   const [correctData, setCorrectData] = useState<any>({
     0: "مساعدة",
@@ -21,40 +25,11 @@ export default function useLogic() {
   const droppingArea = useRef<HTMLDivElement | null>(null);
   const dispatch = useAppDispatch();
 
-  const choices = [
-    {
-      id: 1,
-      text: "مساعدة"
-    },
-    {
-      id: 2,
-      text: "استهتار"
-    },
-    {
-      id: 3,
-      text: "محبة"
-    },
-    {
-      id: 4,
-      text: "صداقة"
-    },
-    {
-      id: 5,
-      text: "تفهم"
-    },
-    {
-      id: 6,
-      text: "عطف"
-    },
-    {
-      id: 7,
-      text: "تقبل"
-    },
-    {
-      id: 8,
-      text: "لا مبالاة"
-    },
-  ]
+  const getQuestionData = () => {
+    return getQuestionImageWithPosition(questionData.id)
+  }
+
+  const { data, isLoading } = useQuery(['imageDraggingQuestion'], getQuestionData)
 
   const dragStart = (e: React.DragEvent<HTMLParagraphElement>) => {
     setDraggableItem(e.currentTarget);
@@ -105,7 +80,7 @@ export default function useLogic() {
   }
 
   const correctAnswer = () => {
-    if (compareObjects(correctData, studentAnswer)) {
+    if (compareObjects(data?.correctAnswer, studentAnswer)) {
       dispatch(checkAnswer(true))
       setTimeout(() => {
         dispatch(checkAnswer(false))
@@ -145,7 +120,6 @@ export default function useLogic() {
 
   return {
     droppingArea,
-    choices,
     dragStart,
     dragEnd,
     dragOver,
@@ -155,6 +129,8 @@ export default function useLogic() {
     showCorrection,
     correctAnswer,
     retry,
-    rendered
+    rendered,
+    questionDetails: data,
+    isLoading
   }
 }

@@ -1,22 +1,32 @@
 "use client";
+//== Hooks
+import { Fragment } from 'react';
 //== Styles
 import styles from './droppables.module.scss';
 //== Component Interface
 interface CProps {
-  dragOver: (e: React.DragEvent<HTMLParagraphElement>) => void
-  dragLeave: (e: React.DragEvent<HTMLParagraphElement>) => void
-  drop: (e: React.DragEvent<HTMLParagraphElement>, index: number) => void
+  dragOver: (e: React.DragEvent<HTMLParagraphElement>) => void;
+  dragLeave: (e: React.DragEvent<HTMLParagraphElement>) => void;
+  drop: (e: React.DragEvent<HTMLParagraphElement>, index: number) => void;
+  questionDetails: any
 }
 
-const Droppables = ({ dragOver, dragLeave, drop }: CProps) => {
+const Droppables = ({ dragOver, dragLeave, drop, questionDetails }: CProps) => {
   return (
-    <div className={styles.dropables}>
-      <div className={styles.dropable} onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 0)}></div>
-      <div className={styles.dropable} onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 1)}></div>
-      <div className={styles.dropable} onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 2)}></div>
-      <div className={styles.dropable} onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 3)}></div>
-      <div className={styles.dropable} onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 4)}></div>
-      <div className={styles.dropable} onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 5)}></div>
+    <div className={styles.dropables} style={{ backgroundImage: `url(${questionDetails?.questionImage})` }}>
+      {questionDetails?.droppables.map((one: any, idx: number) => (
+        <Fragment key={idx}>
+          {one.left &&
+            <div
+              className={styles.dropable}
+              onDragOver={(e) => dragOver(e)}
+              onDragLeave={(e) => dragLeave(e)}
+              onDrop={(e) => drop(e, idx)}
+              style={{ top: `${one.top}px`, left: `${one.left}px` }}
+            ></div>
+          }
+        </Fragment>
+      ))}
     </div>
   )
 }
