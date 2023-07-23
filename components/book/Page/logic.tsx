@@ -28,7 +28,7 @@ export default function useLogic({ quizzes }: any) {
         questionData={quizzes[pageNum - 1]}
       />,
       'ordering': <SortDragging questionData={quizzes[pageNum - 1]} />,
-      'matching_with_table_dragging': <TableDragging />,
+      'matching_with_table_dragging': <TableDragging questionData={quizzes[pageNum - 1]} />,
       'fill_in_the_blank': <WordDragging />,
       '5': <ChooseLetter />,
       '6': <FillThePlaces />,

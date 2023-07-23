@@ -1,27 +1,28 @@
 "use client";
 //== Hooks
 import { useState } from "react";
+//== Modules
+import { useQuery } from "@tanstack/react-query";
+//== API
+import { getMatchingWithTableQuestion } from "@/API/quizzes";
 //== Store
 import { useAppDispatch } from "@/store/hooks";
 import { checkAnswer, checkWrong } from "@/store/slices/common";
+//== Types
+import { QuestionData } from "../types";
 
-export default function useLogic() {
+export default function useLogic({ questionData }: { questionData: QuestionData }) {
   const [draggableItem, setDraggableItem] = useState<HTMLParagraphElement | null>(null);
-  const [correctData, setCorrectData] = useState<any>({
-    0: [
-      "أسد",
-      "تمساح",
-      "حصان"
-    ],
-    1: [
-      "بومة",
-      "عصفورة"
-    ]
-  })
   const [studentAnswer, setStudentAnswer] = useState<any>({ 0: [], 1: [] });
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [rendered, setRendered] = useState(true);
   const dispatch = useAppDispatch();
+
+  const getQuestion = async () => {
+    return await getMatchingWithTableQuestion(questionData.id)
+  }
+
+  const { data, isLoading } = useQuery(["tableQuestion"], getQuestion);
 
   const dragStart = (e: React.DragEvent<HTMLParagraphElement>) => {
     e.stopPropagation();
@@ -83,7 +84,7 @@ export default function useLogic() {
   }
 
   const correctAnswer = () => {
-    if (areArraysEqual(studentAnswer[0], correctData[0]) && areArraysEqual(studentAnswer[1], correctData[1])) {
+    if (areArraysEqual(studentAnswer[0], data?.correctAnswer[0]) && areArraysEqual(studentAnswer[1], data?.correctAnswer[1])) {
       dispatch(checkAnswer(true))
       setTimeout(() => {
         dispatch(checkAnswer(false))
@@ -93,7 +94,6 @@ export default function useLogic() {
         data: [
           "أحسنت",
           "لقد حصلت على علامة كاملة",
-          "العلامة المُستحقّة هي : 10"
         ]
       })
     } else {
@@ -106,7 +106,6 @@ export default function useLogic() {
         data: [
           "حاول مرّة أخرى",
           "بعض الإجابات غير صحيحة",
-          "العلامة المُستحقّة هي : 5"
         ]
       })
     }
@@ -130,6 +129,8 @@ export default function useLogic() {
     correctAnswer,
     showCorrection,
     retry,
-    rendered
+    rendered,
+    questionDetails: data,
+    isLoading
   }
 }

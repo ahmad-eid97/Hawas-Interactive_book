@@ -2,71 +2,37 @@
 //== Hooks
 import { Fragment } from 'react';
 //== Components
-import { Boxes } from '@/components';
+import { Boxes, PageLoader } from '@/components';
 //== Component Logic
 import useLogic from './logic';
+//== Types
+import { QuestionData } from '../types';
 //== Styles
 import styles from './dragging.module.scss';
 
-const TableDragging = () => {
-  const { dragStart, dragEnd, dragOver, dragLeave, drop, correctAnswer, showCorrection, retry, rendered } = useLogic();
+const TableDragging = ({ questionData }: { questionData: QuestionData }) => {
+  const { dragStart, dragEnd, dragOver, dragLeave, drop, correctAnswer, showCorrection, retry, rendered, isLoading, questionDetails } = useLogic({ questionData });
 
   if (!rendered) return null;
+  if (isLoading) return <PageLoader />
   return (
     <div className={styles.dragging}>
-      <h2>ضع الكلمات المناسبة في كل جدول</h2>
+      <h2>{questionData.title}</h2>
       <div className={styles.words}>
         <h2>الكلمات</h2>
-        <p
-          className={`${styles.item} item`}
-          draggable={true}
-          onDragStart={(e) => dragStart(e)}
-          onDragEnd={(e) => dragEnd(e)}
-        >
-          أسد
-        </p>
-        <p
-          className={`${styles.item} item`}
-          draggable={true}
-          onDragStart={(e) => dragStart(e)}
-          onDragEnd={(e) => dragEnd(e)}
-        >
-          ثعبان
-        </p>
-        <p
-          className={`${styles.item} item`}
-          draggable={true}
-          onDragStart={(e) => dragStart(e)}
-          onDragEnd={(e) => dragEnd(e)}
-        >
-          بومة
-        </p>
-        <p
-          className={`${styles.item} item`}
-          draggable={true}
-          onDragStart={(e) => dragStart(e)}
-          onDragEnd={(e) => dragEnd(e)}
-        >
-          تمساح
-        </p>
-        <p
-          className={`${styles.item} item`}
-          draggable={true}
-          onDragStart={(e) => dragStart(e)}
-          onDragEnd={(e) => dragEnd(e)}
-        >
-          عصفورة
-        </p>
-        <p
-          className={`${styles.item} item`}
-          draggable={true}
-          onDragStart={(e) => dragStart(e)}
-          onDragEnd={(e) => dragEnd(e)}
-        >
-          حصان
-        </p>
+        {questionDetails?.items.map((item: any, idx: number) => (
+          <p
+            key={item.id}
+            className={`${styles.item} item`}
+            draggable={true}
+            onDragStart={(e) => dragStart(e)}
+            onDragEnd={(e) => dragEnd(e)}
+          >
+            {item.title}
+          </p>
+        ))}
       </div>
-      <Boxes dragOver={dragOver} dragLeave={dragLeave} drop={drop} />
+      <Boxes titles={questionDetails?.titles} dragOver={dragOver} dragLeave={dragLeave} drop={drop} />
       {showCorrection &&
         <div className={`correctData ${showCorrection.correct ? 'correct' : 'wrong'}`}>
           {showCorrection.data.map((one, idx) => (
