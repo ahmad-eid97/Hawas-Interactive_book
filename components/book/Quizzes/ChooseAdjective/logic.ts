@@ -57,6 +57,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     items,
     answers,
     addAnswer,
-    removeAnswer
+    removeAnswer,
+    isLoading
   }
 }

@@ -1,5 +1,7 @@
 //== Hooks
 import { Fragment } from 'react';
+//== Components
+import { PageLoader } from '@/components';
 //== Component Logic
 import useLogic from './logic';
 //== Types
@@ -8,8 +10,9 @@ import { QuestionData } from '../types';
 import styles from './chooseAdjective.module.scss';
 
 const ChooseAdjective = ({ questionData }: { questionData: QuestionData }) => {
-  const { items, answers, addAnswer, removeAnswer } = useLogic({ questionData });
+  const { items, answers, addAnswer, removeAnswer, isLoading } = useLogic({ questionData });
 
+  if (isLoading) return <PageLoader />
   return (
     <>
       <h2>{questionData.title}</h2>
