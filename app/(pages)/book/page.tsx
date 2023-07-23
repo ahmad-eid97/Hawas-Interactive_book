@@ -13,7 +13,7 @@ const Book = async () => {
 
   return (
     <>
-      <BookPages data={response.data.data} />
+      <BookPages data={response?.data?.data} />
       <NextButton />
     </>
   )
