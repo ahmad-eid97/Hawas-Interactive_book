@@ -93,10 +93,12 @@ export async function getGroupSingleWordChoice(questionId: number) {
 
 export async function getDrawingQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  console.log(response)
   if (response) return { questionImage: response.data.data.question_img };
 }
 
 export async function getGroupShortAnswer(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  console.log(response)
   if (response) return response;
 }
