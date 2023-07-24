@@ -1,11 +1,17 @@
 "use client";
 //== Hooks 
 import { useState, useRef } from "react";
+//== API
+import { getGroupFillBlanksCompleteWordsQuestion } from "@/API/quizzes";
 //== Store
 import { useAppDispatch } from "@/store/hooks";
 import { checkAnswer, checkWrong } from "@/store/slices/common";
+//== Module
+import { useQuery } from "@tanstack/react-query";
+//== Types
+import { QuestionData } from "../types";
 
-export default function useLogic() {
+export default function useLogic({ questionData }: { questionData: QuestionData }) {
   const [draggableItem, setDraggableItem] = useState<HTMLParagraphElement | null>(null);
   const droppingArea = useRef<HTMLDivElement | null>(null);
   const [items, setItems] = useState<any>([
@@ -73,6 +79,12 @@ export default function useLogic() {
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [rendered, setRendered] = useState(true);
   const dispatch = useAppDispatch();
+
+  const getQuestion = async () => {
+    return await getGroupFillBlanksCompleteWordsQuestion(questionData.id)
+  }
+
+  const { data, isLoading } = useQuery(['group_fill_in_blank_complete_words'], getQuestion);
 
   const dragStart = (e: React.DragEvent<HTMLParagraphElement>) => {
     setDraggableItem(e.currentTarget);
@@ -175,6 +187,7 @@ export default function useLogic() {
     showCorrection,
     correctAnswer,
     retry,
-    rendered
+    rendered,
+    isLoading
   }
 }

@@ -4,8 +4,14 @@ import { useState, useRef } from "react";
 //== Store
 import { useAppDispatch } from "@/store/hooks";
 import { checkAnswer, checkWrong } from "@/store/slices/common";
+//== Modules
+import { useQuery } from "@tanstack/react-query";
+//== API
+import { getGroupOrderingQuestion } from "@/API/quizzes";
+//== Types
+import { QuestionData } from "../types";
 
-export default function useLogic() {
+export default function useLogic({ questionData }: { questionData: QuestionData }) {
   const [draggableItem, setDraggableItem] = useState<HTMLParagraphElement | null>(null);
   const [correctData, setCorrectData] = useState<any>({
     0: {
@@ -58,6 +64,12 @@ export default function useLogic() {
       text: "الشجرة"
     }
   ]
+
+  const getQuestion = async () => {
+    return await getGroupOrderingQuestion(questionData.id);
+  }
+
+  const { data, isLoading } = useQuery(['group_ordering'], getQuestion);
 
   const dragStart = (e: React.DragEvent<HTMLParagraphElement>) => {
     setDraggableItem(e.currentTarget);
@@ -165,6 +177,7 @@ export default function useLogic() {
     correctAnswer,
     showCorrection,
     retry,
-    rendered
+    rendered,
+    isLoading
   }
 }

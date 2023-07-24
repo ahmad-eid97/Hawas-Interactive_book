@@ -1,11 +1,16 @@
+//== Components
+import { PageLoader } from '@/components';
 //== Component Logic
 import useLogic from './logic';
 //== Styles
 import styles from './choosing.module.scss';
+//== Types
+import { QuestionData } from '../types';
 
-const Choosing = () => {
-  const { items, choices, addToChoices } = useLogic();
+const Choosing = ({ questionData }: { questionData: QuestionData }) => {
+  const { items, choices, addToChoices, isLoading } = useLogic({ questionData });
 
+  if (isLoading) return <PageLoader />
   return (
     <div className={styles.chooseLetter}>
       <div className={styles.itemsWrapper}>

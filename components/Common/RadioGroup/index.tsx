@@ -10,7 +10,7 @@ const RadioGroup = ({ name, checked }: CProps) => {
   return (
     <div className={styles.radio_input}>
       <div className={styles.field}>
-        <input name={name} type="radio" className={styles.input} checked={checked} />
+        <input name={name} type="radio" className={styles.input} checked={checked} onChange={() => { }} />
       </div>
     </div>
   )

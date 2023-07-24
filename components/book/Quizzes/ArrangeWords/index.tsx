@@ -2,19 +2,22 @@
 //== Hooks
 import { Fragment } from 'react';
 //== Components
-import { ArrangeDroppables, ArrangeDraggables } from '@/components';
+import { ArrangeDroppables, ArrangeDraggables, PageLoader } from '@/components';
 //== Component Logic
 import useLogic from './logic';
+//== Types
+import { QuestionData } from '../types';
 //== Styles
 import styles from './dragging.module.scss';
 
-const ArrangeWords = () => {
-  const { droppingArea, choices, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, correctAnswer, showCorrection, retry, rendered } = useLogic();
+const ArrangeWords = ({ questionData }: { questionData: QuestionData }) => {
+  const { droppingArea, choices, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, correctAnswer, showCorrection, retry, rendered, isLoading } = useLogic({ questionData });
 
   if (!rendered) return null;
+  if (isLoading) return <PageLoader />
   return (
     <>
-      <h2>رَتِّبِ الْجُمَلَ تَرْتيبًا صَحيحًا!</h2>
+      <h2>{questionData?.title}</h2>
       <div className={styles.arrangeWords}>
         {[...Array(3)].map((_, idx) => (
           <div className={styles.wrapper} key={idx}>

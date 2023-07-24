@@ -2,19 +2,22 @@
 //== Hooks
 import { Fragment } from 'react';
 //== Components
-import { CompleteDroppables, CompleteDraggables } from '@/components';
+import { CompleteDroppables, CompleteDraggables, PageLoader } from '@/components';
 //== Component Logic
 import useLogic from './logic';
+//== Types
+import { QuestionData } from '../types';
 //== Styles
 import styles from './completeWords.module.scss';
 
-const CompleteWords = () => {
-  const { items, droppingArea, choices, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, showCorrection, correctAnswer, retry, rendered } = useLogic();
+const CompleteWords = ({ questionData }: { questionData: QuestionData }) => {
+  const { items, droppingArea, choices, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, showCorrection, correctAnswer, retry, rendered, isLoading } = useLogic({ questionData });
 
   if (!rendered) return null;
+  if (isLoading) return <PageLoader />
   return (
     <>
-      <h2>أَكْمِلِ الْكَلِماتِ التّالِيَةَ مُسْتَعينًا بِمَخْزَنِ الْكَلِماتِ:</h2>
+      <h2>{questionData.title}</h2>
       <div className={styles.fillThePlaces}>
         <CompleteDraggables
           droppingArea={droppingArea}

@@ -1,13 +1,16 @@
 //== Components
-import { RadioGroup } from '@/components';
+import { PageLoader, RadioGroup } from '@/components';
 //== Component Logic
 import useLogic from './logic';
+//== Types
+import { QuestionData } from '../types';
 //== Styles
 import styles from './signleChoose.module.scss';
 
-const SignleChoose = () => {
-  const { items, choices, addToChoices } = useLogic();
+const SignleChoose = ({ questionData }: { questionData: QuestionData }) => {
+  const { items, choices, addToChoices, isLoading } = useLogic({ questionData });
 
+  if (isLoading) return <PageLoader />
   return (
     <div className={styles.chooseLetter}>
       <div className={styles.itemsWrapper}>

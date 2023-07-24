@@ -2,7 +2,7 @@
 //== Hooks
 import { useState } from "react";
 //== Modules
-import { Matching, SortDragging, TableDragging, WordDragging, ChooseLetter, FillThePlaces, ChooseWord, ChooseAdjective, ContinueTyping, ArrangeWords, Choosing, SignleChoose, ImageChoose, ImageTyping, FillFields, CompleteWords, Drawing, ImageColoring, DraggingParts, ImageDragging } from "@/components";
+import { Matching, SortDragging, TableDragging, WordDragging, ChooseLetter, FillThePlaces, ChooseWord, ChooseAdjective, ContinueTyping, ArrangeWords, Choosing, SignleChoose, ImageChoose, ImageTyping, FillFields, CompleteWords, Drawing, ImageColoring, ImageDragging } from "@/components";
 //== Store
 import { useAppSelector } from "@/store/hooks";
 
@@ -23,8 +23,8 @@ export default function useLogic({ quizzes }: any) {
         keyWord="content"
         dir="rtl"
         className="container"
-        onMatch={(matches) => console.log(matches)}
-        onUnMatch={(matches) => console.log(matches)}
+        onMatch={(matches) => { }}
+        onUnMatch={(matches) => { }}
         questionData={quizzes[pageNum - 1]}
       />,
       'ordering': <SortDragging questionData={quizzes[pageNum - 1]} />,
@@ -35,16 +35,15 @@ export default function useLogic({ quizzes }: any) {
       'odd_word': <ChooseWord />,
       'group_word_single_choice': <ChooseAdjective questionData={quizzes[pageNum - 1]} />,
       'group_short_answer': <ContinueTyping questionData={quizzes[pageNum - 1]} />,
-      '10': <ArrangeWords />,
-      '11': <Choosing />,
-      '12': <SignleChoose />,
-      '13': <ImageChoose />,
+      'group_ordering': <ArrangeWords questionData={quizzes[pageNum - 1]} />,
+      'group_rounded_single_choice': <Choosing questionData={quizzes[pageNum - 1]} />,
+      'group_radio_single_choice': <SignleChoose questionData={quizzes[pageNum - 1]} />,
+      // 'single_choice': <ImageChoose />,
       '14': <ImageTyping />,
       '15': <FillFields />,
-      '16': <CompleteWords />,
+      'group_fill_in_blank_complete_words': <CompleteWords questionData={quizzes[pageNum - 1]} />,
       'drawing': <Drawing questionData={quizzes[pageNum - 1]} />,
       'coloring': <ImageColoring questionData={quizzes[pageNum - 1]} />,
-      '19': <DraggingParts />,
       'matching_with_position': <ImageDragging questionData={quizzes[pageNum - 1]} />
     }
     return ComponentRendered[quizzes[pageNum - 1]["question_type"]]

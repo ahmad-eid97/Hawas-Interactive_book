@@ -102,3 +102,27 @@ export async function getGroupShortAnswer(questionId: number) {
   console.log(response)
   if (response) return response;
 }
+
+export async function getGroupFillBlanksCompleteWordsQuestion(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  console.log(response)
+  if (response) return response;
+}
+
+export async function getGroupOrderingQuestion(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  console.log(response)
+  if (response) return response;
+}
+
+export async function getGroupRoundedSingleChoiceQuestion(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  console.log(response)
+  if (response) return response;
+}
+
+export async function getGroupRadioSingleChoiceQuestion(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  console.log(response)
+  if (response) return response;
+}
