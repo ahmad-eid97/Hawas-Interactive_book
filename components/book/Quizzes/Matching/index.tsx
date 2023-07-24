@@ -318,8 +318,8 @@ function Matching({
         const to = matchingElement.querySelector<HTMLParagraphElement>(`.${classes.lefthand} p#${ID}`)!;
 
         const item = {
-          from: columnsData.righthand.items.find((item: any) => item[keyWord] === from.textContent?.trim())?.[keyWord],
-          to: columnsData.lefthand.items.find((item: any) => item[keyWord] === to.textContent?.trim())?.[keyWord]
+          from: columnsData?.righthand.items.find((item: any) => item[keyWord] === from.textContent?.trim())?.[keyWord],
+          to: columnsData?.lefthand.items.find((item: any) => item[keyWord] === to.textContent?.trim())?.[keyWord]
         }
 
         if (from && to) {
@@ -368,11 +368,11 @@ function Matching({
       <div className={`${classes.matching} ${className} ${dir === 'ltr' ? classes.ltr : ''}`} onMouseMove={handleMouseMove} onMouseUp={(event) => handleStopMatching(null, event)}>
         {/* Right Hand Items */}
         <div className={classes.righthand}>
-          <h3>{columnsData.righthand.title}</h3>
+          <h3>{columnsData?.righthand.title}</h3>
           {
-            columnsData.righthand.items.length ?
+            columnsData?.righthand.items.length ?
               (
-                columnsData.righthand.items.map((matchingItem: any, index: number) => (
+                columnsData?.righthand.items.map((matchingItem: any, index: number) => (
                   <p key={index} className={options?.itemsClassName || ''}>
                     {matchingItem[keyWord]}
                     <span className={`matching-start-point ${classes.matching_box}`} onMouseDown={handleMouseDown}></span>
@@ -415,9 +415,9 @@ function Matching({
         </div>
         {/* Left Hand Items */}
         <div className={classes.lefthand}>
-          <h3>{columnsData.lefthand.title}</h3>
+          <h3>{columnsData?.lefthand.title}</h3>
           {
-            columnsData.lefthand.items.length ?
+            columnsData?.lefthand.items.length ?
               (
                 columnsData.lefthand.items.map((matchingItem: any, index: number) => (
                   <p key={index} onMouseUp={handleMouseUp} className={options?.itemsClassName || ''}>
