@@ -29,7 +29,9 @@ export default function useLogic({ questionData }: { questionData: any }) {
     return getQuestionImageWithPosition(questionData.id)
   }
 
-  const { data, isLoading } = useQuery(['imageDraggingQuestion'], getQuestionData)
+  const { data, isLoading } = useQuery(['imageDraggingQuestion'], getQuestionData, {
+    cacheTime: 0
+  })
 
   const dragStart = (e: React.DragEvent<HTMLParagraphElement>) => {
     setDraggableItem(e.currentTarget);
