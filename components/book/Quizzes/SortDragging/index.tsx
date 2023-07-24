@@ -43,8 +43,8 @@ function SortDragging({ questionData }: Cprops) {
               strategy={verticalListSortingStrategy}
             >
               {/* We need components that use the useSortable hook */}
-              {items.map(item =>
-                <SortableItem key={item} id={item} />
+              {items.map((item: any, index: number) =>
+                <SortableItem key={index} id={item} />
               )}
             </SortableContext>
           </div>
