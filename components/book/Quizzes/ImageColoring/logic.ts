@@ -1,8 +1,14 @@
 "use client";
 //== Hooks
 import { useState } from "react";
+//== Modules
+import { useQuery } from "@tanstack/react-query";
+//== API
+import { getDrawingQuestion } from "@/API/quizzes";
+//== Types
+import { QuestionData } from "../types";
 
-export default function useLogic() {
+export default function useLogic({ questionData }: { questionData: QuestionData }) {
   const [colors, setColors] = useState<string[]>([
     "#2d3436",
     "#FDEA96",
@@ -12,6 +18,12 @@ export default function useLogic() {
     "#4F6D7A"
   ]);
   const [choosedColor, setChoosedColor] = useState<string | null>(null);
+
+  const getQuestion = async () => {
+    return await getDrawingQuestion(questionData.id);
+  }
+
+  const { data, isLoading } = useQuery(['coloringQuestion'], getQuestion);
 
   const changeColor = (color: string) => {
     setChoosedColor(color)
@@ -25,6 +37,7 @@ export default function useLogic() {
     colors,
     choosedColor,
     changeColor,
-    fillElement
+    fillElement,
+    isLoading
   }
 }

@@ -1,22 +1,27 @@
 //== Hooks
 import { Fragment } from 'react';
+//== Components
+import { PageLoader } from '@/components';
 //== Component Logic
 import useLogic from './logic';
+//== Types
+import { QuestionData } from '../types';
 //== Styles
 import styles from './continueTyping.module.scss';
 
-const ContinueTyping = () => {
-  const { items, handleFields, correctAnswer, showCorrection, retry, rendered } = useLogic();
+const ContinueTyping = ({ questionData }: { questionData: QuestionData }) => {
+  const { items, handleFields, correctAnswer, showCorrection, retry, rendered, isLoading } = useLogic({ questionData });
 
   if (!rendered) return null;
+  if (isLoading) return <PageLoader />
   return (
     <div className={styles.continueTyping}>
-      <h2>أَكْمِلْ حَسْبَ الْمِثالِ الْوَهْمِيِّ!</h2>
+      <h2>{questionData.title}</h2>
       <div className={styles.wrapper}>
         <div className={styles.item}>
           <i className="fa-duotone fa-pencil"></i>
           <span>بيت لي:</span>
-          <input type="text" placeholder='بيتي' />
+          <input type="text" placeholder='بيتي' disabled />
         </div>
         {items.map((item, idx) => (
           <div className={styles.item} key={item.id}>

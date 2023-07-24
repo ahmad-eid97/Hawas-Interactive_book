@@ -34,7 +34,7 @@ export default function useLogic({ quizzes }: any) {
       '6': <FillThePlaces />,
       'odd_word': <ChooseWord />,
       'group_word_single_choice': <ChooseAdjective questionData={quizzes[pageNum - 1]} />,
-      '9': <ContinueTyping />,
+      'group_short_answer': <ContinueTyping questionData={quizzes[pageNum - 1]} />,
       '10': <ArrangeWords />,
       '11': <Choosing />,
       '12': <SignleChoose />,
@@ -42,8 +42,8 @@ export default function useLogic({ quizzes }: any) {
       '14': <ImageTyping />,
       '15': <FillFields />,
       '16': <CompleteWords />,
-      '17': <Drawing />,
-      '18': <ImageColoring />,
+      'drawing': <Drawing questionData={quizzes[pageNum - 1]} />,
+      'coloring': <ImageColoring questionData={quizzes[pageNum - 1]} />,
       '19': <DraggingParts />,
       'matching_with_position': <ImageDragging questionData={quizzes[pageNum - 1]} />
     }

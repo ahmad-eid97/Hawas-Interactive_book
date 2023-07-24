@@ -1,8 +1,14 @@
 "use client";
 //== Hooks
-import { useState, useRef } from "react"
+import { useState, useRef } from "react";
+//== Modules
+import { useQuery } from "@tanstack/react-query";
+//== API
+import { getDrawingQuestion } from "@/API/quizzes";
+//== Types
+import { QuestionData } from "../types";
 
-export default function useLogic() {
+export default function useLogic({ questionData }: { questionData: QuestionData }) {
   const [colors, setColors] = useState<string[]>([
     "#2d3436",
     "#0984e3",
@@ -11,6 +17,14 @@ export default function useLogic() {
   ]);
   const [choosedColor, setChoosedColor] = useState<string>(colors[0]);
   const drawingCanvas = useRef<any>(null);
+
+  const getQuestion = async () => {
+    return await getDrawingQuestion(questionData.id);
+  }
+
+  const { data, isLoading } = useQuery(['drawingQuestion'], getQuestion);
+
+  console.log(data)
 
   const canvasStyles = {
     width: 280,
@@ -38,6 +52,8 @@ export default function useLogic() {
     changeCanvasColor,
     drawingCanvas,
     undoDrawing,
-    resetCanvas
+    resetCanvas,
+    isLoading,
+    questionDetails: data
   }
 }

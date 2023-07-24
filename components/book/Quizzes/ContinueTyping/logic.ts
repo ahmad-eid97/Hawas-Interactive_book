@@ -1,11 +1,17 @@
 "use client";
 //== Hooks
 import { useState } from "react";
+//== Modules
+import { useQuery } from "@tanstack/react-query";
+//== API
+import { getGroupShortAnswer } from "@/API/quizzes";
 //== Store
 import { useAppDispatch } from "@/store/hooks";
 import { checkAnswer, checkWrong } from "@/store/slices/common";
+//== Types
+import { QuestionData } from "../types";
 
-export default function useLogic() {
+export default function useLogic({ questionData }: { questionData: QuestionData }) {
   const [items, setItems] = useState([
     {
       id: 1,
@@ -44,6 +50,12 @@ export default function useLogic() {
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [rendered, setRendered] = useState(true);
   const dispatch = useAppDispatch();
+
+  const getQuestion = async () => {
+    return await getGroupShortAnswer(questionData.id);
+  }
+
+  const { data, isLoading } = useQuery(['groupShortAnswerQuestion'], getQuestion);
 
   const handleFields = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
     setStudentAnswer({ ...studentAnswer, [index]: e.target.value })
@@ -103,6 +115,7 @@ export default function useLogic() {
     correctAnswer,
     showCorrection,
     retry,
-    rendered
+    rendered,
+    isLoading
   }
 }

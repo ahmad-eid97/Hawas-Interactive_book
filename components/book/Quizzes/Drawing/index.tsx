@@ -1,20 +1,25 @@
 "use client";
 //== Modules
 import { ReactSketchCanvas } from 'react-sketch-canvas';
+//== Components
+import { PageLoader } from '@/components';
 //== Component Logic
 import useLogic from './logic';
+//== Types
+import { QuestionData } from '../types';
 //== Styles
 import styles from './drawing.module.scss';
 
-const Drawing = () => {
-  const { colors, canvasStyles, choosedColor, changeCanvasColor, drawingCanvas, undoDrawing, resetCanvas } = useLogic();
+const Drawing = ({ questionData }: { questionData: QuestionData }) => {
+  const { colors, canvasStyles, choosedColor, changeCanvasColor, drawingCanvas, undoDrawing, resetCanvas, isLoading, questionDetails } = useLogic({ questionData });
 
+  if (isLoading) return <PageLoader />
   return (
     <div className={styles.drawing}>
-      <h2>إرسم الشكل التالي في المنطقة الفارغة</h2>
+      <h2>{questionData.title}</h2>
       <div className={styles.wrapper}>
         <div className={styles.image}>
-          <img src="/images/quizzes/draw.png" alt="drwawing_image" loading='lazy' />
+          <img src={questionDetails?.questionImage} alt="drwawing_image" loading='lazy' />
         </div>
         <div className={styles.drawingArea}>
           <ReactSketchCanvas

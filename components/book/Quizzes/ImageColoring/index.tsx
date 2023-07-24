@@ -1,14 +1,19 @@
 //== Component Logic
 import useLogic from './logic';
+//== Components
+import { PageLoader } from '@/components';
+//== Types
+import { QuestionData } from '../types';
 //== Styles
 import styles from './imageColoring.module.scss';
 
-const ImageColoring = () => {
-  const { colors, changeColor, fillElement } = useLogic();
+const ImageColoring = ({ questionData }: { questionData: QuestionData }) => {
+  const { colors, changeColor, fillElement, isLoading } = useLogic({ questionData });
 
+  if (isLoading) return <PageLoader />
   return (
     <div className={styles.imageColoring}>
-      <h2>قم بتطبيق الألوان المناسبة علي الصورة الفارغة</h2>
+      <h2>{questionData.title}</h2>
       <div className={styles.colors}>
         {colors.map((color, idx) => (
           <span key={idx} style={{ backgroundColor: color }} onClick={() => changeColor(color)}></span>
