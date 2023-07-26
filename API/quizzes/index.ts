@@ -73,55 +73,76 @@ export async function getMatchingWithTableQuestion(questionId: number) {
   if (response) return data;
 }
 
+// NOT FINISHED
 export async function getGroupFillBlanksQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
   console.log(response)
   if (response) return response;
 }
 
+// NOT FINISHED
 export async function getImageSingleChoiceQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
   console.log(response)
   if (response) return response;
 }
 
+// NOT FINISHED
 export async function getGroupSingleWordChoice(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
   console.log(response)
   if (response) return response;
 }
 
+// NOT FINISHED
 export async function getDrawingQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
   console.log(response)
   if (response) return { questionImage: response.data.data.question_img };
 }
 
+// NOT FINISHED
 export async function getGroupShortAnswer(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
   console.log(response)
   if (response) return response;
 }
 
+// NOT FINISHED
 export async function getGroupFillBlanksCompleteWordsQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
   console.log(response)
   if (response) return response;
 }
 
+// NOT FINISHED
 export async function getGroupOrderingQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
   console.log(response)
   if (response) return response;
 }
 
+// NOT FINISHED
 export async function getGroupRoundedSingleChoiceQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
   console.log(response)
   if (response) return response;
 }
 
+// NOT FINISHED
 export async function getGroupRadioSingleChoiceQuestion(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  console.log(response)
+  if (response) return response;
+}
+
+export async function getSingleChoiceQuestion(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  const answers = response?.data?.data?.answers;
+  if (response) return { answers };
+}
+
+export async function getGroupFillInBlankImageAnswerQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
   console.log(response)
   if (response) return response;

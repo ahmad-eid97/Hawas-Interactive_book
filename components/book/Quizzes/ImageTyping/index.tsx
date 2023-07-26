@@ -1,17 +1,22 @@
 //== Hooks
 import { Fragment } from 'react';
+//== Components
+import PageLoader from '@/components/Common/PageLoader';
 //== Component Logic
 import useLogic from './logic';
+//== Types
+import { QuestionData } from '../types';
 //== Styles
 import styles from './imageTyping.module.scss';
 
-const ImageTyping = () => {
-  const { items, handleFields, showCorrection, correctAnswer, retry, rendered } = useLogic();
+const ImageTyping = ({ questionData }: { questionData: QuestionData }) => {
+  const { items, handleFields, showCorrection, correctAnswer, retry, rendered, isLoading } = useLogic({ questionData });
 
   if (!rendered) return null;
+  if (isLoading) return <PageLoader />
   return (
     <div className={styles.continueTyping}>
-      <h2>أَكْمِلْ حَسْبَ الْمِثالِ الْوَهْمِيِّ!</h2>
+      <h2>{questionData.title}</h2>
       <div className={styles.wrapper}>
         {items.map((item, idx) => (
           <div className={styles.item} key={item.id}>

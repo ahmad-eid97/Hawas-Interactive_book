@@ -48,3 +48,11 @@ export { default as ImageDroppables } from './book/Quizzes/ImageDragging/ImageDr
 //== Lesson Sections
 export { default as TextSection } from './book/LessonSections/TextSection';
 export { default as ImageSection } from './book/LessonSections/ImageSection';
+export { default as VideoSection } from './book/LessonSections/VideoSection';
+export { default as AudioSection } from './book/LessonSections/AudioSection';
+export { default as ActivitySection } from './book/LessonSections/ActivitySection';
+export { default as GameSection } from './book/LessonSections/GameSection';
+export { default as IFrameSection } from './book/LessonSections/IFrameSection';
+export { default as ImageAudioSection } from './book/LessonSections/ImageAudioSection';
+export { default as ImageVideoSection } from './book/LessonSections/ImageVideoSection';
+export { default as ImageActivitySection } from './book/LessonSections/ImageActivitySection';

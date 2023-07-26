@@ -1,11 +1,17 @@
 "use client";
 //== Hooks
 import { useState } from "react";
+//== Modules
+import { useQuery } from "@tanstack/react-query";
 //== Store
 import { useAppDispatch } from "@/store/hooks";
 import { checkAnswer, checkWrong } from "@/store/slices/common";
+//== API
+import { getGroupFillInBlankImageAnswerQuestion } from "@/API/quizzes";
+//== Types
+import { QuestionData } from "../types";
 
-export default function useLogic() {
+export default function useLogic({ questionData }: { questionData: QuestionData }) {
   const [items, setItems] = useState([
     {
       id: 1,
@@ -42,6 +48,12 @@ export default function useLogic() {
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [rendered, setRendered] = useState(true);
   const dispatch = useAppDispatch();
+
+  const getQuestion = async () => {
+    return await getGroupFillInBlankImageAnswerQuestion(questionData.id);
+  }
+
+  const { data, isLoading } = useQuery(['group_fill_in_blank_image_answer'], getQuestion);
 
   const handleFields = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
     setStudentAnswer({ ...studentAnswer, [index]: e.target.value })
@@ -101,6 +113,7 @@ export default function useLogic() {
     showCorrection,
     correctAnswer,
     retry,
-    rendered
+    rendered,
+    isLoading
   }
 }
