@@ -13,7 +13,7 @@ export default function useLogic() {
         Audio?.current?.play();
       case false:
         setAudioOpened(status);
-        Audio?.current?.play();
+        Audio?.current?.pause();
     }
   };
 
