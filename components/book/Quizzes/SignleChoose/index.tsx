@@ -7,6 +7,12 @@ import { QuestionData } from '../types';
 //== Styles
 import styles from './signleChoose.module.scss';
 
+interface Item {
+  question: string;
+  words: string[];
+  correct: string;
+}
+
 const SignleChoose = ({ questionData }: { questionData: QuestionData }) => {
   const { items, choices, addToChoices, isLoading } = useLogic({ questionData });
 
@@ -14,7 +20,7 @@ const SignleChoose = ({ questionData }: { questionData: QuestionData }) => {
   return (
     <div className={styles.chooseLetter}>
       <div className={styles.itemsWrapper}>
-        {items.map((item, idx) => (
+        {items.map((item: Item, idx: number) => (
           <div className={styles.item} key={idx}>
             <span>؟السؤال {idx + 1}:</span>
             <h2>{item.question}</h2>

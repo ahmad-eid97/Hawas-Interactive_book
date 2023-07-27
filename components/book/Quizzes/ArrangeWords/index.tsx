@@ -11,7 +11,7 @@ import { QuestionData } from '../types';
 import styles from './dragging.module.scss';
 
 const ArrangeWords = ({ questionData }: { questionData: QuestionData }) => {
-  const { droppingArea, choices, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, correctAnswer, showCorrection, retry, rendered, isLoading } = useLogic({ questionData });
+  const { items, droppingArea, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, correctAnswer, showCorrection, retry, rendered, isLoading } = useLogic({ questionData });
 
   if (!rendered) return null;
   if (isLoading) return <PageLoader />
@@ -19,20 +19,22 @@ const ArrangeWords = ({ questionData }: { questionData: QuestionData }) => {
     <>
       <h2>{questionData?.title}</h2>
       <div className={styles.arrangeWords}>
-        {[...Array(3)].map((_, idx) => (
+        {items.map((item: any, idx: number) => (
           <div className={styles.wrapper} key={idx}>
             <ArrangeDroppables
               dragOver={dragOver}
               dragLeave={dragLeave}
               drop={drop}
               index={idx}
+              droppables={item.answers}
             />
             <ArrangeDraggables
+              choices={item.answers}
               droppingArea={droppingArea}
-              choices={choices}
               dragStart={dragStart}
               dragEnd={dragEnd}
               removeChoice={removeChoice}
+              id={idx}
             />
           </div>
         ))}

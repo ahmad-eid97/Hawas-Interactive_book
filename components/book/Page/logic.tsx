@@ -8,7 +8,9 @@ import { useAppSelector } from "@/store/hooks";
 
 export default function useLogic({ quizzes }: any) {
   const [pageNum, setPageNum] = useState<number>(1);
-  const { correctAnswer, wrongAnswer } = useAppSelector((state: any) => state.common)
+  const { correctAnswer, wrongAnswer } = useAppSelector((state: any) => state.common);
+
+  console.log(quizzes)
 
   const renderQuiz = () => {
     const ComponentRendered: { [type: string]: JSX.Element } = {
@@ -46,7 +48,7 @@ export default function useLogic({ quizzes }: any) {
       'coloring': <ImageColoring questionData={quizzes[pageNum - 1]} />,
       'matching_with_position': <ImageDragging questionData={quizzes[pageNum - 1]} />
     }
-    return ComponentRendered[quizzes[pageNum - 1]["question_type"]]
+    return ComponentRendered[quizzes[pageNum - 1]["question_type"]];
   }
 
   const changePage = async (event: any, pageNum: number) => {

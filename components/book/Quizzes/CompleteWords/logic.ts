@@ -14,67 +14,6 @@ import { QuestionData } from "../types";
 export default function useLogic({ questionData }: { questionData: QuestionData }) {
   const [draggableItem, setDraggableItem] = useState<HTMLParagraphElement | null>(null);
   const droppingArea = useRef<HTMLDivElement | null>(null);
-  const [items, setItems] = useState<any>([
-    [
-      "عا",
-      "-"
-    ],
-    [
-      "-",
-      "لون"
-    ],
-    [
-      "ور",
-      "-",
-      "ء"
-    ],
-    [
-      "-",
-      "كض"
-    ],
-    [
-      "حز",
-      "-"
-    ],
-    [
-      "جدي",
-      "-"
-    ],
-  ])
-  const [choices, setChoices] = useState<any>([
-    {
-      id: 1,
-      text: "ر"
-    },
-    {
-      id: 2,
-      text: "ا"
-    },
-    {
-      id: 3,
-      text: "با"
-    },
-    {
-      id: 4,
-      text: "د"
-    },
-    {
-      id: 5,
-      text: "ن"
-    },
-    {
-      id: 6,
-      text: "دل"
-    }
-  ])
-  const [correctData, setCorrectData] = useState<any>({
-    0: "دل",
-    1: "با",
-    2: "ا",
-    3: "ر",
-    4: "ن",
-    5: "د",
-  })
   const [studentAnswer, setStudentAnswer] = useState<any>({})
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [rendered, setRendered] = useState(true);
@@ -135,8 +74,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   const correctAnswer = () => {
-    console.log(studentAnswer)
-    if (compareObjects(correctData, studentAnswer)) {
+    if (compareObjects(data?.correctAnswer, studentAnswer)) {
       dispatch(checkAnswer(true))
       setTimeout(() => {
         dispatch(checkAnswer(false))
@@ -175,9 +113,9 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   return {
-    items,
+    items: data?.items,
     droppingArea,
-    choices,
+    choices: data?.choices,
     dragStart,
     dragEnd,
     dragOver,

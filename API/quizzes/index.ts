@@ -1,16 +1,18 @@
 //== Utils
 import api from "../handlers";
 
+//== Shuffle Arrays
+function shuffleArray(items: any) {
+  function compareRandom() {
+    return Math.random() - 0.5;
+  }
+  items.sort(compareRandom);
+}
+
 export async function getMatchingQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
   const correctAnswers = response.data.data.answers.map((item: any) => ({ from: item.title, to: item.answer_two_gap_match }));
   const items = response.data.data.answers.map((item: any) => item)
-  function shuffleArray(items: object[]) {
-    function compareRandom() {
-      return Math.random() - 0.5;
-    }
-    items.sort(compareRandom);
-  }
   const answers = items.map((item: any) => item.answer_two_gap_match);
   shuffleArray(answers);
   const columnsData = {
@@ -108,32 +110,60 @@ export async function getGroupShortAnswer(questionId: number) {
   if (response) return response;
 }
 
-// NOT FINISHED
 export async function getGroupFillBlanksCompleteWordsQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
-  console.log(response)
-  if (response) return response;
+  const choices = response?.data?.data?.children[0].answers?.map((item: any) => ({ id: item.id, text: item.answer_two_gap_match }));
+  shuffleArray(choices)
+  const items = response?.data?.data?.children[0].answers?.map((item: any) => [...item.title.split(' ').map((str: string) => str === '{dash}' ? '-' : str)]);
+  const correctAnswer = response?.data?.data?.children[0].answers?.map((item: any, index: number) => ({ [index]: item.answer_two_gap_match }));
+  const answerObject = correctAnswer.reduce((acc: any, cur: any) => {
+    const key = Object.keys(cur)[0];
+    acc[key] = cur[key];
+    return acc;
+  }, {})
+  const data = { items, choices, correctAnswer: answerObject };
+  if (response) return data;
 }
 
-// NOT FINISHED
 export async function getGroupOrderingQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
-  console.log(response)
-  if (response) return response;
+  const items = response?.data?.data?.children?.map((item: any) => {
+    const arr = item?.answers.map((item: any) => item.title);
+    shuffleArray(arr);
+    return ({ answers: arr });
+  });
+  const correctAnswer: any = {}
+  response?.data?.data?.children?.forEach((item: any, index: number) => {
+    const obj: { [key: string]: string } = {}
+    item.answers.forEach((element: any, index: number) => {
+      obj[index] = element.title;
+    });
+    correctAnswer[index] = obj;
+  })
+  const data = { items, correctAnswer };
+  if (response) return data;
 }
 
-// NOT FINISHED
 export async function getGroupRoundedSingleChoiceQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
-  console.log(response)
-  if (response) return response;
+  const items = response?.data?.data?.children?.map((item: any) => ({
+    id: item.id,
+    question: item.title,
+    words: item.answers.map((item: any) => item.title),
+    correct: item.answers.filter((item: any) => item.is_correct === 1)[0].title
+  }));
+  if (response) return { items };
 }
 
-// NOT FINISHED
 export async function getGroupRadioSingleChoiceQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
-  console.log(response)
-  if (response) return response;
+  const items = response?.data?.data?.children?.map((item: any) => ({
+    id: item.id,
+    question: item.title,
+    words: item.answers.map((item: any) => item.title),
+    correct: item.answers.filter((item: any) => item.is_correct === 1)[0].title
+  }));
+  if (response) return { items };
 }
 
 export async function getSingleChoiceQuestion(questionId: number) {

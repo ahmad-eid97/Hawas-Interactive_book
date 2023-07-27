@@ -30,8 +30,8 @@ const BookPages = ({ data }: CProps) => {
           ref={flippy}
         >
           <FrontCover />
-          <Lesson content={data.content} />
-          <Page quizzes={data.quizzes} />
+          <Lesson content={data?.content} />
+          <Page quizzes={data?.quizzes} />
           <BackCover />
         </Flippy>
       }

@@ -49,11 +49,11 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   const [rendered, setRendered] = useState(true);
   const dispatch = useAppDispatch();
 
-  const getQuestion = async () => {
+  const getImageSingleQuestion = async () => {
     return await getGroupFillInBlankImageAnswerQuestion(questionData.id);
   }
 
-  const { data, isLoading } = useQuery(['group_fill_in_blank_image_answer'], getQuestion);
+  const { data, isLoading } = useQuery(['group_fill_in_blank_image_answer_question'], getImageSingleQuestion);
 
   const handleFields = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
     setStudentAnswer({ ...studentAnswer, [index]: e.target.value })

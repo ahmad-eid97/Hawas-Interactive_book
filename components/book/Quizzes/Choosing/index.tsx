@@ -7,6 +7,13 @@ import styles from './choosing.module.scss';
 //== Types
 import { QuestionData } from '../types';
 
+interface Item {
+  id: number;
+  question: string;
+  words: string[];
+  correct: string;
+}
+
 const Choosing = ({ questionData }: { questionData: QuestionData }) => {
   const { items, choices, addToChoices, isLoading } = useLogic({ questionData });
 
@@ -14,7 +21,7 @@ const Choosing = ({ questionData }: { questionData: QuestionData }) => {
   return (
     <div className={styles.chooseLetter}>
       <div className={styles.itemsWrapper}>
-        {items.map((item, idx) => (
+        {items.map((item: Item, idx: number) => (
           <div className={styles.item} key={idx}>
             <span>؟السؤال {idx + 1}:</span>
             <h2>{item.question}</h2>

@@ -1,3 +1,5 @@
+//== Component Logic
+import useLogic from './logic';
 //== Styles
 import styles from './textSection.module.scss';
 
@@ -8,20 +10,9 @@ interface CProps {
   }
 }
 
-let interval: any;
-
-const startHoverHandler = () => {
-  let timer = 0;
-  interval = setInterval(() => {
-    timer += 1
-  }, 1000)
-}
-
-const endHoverHandler = async () => {
-  clearInterval(interval)
-}
-
 const TextSection = ({ data }: CProps) => {
+  const { startHoverHandler, endHoverHandler } = useLogic();
+
   return (
     <div className={styles.textSection}>
       <h3><i className="fa-duotone fa-star"></i> {data.title}:</h3>

@@ -11,7 +11,7 @@ import styles from './imageTyping.module.scss';
 
 const ImageTyping = ({ questionData }: { questionData: QuestionData }) => {
   const { items, handleFields, showCorrection, correctAnswer, retry, rendered, isLoading } = useLogic({ questionData });
-
+  console.log(questionData)
   if (!rendered) return null;
   if (isLoading) return <PageLoader />
   return (

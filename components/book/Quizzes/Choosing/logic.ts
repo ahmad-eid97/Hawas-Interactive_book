@@ -9,26 +9,6 @@ import { getGroupRoundedSingleChoiceQuestion } from "@/API/quizzes";
 import { QuestionData } from "../types";
 
 export default function useLogic({ questionData }: { questionData: QuestionData }) {
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      question: "ماذا يُوجَدُ عِنْدَ عادِلٍ؟",
-      words: ["بالون قديم", "ألوان جميلة", "بالون جديد"],
-      correct: 'بالون جديد'
-    },
-    {
-      id: 2,
-      question: "لِماذا طَيَّرَ عادِلٌ بالونَهُ؟",
-      words: ["ليجري وراءه", "ليطير معه", "ليطير عاليا"],
-      correct: 'ليجري وراءه'
-    },
-    {
-      id: 3,
-      question: "كَيْفَ رَكَضَ عادِلٌ وَراءَ الْبالونِ؟",
-      words: ["بسرعة", "بفرحه", "بخوف"],
-      correct: 'بسرعة'
-    },
-  ])
   const [choices, setChoices] = useState<{ [index: number]: string }>({});
 
   const getQuestion = async () => {
@@ -42,7 +22,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   return {
-    items,
+    items: data?.items,
     choices,
     addToChoices,
     isLoading

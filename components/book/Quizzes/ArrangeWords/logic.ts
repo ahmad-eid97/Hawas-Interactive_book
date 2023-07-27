@@ -13,29 +13,6 @@ import { QuestionData } from "../types";
 
 export default function useLogic({ questionData }: { questionData: QuestionData }) {
   const [draggableItem, setDraggableItem] = useState<HTMLParagraphElement | null>(null);
-  const [correctData, setCorrectData] = useState<any>({
-    0: {
-      0: "رأي",
-      1: "عثمان",
-      2: "عشا",
-      3: "علي",
-      4: "الشجرة"
-    },
-    1: {
-      0: "رأي",
-      1: "عثمان",
-      2: "عشا",
-      3: "علي",
-      4: "الشجرة"
-    },
-    2: {
-      0: "رأي",
-      1: "عثمان",
-      2: "عشا",
-      3: "علي",
-      4: "الشجرة"
-    },
-  })
   const [studentAnswer, setStudentAnswer] = useState<any>({});
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [rendered, setRendered] = useState(true);
@@ -78,7 +55,6 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   const dragEnd = (e: React.DragEvent<HTMLParagraphElement>) => {
-    // setDraggableItem(null)
     e.currentTarget.style.opacity = "1"
   }
 
@@ -99,7 +75,8 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   const removeChoice = (e: React.MouseEvent<HTMLElement, MouseEvent>, idx: number) => {
-    if (e.currentTarget.parentElement) droppingArea.current?.insertBefore(e.currentTarget.parentElement, droppingArea?.current.children[idx]);
+    const draggableAre = document.getElementById(`draggable-${idx}`)
+    if (e.currentTarget.parentElement) draggableAre?.insertBefore(e.currentTarget.parentElement, draggableAre?.children[idx]);
     const answers = studentAnswer
     for (const key in answers) {
       const innerObj = answers[key];
@@ -124,8 +101,8 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
 
   const correctAnswer = () => {
     const answers = []
-    for (let i = 0; i < Object.keys(correctData).length; i++) {
-      answers.push(compareObjects(correctData[i], studentAnswer[i]))
+    for (let i = 0; i < Object.keys(data?.correctAnswer).length; i++) {
+      answers.push(compareObjects(data?.correctAnswer[i], studentAnswer[i]))
     }
     if (answers.every((answer) => answer === true)) {
       dispatch(checkAnswer(true))
@@ -166,6 +143,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   return {
+    items: data?.items,
     droppingArea,
     choices,
     dragStart,
