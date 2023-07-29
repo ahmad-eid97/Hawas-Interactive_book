@@ -22,9 +22,9 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     return await getDrawingQuestion(questionData.id);
   }
 
-  const { data, isLoading } = useQuery(['drawingQuestion'], getQuestion);
-
-  console.log(data)
+  const { data, isLoading } = useQuery(['drawingQuestion'], getQuestion, {
+    cacheTime: 0
+  });
 
   const canvasStyles = {
     width: 280,

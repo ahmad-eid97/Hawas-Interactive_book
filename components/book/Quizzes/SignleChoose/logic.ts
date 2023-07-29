@@ -15,7 +15,9 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     return await getGroupRadioSingleChoiceQuestion(questionData.id);
   }
 
-  const { data, isLoading } = useQuery(['group_radio_single_choice_question'], getRadioQuestion);
+  const { data, isLoading } = useQuery(['group_radio_single_choice_question'], getRadioQuestion, {
+    cacheTime: 0
+  });
 
   const addToChoices = (index: number, letter: string) => {
     setChoices(prev => ({ ...prev, [index]: letter }));

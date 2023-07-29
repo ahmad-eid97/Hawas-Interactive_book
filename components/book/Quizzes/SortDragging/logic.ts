@@ -29,6 +29,7 @@ export default function useLogic({ questionData }: LogicProps) {
   }
 
   const { data, isLoading } = useQuery(['sortingQuestion'], getQuestionData, {
+    cacheTime: 0,
     onSuccess: (data) => {
       setItems(data?.items);
     }

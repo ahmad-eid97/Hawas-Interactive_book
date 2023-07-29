@@ -37,14 +37,16 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     return await getImageSingleChoiceQuestion(questionData.id);
   }
 
-  const { data, isLoading } = useQuery(['imageSingleChoiceQuestion'], getQuestion);
+  const { data, isLoading } = useQuery(['imageSingleChoiceQuestion'], getQuestion, {
+    cacheTime: 0
+  });
 
   const addToChoices = (index: number, letter: string) => {
     setChoices(prev => ({ ...prev, [index]: letter }));
   }
 
   return {
-    items,
+    items: data?.items,
     choices,
     addToChoices,
     isLoading

@@ -22,7 +22,9 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     return await getMatchingWithTableQuestion(questionData.id)
   }
 
-  const { data, isLoading } = useQuery(["tableQuestion"], getQuestion);
+  const { data, isLoading } = useQuery(["tableQuestion"], getQuestion, {
+    cacheTime: 0
+  });
 
   const dragStart = (e: React.DragEvent<HTMLParagraphElement>) => {
     e.stopPropagation();

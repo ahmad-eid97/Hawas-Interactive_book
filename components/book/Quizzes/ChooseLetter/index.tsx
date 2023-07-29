@@ -17,11 +17,11 @@ const ChooseLetter = ({ questionData }: { questionData: QuestionData }) => {
     <div className={styles.chooseLetter}>
       <h2>{questionData.title}</h2>
       <div className={styles.itemsWrapper}>
-        {items.map((item, idx) => (
+        {items.map((item: any, idx: number) => (
           <div className={styles.item} key={idx}>
             <img src={item.image} alt="quiz-image" loading='lazy' />
             <div className={styles.choices}>
-              {item.letters.map((letter, index) => (
+              {item.letters.map((letter: any, index: number) => (
                 <Fragment key={index}>
                   {index > 0 && '، '}
                   <span key={index} onClick={() => addToChoices(idx, letter)} className={choices[idx] === letter ? styles.active : ''}>

@@ -9,16 +9,22 @@ import { QuestionData } from '../types';
 //== Styles
 import styles from './imageTyping.module.scss';
 
+interface Item {
+  id: number;
+  text: string;
+  image: string;
+}
+
 const ImageTyping = ({ questionData }: { questionData: QuestionData }) => {
   const { items, handleFields, showCorrection, correctAnswer, retry, rendered, isLoading } = useLogic({ questionData });
-  console.log(questionData)
+
   if (!rendered) return null;
   if (isLoading) return <PageLoader />
   return (
     <div className={styles.continueTyping}>
       <h2>{questionData.title}</h2>
       <div className={styles.wrapper}>
-        {items.map((item, idx) => (
+        {items.map((item: Item, idx: number) => (
           <div className={styles.item} key={item.id}>
             <i className="fa-duotone fa-star"></i>
             <span>{item.text}:</span>

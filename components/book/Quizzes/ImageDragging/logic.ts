@@ -11,14 +11,6 @@ import { getQuestionImageWithPosition } from "@/API/quizzes";
 
 export default function useLogic({ questionData }: { questionData: any }) {
   const [draggableItem, setDraggableItem] = useState<HTMLParagraphElement | null>(null);
-  const [correctData, setCorrectData] = useState<any>({
-    0: "مساعدة",
-    1: "محبة",
-    2: "صداقة",
-    3: "تفهم",
-    4: "عطف",
-    5: "تقبل",
-  });
   const [studentAnswer, setStudentAnswer] = useState<any>({});
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [rendered, setRendered] = useState(true);
@@ -92,7 +84,6 @@ export default function useLogic({ questionData }: { questionData: any }) {
         data: [
           "أحسنت",
           "لقد حصلت على علامة كاملة",
-          "العلامة المُستحقّة هي : 10"
         ]
       })
     } else {
@@ -105,7 +96,6 @@ export default function useLogic({ questionData }: { questionData: any }) {
         data: [
           "حاول مرّة أخرى",
           "بعض الإجابات غير صحيحة",
-          "العلامة المُستحقّة هي : 5"
         ]
       })
     }

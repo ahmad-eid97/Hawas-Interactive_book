@@ -10,8 +10,6 @@ export default function useLogic({ quizzes }: any) {
   const [pageNum, setPageNum] = useState<number>(1);
   const { correctAnswer, wrongAnswer } = useAppSelector((state: any) => state.common);
 
-  console.log(quizzes)
-
   const renderQuiz = () => {
     const ComponentRendered: { [type: string]: JSX.Element } = {
       'matching_with_two_titles': <Matching
@@ -31,10 +29,10 @@ export default function useLogic({ quizzes }: any) {
       />,
       'ordering': <SortDragging questionData={quizzes[pageNum - 1]} />,
       'matching_with_table_dragging': <TableDragging questionData={quizzes[pageNum - 1]} />,
-      'group_fill_in_blank': <WordDragging questionData={quizzes[pageNum - 1]} />,
+      'group_rounded_fill_in_blank': <WordDragging questionData={quizzes[pageNum - 1]} />,
       'group_image_single_choice': <ChooseLetter questionData={quizzes[pageNum - 1]} />,
-      '6': <FillThePlaces />,
-      'odd_word': <ChooseWord />,
+      'group_fill_in_blank': <FillThePlaces />,         // hereeeeeeeeeeeeeee
+      'odd_word': <ChooseWord />,     // hereeeeeeeeeeeeeee
       'group_word_single_choice': <ChooseAdjective questionData={quizzes[pageNum - 1]} />,
       'group_short_answer': <ContinueTyping questionData={quizzes[pageNum - 1]} />,
       'group_ordering': <ArrangeWords questionData={quizzes[pageNum - 1]} />,
@@ -42,7 +40,7 @@ export default function useLogic({ quizzes }: any) {
       'group_radio_single_choice': <SignleChoose questionData={quizzes[pageNum - 1]} />,
       'single_choice': <ImageChoose questionData={quizzes[pageNum - 1]} />,
       'group_fill_in_blank_image_answer': <ImageTyping questionData={quizzes[pageNum - 1]} />,
-      '15': <FillFields />,
+      '15': <FillFields />,            // hereeeeeeeeeeeeeee
       'group_fill_in_blank_complete_words': <CompleteWords questionData={quizzes[pageNum - 1]} />,
       'drawing': <Drawing questionData={quizzes[pageNum - 1]} />,
       'coloring': <ImageColoring questionData={quizzes[pageNum - 1]} />,

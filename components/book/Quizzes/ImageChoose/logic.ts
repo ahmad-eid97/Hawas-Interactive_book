@@ -15,7 +15,9 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     return await getSingleChoiceQuestion(questionData.id);
   }
 
-  const { data, isLoading } = useQuery(['single_choice'], getQuestion);
+  const { data, isLoading } = useQuery(['single_choice'], getQuestion, {
+    cacheTime: 0
+  });
 
   return {
     items: data?.answers,

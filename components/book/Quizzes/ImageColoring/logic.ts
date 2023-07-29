@@ -4,7 +4,7 @@ import { useState } from "react";
 //== Modules
 import { useQuery } from "@tanstack/react-query";
 //== API
-import { getDrawingQuestion } from "@/API/quizzes";
+import { getColoringQuestion } from "@/API/quizzes";
 //== Types
 import { QuestionData } from "../types";
 
@@ -20,10 +20,12 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   const [choosedColor, setChoosedColor] = useState<string | null>(null);
 
   const getQuestion = async () => {
-    return await getDrawingQuestion(questionData.id);
+    return await getColoringQuestion(questionData.id);
   }
 
-  const { data, isLoading } = useQuery(['coloringQuestion'], getQuestion);
+  const { data, isLoading } = useQuery(['coloringQuestion'], getQuestion, {
+    cacheTime: 0
+  });
 
   const changeColor = (color: string) => {
     setChoosedColor(color)
@@ -38,6 +40,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     choosedColor,
     changeColor,
     fillElement,
-    isLoading
+    isLoading,
+    questionDetails: data ? data : {}
   }
 }

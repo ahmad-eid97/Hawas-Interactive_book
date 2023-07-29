@@ -25,7 +25,9 @@ export default function useLogic({ questionData }: CProps) {
     return await getMatchingQuestion(questionData.id);
   }
 
-  const { data, isLoading } = useQuery(['matchingQuestion'], getQuestionData)
+  const { data, isLoading } = useQuery(['matchingQuestion'], getQuestionData, {
+    cacheTime: 0
+  })
 
   const areArraysEqual = (arr1: any, arr2: any) => {
     if (arr1.length !== arr2.length) {
@@ -61,7 +63,6 @@ export default function useLogic({ questionData }: CProps) {
         data: [
           "أحسنت",
           "لقد حصلت على علامة كاملة",
-          "العلامة المُستحقّة هي : 10"
         ]
       })
     } else {
@@ -74,7 +75,6 @@ export default function useLogic({ questionData }: CProps) {
         data: [
           "حاول مرّة أخرى",
           "بعض الإجابات غير صحيحة",
-          "العلامة المُستحقّة هي : 5"
         ]
       })
     }

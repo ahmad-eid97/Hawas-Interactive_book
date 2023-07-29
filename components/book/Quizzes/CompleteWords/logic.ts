@@ -23,7 +23,9 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     return await getGroupFillBlanksCompleteWordsQuestion(questionData.id)
   }
 
-  const { data, isLoading } = useQuery(['group_fill_in_blank_complete_words'], getQuestion);
+  const { data, isLoading } = useQuery(['group_fill_in_blank_complete_words'], getQuestion, {
+    cacheTime: 0
+  });
 
   const dragStart = (e: React.DragEvent<HTMLParagraphElement>) => {
     setDraggableItem(e.currentTarget);
@@ -84,7 +86,6 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         data: [
           "أحسنت",
           "لقد حصلت على علامة كاملة",
-          "العلامة المُستحقّة هي : 10"
         ]
       })
     } else {
@@ -97,7 +98,6 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         data: [
           "حاول مرّة أخرى",
           "بعض الإجابات غير صحيحة",
-          "العلامة المُستحقّة هي : 5"
         ]
       })
     }

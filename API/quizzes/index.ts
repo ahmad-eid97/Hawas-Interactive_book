@@ -76,17 +76,35 @@ export async function getMatchingWithTableQuestion(questionId: number) {
 }
 
 // NOT FINISHED
-export async function getGroupFillBlanksQuestion(questionId: number) {
+export async function getGroupRoundedFillBlanksQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  const items = response?.data?.data.children[0]?.answers?.map((item: any) => {
+    const choicesArray = item.answer_two_gap_match.split("|")
+    shuffleArray(choicesArray)
+    return ({
+      id: item.id,
+      title: item.title.split(' ').map((str: string) => str === '{dash}' ? '-' : str),
+      choices: choicesArray
+    })
+  })
+  // const correctAnswer: any = {}
+  // response?.data?.data?.children[0]?.answers?.forEach((item: any, index: number) => {
+
+  // })
+
+  // console.log(items)
   console.log(response)
   if (response) return response;
 }
 
-// NOT FINISHED
 export async function getImageSingleChoiceQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
-  console.log(response)
-  if (response) return response;
+  const items = response?.data?.data?.children?.map((item: any) => ({
+    image: item.question_img,
+    letters: item.answers.map((item: any) => item.title),
+    correct: item.answers.filter((item: any) => item.is_correct === 1)[0].title
+  }));
+  if (response) return { items };
 }
 
 // NOT FINISHED
@@ -96,11 +114,14 @@ export async function getGroupSingleWordChoice(questionId: number) {
   if (response) return response;
 }
 
-// NOT FINISHED
 export async function getDrawingQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
-  console.log(response)
   if (response) return { questionImage: response.data.data.question_img };
+}
+
+export async function getColoringQuestion(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  if (response) return response?.data?.data;
 }
 
 // NOT FINISHED
@@ -174,6 +195,14 @@ export async function getSingleChoiceQuestion(questionId: number) {
 
 export async function getGroupFillInBlankImageAnswerQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
-  console.log(response)
-  if (response) return response;
+  const items = response?.data?.data?.children[0].answers?.map((item: any) => ({
+    id: item.id,
+    text: item.title,
+    image: item.answer_img
+  }))
+  const correctAnswer: any = {};
+  response?.data?.data?.children[0].answers?.forEach((item: any, index: number) => {
+    correctAnswer[index] = item.answer_two_gap_match;
+  })
+  if (response) return { items, correctAnswer };
 }

@@ -5,7 +5,7 @@ import { useState, useRef } from "react";
 import { useAppDispatch } from "@/store/hooks";
 import { checkAnswer, checkWrong } from "@/store/slices/common";
 //== API
-import { getGroupFillBlanksQuestion } from "@/API/quizzes";
+import { getGroupRoundedFillBlanksQuestion } from "@/API/quizzes";
 //== Types
 import { QuestionData } from "../types";
 import { useQuery } from "@tanstack/react-query";
@@ -33,10 +33,12 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   const dispatch = useAppDispatch();
 
   const getQuestion = async () => {
-    return await getGroupFillBlanksQuestion(questionData.id);
+    return await getGroupRoundedFillBlanksQuestion(questionData.id);
   }
 
-  const { data, isLoading } = useQuery(["groupFillBlankQuestion"], getQuestion);
+  const { data, isLoading } = useQuery(["groupFillBlankQuestion"], getQuestion, {
+    cacheTime: 0
+  });
 
   const choices = [
     {
@@ -117,7 +119,6 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         data: [
           "أحسنت",
           "لقد حصلت على علامة كاملة",
-          "العلامة المُستحقّة هي : 10"
         ]
       })
     } else {
@@ -130,7 +131,6 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         data: [
           "حاول مرّة أخرى",
           "بعض الإجابات غير صحيحة",
-          "العلامة المُستحقّة هي : 5"
         ]
       })
     }

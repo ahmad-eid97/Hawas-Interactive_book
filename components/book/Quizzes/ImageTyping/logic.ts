@@ -12,38 +12,6 @@ import { getGroupFillInBlankImageAnswerQuestion } from "@/API/quizzes";
 import { QuestionData } from "../types";
 
 export default function useLogic({ questionData }: { questionData: QuestionData }) {
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      text: "عند عادل",
-      image: "/images/quizzes/6.png",
-      correct: 'بالون'
-    },
-    {
-      id: 2,
-      text: "أكل يزيد",
-      image: "/images/quizzes/7.png",
-      correct: 'البيضة'
-    },
-    {
-      id: 3,
-      text: "لعب مثني ب",
-      image: "/images/quizzes/8.png",
-      correct: 'الكرة'
-    },
-    {
-      id: 4,
-      text: "رسم رامي",
-      image: "/images/quizzes/14.png",
-      correct: 'سيارة'
-    },
-  ])
-  const [correctData, setCorrectData] = useState<any>({
-    0: "بالون",
-    1: "بيضة",
-    2: "الكرة",
-    3: "سيارة",
-  })
   const [studentAnswer, setStudentAnswer] = useState<any>({});
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [rendered, setRendered] = useState(true);
@@ -53,7 +21,9 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     return await getGroupFillInBlankImageAnswerQuestion(questionData.id);
   }
 
-  const { data, isLoading } = useQuery(['group_fill_in_blank_image_answer_question'], getImageSingleQuestion);
+  const { data, isLoading } = useQuery(['group_fill_in_blank_image_answer_question'], getImageSingleQuestion, {
+    cacheTime: 0
+  });
 
   const handleFields = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
     setStudentAnswer({ ...studentAnswer, [index]: e.target.value })
@@ -69,7 +39,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   const correctAnswer = () => {
-    if (compareObjects(correctData, studentAnswer)) {
+    if (compareObjects(data?.correctAnswer, studentAnswer)) {
       dispatch(checkAnswer(true))
       setTimeout(() => {
         dispatch(checkAnswer(false))
@@ -79,7 +49,6 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         data: [
           "أحسنت",
           "لقد حصلت على علامة كاملة",
-          "العلامة المُستحقّة هي : 10"
         ]
       })
     } else {
@@ -92,7 +61,6 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         data: [
           "حاول مرّة أخرى",
           "بعض الإجابات غير صحيحة",
-          "العلامة المُستحقّة هي : 5"
         ]
       })
     }
@@ -108,7 +76,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   return {
-    items,
+    items: data?.items,
     handleFields,
     showCorrection,
     correctAnswer,

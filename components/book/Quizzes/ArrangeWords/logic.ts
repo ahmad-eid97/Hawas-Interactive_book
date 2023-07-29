@@ -46,7 +46,9 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     return await getGroupOrderingQuestion(questionData.id);
   }
 
-  const { data, isLoading } = useQuery(['group_ordering'], getQuestion);
+  const { data, isLoading } = useQuery(['group_ordering'], getQuestion, {
+    cacheTime: 0
+  });
 
   const dragStart = (e: React.DragEvent<HTMLParagraphElement>) => {
     setDraggableItem(e.currentTarget);
@@ -114,7 +116,6 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         data: [
           "أحسنت",
           "لقد حصلت على علامة كاملة",
-          "العلامة المُستحقّة هي : 10"
         ]
       })
     } else {
@@ -127,7 +128,6 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         data: [
           "حاول مرّة أخرى",
           "بعض الإجابات غير صحيحة",
-          "العلامة المُستحقّة هي : 5"
         ]
       })
     }

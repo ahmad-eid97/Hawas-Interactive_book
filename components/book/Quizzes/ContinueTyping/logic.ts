@@ -55,7 +55,9 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     return await getGroupShortAnswer(questionData.id);
   }
 
-  const { data, isLoading } = useQuery(['groupShortAnswerQuestion'], getQuestion);
+  const { data, isLoading } = useQuery(['groupShortAnswerQuestion'], getQuestion, {
+    cacheTime: 0
+  });
 
   const handleFields = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
     setStudentAnswer({ ...studentAnswer, [index]: e.target.value })
@@ -81,7 +83,6 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         data: [
           "أحسنت",
           "لقد حصلت على علامة كاملة",
-          "العلامة المُستحقّة هي : 10"
         ]
       })
     } else {
@@ -94,7 +95,6 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         data: [
           "حاول مرّة أخرى",
           "بعض الإجابات غير صحيحة",
-          "العلامة المُستحقّة هي : 5"
         ]
       })
     }

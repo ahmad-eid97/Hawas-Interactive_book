@@ -15,7 +15,9 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     return await getGroupRoundedSingleChoiceQuestion(questionData.id);
   }
 
-  const { data, isLoading } = useQuery(['group_rounded_single_choice'], getQuestion)
+  const { data, isLoading } = useQuery(['group_rounded_single_choice'], getQuestion, {
+    cacheTime: 0
+  })
 
   const addToChoices = (index: number, letter: string) => {
     setChoices(prev => ({ ...prev, [index]: letter }));
