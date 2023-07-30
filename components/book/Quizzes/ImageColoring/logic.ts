@@ -1,6 +1,6 @@
 "use client";
 //== Hooks
-import { useState } from "react";
+import { useMemo, useState } from "react";
 //== Modules
 import { useQuery } from "@tanstack/react-query";
 //== API
@@ -9,15 +9,8 @@ import { getColoringQuestion } from "@/API/quizzes";
 import { QuestionData } from "../types";
 
 export default function useLogic({ questionData }: { questionData: QuestionData }) {
-  const [colors, setColors] = useState<string[]>([
-    "#2d3436",
-    "#FDEA96",
-    "#0984e3",
-    "#F79257",
-    "#00b894",
-    "#4F6D7A"
-  ]);
   const [choosedColor, setChoosedColor] = useState<string | null>(null);
+  const [whiteImage, setWhiteImage] = useState<string>('');
 
   const getQuestion = async () => {
     return await getColoringQuestion(questionData.id);
@@ -27,20 +20,24 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     cacheTime: 0
   });
 
+  if (data && !whiteImage) setWhiteImage(data?.white_image);
+
   const changeColor = (color: string) => {
     setChoosedColor(color)
   }
 
-  const fillElement = (e: React.MouseEvent) => {
-    e.currentTarget.setAttribute('fill', choosedColor ? choosedColor : '#fff')
+  const fillElement = (e: React.MouseEvent<HTMLDivElement>) => {
+    // @ts-ignore
+    e.target.setAttribute('fill', choosedColor ? choosedColor : '#fff');
+    setWhiteImage(e.currentTarget.querySelector('div')!.innerHTML)
   }
 
   return {
-    colors,
     choosedColor,
     changeColor,
     fillElement,
     isLoading,
-    questionDetails: data ? data : {}
+    questionDetails: data ? data : {},
+    whiteImage
   }
 }

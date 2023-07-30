@@ -3,7 +3,7 @@
   background-position: center;
   background-size: cover;
   width: 100%;
-  padding: 20px;
+  padding: 5px;
 }
 .dropables {
   display: flex;
@@ -17,7 +17,7 @@
     font-weight: 600;
   }
   .dropable {
-    min-width: 70px;
+    min-width: 65px;
     min-height: 45px;
     background-color: rgb(250, 250, 212);
     border: 1px dashed #000;

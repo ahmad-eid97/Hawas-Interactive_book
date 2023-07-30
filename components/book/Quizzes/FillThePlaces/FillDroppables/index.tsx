@@ -1,36 +1,31 @@
 "use client";
+import { Fragment } from 'react';
 //== Styles
 import styles from './droppables.module.scss';
 //== Component Interface
 interface CProps {
+  items: any;
+  idx: number
   dragOver: (e: React.DragEvent<HTMLParagraphElement>) => void
   dragLeave: (e: React.DragEvent<HTMLParagraphElement>) => void
   drop: (e: React.DragEvent<HTMLParagraphElement>, index: number, droppableIndex: number) => void
 }
 
-const Droppables = ({ dragOver, dragLeave, drop }: CProps) => {
+const Droppables = ({ items, idx, dragOver, dragLeave, drop }: CProps) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.dropables}>
-        <span>1-</span>
-        عاد
-        <div className={styles.dropable} onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 0, 0)}></div>
-        وعمر من
-        <div className={styles.dropable} onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 0, 1)}></div>
-        إلي
-        <div className={styles.dropable} onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 0, 2)}></div>
-      </div>
-      <div className={styles.dropables}>
-        <span>2-</span>
-        أراد عثمان أن
-        <div className={styles.dropable} onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 1, 0)}></div>
-        العش
-        <div className={styles.dropable} onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 1, 1)}></div>
-      </div>
-      <div className={styles.dropables}>
-        <span>3-</span>
-        فقال له عمر
-        <div className={styles.dropable} onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 2, 0)}></div>
+        <span>{idx + 1}-</span>
+        {items.map((item: any, index: number) => (
+          <Fragment key={index}>
+            {item === '-'
+              ?
+              <div className={styles.dropable} onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, idx, index)}></div>
+              :
+              " " + item + " "
+            }
+          </Fragment>
+        ))}
       </div>
     </div>
   )

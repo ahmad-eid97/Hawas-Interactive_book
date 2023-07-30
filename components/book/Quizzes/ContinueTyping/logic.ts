@@ -12,40 +12,6 @@ import { checkAnswer, checkWrong } from "@/store/slices/common";
 import { QuestionData } from "../types";
 
 export default function useLogic({ questionData }: { questionData: QuestionData }) {
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      text: "مَدْرَسَةٌ لي",
-      correct: 'مدرستي'
-    },
-    {
-      id: 2,
-      text: "بالونٌ لي",
-      correct: 'بالوني'
-    },
-    {
-      id: 3,
-      text: "شَجَرَةٌ لي",
-      correct: 'شجرتي'
-    },
-    {
-      id: 4,
-      text: "دارٌ لي",
-      correct: 'داري'
-    },
-    {
-      id: 5,
-      text: "حِصانٌ لي",
-      correct: 'حصاني'
-    },
-  ])
-  const [correctData, setCorrectData] = useState<any>({
-    0: "مدرستي",
-    1: "بالوني",
-    2: "شجرتي",
-    3: "داري",
-    4: "حصاني",
-  })
   const [studentAnswer, setStudentAnswer] = useState<any>({});
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [rendered, setRendered] = useState(true);
@@ -73,7 +39,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   const correctAnswer = () => {
-    if (compareObjects(correctData, studentAnswer)) {
+    if (compareObjects(data?.correctAnswer, studentAnswer)) {
       dispatch(checkAnswer(true))
       setTimeout(() => {
         dispatch(checkAnswer(false))
@@ -110,7 +76,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   return {
-    items,
+    items: data?.items,
     handleFields,
     correctAnswer,
     showCorrection,

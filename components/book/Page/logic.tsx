@@ -31,8 +31,8 @@ export default function useLogic({ quizzes }: any) {
       'matching_with_table_dragging': <TableDragging questionData={quizzes[pageNum - 1]} />,
       'group_rounded_fill_in_blank': <WordDragging questionData={quizzes[pageNum - 1]} />,
       'group_image_single_choice': <ChooseLetter questionData={quizzes[pageNum - 1]} />,
-      'group_fill_in_blank': <FillThePlaces />,         // hereeeeeeeeeeeeeee
-      'odd_word': <ChooseWord />,     // hereeeeeeeeeeeeeee
+      'group_fill_in_blank': <FillThePlaces questionData={quizzes[pageNum - 1]} />,         // hereeeeeeeeeeeeeee   Group rounded fill in blank
+      'group_odd_word': <ChooseWord questionData={quizzes[pageNum - 1]} />,
       'group_word_single_choice': <ChooseAdjective questionData={quizzes[pageNum - 1]} />,
       'group_short_answer': <ContinueTyping questionData={quizzes[pageNum - 1]} />,
       'group_ordering': <ArrangeWords questionData={quizzes[pageNum - 1]} />,
@@ -40,7 +40,7 @@ export default function useLogic({ quizzes }: any) {
       'group_radio_single_choice': <SignleChoose questionData={quizzes[pageNum - 1]} />,
       'single_choice': <ImageChoose questionData={quizzes[pageNum - 1]} />,
       'group_fill_in_blank_image_answer': <ImageTyping questionData={quizzes[pageNum - 1]} />,
-      '15': <FillFields />,            // hereeeeeeeeeeeeeee
+      '15': <FillFields />,            // hereeeeeeeeeeeeeee    Name not yet
       'group_fill_in_blank_complete_words': <CompleteWords questionData={quizzes[pageNum - 1]} />,
       'drawing': <Drawing questionData={quizzes[pageNum - 1]} />,
       'coloring': <ImageColoring questionData={quizzes[pageNum - 1]} />,

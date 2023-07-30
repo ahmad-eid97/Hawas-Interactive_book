@@ -2,19 +2,22 @@
 //== Hooks
 import { Fragment } from 'react';
 //== Components
-import { FillDroppables, FillDraggables } from '@/components';
+import { FillDroppables, FillDraggables, PageLoader } from '@/components';
 //== Component Logic
 import useLogic from './logic';
+//== Types
+import { QuestionData } from '../types';
 //== Styles
 import styles from './fillThePlaces.module.scss';
 
-const FillThePlaces = () => {
-  const { droppingArea, choices, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, correctAnswer, showCorrection, retry, rendered } = useLogic();
+const FillThePlaces = ({ questionData }: { questionData: QuestionData }) => {
+  const { items, droppingArea, choices, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, correctAnswer, showCorrection, retry, rendered, isLoading } = useLogic({ questionData });
 
   if (!rendered) return null;
+  if (isLoading) return <PageLoader />
   return (
     <>
-      <h2>اِخْتَرْ الْكَلِمَةَ النَّاقِصَةَ!</h2>
+      <h2>{questionData.title}</h2>
       <div className={styles.fillThePlaces}>
         <FillDraggables
           droppingArea={droppingArea}
@@ -23,11 +26,19 @@ const FillThePlaces = () => {
           dragEnd={dragEnd}
           removeChoice={removeChoice}
         />
-        <FillDroppables
-          dragOver={dragOver}
-          dragLeave={dragLeave}
-          drop={drop}
-        />
+        <div className={styles.droppablesArea}>
+          {items.map((item: any, idx: number) => (
+            <Fragment key={idx}>
+              <FillDroppables
+                items={item}
+                idx={idx}
+                dragOver={dragOver}
+                dragLeave={dragLeave}
+                drop={drop}
+              />
+            </Fragment>
+          ))}
+        </div>
       </div>
       {showCorrection &&
         <div className={`correctData ${showCorrection.correct ? 'correct' : 'wrong'}`}>

@@ -1,22 +1,27 @@
 //== Hooks
 import { Fragment } from 'react';
+//== Components
+import { PageLoader } from '@/components';
 //== Component Logic
 import useLogic from './logic';
+//== Types
+import { QuestionData } from '../types';
 //== Styles
 import styles from './chooseWord.module.scss';
 
-const ChooseLetter = () => {
-  const { items, choices, addToChoices } = useLogic();
+const ChooseLetter = ({ questionData }: { questionData: QuestionData }) => {
+  const { items, choices, addToChoices, isLoading } = useLogic({ questionData });
 
+  if (isLoading) return <PageLoader />;
   return (
     <div className={styles.chooseLetter}>
-      <h2>ضَعْ مُرَبَّعًا حَوْلَ الْكَلِمَةِ الشّاذَّةِ!</h2>
+      <h2>{questionData.title}</h2>
       <div className={styles.itemsWrapper}>
-        {items.map((item, idx) => (
+        {items.map((item: any, idx: number) => (
           <div className={styles.item} key={idx}>
             <div className={styles.choices}>
               <i className="fa-duotone fa-star"></i>
-              {item.words.map((word, index) => (
+              {item.words.map((word: any, index: number) => (
                 <Fragment key={index}>
                   {index > 0 && '، '}
                   <span key={index} onClick={() => addToChoices(idx, word)} className={choices[idx] === word ? styles.active : ''}>

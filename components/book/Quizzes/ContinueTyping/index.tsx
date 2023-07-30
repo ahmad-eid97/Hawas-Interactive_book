@@ -23,7 +23,7 @@ const ContinueTyping = ({ questionData }: { questionData: QuestionData }) => {
           <span>بيت لي:</span>
           <input type="text" placeholder='بيتي' disabled />
         </div>
-        {items.map((item, idx) => (
+        {items.map((item: any, idx: number) => (
           <div className={styles.item} key={item.id}>
             <i className="fa-duotone fa-pencil"></i>
             <span>{item.text}:</span>

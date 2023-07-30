@@ -18,7 +18,7 @@ const ChooseAdjective = ({ questionData }: { questionData: QuestionData }) => {
       <h2>{questionData.title}</h2>
       <div className={styles.chooseAdjective}>
         <div className={styles.items}>
-          {items.map((item, idx) => (
+          {items.map((item: any, idx: number) => (
             <div className={styles.item} key={item.id}>
               <i className="fa-duotone fa-star"></i>
               {item.text}
@@ -34,7 +34,7 @@ const ChooseAdjective = ({ questionData }: { questionData: QuestionData }) => {
               {item.correct === answers[idx] && item.correct === items[idx].correct && <i className={`fa-duotone fa-circle-check ${styles.correct}`}></i>}
               <div className={styles.choices}>
                 (
-                {item.choices.map((choice, index) => (
+                {item.choices.map((choice: any, index: number) => (
                   <Fragment key={index}>
                     {index > 0 && '، '}
                     <span onClick={() => addAnswer(idx, choice)} className={answers[idx] === choice ? styles.active : ''}>{choice}</span>

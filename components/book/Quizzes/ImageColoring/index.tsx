@@ -3,19 +3,19 @@ import useLogic from './logic';
 //== Components
 import { PageLoader } from '@/components';
 //== Utils
-import renderSVG from '@/utils/renderSVG';
+// import renderSVG from '@/utils/renderSVG';
 //== Styles
 import styles from './imageColoring.module.scss';
 
 const ImageColoring = ({ questionData }: { questionData: any }) => {
-  const { colors, changeColor, fillElement, isLoading, questionDetails } = useLogic({ questionData });
+  const { changeColor, fillElement, isLoading, questionDetails, whiteImage } = useLogic({ questionData });
 
   if (isLoading) return <PageLoader />
   return (
     <div className={styles.imageColoring}>
       <h2>{questionData.title}</h2>
       <div className={styles.colors}>
-        {colors.map((color, idx) => (
+        {questionDetails.colors.split(',').map((color: any, idx: number) => (
           <span key={idx} style={{ backgroundColor: color }} onClick={() => changeColor(color)}></span>
         ))}
       </div>
@@ -23,8 +23,8 @@ const ImageColoring = ({ questionData }: { questionData: any }) => {
         <div className={styles.coloredImage}>
           <div dangerouslySetInnerHTML={{ __html: questionDetails?.colored_image }}></div>
         </div>
-        <div className={styles.targetImage}>
-          <div dangerouslySetInnerHTML={{ __html: questionDetails?.white_image }}></div>
+        <div className={styles.targetImage} onClick={fillElement}>
+          <div dangerouslySetInnerHTML={{ __html: whiteImage }}></div>
         </div>
       </div>
     </div>

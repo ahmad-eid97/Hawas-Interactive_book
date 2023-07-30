@@ -9,32 +9,6 @@ import { getGroupSingleWordChoice } from "@/API/quizzes";
 import { QuestionData } from "../types";
 
 export default function useLogic({ questionData }: { questionData: QuestionData }) {
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      text: 'حَمامٌ',
-      choices: ['صغير', 'صفير'],
-      correct: "صغير"
-    },
-    {
-      id: 2,
-      text: 'عُشٌّ',
-      choices: ['كميل', 'جميل'],
-      correct: "جميل"
-    },
-    {
-      id: 3,
-      text: 'شَجَرَةٌ',
-      choices: ['عالية', 'باكية'],
-      correct: "عالية"
-    },
-    {
-      id: 4,
-      text: 'بَيْتٌ',
-      choices: ['نحيف', 'نظيف'],
-      correct: "نظيف"
-    },
-  ])
   const [answers, setAnswers] = useState<{ [index: number]: string }>({});
 
   const getQuestion = async () => {
@@ -56,7 +30,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   return {
-    items,
+    items: data?.items,
     answers,
     addAnswer,
     removeAnswer,

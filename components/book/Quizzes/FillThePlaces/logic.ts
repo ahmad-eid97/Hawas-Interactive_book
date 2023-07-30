@@ -1,11 +1,17 @@
 "use client";
 //== Hooks 
 import { useState, useRef } from "react";
+//== Modules
+import { useQuery } from "@tanstack/react-query";
 //== Store
 import { useAppDispatch } from "@/store/hooks";
 import { checkAnswer, checkWrong } from "@/store/slices/common";
+//== API
+import { getGroupFillBlanksQuestion } from "@/API/quizzes";
+//== Types
+import { QuestionData } from "../types";
 
-export default function useLogic() {
+export default function useLogic({ questionData }: { questionData: QuestionData }) {
   const [draggableItem, setDraggableItem] = useState<HTMLParagraphElement | null>(null);
   const [correctData, setCorrectData] = useState<any>({
     0: {
@@ -27,44 +33,13 @@ export default function useLogic() {
   const droppingArea = useRef<HTMLDivElement | null>(null);
   const dispatch = useAppDispatch();
 
-  const choices = [
-    {
-      id: 1,
-      text: "حرام"
-    },
-    {
-      id: 2,
-      text: "المدرسة"
-    },
-    {
-      id: 3,
-      text: "عثمان"
-    },
-    {
-      id: 4,
-      text: "يأخذ"
-    },
-    {
-      id: 5,
-      text: "الحديقة"
-    },
-    {
-      id: 6,
-      text: "عمر"
-    },
-    {
-      id: 7,
-      text: "البيت"
-    },
-    {
-      id: 8,
-      text: "يبني"
-    },
-    {
-      id: 9,
-      text: "أحسنت"
-    }
-  ]
+  const getQuestion = async () => {
+    return await getGroupFillBlanksQuestion(questionData.id);
+  }
+
+  const { data, isLoading } = useQuery(['groupShortAnswerQuestion'], getQuestion, {
+    cacheTime: 0
+  })
 
   const dragStart = (e: React.DragEvent<HTMLParagraphElement>) => {
     setDraggableItem(e.currentTarget);
@@ -119,8 +94,9 @@ export default function useLogic() {
 
   const correctAnswer = () => {
     const answers = []
-    for (let i = 0; i < Object.keys(correctData).length; i++) {
-      answers.push(compareObjects(correctData[i], studentAnswer[i]))
+    console.log(studentAnswer)
+    for (let i = 0; i < Object.keys(data?.correctAnswer).length; i++) {
+      answers.push(compareObjects(data?.correctAnswer[i], studentAnswer[i]))
     }
     if (answers.every((answer) => answer === true)) {
       dispatch(checkAnswer(true))
@@ -159,8 +135,9 @@ export default function useLogic() {
   }
 
   return {
+    items: data?.items,
     droppingArea,
-    choices,
+    choices: data?.choices,
     dragStart,
     dragEnd,
     dragOver,
@@ -170,6 +147,7 @@ export default function useLogic() {
     correctAnswer,
     showCorrection,
     retry,
-    rendered
+    rendered,
+    isLoading
   }
 }

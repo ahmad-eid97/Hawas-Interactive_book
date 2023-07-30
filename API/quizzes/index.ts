@@ -107,11 +107,25 @@ export async function getImageSingleChoiceQuestion(questionId: number) {
   if (response) return { items };
 }
 
-// NOT FINISHED
 export async function getGroupSingleWordChoice(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
-  console.log(response)
-  if (response) return response;
+  const items = response?.data?.data?.children?.map((item: any) => ({
+    id: item.id,
+    text: item.title,
+    choices: item.answers.map((item: any) => item.title),
+    correct: item.answers.filter((item: any) => item.is_correct === 1)[0].title
+  }))
+  if (response) return { items };
+}
+
+export async function getGroupOddWordChoice(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  const items = response?.data?.data?.children?.map((item: any) => ({
+    id: item.id,
+    words: item.answers.map((item: any) => item.title),
+    correct: item.answers.filter((item: any) => item.is_correct === 1)[0].title
+  }))
+  if (response) return { items };
 }
 
 export async function getDrawingQuestion(questionId: number) {
@@ -119,16 +133,26 @@ export async function getDrawingQuestion(questionId: number) {
   if (response) return { questionImage: response.data.data.question_img };
 }
 
+// NOT FINISHED
 export async function getColoringQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
   if (response) return response?.data?.data;
 }
 
-// NOT FINISHED
 export async function getGroupShortAnswer(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
-  console.log(response)
-  if (response) return response;
+  const items = response?.data?.data?.children?.map((item: any) => (
+    {
+      id: item.id,
+      text: item.title,
+    }
+  ));
+  const correctAnswer: any = {}
+  response?.data?.data?.children?.forEach((item: any, index: number) => {
+    correctAnswer[index] = item.answers[0].answer_two_gap_match
+  })
+  const data = { items, correctAnswer };
+  if (response) return data;
 }
 
 export async function getGroupFillBlanksCompleteWordsQuestion(questionId: number) {
@@ -143,6 +167,37 @@ export async function getGroupFillBlanksCompleteWordsQuestion(questionId: number
     return acc;
   }, {})
   const data = { items, choices, correctAnswer: answerObject };
+  if (response) return data;
+}
+
+export async function getGroupFillBlanksQuestion(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  const choices: object[] = []
+  response?.data?.data?.children[0].answers?.forEach((answer: any) => {
+    answer.answer_two_gap_match.split('|').forEach((item: any) => {
+      choices.push({ text: item })
+    })
+  });
+  shuffleArray(choices)
+  const items = response?.data?.data?.children[0].answers?.map((item: any) => [...item.title.split(' ').map((str: string) => str === '{dash}' ? '-' : str)]);
+
+  const correctAnswer: any = {}
+  response?.data?.data?.children[0].answers?.forEach((answer: any, index: number) => {
+    const places = [...answer.title.split(' ').map((str: string) => str === '{dash}' ? '-' : str)]
+    const indexes: any = [];
+    places.forEach((one: any, index: number) => {
+      if (one === '-') {
+        indexes.push(index)
+      }
+    })
+    const group = [...answer.answer_two_gap_match.split('|')];
+    const groupObject: any = {}
+    for (let i = 0; i < group.length; i++) {
+      groupObject[indexes[i]] = group[i];
+    }
+    correctAnswer[index] = groupObject
+  });
+  const data = { items, choices, correctAnswer };
   if (response) return data;
 }
 
@@ -206,3 +261,6 @@ export async function getGroupFillInBlankImageAnswerQuestion(questionId: number)
   })
   if (response) return { items, correctAnswer };
 }
+
+// NOT FINISHED
+//== سؤال الضماير

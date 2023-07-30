@@ -30,6 +30,7 @@
     "react-redux": "^8.1.1",
     "react-sketch-canvas": "^6.2.0",
     "sass": "^1.63.6",
+    "svg-to-jsx": "^1.0.4",
     "typescript": "5.1.6"
   },
   "devDependencies": {
