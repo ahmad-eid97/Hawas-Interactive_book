@@ -15,16 +15,16 @@ interface CProps {
 
 const Draggables = ({ choices, droppingArea, dragStart, dragEnd, removeChoice, questionIndex }: CProps) => {
   return (
-    <div className={styles.draggables} ref={droppingArea}>
-      {choices.map((choice, idx) => (
+    <div className={styles.draggables} ref={droppingArea} id={`drag-${questionIndex}`}>
+      {choices.map((choice: any, idx) => (
         <p
           className={`${styles.item} item`}
           draggable={true}
           onDragStart={(e) => dragStart(e)}
           onDragEnd={(e) => dragEnd(e)}
-          key={choice.id}
+          key={idx}
         >
-          {choice.text}
+          {choice}
           <i className="fa-duotone fa-ban" onClick={(e) => removeChoice(e, idx, questionIndex)}></i>
         </p>
       ))}

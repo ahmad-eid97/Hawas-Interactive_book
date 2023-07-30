@@ -1,20 +1,25 @@
 //== Hooks
 import { Fragment } from 'react';
+//== Components
+import { PageLoader } from '@/components';
 //== Component Logic
 import useLogic from './logic';
+//== Types
+import { QuestionData } from '../types';
 //== Styles
 import styles from './fillFields.module.scss';
 
-const FillFields = () => {
-  const { titles, items, handleFields, correctAnswer, showCorrection, retry, rendered } = useLogic();
+const FillFields = ({ questionData }: { questionData: QuestionData }) => {
+  const { titles, items, handleFields, correctAnswer, showCorrection, retry, rendered, isLoading } = useLogic({ questionData });
 
   if (!rendered) return null;
+  if (isLoading) return <PageLoader />
   return (
     <div className={styles.fillFields}>
-      <h2>أَكْمِلِ النّاقِصَ!</h2>
+      <h2>{questionData.title}</h2>
       <div className={styles.fields}>
         <div className={styles.titles}>
-          {titles.map((title, idx) => (
+          {titles?.map((title, idx) => (
             <div className={styles.title} key={idx}>
               <h3>{title}</h3>
             </div>

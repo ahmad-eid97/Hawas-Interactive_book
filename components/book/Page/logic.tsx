@@ -40,7 +40,7 @@ export default function useLogic({ quizzes }: any) {
       'group_radio_single_choice': <SignleChoose questionData={quizzes[pageNum - 1]} />,
       'single_choice': <ImageChoose questionData={quizzes[pageNum - 1]} />,
       'group_fill_in_blank_image_answer': <ImageTyping questionData={quizzes[pageNum - 1]} />,
-      '15': <FillFields />,            // hereeeeeeeeeeeeeee    Name not yet
+      'group_raw_fill_in_blank': <FillFields questionData={quizzes[pageNum - 1]} />,            // hereeeeeeeeeeeeeee    Name not yet
       'group_fill_in_blank_complete_words': <CompleteWords questionData={quizzes[pageNum - 1]} />,
       'drawing': <Drawing questionData={quizzes[pageNum - 1]} />,
       'coloring': <ImageColoring questionData={quizzes[pageNum - 1]} />,

@@ -12,20 +12,6 @@ import { useQuery } from "@tanstack/react-query";
 
 export default function useLogic({ questionData }: { questionData: QuestionData }) {
   const [draggableItem, setDraggableItem] = useState<HTMLParagraphElement | null>(null);
-  const [correctData, setCorrectData] = useState<any>({
-    0: {
-      0: "البالون",
-      1: "طارت"
-    },
-    1: {
-      0: "البالون",
-      1: "طارت"
-    },
-    2: {
-      0: "البالون",
-      1: "طارت"
-    },
-  })
   const [studentAnswer, setStudentAnswer] = useState<any>({})
   const droppingArea = useRef<HTMLDivElement | null>(null);
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
@@ -39,21 +25,6 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   const { data, isLoading } = useQuery(["groupFillBlankQuestion"], getQuestion, {
     cacheTime: 0
   });
-
-  const choices = [
-    {
-      id: 1,
-      text: "الكلب"
-    },
-    {
-      id: 2,
-      text: "البالون"
-    },
-    {
-      id: 3,
-      text: "طارت"
-    }
-  ]
 
   const dragStart = (e: React.DragEvent<HTMLParagraphElement>) => {
     setDraggableItem(e.currentTarget);
@@ -83,7 +54,8 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   const removeChoice = (e: React.MouseEvent<HTMLElement, MouseEvent>, idx: number, questionIndex: number) => {
-    if (e.currentTarget.parentElement) droppingArea.current?.insertBefore(e.currentTarget.parentElement, droppingArea?.current.children[idx]);
+    const draggableAre = document.getElementById(`drag-${questionIndex}`)
+    if (e.currentTarget.parentElement) draggableAre?.insertBefore(e.currentTarget.parentElement, draggableAre?.children[idx]);
     // Delete object by it's value
     const values = Object.values(studentAnswer[questionIndex]);
     const index = values.indexOf(e.currentTarget.parentElement?.innerText);
@@ -97,17 +69,27 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
 
   const compareObjects = (object1: any, object2: any) => {
     if (!object2) return false;
-    if (Object.keys(object1)?.length !== Object.keys(object2).length) return false;
-    for (let i = 0; i < Object.keys(object1).length; i++) {
-      if (object1[i] !== object2[i]) return false;
+    if (Object.keys(object1).length !== Object.keys(object2).length) {
+      return false;
+    } else {
+      for (let key in object1) {
+        if (!object2.hasOwnProperty(key)) {
+          return false;
+        }
+        for (let nestedKey in object1[key]) {
+          if (object1[key][nestedKey] !== object2[key][nestedKey]) {
+            return false;
+          }
+        }
+      }
     }
     return true;
   }
 
   const correctAnswer = () => {
     const answers = []
-    for (let i = 0; i < Object.keys(correctData).length; i++) {
-      answers.push(compareObjects(correctData[i], studentAnswer[i]))
+    for (let i = 0; i < Object.keys(data?.correctAnswer).length; i++) {
+      answers.push(compareObjects(data?.correctAnswer[i], studentAnswer[i]))
     }
     if (answers.every((answer) => answer === true)) {
       dispatch(checkAnswer(true))
@@ -146,8 +128,8 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   return {
+    items: data?.items,
     droppingArea,
-    choices,
     dragStart,
     dragEnd,
     dragOver,

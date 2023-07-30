@@ -1,68 +1,29 @@
 "use client"
 //== Hooks
 import { useState } from "react";
+//== Modules
+import { useQuery } from "@tanstack/react-query";
 //== Store
 import { useAppDispatch } from "@/store/hooks";
 import { checkAnswer, checkWrong } from "@/store/slices/common";
+//== API
+import { getGroupRawFillInBlankQuestion } from "@/API/quizzes";
+//== Types
+import { QuestionData } from "../types";
 
-export default function useLogic() {
-  const [titles, setTitles] = useState<string[]>([
-    "هو",
-    "هي",
-    "هم"
-  ])
-  const [items, setItems] = useState<any>({
-    0: {
-      items: [
-        "طار",
-        "-",
-        "-"
-      ]
-    },
-    1: {
-      items: [
-        "حزن",
-        "-",
-        "-",
-      ]
-    },
-    2: {
-      items: [
-        "-",
-        "-",
-        "ركضوا",
-      ]
-    },
-    3: {
-      items: [
-        "-",
-        "نامت",
-        "-",
-      ]
-    }
-  })
-  const [correctData, setCorrectData] = useState<any>({
-    0: {
-      1: "طارت",
-      2: "طاروا"
-    },
-    1: {
-      1: "حزنت",
-      2: "حزنوا"
-    },
-    2: {
-      0: "ركض",
-      1: "ركضت"
-    },
-    3: {
-      0: "نام",
-      2: "ناموا"
-    }
-  })
+export default function useLogic({ questionData }: { questionData: QuestionData }) {
   const [studentAnswer, setStudentAnswer] = useState<any>({});
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [rendered, setRendered] = useState(true);
   const dispatch = useAppDispatch();
+
+  const getQuestion = async () => {
+    return await getGroupRawFillInBlankQuestion(questionData.id)
+  }
+
+  const { data, isLoading } = useQuery(['group-raw-fill-in-blank'], getQuestion, {
+    cacheTime: 0
+  })
 
   const handleFields = (e: React.ChangeEvent<HTMLInputElement>, indx: number, index: number) => {
     setStudentAnswer({ ...studentAnswer, [indx]: { ...studentAnswer[indx], [index]: e.target.value } })
@@ -79,8 +40,8 @@ export default function useLogic() {
 
   const correctAnswer = () => {
     const answers = []
-    for (let i = 0; i < Object.keys(correctData).length; i++) {
-      answers.push(compareObjects(correctData[i], studentAnswer[i]))
+    for (let i = 0; i < Object.keys(data?.correctAnswer).length; i++) {
+      answers.push(compareObjects(data?.correctAnswer[i], studentAnswer[i]))
     }
     if (answers.every((answer) => answer === true)) {
       dispatch(checkAnswer(true))
@@ -119,12 +80,13 @@ export default function useLogic() {
   }
 
   return {
-    titles,
-    items,
+    titles: data?.titles,
+    items: data?.items,
     handleFields,
     correctAnswer,
     showCorrection,
     retry,
-    rendered
+    rendered,
+    isLoading
   }
 }

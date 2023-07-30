@@ -75,10 +75,11 @@ export async function getMatchingWithTableQuestion(questionId: number) {
   if (response) return data;
 }
 
-// NOT FINISHED
 export async function getGroupRoundedFillBlanksQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
-  const items = response?.data?.data.children[0]?.answers?.map((item: any) => {
+  if (!response.data.data) return;
+  const data = response.data.data;
+  const items = data.children[0]?.answers?.map((item: any) => {
     const choicesArray = item.answer_two_gap_match.split("|")
     shuffleArray(choicesArray)
     return ({
@@ -87,14 +88,26 @@ export async function getGroupRoundedFillBlanksQuestion(questionId: number) {
       choices: choicesArray
     })
   })
-  // const correctAnswer: any = {}
-  // response?.data?.data?.children[0]?.answers?.forEach((item: any, index: number) => {
-
-  // })
-
-  // console.log(items)
-  console.log(response)
-  if (response) return response;
+  const correctAnswer: any = {}
+  response?.data?.data?.children[0]?.answers?.forEach((answer: any, index: number) => {
+    const places = [...answer.title.split(' ').map((str: string) => str === '{dash}' ? '-' : str)]
+    const indexes: any = [];
+    places.forEach((one: any, index: number) => {
+      if (one === '-') {
+        indexes.push(index)
+      }
+    })
+    const group = [...answer.answer_two_gap_match.split('|')];
+    const groupObject: any = {}
+    for (let i = 0; i < group.length; i++) {
+      if (indexes[i] !== undefined) {
+        groupObject[indexes[i]] = group[i].trim();
+      }
+    }
+    correctAnswer[index] = groupObject
+  })
+  const updatedResponse = { items, correctAnswer };
+  if (response) return updatedResponse;
 }
 
 export async function getImageSingleChoiceQuestion(questionId: number) {
@@ -133,7 +146,6 @@ export async function getDrawingQuestion(questionId: number) {
   if (response) return { questionImage: response.data.data.question_img };
 }
 
-// NOT FINISHED
 export async function getColoringQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
   if (response) return response?.data?.data;
@@ -262,5 +274,33 @@ export async function getGroupFillInBlankImageAnswerQuestion(questionId: number)
   if (response) return { items, correctAnswer };
 }
 
-// NOT FINISHED
-//== سؤال الضماير
+export async function getGroupRawFillInBlankQuestion(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  if (!response.data.data) return;
+  const data = response.data.data;
+  const titles = [...data.tags?.split(',')]
+  const items: any = {}
+  data.children[0].answers.forEach((item: any, index: number) => {
+    items[index] = {
+      items: item.title.split(" ").map((str: string) => str === '{dash}' ? '-' : str)
+    }
+  })
+  const correctAnswer: any = {}
+  data.children[0].answers.forEach((answer: any, index: number) => {
+    const places = [...answer.title.split(' ').map((str: string) => str === '{dash}' ? '-' : str)]
+    const indexes: any = [];
+    places.forEach((one: any, index: number) => {
+      if (one === '-') {
+        indexes.push(index)
+      }
+    })
+    const group = [...answer.answer_two_gap_match.split('|')];
+    const groupObject: any = {}
+    for (let i = 0; i < group.length; i++) {
+      groupObject[indexes[i]] = group[i].trim();
+    }
+    correctAnswer[index] = groupObject
+  })
+  const updatedResponse = { titles, items, correctAnswer }
+  if (response) return updatedResponse;
+}
