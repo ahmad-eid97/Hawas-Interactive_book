@@ -16,7 +16,7 @@ interface CProps {
 const Draggables = ({ choices, droppingArea, dragStart, dragEnd, removeChoice, questionIndex }: CProps) => {
   return (
     <div className={styles.draggables} ref={droppingArea} id={`drag-${questionIndex}`}>
-      {choices.map((choice: any, idx) => (
+      {choices.map((choice: any, idx: number) => (
         <p
           className={`${styles.item} item`}
           draggable={true}
