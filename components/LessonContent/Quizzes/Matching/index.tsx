@@ -373,7 +373,7 @@ function Matching({
             columnsData?.righthand.items.length ?
               (
                 columnsData?.righthand.items.map((matchingItem: any, index: number) => (
-                  <p key={index} className={options?.itemsClassName || ''}>
+                  <p key={index} className={`${options?.itemsClassName || ''} ${columnsData?.righthand.type === 'image' ? classes.big : ''}`}>
                     {matchingItem[keyWord]}
                     <span className={`matching-start-point ${classes.matching_box}`} onMouseDown={handleMouseDown}></span>
                   </p>)

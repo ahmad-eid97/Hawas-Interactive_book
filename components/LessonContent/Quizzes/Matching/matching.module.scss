@@ -72,6 +72,11 @@
     flex: 2;
     direction: var(--dir);
     text-align: var(--align);
+    p.big {
+      height: 80px;
+      display: flex;
+      align-items: center;
+    }
   }
 
   .lefthand {

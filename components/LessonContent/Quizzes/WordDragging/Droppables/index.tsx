@@ -15,9 +15,11 @@ const Droppables = ({ title, dragOver, dragLeave, drop, index }: CProps) => {
     <div className={styles.dropables}>
       <i className="fa-duotone fa-star"></i>
       {title.map((one, idx) => (
-        one === '-'
-          ? <div className={styles.dropable} onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, index, idx)}></div>
-          : " " + one + " "
+        <span key={idx}>
+          {one === '-'
+            ? <div className={styles.dropable} onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, index, idx)}></div>
+            : " " + one + " "}
+        </span>
       ))}
     </div>
   )

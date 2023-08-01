@@ -18,6 +18,7 @@ export async function getMatchingQuestion(questionId: number) {
   const columnsData = {
     righthand: {
       title: response.data.data.title_right,
+      type: items.filter((item: any) => item.answer_img && item.answer_img).length ? 'image' : 'text',
       items: items.map((item: any) => ({ content: item.title })),
     },
 
