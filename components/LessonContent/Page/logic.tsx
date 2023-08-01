@@ -11,6 +11,7 @@ export default function useLogic({ quizzes }: any) {
   const { correctAnswer, wrongAnswer } = useAppSelector((state: any) => state.common);
 
   const renderQuiz = () => {
+    if (quizzes.length === 0) return null;
     const ComponentRendered: { [type: string]: JSX.Element } = {
       'matching_with_two_titles': <Matching
         options={{

@@ -1,7 +1,7 @@
 //== Handlers
 import api from "../handlers";
 
-export async function getBookLessons(endpoint: string) {
-  const response = api.GET(endpoint);
-  if (response) return response;
+export async function getBookLessons(bookId: number) {
+  const response = await api.GET(`/e-books/books/all_lessons_by_book/${bookId}`);
+  if (response.data.success) return response.data.data.data;
 }

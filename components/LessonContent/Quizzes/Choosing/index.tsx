@@ -21,9 +21,9 @@ const Choosing = ({ questionData }: { questionData: QuestionData }) => {
   return (
     <div className={styles.chooseLetter}>
       <div className={styles.itemsWrapper}>
-        {items.map((item: Item, idx: number) => (
+        {items && items.map((item: Item, idx: number) => (
           <div className={styles.item} key={idx}>
-            <span>؟السؤال {idx + 1}:</span>
+            <span>السؤال {idx + 1}:</span>
             <h2>{item.question}</h2>
             <div className={styles.choices}>
               {item.words.map((word, index) => (

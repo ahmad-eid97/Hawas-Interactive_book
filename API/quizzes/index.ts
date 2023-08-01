@@ -11,9 +11,9 @@ function shuffleArray(items: any) {
 
 export async function getMatchingQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
-  const correctAnswers = response.data.data.answers.map((item: any) => ({ from: item.title, to: item.answer_two_gap_match }));
+  const correctAnswers = response.data.data.answers.map((item: any) => ({ from: item.title, to: item.answer_two_gap_match ? item.answer_two_gap_match : item.answer_img }));
   const items = response.data.data.answers.map((item: any) => item)
-  const answers = items.map((item: any) => item.answer_two_gap_match);
+  const answers = items.map((item: any) => item.answer_two_gap_match ? item.answer_two_gap_match : item.answer_img);
   shuffleArray(answers);
   const columnsData = {
     righthand: {
@@ -23,6 +23,7 @@ export async function getMatchingQuestion(questionId: number) {
 
     lefthand: {
       title: response.data.data.title_left,
+      type: items.filter((item: any) => item.answer_img && item.answer_img).length ? 'image' : 'text',
       items: answers.map((item: any) => ({ content: item })),
     }
   }

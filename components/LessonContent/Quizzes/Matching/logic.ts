@@ -33,9 +33,7 @@ export default function useLogic({ questionData }: CProps) {
     if (arr1.length !== arr2.length) {
       return false;
     }
-
     const resultArray: any = []
-
     for (let i = 0; i < arr1.length; i++) {
       arr2.forEach((element: object) => {
         // @ts-ignore
@@ -44,11 +42,9 @@ export default function useLogic({ questionData }: CProps) {
         }
       })
     }
-
     if (resultArray.length !== arr2.length) {
       return false;
     }
-
     return true;
   }
 

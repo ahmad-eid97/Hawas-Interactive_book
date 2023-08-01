@@ -232,7 +232,7 @@ function Matching({
 
     const item = {
       from: columnsData?.righthand?.items?.find((item: any) => item[keyWord] === selectedElement.textContent?.trim())?.[keyWord],
-      to: columnsData?.lefthand?.items?.find((item: any) => item[keyWord] === event.currentTarget.textContent?.trim())?.[keyWord]
+      to: columnsData?.lefthand.type === 'image' ? columnsData?.lefthand?.items?.find((item: any) => item[keyWord] === event.currentTarget.querySelector('img')?.getAttribute('src')?.trim())?.[keyWord] : columnsData?.lefthand?.items?.find((item: any) => item[keyWord] === event.currentTarget.textContent?.trim())?.[keyWord]
     }
 
     if (onMatch) {
@@ -421,7 +421,11 @@ function Matching({
               (
                 columnsData.lefthand.items.map((matchingItem: any, index: number) => (
                   <p key={index} onMouseUp={handleMouseUp} className={options?.itemsClassName || ''}>
-                    {matchingItem[keyWord]}
+                    {columnsData?.lefthand.type === 'text' ?
+                      <span>{matchingItem[keyWord]}</span>
+                      :
+                      <img src={matchingItem[keyWord]} alt="answer_image" />
+                    }
                     <span className={`matching-end-point ${classes.matching_box}`}></span>
                   </p>)
                 )

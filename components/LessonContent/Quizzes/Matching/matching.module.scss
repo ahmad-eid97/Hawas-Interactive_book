@@ -13,7 +13,6 @@
   text-align: var(--align);
   display: flex;
   justify-content: space-between;
-  align-items: center;
   position: relative;
   z-index: 1;
   margin-top: 20px;
@@ -61,6 +60,11 @@
         transform: translateY(-50%);
         cursor: pointer;
       }
+    }
+    img {
+      width: 120px;
+      height: 72px;
+      border-radius: 10px;
     }
   }
 

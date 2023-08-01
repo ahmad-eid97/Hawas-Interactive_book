@@ -15,12 +15,13 @@ const Lesson = ({ content }: CProps) => {
   return (
     <div className={styles.lesson}>
       <Pagination count={content.length} changePage={changePage} position="top" />
+      {/* <h2>عنوان الدرس</h2> */}
       <div className={styles.inside}>
-        {content[pageNum - 1].map((item: any, index: number) => (
+        {content.length ? content[pageNum - 1].map((item: any, index: number) => (
           <div key={index} className={styles.item}>
             {renderPageSection(item.type, item)}
           </div>
-        ))}
+        )) : null}
       </div>
     </div>
   )

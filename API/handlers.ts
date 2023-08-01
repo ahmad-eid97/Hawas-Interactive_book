@@ -8,9 +8,9 @@ interface Response<T> {
 }
 
 class API {
-  public async GET<T>(endpoint: string): Promise<any> {
+  public async GET<T>(endpoint: string, headers?: object): Promise<any> {
     try {
-      const response = await axios.get<Response<T>>(endpoint);
+      const response = await axios.get<Response<T>>(endpoint, headers);
       const data = response.data as T
       // return data
       return response
