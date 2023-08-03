@@ -19,7 +19,7 @@
       padding: 20px;
       object-fit: contain;
       border-radius: 10px;
-      cursor: url('../../../../public/images/quizzes/point.png'), move;
+      cursor: url('../../../../public/images/quizzes/point.png') 30 0, move;
       &.choosed {
         border: 2px solid var(--main-color);
       }

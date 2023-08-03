@@ -11,7 +11,7 @@ interface CProps {
 }
 
 const Page = ({ quizzes }: CProps) => {
-  const { renderQuiz, pageNum, changePage, correctAnswer, wrongAnswer } = useLogic({ quizzes });
+  const { renderQuiz, changePage, correctAnswer, wrongAnswer } = useLogic({ quizzes });
 
   return (
     <div className={styles.page}>

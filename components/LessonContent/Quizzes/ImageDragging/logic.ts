@@ -1,6 +1,6 @@
 "use client";
 //== Hooks 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, use } from "react";
 //== Modules
 import { useQuery } from "@tanstack/react-query";
 //== Store
@@ -15,6 +15,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [rendered, setRendered] = useState(true);
   const droppingArea = useRef<HTMLDivElement | null>(null);
+  const [newDataLoading, setNewDataLoading] = useState(true);
   const dispatch = useAppDispatch();
 
   const getQuestionData = () => {
@@ -23,7 +24,13 @@ export default function useLogic({ questionData }: { questionData: any }) {
 
   const { data, isLoading } = useQuery(['imageDraggingQuestion'], getQuestionData, {
     cacheTime: 0
-  })
+  });
+
+  useEffect(() => {
+    setTimeout(() => {
+      setNewDataLoading(false)
+    }, 500)
+  }, [])
 
   const dragStart = (e: React.DragEvent<HTMLParagraphElement>) => {
     setDraggableItem(e.currentTarget);
@@ -123,6 +130,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
     retry,
     rendered,
     questionDetails: data,
-    isLoading
+    isLoading,
+    newDataLoading
   }
 }

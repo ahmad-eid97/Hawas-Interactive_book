@@ -9,7 +9,7 @@ import { getGroupRoundedSingleChoiceQuestion } from "@/API/quizzes";
 import { QuestionData } from "../types";
 
 export default function useLogic({ questionData }: { questionData: QuestionData }) {
-  const [choices, setChoices] = useState<{ [index: number]: string }>({});
+  const [choices, setChoices] = useState<{ [index: number]: { title: string, image: string } }>({});
 
   const getQuestion = async () => {
     return await getGroupRoundedSingleChoiceQuestion(questionData.id);
@@ -19,8 +19,8 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     cacheTime: 0
   })
 
-  const addToChoices = (index: number, letter: string) => {
-    setChoices(prev => ({ ...prev, [index]: letter }));
+  const addToChoices = (index: number, choice: { title: string, image: string }) => {
+    setChoices(prev => ({ ...prev, [index]: choice }));
   }
 
   return {

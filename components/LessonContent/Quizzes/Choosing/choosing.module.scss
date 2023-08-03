@@ -26,23 +26,34 @@
       .choices {
         display: flex;
         align-items: center;
-        justify-content: center;
-        gap: 15px;
+        justify-content: space-around;
         border: 2px dashed var(--main-color);
         padding: 20px;
         border-radius: 20px;
         background: url('../../../../public/images/quizzes/small.svg');
         background-position: center;
         background-size: cover;
+        width: 100%;
         span {
           font-size: 1.1rem;
           font-weight: 600;
           cursor: pointer;
           padding: 5px 20px;
-          border-radius: 50px;
+          border-radius: 10px;
           display: flex;
           align-items: center;
           gap: 3px;
+          img {
+            width: 80px;
+            height: 70px;
+            border-radius: 10px;
+            object-fit: contain;
+          }
+          span {
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+          }
           &.active {
             border: 2px solid rgb(72, 139, 95);
           }

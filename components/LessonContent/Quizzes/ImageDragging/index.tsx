@@ -11,10 +11,10 @@ import { QuestionData } from '../types';
 import styles from './draggingParts.module.scss';
 
 const ImageDragging = ({ questionData }: { questionData: QuestionData }) => {
-  const { droppingArea, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, showCorrection, correctAnswer, retry, rendered, isLoading, questionDetails } = useLogic({ questionData });
+  const { droppingArea, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, showCorrection, correctAnswer, retry, rendered, isLoading, newDataLoading, questionDetails } = useLogic({ questionData });
 
   if (!rendered) return null;
-  if (isLoading) return <PageLoader />
+  if (isLoading || newDataLoading) return <PageLoader />
   return (
     <>
       <h2>{questionData.title}</h2>

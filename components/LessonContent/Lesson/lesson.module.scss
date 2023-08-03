@@ -21,10 +21,12 @@
     border: 2px solid var(--main-color);
     border-radius: 10px;
     padding: 20px;
-    // background: url('../../../public/images/lesson/a3.png');
     background-image: url('../../../public/images/quizzes/chart.svg');
     background-position: top right;
     background-size: fill;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     h1 {
       text-align: center !important;
       margin-bottom: 20px;
