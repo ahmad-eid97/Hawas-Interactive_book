@@ -27,6 +27,7 @@
         display: flex;
         align-items: center;
         justify-content: space-around;
+        flex-wrap: wrap;
         border: 2px dashed var(--main-color);
         padding: 20px;
         border-radius: 20px;
@@ -44,8 +45,10 @@
           align-items: center;
           gap: 3px;
           img {
-            width: 80px;
-            height: 70px;
+            min-width: 80px;
+            min-height: 70px;
+            max-width: 100px;
+            max-height: 100px;
             border-radius: 10px;
             object-fit: contain;
           }
