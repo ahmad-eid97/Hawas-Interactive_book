@@ -127,6 +127,7 @@ export async function getGroupSingleWordChoice(questionId: number) {
   const items = response?.data?.data?.children?.map((item: any) => ({
     id: item.id,
     text: item.title,
+    image: item.question_img,
     choices: item.answers.map((item: any) => item.title),
     correct: item.answers.filter((item: any) => item.is_correct === 1)[0].title
   }))

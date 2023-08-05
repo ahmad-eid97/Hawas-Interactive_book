@@ -18,11 +18,6 @@ const ContinueTyping = ({ questionData }: { questionData: QuestionData }) => {
     <div className={styles.continueTyping}>
       <h2>{questionData.title}</h2>
       <div className={styles.wrapper}>
-        <div className={styles.item}>
-          <i className="fa-duotone fa-pencil"></i>
-          <span>بيت لي:</span>
-          <input type="text" placeholder='بيتي' disabled />
-        </div>
         {items.map((item: any, idx: number) => (
           <div className={styles.item} key={item.id}>
             <i className="fa-duotone fa-pencil"></i>

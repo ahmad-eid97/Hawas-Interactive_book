@@ -12,6 +12,7 @@ interface CProps {
 }
 
 const Droppables = ({ dragOver, dragLeave, drop, questionDetails }: CProps) => {
+  console.log(questionDetails?.questionImage)
   return (
     <div className={styles.dropables} style={{ backgroundImage: `url(${questionDetails?.questionImage})` }}>
       {questionDetails?.droppables.map((one: any, idx: number) => (
