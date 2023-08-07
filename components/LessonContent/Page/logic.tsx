@@ -39,7 +39,7 @@ export default function useLogic({ quizzes }: any) {
       'group_fill_in_blank': <FillThePlaces questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
       'group_odd_word': <ChooseWord questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
       'group_word_single_choice': <ChooseAdjective questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
-      'group_short_answer': <ContinueTyping questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,
+      'group_short_answer': <ContinueTyping questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
       'group_ordering': <ArrangeWords questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,
       'group_rounded_single_choice': <Choosing questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
       'group_radio_single_choice': <SignleChoose questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done

@@ -72,6 +72,9 @@
     flex: 2;
     direction: var(--dir);
     text-align: var(--align);
+    p {
+      padding: 7px 25px;
+    }
     p.big {
       height: 80px;
       display: flex;
