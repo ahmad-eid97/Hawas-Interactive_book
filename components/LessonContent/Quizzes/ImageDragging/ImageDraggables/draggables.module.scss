@@ -21,6 +21,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center !important;
     gap: 5px;
     i {
       color: var(--delete-warn);

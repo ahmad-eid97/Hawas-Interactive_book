@@ -32,7 +32,7 @@ export default function useLogic({ quizzes }: any) {
         onUnMatch={(matches) => { }}
         questionData={quizzes[pageNum - 1]}
       />,  // Done
-      'ordering': <SortDragging questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,
+      'ordering': <SortDragging questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
       'matching_with_table_dragging': <TableDragging questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,
       'group_rounded_fill_in_blank': <WordDragging questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
       'group_image_single_choice': <ChooseLetter questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,
