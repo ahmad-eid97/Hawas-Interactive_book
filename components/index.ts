@@ -4,6 +4,9 @@ export { default as Pagination } from './Common/Pagination';
 export { default as RadioGroup } from './Common/RadioGroup';
 export { default as Success } from './Common/Success';
 export { default as Fail } from './Common/Fail';
+export { default as Navbar } from './Common/Navbar';
+export { default as Footer } from './Common/Footer';
+export { default as PageHeader } from './Common/PageHeader';
 //== Login Components
 export { default as LoginForm } from './login/LoginForm';
 //== Book Components

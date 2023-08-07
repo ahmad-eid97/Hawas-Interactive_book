@@ -17,6 +17,12 @@
     border-radius: 20px;
     /* creates padding around scroll thumb */
   }
+  h2 {
+    text-align: center !important;
+    font-weight: 700;
+    transform: translateY(-10px);
+    font-size: 1.3rem;
+  }
   .inside {
     border: 2px solid var(--main-color);
     border-radius: 10px;

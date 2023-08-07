@@ -1,5 +1,5 @@
 //== Components
-import { BooksWrapper } from "@/components";
+import { PageHeader, BooksWrapper } from "@/components";
 //== API
 import { getBooks } from "@/API/books";
 
@@ -13,6 +13,7 @@ const Books: React.FC = async () => {
 
   return (
     <>
+      <PageHeader title="كتب حواس" padding="228px 0" bgColor="#090761" color="#fff" />
       <BooksWrapper books={data.books} />
     </>
   )
