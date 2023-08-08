@@ -1,12 +1,18 @@
 @import '../../../styles/extends.scss';
 
 .nextButton {
-  @extend %mainBtn;
-  max-width: 150px;
-  margin: auto;
-  margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  width: 100%;
+  button {
+    @extend %mainBtn;
+    max-width: 200px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
 }

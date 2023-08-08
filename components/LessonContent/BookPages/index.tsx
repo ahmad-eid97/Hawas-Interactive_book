@@ -12,7 +12,7 @@ interface CProps {
 
 const BookPages = ({ data }: CProps) => {
   const { pageLoaded, bookWidth, bookHeight, flippy } = useLogic();
-  console.log(data)
+
   return (
     <div className={styles.bookPages}>
       {pageLoaded &&
@@ -30,7 +30,7 @@ const BookPages = ({ data }: CProps) => {
           ref={flippy}
         >
           <FrontCover />
-          <Lesson lessonTitle={data?.current_lesson?.title} content={data?.content} />
+          <Lesson lessonNumber={data?.current_lesson.sort} lessonTitle={data?.current_lesson?.title} content={data?.content} />
           <Page quizzes={data?.quizzes} />
           <BackCover />
         </Flippy>

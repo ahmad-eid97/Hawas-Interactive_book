@@ -14,7 +14,7 @@ const Book = async ({ params }: { params: { id: number } }) => {
   return (
     <>
       <BookPages data={response?.data?.data} />
-      <NextButton />
+      <NextButton nextLesson={response?.data?.data?.next_lesson} prevLesson={response?.data?.data?.prev_lesson} />
     </>
   )
 }

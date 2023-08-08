@@ -1,27 +1,114 @@
 .lesson {
+  position: relative;
   height: 90%;
   padding: 40px;
   overflow-y: auto;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   &::-webkit-scrollbar {
     width: 6px !important;
-    /* width of the entire scrollbar */
   }
   &::-webkit-scrollbar-track {
     background: rgb(220, 220, 220);
-    /* color of the tracking area */
   }
   &::-webkit-scrollbar-thumb {
     background-color: var(--third-color);
-    /* color of the scroll thumb */
     border-radius: 20px;
-    /* creates padding around scroll thumb */
   }
-  h2 {
-    text-align: center !important;
-    font-weight: 700;
-    transform: translateY(-10px);
-    font-size: 1.3rem;
+  .badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 65px;
+    height: 65px;
+    background-image: url('../../../public/images/lesson/badge.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    p,
+    span {
+      margin: 0;
+      font-weight: 700;
+      padding-right: 2px;
+    }
+    span {
+      transform: translateY(-7px);
+    }
+  }
+  .frame {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .right {
+      position: absolute;
+      top: -7px;
+      right: 5px;
+      transform: rotate(-90deg);
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: 12px;
+        height: 15px;
+      }
+
+      &::before {
+        border-left: solid 25px var(--third-color);
+        border-top: solid 10px var(--third-color);
+        border-bottom: solid 10px transparent;
+      }
+
+      &::after {
+        border-right: solid 25px var(--third-color);
+        border-top: solid 10px var(--third-color);
+        border-bottom: solid 10px transparent;
+        z-index: -1;
+      }
+    }
+    .left {
+      position: absolute;
+      top: 70%;
+      left: 5px;
+      transform: rotate(90deg);
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: 12px;
+        height: 15px;
+      }
+
+      &::before {
+        border-left: solid 25px var(--third-color);
+        border-top: solid 10px var(--third-color);
+        border-bottom: solid 10px transparent;
+      }
+
+      &::after {
+        border-right: solid 25px var(--third-color);
+        border-top: solid 10px var(--third-color);
+        border-bottom: solid 10px transparent;
+      }
+    }
+
+    h2 {
+      display: inline-block;
+      text-align: center !important;
+      font-weight: 600;
+      transform: translateY(-10px);
+      font-size: 1.1rem;
+      background-color: var(--secondary-color);
+      padding: 5px 15px;
+      position: relative;
+      border-radius: 2px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
+    }
   }
   .inside {
     border: 2px solid var(--main-color);

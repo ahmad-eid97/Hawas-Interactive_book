@@ -6,17 +6,26 @@ import useLogic from './logic';
 import styles from './lesson.module.scss';
 
 interface CProps {
+  lessonNumber: number,
   lessonTitle: string,
   content: any[]
 }
 
-const Lesson = ({ lessonTitle, content }: CProps) => {
+const Lesson = ({ lessonNumber, lessonTitle, content }: CProps) => {
   const { pageNum, changePage, renderPageSection } = useLogic();
 
   return (
     <div className={styles.lesson}>
+      <div className={styles.badge}>
+        <p>الدرس</p>
+        <span>{lessonNumber}</span>
+      </div>
       <Pagination count={content.length} changePage={changePage} position="top" />
-      <h2>{lessonTitle}</h2>
+      <div className={styles.frame}>
+        <div className={styles.right}></div>
+        <div className={styles.left}></div>
+        <h2>{lessonTitle}</h2>
+      </div>
       <div className={styles.inside}>
         {content.length ? content[pageNum - 1].map((item: any, index: number) => (
           <div key={index} className={styles.item}>
