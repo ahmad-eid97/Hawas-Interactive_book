@@ -1,11 +1,13 @@
+@import "../../../styles/extends.scss";
 @import "../../../styles/mixins.scss";
 
 .card {
+  @extend %quizFrame;
   position: relative;
   width: 100%;
   transition: all .3s ease;
   padding: 8px;
-  border: 1px solid var(--border-color) !important;
+  // border: 2px dashed var(--border-color) !important;
   box-shadow: 0 8px 12px rgba(140, 152, 164, .1) !important;
   display: flex;
   -webkit-box-orient: vertical;
@@ -13,10 +15,15 @@
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: var(--bg-alt-color);
+  background-color: var(--third-color);
   background-clip: border-box;
   border-radius: 16px;
   word-wrap: break-word;
+  .container {
+    padding: 12px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
 
 
   .cardImgContainer {
@@ -36,7 +43,6 @@
       margin: 16px 16px 0 0 !important;
 
       .btn {
-        font-family: Nunito, sans-serif;
         border-color: transparent !important;
         opacity: .7;
         height: 36px !important;
@@ -111,7 +117,6 @@
   }
 
   .cardFooter {
-    font-family: Nunito, sans-serif;
     padding: 16px 8px 8px;
     margin-bottom: 4px;
     position: relative;
@@ -147,7 +152,6 @@
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
-        height: 58px !important;
         margin-bottom: 8px !important;
         line-height: 1.45;
         font-size: 20px;
@@ -155,32 +159,7 @@
         font-weight: 400;
       }
 
-      .ratingContainer {
-        display: flex !important;
-        -webkit-box-align: end !important;
-        align-items: flex-start !important;
-        margin-bottom: -4px !important;
-        flex-wrap: wrap !important;
-        @include md {
-          display: block !important;
-        }
-
-        .rating {
-          font-family: Nunito, sans-serif;
-          margin-right: 12px !important;
-          font-size: 20px;
-
-        }
-
-        .reviews {
-          font-family: Nunito, sans-serif;
-          font-size: 14px;
-
-        }
-      }
-
       .nav {
-        font-family: Nunito, sans-serif;
         display: flex;
         flex-wrap: wrap;
         padding-left: 0;
@@ -189,18 +168,10 @@
         margin-top: 0;
 
         .navItem {
-          font-family: Nunito, sans-serif;
-          padding-right: 12px !important;
-          -webkit-box-align: center !important;
-          align-items: center !important;
-          display: flex !important;
-
-          .icon {
-            margin-right: 8px !important;
-          }
-
+          display: flex;
+          align-items: center;
+          gap: 5px;
           .text {
-            font-family: Nunito, sans-serif;
             font-size: 14px;
             @include xs {
               font-size: 12px;
@@ -210,7 +181,6 @@
       }
 
       del {
-        font-family: Nunito, sans-serif;
 
         font-size: 14px;
         display: block;
@@ -218,8 +188,6 @@
       }
 
       ins {
-        font-family: Nunito, sans-serif;
-
         line-height: 1.45;
         font-size: 20px;
         color: var(--text-dark);

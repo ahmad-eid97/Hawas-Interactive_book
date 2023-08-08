@@ -19,13 +19,10 @@ interface CProps {
 
 const BooksWrapper = ({ books }: CProps) => {
   return (
-
     <Container maxWidth="xl" className={styles.courses}>
-      <Grid container className={styles.header} alignItems="center" >
-        <Grid item xl xs={12}>
-          <p>المتوفر لديك الاَن هو 1 كتاب</p>
-        </Grid>
-        <form className="">
+      <div className={styles.header} >
+        <p>المتوفر لديك الاَن هو {books.length} كتاب</p>
+        <form>
           <div className={styles.inputGroup}>
             <input type="search" placeholder="Search our courses" />
             <div className={styles.inputGroupBtn}>
@@ -38,7 +35,7 @@ const BooksWrapper = ({ books }: CProps) => {
             </div>
           </div>
         </form>
-        <FormControl sx={{ m: 1, minWidth: 150 }} className={styles.select}>
+        {/* <FormControl sx={{ m: 1, minWidth: 150 }} className={styles.select}>
           <InputLabel id="demo-simple-select-helper-label">Category</InputLabel>
           <Select
             labelId="demo-simple-select-helper-label"
@@ -65,8 +62,8 @@ const BooksWrapper = ({ books }: CProps) => {
             <MenuItem value={10}>Another option</MenuItem>
             <MenuItem value={30}>Something else here</MenuItem>
           </Select>
-        </FormControl>
-      </Grid>
+        </FormControl> */}
+      </div>
       <Grid container spacing={3}>
         {books.map(book => (
           <Grid item xs={12} sm={6} lg={4} key={book.id}>
@@ -74,18 +71,7 @@ const BooksWrapper = ({ books }: CProps) => {
           </Grid>
         ))}
       </Grid>
-      {/* <PaginationElement /> */}
     </Container >
-    // <Container maxWidth="xl" className={styles.booksWrapper}>
-    //   <h1>Our Books</h1>
-    //   <Grid container justifyContent="center">
-    //     {books.map(book => (
-    //       <Grid item xs={12} sm={6} md={4} lg={3} key={book.id}>
-    //         <BookBox book={book} />
-    //       </Grid>
-    //     ))}
-    //   </Grid>
-    // </Container>
   )
 }
 

@@ -1,12 +1,13 @@
 //== API
 import { getBookLessons } from "@/API/lessons";
-import { LessonsWrapper } from "@/components";
+import { PageHeader, LessonsWrapper } from "@/components";
 
 const Lessons = async ({ params }: { params: { id: number } }) => {
   const lessons = await getBookLessons(params.id);
 
   return (
     <>
+      <PageHeader title="الدروس" padding="228px 0" bgColor="#090761" color="#fff" />
       <LessonsWrapper lessons={lessons} />
     </>
   )

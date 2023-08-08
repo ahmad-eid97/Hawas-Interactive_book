@@ -11,6 +11,8 @@ body {
   background-color: var(--main-background);
   color: var(--text-color);
   overflow-x: hidden;
+  direction: rtl !important;
+  text-align: right !important;
 }
 
 button {

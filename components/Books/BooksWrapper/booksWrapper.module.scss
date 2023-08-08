@@ -11,6 +11,11 @@
     max-width: 540px;
   }
   .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
     p {
       font-size: 16px;
       font-weight: 400;
@@ -29,50 +34,48 @@
         position: relative;
         display: flex;
         flex-wrap: wrap;
-        -webkit-box-align: stretch;
-        align-items: stretch;
         width: 100%;
+
         input {
           position: relative;
-          -webkit-box-flex: 1;
-          flex: 1 1 auto;
-          width: 1%;
-          min-width: 0;
-          border-radius: 4px 0 0 4px;
-          min-height: 50px;
+          flex: 1;
+          border-radius: 0px 4px 4px 0px;
+          height: 50px;
           padding: 9px 16px;
           box-shadow: none;
-          display: block;
           font-weight: 400;
           line-height: 1.64;
           color: #77838f;
           background-color: #fff;
-          background-clip: padding-box;
           border: 1px solid #e7e7ec;
-          appearance: none;
           transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
           outline-offset: -2px;
           z-index: 3;
-          border-right: 0;
+          border-left: 0;
+
           &:focus {
             border-color: #090761;
             outline: none;
+
             +.inputGroupBtn {
               button {
                 border-color: #090761;
+
               }
             }
           }
         }
+
         .inputGroupBtn {
           margin-left: -1px;
           border-radius: 0 4px 4px 0;
           display: flex;
+
           button {
             margin-left: -1px;
             z-index: 2;
             position: relative;
-            border-radius: 0 4px 4px 0;
+            border-radius: 4px 0px 0px 4px;
             padding: 9px 16px;
             display: inline-block;
             font-weight: 500;
