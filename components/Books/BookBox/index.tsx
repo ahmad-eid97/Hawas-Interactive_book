@@ -37,7 +37,7 @@ const BookBox = ({ book }: CProps) => {
                     <div className={styles.icon}>
                       <i className="fa-regular fa-book"></i>
                     </div>
-                    <div className={styles.text}>13 درس</div>
+                    <div className={styles.text}>13 فصل</div>
                   </li>
                 </ul>
               </Grid>

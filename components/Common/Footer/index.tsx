@@ -80,7 +80,7 @@ const Footer: React.FC<FooterProps> = () => {
               </li>
               <li >
                 <a href="#" >
-                  الدروس
+                  الفصول
                 </a>
               </li>
               <li >

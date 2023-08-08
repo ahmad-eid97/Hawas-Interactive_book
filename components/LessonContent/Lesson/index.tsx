@@ -17,7 +17,7 @@ const Lesson = ({ lessonNumber, lessonTitle, content }: CProps) => {
   return (
     <div className={styles.lesson}>
       <div className={styles.badge}>
-        <p>الدرس</p>
+        <p>الفصل</p>
         <span>{lessonNumber}</span>
       </div>
       <Pagination count={content.length} changePage={changePage} position="top" />

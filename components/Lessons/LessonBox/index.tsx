@@ -19,7 +19,7 @@ const LessonBox = ({ index, lesson }: CProps) => {
   return (
     <div className={styles.card} onClick={() => router.push(`/lessons/${lesson.id}`)}>
       <div className={styles.badge}>
-        <h2>الدرس</h2>
+        <h2>الفصل</h2>
         <p>{index + 1}</p>
       </div>
       <div className={styles.content}>
