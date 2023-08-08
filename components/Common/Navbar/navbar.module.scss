@@ -23,8 +23,6 @@
     padding-top: 16px;
     padding-bottom: 16px;
     display: flex;
-    flex-wrap: inherit;
-    -webkit-box-align: center;
     align-items: center;
     -webkit-box-pack: justify;
     justify-content: space-between;
@@ -106,11 +104,7 @@
 
     .links {
       display: flex !important;
-      flex-basis: auto;
       z-index: 999;
-      -webkit-box-flex: 1;
-      flex-grow: 1;
-      -webkit-box-align: center;
       align-items: center;
 
       @include md {
@@ -223,7 +217,7 @@
       padding-left: 0;
       margin-bottom: 0;
       list-style: none;
-
+      display: none;
       .drawerItem {
         padding: 24px 16px;
         display: flex !important;
@@ -238,6 +232,9 @@
           width: 20px;
           height: 20px;
         }
+      }
+      @include md {
+        display: flex;
       }
     }
   }
