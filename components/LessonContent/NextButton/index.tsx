@@ -10,13 +10,13 @@ interface CProps {
 }
 
 const NextButton = ({ nextLesson, prevLesson }: CProps) => {
-  const { mounted } = useLogic();
+  const { mounted, goToNextLesson, goToPreviousLesson } = useLogic();
 
   if (!mounted) return null;
   return (
     <div className={styles.nextButton}>
       {prevLesson ?
-        <button>
+        <button onClick={() => goToPreviousLesson(prevLesson.id)}>
           <i className="fa-duotone fa-arrow-right"></i>
           الفصل السابق
         </button>
@@ -24,7 +24,7 @@ const NextButton = ({ nextLesson, prevLesson }: CProps) => {
         null
       }
       {nextLesson ?
-        <button>
+        <button onClick={() => goToNextLesson(nextLesson.id)}>
           الفصل التالي
           <i className="fa-duotone fa-arrow-left"></i>
         </button>
