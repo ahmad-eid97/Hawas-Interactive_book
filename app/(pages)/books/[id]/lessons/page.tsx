@@ -7,7 +7,7 @@ const Lessons = async ({ params }: { params: { id: number } }) => {
 
   return (
     <>
-      <PageHeader title="الدروس" padding="228px 0" bgColor="#090761" color="#fff" />
+      <PageHeader title="الدروس" padding="228px 0" bgColor="var(--main-color)" color="#fff" />
       <LessonsWrapper lessons={lessons} />
     </>
   )

@@ -59,12 +59,12 @@
           border-left: 0;
 
           &:focus {
-            border-color: #090761;
+            border-color: var(--main-color);
             outline: none;
 
             +.inputGroupBtn {
               button {
-                border-color: #090761;
+                border-color: var(--main-color);
 
               }
             }
@@ -141,7 +141,7 @@
   .filterBtn {
     display: block;
     padding: 20px;
-    background-color: #090761;
+    background-color: var(--main-color);
     color: #fff;
     border-radius: 4px;
     text-align: center !important;

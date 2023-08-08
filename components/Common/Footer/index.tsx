@@ -43,143 +43,86 @@ const Footer: React.FC<FooterProps> = () => {
           </Grid>
           <Grid item lg={2} md={4} xs={12} className={styles.widgit}>
             <h5>
-              Our Company
+              شركتا
             </h5>
             <ul>
               <li >
                 <a href="#" >
-                  Our Company
+                  من نحن
                 </a>
               </li>
               <li >
                 <a href="#" >
-                  About Us
+                  تواصل معنا
                 </a>
               </li>
               <li >
                 <a href="#" >
-                  Contact Us
+                  مجتمعنا
                 </a>
               </li>
               <li >
                 <a href="#" >
-                  Community
-                </a>
-              </li>
-              <li >
-                <a href="#" >
-                  Student Perks
-                </a>
-              </li>
-              <li >
-                <a href="#" >
-                  Blog
-                </a>
-              </li>
-              <li >
-                <a href="#" >
-                  Affiliate Program
-                </a>
-              </li>
-              <li >
-                <a href="#" >
-                  Careers
+                  الكتب
                 </a>
               </li>
             </ul>
           </Grid>
           <Grid item lg={2} md={4} xs={12} className={styles.widgit}>
             <h5>
-              Topics
+              مواضيعنا
             </h5>
             <ul>
               <li >
                 <a href="#" >
-                  HTML
+                  الكتب
                 </a>
               </li>
               <li >
                 <a href="#" >
-                  CSS
+                  الدروس
                 </a>
               </li>
               <li >
                 <a href="#" >
-                  Design
+                  الاسئلة
                 </a>
               </li>
               <li >
                 <a href="#" >
-                  JavaScript
-                </a>
-              </li>
-              <li >
-                <a href="#" >
-                  Ruby
-                </a>
-              </li>
-              <li >
-                <a href="#" >
-                  PHP
-                </a>
-              </li>
-              <li >
-                <a href="#" >
-                  Android
-                </a>
-              </li>
-              <li >
-                <a href="#" >
-                  Development Tools
-                </a>
-              </li>
-              <li >
-                <a href="#" >
-                  Business
+                  الألعاب
                 </a>
               </li>
             </ul>
           </Grid>
           <Grid item lg={4} md={8} xs={12} className={styles.widgit}>
             <h5>
-              Subscribe our newsletter
+              إشترك معنا
             </h5>
-            <p>Your download should start automatically, if not  Click here. Should I give up, huh?.</p>
+            <p>أرسل إلينا بريدك الإلكتروني لتحصل علي كل جديد عن شركتنا والعروض المقدمة.</p>
             <form>
               <div className={styles.inputGroup}>
-                <input type="text" placeholder="Enter your email" />
-                <button className={styles.inputGroupAppend} type="button">Subscribe</button>
+                <input type="text" placeholder="البريد الإلكتروني" />
+                <button className={styles.inputGroupAppend} type="button">إشترك الاَن</button>
               </div>
             </form>
           </Grid>
           <Grid item xs={12}>
             <div className={styles.footerBottom}>
-              <Grid container justifyContent="center">
-                <Grid item lg="auto" xs={12}>
-                  <p>Copyright © 2023 GridsApps. All Right Reserved.</p>
-                </Grid>
-                <Grid item lg md="auto" xs={12}>
-                  <div className={styles.links}>
-                    <ul>
-                      <li>
-                        <Link href="#">Home</Link>
-                      </li>
-                      <li>
-                        <Link href="#">Site Map</Link>
-                      </li>
-                      <li>
-                        <Link href="#">Privacy policy</Link>
-                      </li>
-                      <li>
-                        <Link href="#">Web Use Policy</Link>
-                      </li>
-                      <li>
-                        <Link href="#">Cookie Policy</Link>
-                      </li>
-                    </ul>
-                  </div>
-                </Grid>
-              </Grid>
+              <p>حقوق النشر © 2023 GridsApps. جميع الحقوق محفوظة.</p>
+              <div className={styles.links}>
+                <ul>
+                  <li>
+                    <Link href="#">الصفحة الرئيسية</Link>
+                  </li>
+                  <li>
+                    <Link href="#">لوحة التحكم</Link>
+                  </li>
+                  <li>
+                    <Link href="#">الكتب</Link>
+                  </li>
+                </ul>
+              </div>
             </div>
           </Grid>
         </Grid>

@@ -35,10 +35,10 @@
     right: 10px;
     left: 10px;
     z-index: -1;
-    background-image: repeating-linear-gradient(90deg, #090761 0, #090761 50%, transparent 0, transparent),
-      repeating-linear-gradient(90deg, #090761 0, #090761 50%, transparent 0, transparent),
-      repeating-linear-gradient(180deg, #090761 0, #090761 50%, transparent 0, transparent),
-      repeating-linear-gradient(180deg, #090761 0, #090761 50%, transparent 0, transparent);
+    background-image: repeating-linear-gradient(90deg, var(--main-color) 0, var(--main-color) 50%, transparent 0, transparent),
+      repeating-linear-gradient(90deg, var(--main-color) 0, var(--main-color) 50%, transparent 0, transparent),
+      repeating-linear-gradient(180deg, var(--main-color) 0, var(--main-color) 50%, transparent 0, transparent),
+      repeating-linear-gradient(180deg, var(--main-color) 0, var(--main-color) 50%, transparent 0, transparent);
     background-position: 0 0, 0 100%, 0 0, 100% 0;
     background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
     background-size: 20px 2px, 20px 2px, 2px 20px, 2px 20px;

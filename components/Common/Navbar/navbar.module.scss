@@ -59,7 +59,7 @@
 
           .inner {
             border-radius: 4px;
-            background-color: #090761;
+            background-color: var(--main-color);
             padding: 12px 24px;
             display: flex;
             align-items: center;
@@ -80,7 +80,7 @@
         .linkDropdown {
           min-width: 320px;
           padding: 16px 28px;
-          background-color: #090761;
+          background-color: var(--main-color);
           position: absolute;
           transform: translate(0, 0);
           left: 0;
