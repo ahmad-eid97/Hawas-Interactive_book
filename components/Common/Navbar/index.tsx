@@ -24,7 +24,7 @@ const Navbar: React.FC<NavbarProps> = () => {
       </Container>
       <Container maxWidth="xl" className={styles.container}>
         <Link className={styles.logo} href="/">
-          <img src="./images/navbar/hawaslogofinal1.png" alt="hawas_logo" />
+          <img src="/images/navbar/navbar_logo.png" alt="hawas_logo" />
         </Link>
         <div className={styles.links}>
           <ul className={`${styles.navLinks}`}>

@@ -16,7 +16,7 @@ const Footer: React.FC<FooterProps> = () => {
       <Container maxWidth="xl" >
         <Grid container>
           <Grid item lg={4} md={4} xs={12}>
-            <img src="./images/navbar/hawaafinal.png" alt="..." />
+            <img src="/images/navbar/footer_logo.png" alt="logo" />
             <a href="#">support@gridsapps.com</a>
             <ul className={styles.socials}>
               <li   >
