@@ -72,3 +72,4 @@ export { default as Events } from './Home/Events';
 export { default as Video } from './Home/VideoSection';
 export { default as Courses } from './Home/Courses';
 export { default as EventsList } from './Home/EventsList';
+export { default as CountUp } from './Home/CountUp';

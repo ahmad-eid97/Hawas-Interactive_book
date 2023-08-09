@@ -25,6 +25,7 @@
     "eslint-config-next": "13.4.8",
     "next": "13.4.8",
     "react": "18.2.0",
+    "react-countup": "^6.4.2",
     "react-dom": "18.2.0",
     "react-image-video-lightbox": "^3.0.1",
     "react-painter": "^0.4.0",
