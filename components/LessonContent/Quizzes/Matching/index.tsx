@@ -69,7 +69,7 @@ function Matching({
     const leftXOffset = document.querySelector(`.${classes.righthand}`)!.getBoundingClientRect().width + 20;
     const height = document.querySelector(`.${classes.matching}`)!.getBoundingClientRect().height;
     setSvgDims({ width, height, innerWidth, rightXOffset, leftXOffset });
-  }, []);
+  }, [isLoading]);
 
   /**
    * Function Handles And Set the start position of the matching
