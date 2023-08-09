@@ -34,7 +34,7 @@ const Courses: React.FC<CoursesProps> = () => {
           <Grid container className={styles.header} alignItems="center" >
             <Grid item md xs={12}>
               <h1 className="mb-1">دورات مميزة</h1>
-              <p className="font-size-lg text-capitalize">اكتشف برنامجك المثالي في دوراتنا.</p>
+              <p>اكتشف برنامجك المثالي في دوراتنا.</p>
             </Grid>
           </Grid>
           <Swiper

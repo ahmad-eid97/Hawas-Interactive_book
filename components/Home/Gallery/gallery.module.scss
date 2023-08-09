@@ -1,0 +1,98 @@
+@import "../../../styles/mixins.scss";
+
+.gallery {
+  padding-bottom: 96px;
+  padding-top: 96px;
+  z-index: 10;
+  @include sm {
+    padding-bottom: 48px;
+    padding-top: 48px;
+  }
+  h1 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 45.4833px;
+    margin-bottom: 4px;
+    margin-top: 0px;
+    text-align: center !important;
+    text-transform: capitalize;
+    color: var(--main-color-dark);
+  }
+  p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28.8px;
+    margin-bottom: 64px;
+    margin-top: 0px;
+    text-align: center !important;
+    text-transform: capitalize;
+    @include sm {
+      margin-bottom: 16px;
+    }
+  }
+  .imageWrapper {
+    &:nth-of-type(even) {
+      transform: translateY(20px);
+      @include xs {
+        transform: translateY(0);
+      }
+    }
+  }
+  .image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    @include sm {
+      margin: 0 0 24px !important;
+      &:last-of-type {
+        margin: 0 !important;
+      }
+    }
+    img {
+      border-radius: 16px;
+      width: 100%;
+      @include xs {
+        width: 300px;
+      }
+    }
+    .meta {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      visibility: hidden;
+      transition: all .3s ease;
+      text-transform: capitalize;
+      text-align: center !important;
+      color: #fff;
+      .icon {
+        text-align: center !important;
+        i {
+          margin: 0 auto;
+          font-size: 2rem;
+        }
+      }
+      h2 {
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 32.4px;
+        margin-bottom: 0px;
+        margin-top: 0px;
+        max-width: 200px;
+        text-align: center !important;
+        text-transform: capitalize;
+        visibility: visible;
+      }
+    }
+    &:hover {
+      .meta {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}

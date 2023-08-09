@@ -8,11 +8,6 @@ const TopBar: React.FC<TopBarProps> = () => {
   return (
     <div className={styles.topBar}>
       <ul className={styles.nav}>
-        {/* <li className={styles.item}>
-                    <span>
-                        046317082
-                    </span>
-                </li> */}
         <li className={styles.item}>
           <span>support@gridsapps.com</span>
         </li>

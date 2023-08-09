@@ -1,0 +1,33 @@
+@import "../../../styles/mixins.scss";
+
+.News {
+  padding-bottom: 96px;
+  padding-top: 96px;
+  background-color: #fff;
+  @include sm {
+    padding-bottom: 48px;
+    padding-top: 48px;
+  }
+  .header {
+    margin-bottom: 40px;
+    h1 {
+      font-size: 34.992px;
+      font-weight: 600;
+      line-height: 45.4833px;
+      margin-bottom: 4px;
+      margin-top: 0px;
+      text-align: center !important;
+      color: var(--main-color);
+    }
+    p {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 28.8px;
+      margin-bottom: 0px;
+      margin-top: 0px;
+      pointer-events: auto;
+      text-align: center !important;
+      text-transform: capitalize;
+    }
+  }
+}

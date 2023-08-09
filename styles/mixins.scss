@@ -49,15 +49,17 @@
 
 /****************| Centering Mixin |****************/
 @mixin center($type: flex) {
-  @if ($type == flex) {
+  @if ($type ==flex) {
     display: flex;
     justify-content: center;
     align-items: center;
-  } @else if ($type == position) {
+  }
+  @else if ($type ==position) {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  } @else {
+  }
+  @else {
     margin: {
       left: auto;
       right: auto;
@@ -105,7 +107,8 @@
 @function setTxtColor($bgColor, $light: #fff, $dark: #333) {
   @if (lightness($bgColor) > 70) {
     @return $dark;
-  } @else {
+  }
+  @else {
     @return $light;
   }
 }

@@ -1,5 +1,5 @@
 //== Components
-import { Navbar, Footer, Banner, MainSections, Events, Video, Courses, EventsList, CountUp } from "@/components";
+import { Navbar, Footer, Banner, MainSections, Events, Video, Courses, EventsList, CountUp, News, Gallery } from "@/components";
 
 export const metadata = {
   title: 'Hawas',
@@ -17,6 +17,8 @@ export default function Home() {
       <Courses />
       <EventsList />
       <CountUp />
+      <News />
+      <Gallery />
       <Footer />
     </>
   )

@@ -115,27 +115,32 @@ const Navbar: React.FC<NavbarProps> = () => {
             <li
               className={styles.link}
             >
-              <span>
-                {" "}
-                المدونة
-
-              </span>
+              <Link href='/books'>
+                <span>
+                  {" "}
+                  الكتب
+                </span>
+              </Link>
             </li>
             <li
               className={styles.link}
             >
-              <span>
-                {" "}
-                قناة حواس
-              </span>
+              <Link href='/blogs'>
+                <span>
+                  {" "}
+                  المدونة
+                </span>
+              </Link>
             </li>
             <li
               className={styles.link}
             >
-              <span>
-                {" "}
-                من نحن
-              </span>
+              <Link href='/about-us'>
+                <span>
+                  {" "}
+                  من نحن
+                </span>
+              </Link>
             </li>
             <li
               className={styles.link}
@@ -143,10 +148,12 @@ const Navbar: React.FC<NavbarProps> = () => {
               onMouseEnter={() => setNavDropdown(6)}
               onMouseLeave={() => setNavDropdown(0)}
             >
-              <span>
-                {" "}
-                اتصل بنا
-              </span>
+              <Link href="/contact-us">
+                <span>
+                  {" "}
+                  اتصل بنا
+                </span>
+              </Link>
             </li>
           </ul>
         </div>

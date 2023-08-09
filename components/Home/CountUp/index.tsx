@@ -32,7 +32,7 @@ const CoutUp: React.FC<CoutUpProps> = () => {
               // @ts-ignore
               duration={5}
               enableScrollSpy={true} />
-            <p className="font-size-lg fw-medium mb-0"> كل الطلاب </p>
+            <p> كل الطلاب </p>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <div className={styles.icon}>
@@ -50,7 +50,7 @@ const CoutUp: React.FC<CoutUpProps> = () => {
               // @ts-ignore
               duration={5}
               enableScrollSpy={true} />
-            <p className="font-size-lg fw-medium mb-0"> غرف الصف </p>
+            <p> غرف الصف </p>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <div className={styles.icon}>
@@ -65,7 +65,7 @@ const CoutUp: React.FC<CoutUpProps> = () => {
               // @ts-ignore
               duration={5}
               enableScrollSpy={true} />
-            <p className="font-size-lg fw-medium mb-0"> حافلات المدارس </p>
+            <p> حافلات المدارس </p>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <div className={styles.icon}>
@@ -79,7 +79,7 @@ const CoutUp: React.FC<CoutUpProps> = () => {
               // @ts-ignore
               duration={5}
               enableScrollSpy={true} />
-            <p className="font-size-lg fw-medium mb-0"> مجموع المعلمين </p>
+            <p> مجموع المعلمين </p>
           </Grid>
         </Grid>
       </Container>

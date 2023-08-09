@@ -73,3 +73,5 @@ export { default as Video } from './Home/VideoSection';
 export { default as Courses } from './Home/Courses';
 export { default as EventsList } from './Home/EventsList';
 export { default as CountUp } from './Home/CountUp';
+export { default as News } from './Home/News';
+export { default as Gallery } from './Home/Gallery';
