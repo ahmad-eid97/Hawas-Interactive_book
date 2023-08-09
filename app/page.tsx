@@ -1,4 +1,5 @@
-import Link from "next/link";
+//== Components
+import { Navbar, Footer, Banner, MainSections, Events, Video, Courses, EventsList } from "@/components";
 
 export const metadata = {
   title: 'Hawas',
@@ -7,12 +8,15 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main>
-      <h1><i className="fa-regular fa-house"></i> Home Page</h1>
-      <div>
-        <Link href="/books">Books</Link>
-      </div>
-      <Link href="/login">Login</Link>
-    </main>
+    <>
+      <Navbar />
+      <Banner />
+      <MainSections />
+      <Events />
+      <Video />
+      <Courses />
+      <EventsList />
+      <Footer />
+    </>
   )
 }

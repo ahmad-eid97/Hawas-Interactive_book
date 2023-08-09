@@ -1,0 +1,81 @@
+@import "../../../styles/mixins.scss";
+
+.video {
+  z-index: 10;
+  position: relative;
+  padding: 96px 0;
+  background-color: #fff;
+  @include sm {
+    padding: 48px 0;
+  }
+  a {
+    position: relative;
+    padding-bottom: 192px;
+    padding-top: 192px;
+    background-image: url('/images/home/cover-18.jpg');
+    background-size: cover;
+    margin: 24px 0;
+    display: block;
+    text-align: center !important;
+    cursor: pointer;
+    border-radius: 8px;
+    @include md {
+      padding-bottom: 64px;
+      padding-top: 64px;
+    }
+    ::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      bottom: 10px;
+      right: 10px;
+      left: 10px;
+      background-image: repeating-linear-gradient(to right, rgba(255, 255, 255, .7) 0, rgba(255, 255, 255, .7) 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to right, rgba(255, 255, 255, .7) 0, rgba(255, 255, 255, .7) 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to bottom, rgba(255, 255, 255, .7) 0, rgba(255, 255, 255, .7) 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to bottom, rgba(255, 255, 255, .7) 0, rgba(255, 255, 255, .7) 50%, transparent 50%, transparent 100%);
+      background-position: left top, left bottom, left top, right top;
+      background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+      background-size: 20px 2px, 20px 2px, 2px 20px, 2px 20px;
+      border-radius: 8px;
+    }
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 45.4833px;
+      margin-bottom: 4px;
+      margin-top: 0px;
+      text-align: center !important;
+      color: #fff;
+    }
+    p {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 25.6px;
+      margin-bottom: 48px;
+      margin-top: 0px;
+      text-align: center !important;
+      color: #fff;
+      padding: 0 128px;
+
+      @include sm {
+        padding: 0 48px;
+      }
+    }
+    .btn {
+      margin: 0 auto;
+      height: 90px;
+      width: 90px;
+      transition: box-shadow .25s ease, transform .25s ease, -webkit-transform .25s ease;
+      background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 .5rem .937rem rgba(140, 152, 164, .1) !important;
+      display: flex;
+      justify-content: center !important;
+      align-items: center !important;
+      box-shadow: 0 .5rem .937rem rgba(140, 152, 164, .1) !important;
+      svg {
+        width: 30px;
+        height: 30px;
+        color: var(--main-color-dark);
+      }
+    }
+  }
+}

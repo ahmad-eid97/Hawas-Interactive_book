@@ -26,11 +26,14 @@
     "next": "13.4.8",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-image-video-lightbox": "^3.0.1",
     "react-painter": "^0.4.0",
+    "react-parallax-mouse": "^2.0.1",
     "react-redux": "^8.1.1",
     "react-sketch-canvas": "^6.2.0",
     "sass": "^1.63.6",
     "svg-to-jsx": "^1.0.4",
+    "swiper": "^9.1.1",
     "typescript": "5.1.6"
   },
   "devDependencies": {

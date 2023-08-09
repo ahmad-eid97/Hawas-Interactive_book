@@ -1,0 +1,40 @@
+@import "../../../styles/mixins.scss";
+
+.events {
+  padding-bottom: 96px;
+  padding-top: 96px;
+  background-color: #fff;
+  @include sm {
+    padding-bottom: 64px;
+    padding-top: 64px;
+  }
+  .header {
+    margin-bottom: 40px;
+    h1 {
+      font-size: 34.992px;
+      font-weight: 600;
+      line-height: 45.4833px;
+      margin-bottom: 4px;
+      margin-top: 0px;
+      text-align: center !important;
+      color: var(--main-color-dark);
+    }
+    p {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 28.8px;
+      margin-bottom: 0px;
+      margin-top: 0px;
+      pointer-events: auto;
+      text-align: center !important;
+      text-transform: capitalize;
+    }
+    a {
+      color: var(--main-color-dark);
+      svg {
+        display: inline;
+        margin: 0 4px;
+      }
+    }
+  }
+}

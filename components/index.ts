@@ -65,3 +65,10 @@ export { default as BookBox } from './Books/BookBox';
 //== Lessons page Components
 export { default as LessonsWrapper } from './Lessons/LessonsWrapper';
 export { default as LessonBox } from './Lessons/LessonBox';
+//== Home page components
+export { default as Banner } from './Home/Banner';
+export { default as MainSections } from './Home/MainSections';
+export { default as Events } from './Home/Events';
+export { default as Video } from './Home/VideoSection';
+export { default as Courses } from './Home/Courses';
+export { default as EventsList } from './Home/EventsList';

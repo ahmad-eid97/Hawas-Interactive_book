@@ -1,0 +1,174 @@
+@import "../../../styles/mixins.scss";
+
+.intro {
+  padding-top: 100px;
+  padding-bottom: 256px;
+  position: relative !important;
+  overflow: hidden;
+  background-position: center;
+  background-color: #2f2d51;
+  @include md {
+    padding-top: 96px;
+    padding-bottom: 128px;
+
+  }
+  @include sm {
+    padding-right: 64px;
+    padding-left: 64px;
+  }
+  @include xs {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+  &::before {
+    background: var(--main-color);
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: inherit;
+    z-index: 0;
+  }
+
+  .parallaxCursor {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    div {
+      height: 100%;
+      position: absolute;
+
+      img {
+        object-fit: fill;
+        height: auto;
+      }
+    }
+  }
+  .introContent {
+    position: relative;
+    h1 {
+      color: #fff;
+      font-size: 60px;
+      font-weight: 400;
+      line-height: 72px;
+      margin-bottom: 32px;
+      margin-top: 0px;
+      opacity: 1;
+      text-align: start !important;
+      span {
+        color: var(--main-color-light);
+        font-size: 70px;
+        font-weight: 700;
+        line-height: 84px;
+        text-align: start !important;
+        display: block;
+      }
+
+      @include md {
+        font-size: 48px;
+        span {
+          font-size: 40px;
+        }
+      }
+      @include sm {
+        margin-top: 32px;
+        text-align: center !important;
+        span {
+          text-align: center !important;
+        }
+      }
+      @include xs {
+        font-size: 27px;
+        line-height: 40px;
+        span {
+          font-size: 23px;
+          line-height: 50px;
+        }
+      }
+    }
+    form {
+      margin-bottom: 32px;
+      @include sm {
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .inputGroup {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        -webkit-box-align: stretch;
+        align-items: stretch;
+        width: 100%;
+
+        .inputGroupPrepend {
+          display: flex;
+          background-color: #fff;
+          border-radius: 0px 15px 15px 0px;
+
+          span {
+            border-radius: 15px 0 0 15px;
+            color: var(--main-color-dark);
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.64;
+            text-align: center !important;
+            white-space: nowrap;
+            background-color: var(--bg-alt-color);
+          }
+        }
+        input {
+          border-radius: 15px 0px 0px 15px;
+          display: block;
+          padding: 16px 18px 16px 8px;
+          font-size: 1rem;
+          font-weight: 400;
+          line-height: 1.64;
+          background-color: #fff;
+          background-clip: padding-box;
+          appearance: none;
+          outline-offset: -2px;
+          border: none;
+          position: relative;
+          min-width: 0;
+          outline: none;
+          width: 400px;
+          @include xs {
+            width: 70%;
+          }
+        }
+      }
+    }
+    p {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 25.6px;
+      margin-bottom: 16px;
+      margin-top: 0px;
+      opacity: 1;
+      text-align: start !important;
+      text-transform: capitalize;
+    }
+    img {
+      height: auto;
+      width: 100%;
+    }
+  }
+  .shapeBottom {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    pointer-events: none;
+    margin-bottom: -10px;
+    color: #fff;
+  }
+}

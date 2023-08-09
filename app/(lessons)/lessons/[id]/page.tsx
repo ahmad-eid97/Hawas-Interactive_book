@@ -4,7 +4,7 @@ import { BookPages, NextButton } from "@/components";
 import { getLessonPages } from "@/API/lessonPages";
 
 export const metadata = {
-  title: 'Hawas | book',
+  title: 'Hawas | lesson',
   description: "Experience the power of a dynamic book designed specifically for primary school children, offering an immersive journey filled with captivating visuals, hands-on exercises, and vibrant storytelling to foster a love for learning"
 }
 
