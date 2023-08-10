@@ -6,8 +6,7 @@ import { MouseParallaxContainer, MouseParallaxChild } from "react-parallax-mouse
 //== Styles
 import styles from './banner.module.scss';
 
-interface BannerProps {
-}
+interface BannerProps { }
 
 const Banner: React.FC<BannerProps> = () => {
   return (
