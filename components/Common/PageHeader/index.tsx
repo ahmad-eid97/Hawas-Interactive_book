@@ -18,7 +18,6 @@ const PageHeader: React.FC<PageHeaderProps> = ({ bgImg, padding, bgColor, color,
     <header className={styles.header} style={{ backgroundImage: `url(` + bgImg + `)`, padding: padding, backgroundColor: bgColor }}>
       <Container maxWidth="xl" className={styles.container}>
         <h1 style={{ color: color }}>{title}</h1>
-        {/* <Breadcrumb color={color} page={page} /> */}
       </Container>
       {src ? <img src={src} alt="..." className={styles.absoluteImg} /> : null}
     </header>

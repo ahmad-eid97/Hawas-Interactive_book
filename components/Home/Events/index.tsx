@@ -7,8 +7,7 @@ import Grid from '@mui/material/Grid';
 //== Styles
 import styles from './events.module.scss';
 
-interface EventsProps {
-}
+interface EventsProps { }
 
 const Events: React.FC<EventsProps> = () => {
   return (

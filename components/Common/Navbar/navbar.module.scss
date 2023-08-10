@@ -3,14 +3,12 @@
 
 
 .navbar {
-  // position: absolute;
   top: 0;
   right: 0;
   left: 0;
   background-color: var(--main-color);
   color: #fff;
   z-index: 10;
-
   .topContainer {
     z-index: 1;
     position: relative;
@@ -27,13 +25,11 @@
     justify-content: space-between;
     position: relative;
     z-index: 1;
-
     .logo {
       img {
         width: 175px;
       }
     }
-
     .courses {
       margin-left: 16px;
       padding-left: 0;
@@ -43,39 +39,32 @@
       -webkit-box-orient: horizontal;
       -webkit-box-direction: normal;
       flex-direction: row;
-
       .nav {
         position: relative;
-
         &:hover {
           padding-bottom: 32px;
           margin-bottom: -32px;
         }
-
         .navLink {
           display: block;
           padding-bottom: 0 0 16px 0;
-
           .inner {
             border-radius: 4px;
             background-color: var(--main-color);
             padding: 12px 24px;
             display: flex;
             align-items: center;
-
             .icon {
               color: #fff;
               margin-left: 4px;
               margin-right: 12px;
               display: flex;
             }
-
             span {
               color: #fff;
             }
           }
         }
-
         .linkDropdown {
           min-width: 320px;
           padding: 16px 28px;
@@ -89,7 +78,6 @@
           margin-top: -16px;
           top: 100%;
           animation: show 0.3s forwards;
-
           li {
             border-left: 5px solid transparent;
             transition: all .2s ease-in-out;
@@ -100,16 +88,13 @@
         }
       }
     }
-
     .links {
       display: flex !important;
       z-index: 999;
       align-items: center;
-
       @include md {
         display: none !important;
       }
-
       .navLinks {
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
@@ -119,12 +104,10 @@
         padding-left: 0;
         margin-bottom: 0;
         list-style: none;
-
         .link {
           position: relative !important;
           padding: 24px 26.24px;
           cursor: pointer;
-
           &.maxWidth {
             position: static;
           }
@@ -141,11 +124,9 @@
             background-color: #fff;
             animation: show2 0.3s forwards;
             min-width: 632px;
-
             &.maxWidth {
               width: 100%;
             }
-
             &.auto {
               min-width: 260px;
             }
@@ -198,7 +179,6 @@
               display: block;
               margin-top: 8px;
               color: var(--text-color);
-
               &:hover {
                 color: var(--main-color);
               }
@@ -237,38 +217,24 @@
       }
     }
   }
-  &.ar {
-    .links {
-      .navLinks {
-        margin-left: 0;
-        margin-right: auto;
-      }
-    }
-  }
-
   @keyframes show {
     0% {
       opacity: 0;
       transform: translate(0, 30px);
     }
-
     100% {
       opacity: 1;
       transform: translate(0, 0);
-
     }
   }
-
   @keyframes show2 {
     0% {
       opacity: 0;
       transform: translate(-50%, 30px);
     }
-
     100% {
       opacity: 1;
       transform: translate(-50%, 0);
-
     }
   }
 }

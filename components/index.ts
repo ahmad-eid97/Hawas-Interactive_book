@@ -75,3 +75,9 @@ export { default as EventsList } from './Home/EventsList';
 export { default as CountUp } from './Home/CountUp';
 export { default as News } from './Home/News';
 export { default as Gallery } from './Home/Gallery';
+//== About page components
+export { default as AboutDetails } from './About/AboutDetails';
+export { default as Testimonials } from './About/Testimonials';
+export { default as Partners } from './About/Partners';
+//== Contact page components
+export { default as ContactForm } from './Contact/ContactForm';

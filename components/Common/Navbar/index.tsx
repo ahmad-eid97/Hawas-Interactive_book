@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import Link from 'next/link';
 //== Components
 import TopBar from './TopBar';
+import MobileMenu from './MobileMenu';
 //== Component Logic
 import useLogic from './logic';
 //== Styles
@@ -34,8 +35,7 @@ const Navbar: React.FC<NavbarProps> = () => {
               onMouseLeave={() => setNavDropdown(0)}
             >
               <span>
-                {" "}
-                برامجنا{" "}
+                برامجنا
                 <i className="fa-regular fa-angle-down"></i>
               </span>
               {navDropdown === 1 && (
@@ -116,30 +116,21 @@ const Navbar: React.FC<NavbarProps> = () => {
               className={styles.link}
             >
               <Link href='/books'>
-                <span>
-                  {" "}
-                  الكتب
-                </span>
+                <span>الكتب</span>
               </Link>
             </li>
             <li
               className={styles.link}
             >
               <Link href='/blogs'>
-                <span>
-                  {" "}
-                  المدونة
-                </span>
+                <span>المدونة</span>
               </Link>
             </li>
             <li
               className={styles.link}
             >
               <Link href='/about-us'>
-                <span>
-                  {" "}
-                  من نحن
-                </span>
+                <span>من نحن</span>
               </Link>
             </li>
             <li
@@ -149,20 +140,14 @@ const Navbar: React.FC<NavbarProps> = () => {
               onMouseLeave={() => setNavDropdown(0)}
             >
               <Link href="/contact-us">
-                <span>
-                  {" "}
-                  اتصل بنا
-                </span>
+                <span>اتصل بنا</span>
               </Link>
             </li>
           </ul>
         </div>
         <ul className={styles.drawers}>
-          <li className={styles.drawerItem}>
-            {/* <UserDrawer /> */}
-          </li>
           <li className={`${styles.drawerItem} ${styles.mobileNave}`}>
-            {/* <MobileNaveDrawer /> */}
+            <MobileMenu />
           </li>
         </ul>
       </Container>

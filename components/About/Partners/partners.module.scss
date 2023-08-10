@@ -1,0 +1,25 @@
+@import "../../../styles/mixins.scss";
+
+.partners {
+  padding-bottom: 80px;
+  padding-top: 24px;
+  @include sm {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .container {
+    @include lg {
+      max-width: 960px;
+    }
+    @include md {
+      max-width: 720px;
+    }
+    @include sm {
+      max-width: 540px;
+    }
+    .img {
+      margin: auto;
+      width: 100px;
+    }
+  }
+}
