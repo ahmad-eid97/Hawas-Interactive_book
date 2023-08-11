@@ -81,3 +81,15 @@ export { default as Testimonials } from './About/Testimonials';
 export { default as Partners } from './About/Partners';
 //== Contact page components
 export { default as ContactForm } from './Contact/ContactForm';
+//== Blogs page components
+export { default as BlogsList } from './Blogs/BlogsList';
+//== Blog details page components
+export { default as BlogDetails } from './BlogDetails';
+//== Services page components
+export { default as ServicesList } from './Services/ServicesList';
+//== Service details page components
+export { default as Services } from './ServiceDetails/Service';
+//== Terms page components
+export { default as Terms } from './Terms';
+//== Terms page components
+export { default as Policy } from './Policy';

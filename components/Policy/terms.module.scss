@@ -1,0 +1,24 @@
+@import "../../styles/mixins.scss";
+
+.policy {
+  padding-bottom: 50px;
+  h2 {
+    text-align: center !important;
+    color: var(--main-color);
+    font-size: 42px;
+    margin-bottom: 30px;
+    font-weight: 700;
+  }
+  .content {
+    margin-bottom: 30px;
+    h3 {
+      font-size: 24px;
+      color: var(--main-color);
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+    p {
+      margin-bottom: 15px;
+    }
+  }
+}
