@@ -1,4 +1,5 @@
 //== Common Components
+export { default as MainLoader } from './Common/MainLoader';
 export { default as PageLoader } from './Common/PageLoader';
 export { default as Pagination } from './Common/Pagination';
 export { default as RadioGroup } from './Common/RadioGroup';
@@ -7,6 +8,10 @@ export { default as Fail } from './Common/Fail';
 export { default as Navbar } from './Common/Navbar';
 export { default as Footer } from './Common/Footer';
 export { default as PageHeader } from './Common/PageHeader';
+//== 404 page components
+export { default as NotFound } from './404';
+//== Error page components
+export { default as Error } from './Error';
 //== Login Components
 export { default as LoginForm } from './login/LoginForm';
 //== Book Components
