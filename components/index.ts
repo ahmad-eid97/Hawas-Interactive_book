@@ -93,3 +93,11 @@ export { default as Services } from './ServiceDetails/Service';
 export { default as Terms } from './Terms';
 //== Terms page components
 export { default as Policy } from './Policy';
+//== FAQs page components
+export { default as FAQsList } from './FAQs/FAQsList';
+//== FAQs page components
+export { default as Galleries } from './Gallery/Galleries';
+//== Portfolio page components
+export { default as Portfolio } from './Portfolio';
+//== Portfolio Details page components
+export { default as PortfolioDetails } from './PortfolioDetails';

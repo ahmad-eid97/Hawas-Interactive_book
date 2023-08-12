@@ -1,0 +1,145 @@
+@import "../../styles/mixins.scss";
+
+.portfolio {
+  .projectImage {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    z-index: 1;
+    img {
+      width: 100%;
+      transition: all 500ms ease;
+      transform: scale(1);
+      max-height: 400px;
+    }
+  }
+  .portfolioDetails {
+    .title {
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 50px;
+      color: var(--main-color);
+    }
+    .text {
+      margin-top: 9px;
+      margin-bottom: 28px;
+    }
+    .textLead {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 30px;
+      color: var(--main-color);
+    }
+    .pointsBox {
+      position: relative;
+      display: block;
+      margin-top: 20px;
+      h3 {
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 40px;
+        color: var(--main-color);
+      }
+      ul {
+        position: relative;
+        display: block;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        li {
+          position: relative;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          .icon {
+            position: relative;
+            display: inline-block;
+            span {
+              position: relative;
+              display: inline-block;
+              font-size: 15px;
+              color: var(--main-color);
+            }
+          }
+          .text {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+  .portfolioSummary {
+    position: relative;
+    display: block;
+    padding: 41px 60px 50px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 10px 60px 0px rgba(0, 0, 0, 0.1), inset 0px 4px 0px 0px rgba(249, 190, 23, 0.004);
+    margin-top: 30px;
+    border-radius: 15px;
+    ul {
+      position: relative;
+      display: block;
+      li {
+        position: relative;
+        display: block;
+        p {
+          font-size: 15px;
+          font-weight: 700;
+          line-height: 22px;
+          color: var(--main-color);
+        }
+      }
+      li+li {
+        margin-top: 26px;
+      }
+    }
+    .portfolioSocial {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 24px;
+      a {
+        position: relative;
+        height: 40px;
+        width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border-radius: 50%;
+        font-size: 15px;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        z-index: 1;
+        &::after {
+          position: absolute;
+          content: "";
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 100%;
+          background-color: var(--main-color);
+          -webkit-transition-delay: .1s;
+          transition-delay: .1s;
+          -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+          -webkit-transition-duration: .4s;
+          transition-duration: .4s;
+          -webkit-transition-property: all;
+          transition-property: all;
+          opacity: 1;
+          transform: scaleY(0);
+          z-index: -1;
+        }
+        &:hover {
+          color: #fff;
+          background-color: var(--main-color);
+          &::after {
+            opacity: 1;
+            -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+          }
+        }
+      }
+    }
+  }
+}

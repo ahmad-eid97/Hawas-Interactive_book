@@ -47,23 +47,23 @@ const Footer: React.FC<FooterProps> = () => {
             </h5>
             <ul>
               <li >
-                <a href="#" >
+                <a href="/gallery" >
+                  الألبومات
+                </a>
+              </li>
+              <li >
+                <a href="/faqs" >
+                  الأسئلة الشائعة
+                </a>
+              </li>
+              <li >
+                <a href="/about-us" >
                   من نحن
                 </a>
               </li>
               <li >
-                <a href="#" >
+                <a href="/contact-us" >
                   تواصل معنا
-                </a>
-              </li>
-              <li >
-                <a href="#" >
-                  مجتمعنا
-                </a>
-              </li>
-              <li >
-                <a href="#" >
-                  الكتب
                 </a>
               </li>
             </ul>
@@ -74,23 +74,23 @@ const Footer: React.FC<FooterProps> = () => {
             </h5>
             <ul>
               <li >
-                <a href="#" >
-                  الكتب
+                <a href="/blogs" >
+                  المدونة
                 </a>
               </li>
               <li >
-                <a href="#" >
-                  الفصول
+                <a href="/services" >
+                  الخدمات
                 </a>
               </li>
               <li >
-                <a href="#" >
-                  الاسئلة
+                <a href="/terms" >
+                  الشروط والأحكام
                 </a>
               </li>
               <li >
-                <a href="#" >
-                  الألعاب
+                <a href="/policy" >
+                  سياسة الخصوصية
                 </a>
               </li>
             </ul>
@@ -113,13 +113,13 @@ const Footer: React.FC<FooterProps> = () => {
               <div className={styles.links}>
                 <ul>
                   <li>
-                    <Link href="#">الصفحة الرئيسية</Link>
+                    <Link href="/">الصفحة الرئيسية</Link>
                   </li>
                   <li>
-                    <Link href="#">لوحة التحكم</Link>
+                    <Link href="/dashboard">لوحة التحكم</Link>
                   </li>
                   <li>
-                    <Link href="#">الكتب</Link>
+                    <Link href="/books">الكتب</Link>
                   </li>
                 </ul>
               </div>

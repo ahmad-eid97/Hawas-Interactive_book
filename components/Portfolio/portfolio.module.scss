@@ -1,0 +1,107 @@
+@import "../../styles/mixins.scss";
+
+.portfolio {
+  .project {
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    .projectImage {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      z-index: 1;
+      background-color: var(--background-light);
+      height: 270px;
+      img {
+        width: 100%;
+        height: 100%;
+        transition: all 0.5s ease;
+        object-fit: cover;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--main-color);
+        visibility: hidden;
+        transform-origin: top center;
+        transform: scaleY(0) translateZ(100px);
+        transition: opacity 500ms ease, visibility 500ms ease, transform 700ms ease;
+        opacity: 0.3;
+      }
+    }
+    .projectContent {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      transform: translateY(66%);
+      transition: opacity 500ms ease, visibility 500ms ease, transform 500ms ease;
+      transition-delay: 0s, 0s, 0s;
+      transition-delay: 0s, 0s, 0s;
+      visibility: hidden;
+      opacity: 0;
+      z-index: 2;
+      .projectCats {
+        position: relative;
+        transform: translateY(100%);
+        transition: all 500ms ease;
+        transition-delay: 500ms;
+        display: inline;
+        font-size: 10px;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        line-height: 1;
+        background-color: var(--main-color);
+        padding: 8px 29px 10px 30px;
+        margin: 0;
+        border-radius: 15px;
+        a {
+          color: inherit;
+        }
+      }
+      .projectTitle {
+        position: relative;
+        transform: translateY(100%);
+        transition: all 1000ms ease;
+        transition-delay: 700ms;
+        display: block;
+        background-color: var(--main-background);
+        font-size: 20px;
+        line-height: 20px;
+        color: var(--main-color);
+        letter-spacing: -.80px;
+        padding: 16px 30px 24px;
+        padding-right: 60px;
+        margin: 20px 0 0;
+        border-radius: 15px;
+        a {
+          color: inherit;
+        }
+      }
+    }
+    &:hover {
+      .projectImage {
+        &::after {
+          visibility: visible;
+          transform: scaleY(1) translateZ(0px);
+        }
+      }
+      .projectContent {
+        visibility: visible;
+        transform: translateY(0%);
+        transition-delay: 500ms;
+        opacity: 1;
+        .projectCats {
+          transform: translateY(0);
+        }
+        .projectTitle {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
