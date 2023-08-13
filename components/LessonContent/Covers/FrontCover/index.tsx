@@ -1,10 +1,11 @@
 //== Styles
 import styles from './frontCover.module.scss';
 
-const FrontCover = () => {
+const FrontCover = ({ cover }: { cover: string }) => {
   return (
     <div className={styles.frontCover}>
-      <h1>Front Cover</h1>
+      <img src={cover} alt="logo_file" />
+      <button>إفتح الفصل</button>
     </div>
   )
 }
