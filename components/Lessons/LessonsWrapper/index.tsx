@@ -25,7 +25,7 @@ const BooksWrapper = ({ lessons }: CProps) => {
 
         <form>
           <div className={styles.inputGroup}>
-            <input type="search" placeholder="Search our courses" />
+            <input type="search" placeholder="إبحث عن فصل" />
             <div className={styles.inputGroupBtn}>
               <button className="btn btn-sm btn-outline-white border-start-0 text-dark bg-transparent" type="submit">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
