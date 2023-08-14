@@ -12,6 +12,7 @@ import styles from './testimonials.module.scss';
 interface TestimonialsProps { }
 
 const Testimonials: React.FC<TestimonialsProps> = () => {
+
   return (
     <section className={styles.testimonials}>
       <Container maxWidth="xl" >
@@ -19,7 +20,6 @@ const Testimonials: React.FC<TestimonialsProps> = () => {
           <Grid item md xs={12}>
             <h1 className="mb-1">What our students have to say</h1>
             <p className="font-size-lg text-capitalize">Discover your perfect program in our courses.</p>
-
           </Grid>
         </Grid>
         <Swiper

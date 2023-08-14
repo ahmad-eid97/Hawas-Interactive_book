@@ -1,17 +1,14 @@
 "use client";
 //== Hooks
-import { useEffect, useState } from "react";
+import { useState } from "react";
 //== Modules
-import { Matching, SortDragging, TableDragging, WordDragging, ChooseLetter, FillThePlaces, ChooseWord, ChooseAdjective, ContinueTyping, ArrangeWords, Choosing, SignleChoose, ImageChoose, ImageTyping, FillFields, CompleteWords, Drawing, ImageColoring, ImageDragging } from "@/components";
+import { Matching, SortDragging, TableDragging, ImageWordSingleChoice, WordDragging, ChooseLetter, FillThePlaces, ChooseWord, ChooseAdjective, ContinueTyping, ArrangeWords, Choosing, SignleChoose, ImageChoose, ImageTyping, FillFields, CompleteWords, Drawing, ImageColoring, ImageDragging, ImageWithQuestion, AudioWithQuestion } from "@/components";
 //== Store
 import { useAppSelector } from "@/store/hooks";
 
 export default function useLogic({ quizzes }: any) {
   const [pageNum, setPageNum] = useState<number>(1);
   const { correctAnswer, wrongAnswer } = useAppSelector((state: any) => state.common);
-
-  useEffect(() => {
-  }, [])
 
   const renderQuiz = () => {
     if (quizzes.length === 0) return null;
@@ -39,6 +36,7 @@ export default function useLogic({ quizzes }: any) {
       'group_fill_in_blank': <FillThePlaces questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
       'group_odd_word': <ChooseWord questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
       'group_word_single_choice': <ChooseAdjective questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
+      'group_image_word_single_choice': <ImageWordSingleChoice questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
       'group_short_answer': <ContinueTyping questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
       'group_ordering': <ArrangeWords questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,
       'group_rounded_single_choice': <Choosing questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
@@ -49,7 +47,9 @@ export default function useLogic({ quizzes }: any) {
       'group_fill_in_blank_complete_words': <CompleteWords questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
       'drawing': <Drawing questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
       'coloring': <ImageColoring questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,
-      'matching_with_position': <ImageDragging questionData={quizzes[pageNum - 1]} key={pageNum - 1} />  // Done
+      'matching_with_position': <ImageDragging questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
+      "group_image_questions": <ImageWithQuestion questionData={quizzes[pageNum - 1]} key={pageNum - 1} />, // Done
+      "group_audio_questions": <AudioWithQuestion questionData={quizzes[pageNum - 1]} key={pageNum - 1} />  // Done
     }
     return ComponentRendered[quizzes[pageNum - 1]["question_type"]];
   }

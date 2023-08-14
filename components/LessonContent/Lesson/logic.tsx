@@ -2,7 +2,7 @@
 //== Hooks
 import { useState } from "react";
 //== Components
-import { TextSection, ImageSection, VideoSection, AudioSection, ActivitySection, GameSection, IFrameSection, ImageAudioSection, ImageVideoSection, ImageActivitySection } from '@/components';
+import { TextSection, ImageSection, ImageWithText, VideoSection, AudioSection, ActivitySection, GameSection, IFrameSection, ImageAudioSection, ImageVideoSection, ImageActivitySection } from '@/components';
 
 export default function useLogic() {
   const [pageNum, setPageNum] = useState(1);
@@ -11,6 +11,7 @@ export default function useLogic() {
     const allSections: any = {
       text: <TextSection data={data} />,
       image: <ImageSection data={data} />,
+      image_with_text: <ImageWithText data={data} />,
       video: <VideoSection data={data} />,
       audio: <AudioSection data={data} />,
       activity: <ActivitySection />,

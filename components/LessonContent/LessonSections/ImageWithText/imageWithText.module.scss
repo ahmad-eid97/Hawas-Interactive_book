@@ -1,0 +1,44 @@
+.imageWithText {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  p,
+  img {
+    grid-column: span 1;
+    width: 250px;
+  }
+  img {
+    border-radius: 10px;
+  }
+  &.right {
+    flex-direction: row-reverse;
+  }
+  &.left {}
+  &.bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    p,
+    img {
+      width: 100%;
+    }
+    img {
+      max-width: 400px;
+    }
+  }
+  &.top {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    p,
+    img {
+      width: 100%;
+    }
+    img {
+      max-width: 400px;
+    }
+  }
+}

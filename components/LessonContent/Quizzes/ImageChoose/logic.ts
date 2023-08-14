@@ -21,6 +21,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
 
   return {
     items: data?.answers,
+    question: data?.question,
     choosedAnswer,
     setChoosedAnswer,
     isLoading

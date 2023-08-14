@@ -2,24 +2,42 @@
 
 .imageChoose {
   max-width: 98%;
+  @extend %quizFrame;
+  border-color: var(--main-color);
+  background: url('../../../../public/images/quizzes/04.svg');
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   h2 {
     margin-bottom: 20px;
   }
   .choices {
-    @extend %quizFrame;
-    border-color: var(--main-color);
-    background: url('../../../../public/images/quizzes/04.svg');
-    background-position: center;
-    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    width: 100%;
+    .itemWrapper {
+      &.onlyText {
+        display: flex;
+        align-items: center;
+      }
+    }
     img {
       height: 200px;
       padding: 20px;
       object-fit: contain;
       border-radius: 10px;
       cursor: url('../../../../public/images/quizzes/point.png') 30 0, move;
+      &.choosed {
+        border: 2px solid var(--main-color);
+      }
+    }
+    span {
+      cursor: pointer;
+      padding: 5px 10px;
+      border-radius: 10px;
       &.choosed {
         border: 2px solid var(--main-color);
       }
@@ -36,5 +54,10 @@
         color: var(--delete-warn);
       }
     }
+  }
+  .question_img {
+    width: 100%;
+    margin: 20px auto 0;
+    border-radius: 10px;
   }
 }

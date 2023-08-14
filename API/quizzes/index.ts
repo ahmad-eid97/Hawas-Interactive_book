@@ -134,6 +134,18 @@ export async function getGroupSingleWordChoice(questionId: number) {
   if (response) return { items };
 }
 
+export async function getGroupImageSingleWordChoice(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  const items = response?.data?.data?.children?.map((item: any) => ({
+    id: item.id,
+    text: item.title,
+    image: item.question_img,
+    choices: item.answers.map((item: any) => item.title),
+    correct: item.answers.filter((item: any) => item.is_correct === 1)[0].title
+  }))
+  if (response) return { items };
+}
+
 export async function getGroupOddWordChoice(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
   const items = response?.data?.data?.children?.map((item: any) => ({
@@ -260,7 +272,7 @@ export async function getGroupRadioSingleChoiceQuestion(questionId: number) {
 export async function getSingleChoiceQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
   const answers = response?.data?.data?.answers;
-  if (response) return { answers };
+  if (response) return { answers, question: response?.data?.data };
 }
 
 export async function getGroupFillInBlankImageAnswerQuestion(questionId: number) {

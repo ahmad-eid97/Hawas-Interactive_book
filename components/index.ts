@@ -36,6 +36,7 @@ export { default as FillDraggables } from './LessonContent/Quizzes/FillThePlaces
 export { default as FillDroppables } from './LessonContent/Quizzes/FillThePlaces/FillDroppables';
 export { default as ChooseWord } from './LessonContent/Quizzes/ChooseWord';
 export { default as ChooseAdjective } from './LessonContent/Quizzes/ChooseAdjective';
+export { default as ImageWordSingleChoice } from './LessonContent/Quizzes/ImageWordSingleChoice';
 export { default as ContinueTyping } from './LessonContent/Quizzes/ContinueTyping';
 export { default as ArrangeWords } from './LessonContent/Quizzes/ArrangeWords';
 export { default as ArrangeDraggables } from './LessonContent/Quizzes/ArrangeWords/ArrangeDraggables';
@@ -53,9 +54,12 @@ export { default as ImageColoring } from './LessonContent/Quizzes/ImageColoring'
 export { default as ImageDragging } from './LessonContent/Quizzes/ImageDragging';
 export { default as ImageDraggables } from './LessonContent/Quizzes/ImageDragging/ImageDraggables';
 export { default as ImageDroppables } from './LessonContent/Quizzes/ImageDragging/ImageDroppables';
+export { default as ImageWithQuestion } from './LessonContent/Quizzes/ImageWithQuestion';
+export { default as AudioWithQuestion } from './LessonContent/Quizzes/AudioWithQuestion';
 //== Lesson Sections
 export { default as TextSection } from './LessonContent/LessonSections/TextSection';
 export { default as ImageSection } from './LessonContent/LessonSections/ImageSection';
+export { default as ImageWithText } from './LessonContent/LessonSections/ImageWithText';
 export { default as VideoSection } from './LessonContent/LessonSections/VideoSection';
 export { default as AudioSection } from './LessonContent/LessonSections/AudioSection';
 export { default as ActivitySection } from './LessonContent/LessonSections/ActivitySection';
