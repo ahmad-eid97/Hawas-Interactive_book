@@ -15,7 +15,7 @@ const BookPages = ({ data }: CProps) => {
 
   return (
     <div className={styles.bookPages}>
-      {pageLoaded &&
+      {pageLoaded ?
         <Flippy
           pageWidth={bookWidth}
           pageHeight={bookHeight}
@@ -34,6 +34,8 @@ const BookPages = ({ data }: CProps) => {
           <Page quizzes={data?.quizzes} />
           <BackCover />
         </Flippy>
+        :
+        null
       }
     </div>
   )

@@ -4,7 +4,7 @@ import { useState } from "react";
 //== Modules
 import { useQuery } from "@tanstack/react-query";
 //== API
-import { getGroupShortAnswer } from "@/API/quizzes";
+import { getGroupImageShortAnswer } from "@/API/quizzes";
 //== Store
 import { useAppDispatch } from "@/store/hooks";
 import { checkAnswer, checkWrong } from "@/store/slices/common";
@@ -18,10 +18,10 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   const dispatch = useAppDispatch();
 
   const getQuestion = async () => {
-    return await getGroupShortAnswer(questionData.id);
+    return await getGroupImageShortAnswer(questionData.id);
   }
 
-  const { data, isLoading } = useQuery(['groupShortAnswerQuestion'], getQuestion, {
+  const { data, isLoading } = useQuery(['groupImageShortAnswerQuestion'], getQuestion, {
     cacheTime: 0
   });
 

@@ -20,8 +20,7 @@ const ShortAnswerWithImage = ({ questionData }: { questionData: QuestionData }) 
       <div className={styles.wrapper}>
         {items.map((item: any, idx: number) => (
           <div className={styles.item} key={item.id}>
-            <i className="fa-duotone fa-pencil"></i>
-            <span>{item.text}:</span>
+            <img src={item.image} alt={item.title} />
             <input type="text" onChange={(e) => handleFields(e, idx)} />
           </div>
         ))}

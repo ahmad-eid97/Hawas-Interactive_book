@@ -5,8 +5,10 @@
   grid-template-columns: repeat(2, 1fr);
   p,
   img {
-    grid-column: span 1;
-    width: 250px;
+    width: 220px;
+  }
+  p {
+    font-size: 1.1rem !important;
   }
   img {
     border-radius: 10px;
@@ -14,7 +16,6 @@
   &.right {
     flex-direction: row-reverse;
   }
-  // for left direction
   &.left {}
   &.bottom {
     display: flex;

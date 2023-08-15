@@ -198,6 +198,23 @@ export async function getGroupShortAnswer(questionId: number) {
   if (response) return data;
 }
 
+export async function getGroupImageShortAnswer(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  const items = response?.data?.data?.answers?.map((item: any) => (
+    {
+      id: item.id,
+      text: item.title,
+      image: item.answer_img
+    }
+  ));
+  const correctAnswer: any = {}
+  response?.data?.data?.answers?.forEach((item: any, index: number) => {
+    correctAnswer[index] = item.answer_two_gap_match
+  })
+  const data = { items, correctAnswer };
+  if (response) return data;
+}
+
 export async function getGroupFillBlanksCompleteWordsQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
   const choices = response?.data?.data?.children[0].answers?.map((item: any) => ({ id: item.id, text: item.answer_two_gap_match }));

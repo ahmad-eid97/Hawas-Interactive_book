@@ -14,7 +14,7 @@ const Choosing = ({ questionData }: { questionData: QuestionData }) => {
   return (
     <div className={styles.chooseLetter}>
       <div className={styles.itemsWrapper}>
-        {items && items.map((item: any, idx: number) => (
+        {items ? items.map((item: any, idx: number) => (
           <div className={styles.item} key={idx}>
             <span>السؤال {idx + 1}:</span>
             <h2>{item.question}</h2>
@@ -60,7 +60,7 @@ const Choosing = ({ questionData }: { questionData: QuestionData }) => {
               ))}
             </div>
           </div>
-        ))}
+        )) : null}
       </div>
     </div>
   )

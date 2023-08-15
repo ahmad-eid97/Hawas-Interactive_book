@@ -2,7 +2,7 @@
   position: relative;
   height: 90%;
   padding: 40px;
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -11,7 +11,7 @@
     width: 6px !important;
   }
   &::-webkit-scrollbar-track {
-    background: rgb(220, 220, 220);
+    background: transparent;
   }
   &::-webkit-scrollbar-thumb {
     background-color: var(--third-color);
@@ -114,6 +114,7 @@
     border: 2px solid var(--main-color);
     border-radius: 10px;
     padding: 20px;
+    width: 90%;
     background-image: url('../../../public/images/quizzes/chart.svg');
     background-position: top right;
     background-size: fill;

@@ -151,7 +151,7 @@
       path {
         stroke: var(--line-color);
         fill: none;
-        strokeWidth: 4;
+        stroke-width: 4 !important;
         position: relative;
         z-index: 1000;
         cursor: pointer;
