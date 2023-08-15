@@ -18,6 +18,7 @@ const GroupTrueAndFalse: React.FC<GroupTrueAndFalseProps> = ({ questionData }) =
   if (isLoading) return <PageLoader />
   return (
     <div className={styles.groupTrueAndFalse}>
+      <h2>{questionData.title}</h2>
       <ul>
         {items.map((item: any, idx: number) => (
           <li key={idx}>
