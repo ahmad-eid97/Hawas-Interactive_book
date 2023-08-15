@@ -2,7 +2,7 @@
 import styles from './imageWithText.module.scss';
 
 const ImageWithText = ({ data }: { data: any }) => {
-  console.log(data)
+
   return (
     <div className={`${styles.imageWithText} ${styles[data.image_direction]}`}>
       <div dangerouslySetInnerHTML={{ __html: data.description }}></div>
@@ -11,4 +11,4 @@ const ImageWithText = ({ data }: { data: any }) => {
   )
 }
 
-export default ImageWithText
+export default ImageWithText;

@@ -2,7 +2,7 @@
 //== Hooks
 import { useState, useRef } from "react";
 //== Modules
-import { Matching, SortDragging, TableDragging, ImageWordSingleChoice, WordDragging, ChooseLetter, FillThePlaces, ChooseWord, ChooseAdjective, ContinueTyping, ArrangeWords, Choosing, SignleChoose, ImageChoose, ImageTyping, FillFields, CompleteWords, Drawing, ImageColoring, ImageDragging } from "@/components";
+import { Matching, SortDragging, TableDragging, ImageWordSingleChoice, WordDragging, ChooseLetter, FillThePlaces, ChooseWord, ChooseAdjective, ContinueTyping, ArrangeWords, Choosing, SignleChoose, ImageChoose, ImageTyping, FillFields, CompleteWords, Drawing, ImageColoring, ImageDragging, RandomImageWithPosition, GroupTrueAndFalse, ShortAnswerWithImage } from "@/components";
 
 export default function useLogic({ questionData }: { questionData: any }) {
   const [audioOpened, setAudioOpened] = useState(false);
@@ -55,6 +55,9 @@ export default function useLogic({ questionData }: { questionData: any }) {
       'drawing': <Drawing questionData={questionData.children[0]} />,  // Done
       'coloring': <ImageColoring questionData={questionData.children[0]} />,
       'matching_with_position': <ImageDragging questionData={questionData.children[0]} />,  // Done
+      "random_image_with_position": <RandomImageWithPosition questionData={questionData.children[0]} />,  // Done
+      "group_true_false": <GroupTrueAndFalse questionData={questionData.children[0]} />,  // Done
+      "short_answer_with_image": <ShortAnswerWithImage questionData={questionData.children[0]} />  // Done
     }
 
     return ComponentRendered[questionData.children[0]["question_type"]]

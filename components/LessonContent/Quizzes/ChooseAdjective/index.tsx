@@ -19,38 +19,35 @@ const ChooseAdjective = ({ questionData }: { questionData: QuestionData }) => {
       <div className={styles.chooseAdjective}>
         <div className={styles.items}>
           {items.map((item: any, idx: number) => (
-            <div className={styles.item} key={item.id}>
-              <i className="fa-duotone fa-star"></i>
-              {item.image ?
-                <>
-                  <img src={item.image} alt={item.text} />
-                </>
-                :
-                <>
-                  {item.text}
-                </>
+            <>
+              {item.image && item.text &&
+                <img src={item.image} alt={item.text} />
               }
-              <div className={styles.box}>
-                {answers[idx] &&
-                  <>
-                    {answers[idx]}
-                    <i className="fa-duotone fa-ban" onClick={() => removeAnswer(idx)}></i>
-                  </>
-                }
+              <div className={styles.item} key={item.id}>
+                <i className="fa-duotone fa-star"></i>
+                {item.text}
+                <div className={styles.box}>
+                  {answers[idx] &&
+                    <>
+                      {answers[idx]}
+                      <i className="fa-duotone fa-ban" onClick={() => removeAnswer(idx)}></i>
+                    </>
+                  }
+                </div>
+                {item.correct !== answers[idx] && answers[idx] && <i className={`fa-duotone fa-triangle-exclamation ${styles.wrong}`}></i>}
+                {item.correct === answers[idx] && item.correct === items[idx].correct && <i className={`fa-duotone fa-circle-check ${styles.correct}`}></i>}
+                <div className={styles.choices}>
+                  (
+                  {item.choices.map((choice: any, index: number) => (
+                    <Fragment key={index}>
+                      {index > 0 && '، '}
+                      <span onClick={() => addAnswer(idx, choice)} className={answers[idx] === choice ? styles.active : ''}>{choice}</span>
+                    </Fragment>
+                  ))}
+                  )
+                </div>
               </div>
-              {item.correct !== answers[idx] && answers[idx] && <i className={`fa-duotone fa-triangle-exclamation ${styles.wrong}`}></i>}
-              {item.correct === answers[idx] && item.correct === items[idx].correct && <i className={`fa-duotone fa-circle-check ${styles.correct}`}></i>}
-              <div className={styles.choices}>
-                (
-                {item.choices.map((choice: any, index: number) => (
-                  <Fragment key={index}>
-                    {index > 0 && '، '}
-                    <span onClick={() => addAnswer(idx, choice)} className={answers[idx] === choice ? styles.active : ''}>{choice}</span>
-                  </Fragment>
-                ))}
-                )
-              </div>
-            </div>
+            </>
           ))}
         </div>
       </div>

@@ -12,7 +12,7 @@ const VideoWithQuestion: React.FC<VideoWithQuestionProps> = ({ questionData }) =
   return (
     <div className={styles.videoWithQuestion}>
       <h2>{questionData.title}</h2>
-      <iframe src={questionData.questionvideo} frameBorder="0"></iframe>
+      <iframe src={questionData.question_video_link} frameBorder="0"></iframe>
       <div>
         {renderQuestion()}
       </div>

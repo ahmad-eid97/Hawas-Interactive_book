@@ -9,6 +9,7 @@ interface AudioWithQuestionProps {
 
 const AudioWithQuestion: React.FC<AudioWithQuestionProps> = ({ questionData }) => {
   const { renderQuestion, Audio, openAudio, audioOpened, setAudioOpened } = useLogic({ questionData });
+
   return (
     <div className={styles.audioWithQuestion}>
       <h2>{questionData.title}</h2>

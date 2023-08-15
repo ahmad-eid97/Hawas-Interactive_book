@@ -63,6 +63,22 @@ export async function getQuestionImageWithPosition(questionId: number) {
   if (response) return ModifiedData;
 }
 
+export async function getQuestionRandomImageWithPosition(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  const questionImage = response?.data?.data?.question_img;
+  const choices = response?.data?.data?.answers?.map((item: any) => ({ id: item.id, title: item.title, image: item.answer_img }));
+  const droppables = response?.data?.data?.answers?.map((item: any) => ({ id: item.id, left: item.answer_two_gap_match?.split(",")[0], top: item.answer_two_gap_match?.split(",")[1] }));
+  let answersArray: string[] = []
+  response?.data?.data?.answers?.forEach((item: any, index: number) => {
+    if (item.answer_two_gap_match) {
+      answersArray.push(item.title)
+    }
+  })
+  console.log(answersArray)
+  const ModifiedData = { questionImage, choices, droppables, correctAnswer: answersArray };
+  if (response) return ModifiedData;
+}
+
 export async function getMatchingWithTableQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
   const titles = { right: response.data.data.title_right, left: response.data.data.title_left };
@@ -318,4 +334,18 @@ export async function getGroupRawFillInBlankQuestion(questionId: number) {
   })
   const updatedResponse = { titles, items, correctAnswer }
   if (response) return updatedResponse;
+}
+
+export async function getGroupTrueAndFalseQuestion(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  const items = response?.data?.data?.children?.map((item: any) => item.title);
+  const answers: any = {}
+  response?.data?.data?.children?.forEach((item: any, index: number) => {
+    item.answers.forEach((answer: any) => {
+      if (answer.is_correct) {
+        answers[index] = answer.answer_two_gap_match === 'true' ? true : false
+      }
+    })
+  })
+  if (response) return { items, correctAnswer: answers };
 }

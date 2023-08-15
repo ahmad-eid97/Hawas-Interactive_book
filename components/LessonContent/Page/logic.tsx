@@ -2,7 +2,7 @@
 //== Hooks
 import { useState } from "react";
 //== Modules
-import { Matching, SortDragging, TableDragging, ImageWordSingleChoice, WordDragging, ChooseLetter, FillThePlaces, ChooseWord, ChooseAdjective, ContinueTyping, ArrangeWords, Choosing, SignleChoose, ImageChoose, ImageTyping, FillFields, CompleteWords, Drawing, ImageColoring, ImageDragging, ImageWithQuestion, AudioWithQuestion } from "@/components";
+import { Matching, SortDragging, TableDragging, ImageWordSingleChoice, WordDragging, ChooseLetter, FillThePlaces, ChooseWord, ChooseAdjective, ContinueTyping, ArrangeWords, Choosing, SignleChoose, ImageChoose, ImageTyping, FillFields, CompleteWords, Drawing, ImageColoring, ImageDragging, ImageWithQuestion, AudioWithQuestion, VideoWithQuestion, RandomImageWithPosition, GroupTrueAndFalse, ShortAnswerWithImage } from "@/components";
 //== Store
 import { useAppSelector } from "@/store/hooks";
 
@@ -49,7 +49,11 @@ export default function useLogic({ quizzes }: any) {
       'coloring': <ImageColoring questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,
       'matching_with_position': <ImageDragging questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
       "group_image_questions": <ImageWithQuestion questionData={quizzes[pageNum - 1]} key={pageNum - 1} />, // Done
-      "group_audio_questions": <AudioWithQuestion questionData={quizzes[pageNum - 1]} key={pageNum - 1} />  // Done
+      "group_audio_questions": <AudioWithQuestion questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
+      "group_video_questions": <VideoWithQuestion questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
+      "random_image_with_position": <RandomImageWithPosition questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
+      "group_true_false": <GroupTrueAndFalse questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
+      "short_answer_with_image": <ShortAnswerWithImage questionData={quizzes[pageNum - 1]} key={pageNum - 1} />  // Done
     }
     return ComponentRendered[quizzes[pageNum - 1]["question_type"]];
   }

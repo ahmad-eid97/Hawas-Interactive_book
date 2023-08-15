@@ -56,6 +56,10 @@ export { default as ImageDraggables } from './LessonContent/Quizzes/ImageDraggin
 export { default as ImageDroppables } from './LessonContent/Quizzes/ImageDragging/ImageDroppables';
 export { default as ImageWithQuestion } from './LessonContent/Quizzes/ImageWithQuestion';
 export { default as AudioWithQuestion } from './LessonContent/Quizzes/AudioWithQuestion';
+export { default as VideoWithQuestion } from './LessonContent/Quizzes/VideoWithQuestion';
+export { default as RandomImageWithPosition } from './LessonContent/Quizzes/RandomImageWithPosition';
+export { default as GroupTrueAndFalse } from './LessonContent/Quizzes/GroupTrueAndFalse';
+export { default as ShortAnswerWithImage } from './LessonContent/Quizzes/ShortAnswerWithImage';
 //== Lesson Sections
 export { default as TextSection } from './LessonContent/LessonSections/TextSection';
 export { default as ImageSection } from './LessonContent/LessonSections/ImageSection';

@@ -1,17 +1,17 @@
 "use client";
 //== Hooks 
-import { useState, useRef, useEffect, use } from "react";
+import { useState, useRef, useEffect } from "react";
 //== Modules
 import { useQuery } from "@tanstack/react-query";
 //== Store
 import { useAppDispatch } from "@/store/hooks";
 import { checkAnswer, checkWrong } from "@/store/slices/common";
 //== API
-import { getQuestionImageWithPosition } from "@/API/quizzes";
+import { getQuestionRandomImageWithPosition } from "@/API/quizzes";
 
 export default function useLogic({ questionData }: { questionData: any }) {
   const [draggableItem, setDraggableItem] = useState<HTMLParagraphElement | null>(null);
-  const [studentAnswer, setStudentAnswer] = useState<any>({});
+  const [studentAnswer, setStudentAnswer] = useState<any>([]);
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [rendered, setRendered] = useState(true);
   const droppingArea = useRef<HTMLDivElement | null>(null);
@@ -19,7 +19,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
   const dispatch = useAppDispatch();
 
   const getQuestionData = () => {
-    return getQuestionImageWithPosition(questionData.id)
+    return getQuestionRandomImageWithPosition(questionData.id);
   }
 
   const { data, isLoading } = useQuery(['imageDraggingQuestion'], getQuestionData, {
@@ -56,32 +56,43 @@ export default function useLogic({ questionData }: { questionData: any }) {
     e.preventDefault();
     // e.currentTarget.style.backgroundColor = "rgb(250, 250, 212)";
     if (draggableItem && !e.currentTarget.children.length) e.currentTarget.appendChild(draggableItem);
-    setStudentAnswer({ ...studentAnswer, [index]: draggableItem?.innerText })
+    setStudentAnswer([...studentAnswer, draggableItem?.innerText])
   }
 
   const removeChoice = (e: React.MouseEvent<HTMLElement, MouseEvent>, idx: number) => {
     if (e.currentTarget.parentElement) droppingArea.current?.insertBefore(e.currentTarget.parentElement, droppingArea?.current.children[idx]);
-    const answers = { ...studentAnswer };
-    for (const key in answers) {
-      if (answers[key] === e.currentTarget.parentElement?.innerText) {
-        delete answers[key];
-        break;
-      }
-    }
-    setStudentAnswer({ ...answers })
+    const answers = [...studentAnswer];
+    answers.filter((item) => item !== e.currentTarget.parentElement?.innerText);
+    setStudentAnswer([...answers])
   }
 
-  const compareObjects = (obj1: any, obj2: any) => {
-    for (const key in obj1) {
-      if (obj1[key] !== obj2[key]) {
+  const compareArrays = (array1: any, array2: any) => {
+    // Step 1
+    if (array1.length !== array2.length) {
+      return false
+    } else {
+      // Step 2
+      const sortedArray1 = [...array1].sort();
+      const sortedArray2 = [...array2].sort();
+      // Step 3
+      let equal = true;
+      for (let i = 0; i < sortedArray1.length; i++) {
+        if (sortedArray1[i] !== sortedArray2[i]) {
+          equal = false;
+          break;
+        }
+      }
+      // Step 4
+      if (equal) {
+        return true;
+      } else {
         return false;
       }
     }
-    return true;
   }
 
   const correctAnswer = () => {
-    if (compareObjects(data?.correctAnswer, studentAnswer)) {
+    if (compareArrays(data?.correctAnswer, studentAnswer)) {
       dispatch(checkAnswer(true))
       setTimeout(() => {
         dispatch(checkAnswer(false))
@@ -111,7 +122,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
   const retry = () => {
     setRendered(false);
     setShowCorrection(null);
-    setStudentAnswer({});
+    setStudentAnswer([]);
     setTimeout(() => {
       setRendered(true)
     }, 20)
