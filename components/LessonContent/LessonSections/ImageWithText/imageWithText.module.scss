@@ -1,6 +1,6 @@
 .imageWithText {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   grid-template-columns: repeat(2, 1fr);
   p,
