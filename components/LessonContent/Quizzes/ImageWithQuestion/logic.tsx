@@ -3,6 +3,7 @@ import { Matching, SortDragging, TableDragging, ImageWordSingleChoice, WordDragg
 
 export default function useLogic({ questionData }: { questionData: any }) {
   const renderQuestion = () => {
+    if (!questionData.children[0]) return;
     const ComponentRendered: { [type: string]: JSX.Element } = {
       'matching_with_two_titles': <Matching
         options={{

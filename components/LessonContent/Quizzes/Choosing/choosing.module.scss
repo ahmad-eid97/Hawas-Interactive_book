@@ -18,6 +18,12 @@
         border-bottom: 2px dashed var(--box-background);
         padding-bottom: 30px;
       }
+      img {
+        display: block;
+        width: 300px;
+        border-radius: 10px;
+        margin: 0 auto 10px;
+      }
       h2 {
         margin-bottom: 10px;
         font-weight: 700;

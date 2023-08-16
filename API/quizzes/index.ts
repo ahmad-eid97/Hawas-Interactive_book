@@ -285,6 +285,7 @@ export async function getGroupRoundedSingleChoiceQuestion(questionId: number) {
   const items = response?.data?.data?.children?.map((item: any) => ({
     id: item.id,
     question: item.title,
+    image: item.question_img,
     words: item.answers.map((item: any) => ({ type: item.answer_view_format, text: item.title, image: item.answer_img })),
     correct: item.answers.filter((item: any) => item.is_correct === 1).map((item: any) => ({ text: item.title, image: item.answer_img }))[0]
   }));

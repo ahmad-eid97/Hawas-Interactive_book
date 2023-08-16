@@ -17,6 +17,7 @@ const Choosing = ({ questionData }: { questionData: QuestionData }) => {
         {items ? items.map((item: any, idx: number) => (
           <div className={styles.item} key={idx}>
             <span>السؤال {idx + 1}:</span>
+            {item.image && <img src={item.image} alt="quiz-image" loading='lazy' />}
             <h2>{item.question}</h2>
             <div className={styles.choices}>
               {item.words.map((word: any, index: number) => (
