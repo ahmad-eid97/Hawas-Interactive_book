@@ -67,12 +67,12 @@
       li {
         cursor: pointer;
         width: 30%;
-        a {
-          display: grid;
-          align-content: center;
+        div {
+          display: flex;
+          align-items: center;
           justify-content: center;
-          place-content: center;
           position: relative;
+          cursor: pointer;
           &::before {
             content: "";
             position: absolute;
@@ -88,8 +88,6 @@
             position: absolute;
             z-index: 1;
             text-align: center;
-            top: 30%;
-            left: 37%;
             transition: all .5s;
             opacity: 0;
             visibility: hidden;

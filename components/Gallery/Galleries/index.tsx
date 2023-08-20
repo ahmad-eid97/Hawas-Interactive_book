@@ -12,7 +12,7 @@ import styles from './galleries.module.scss';
 interface GalleriesProps { }
 
 const Galleries: React.FC<GalleriesProps> = () => {
-  const { open, setOpen, filter, handleFilterClick, images } = useLogic();
+  const { open, imageIndex, setOpen, openImage, filter, handleFilterClick, images } = useLogic();
   const filteredImages = filter === 'all' ? images : images.filter((image) => image.category === filter);
 
   return (
@@ -39,11 +39,10 @@ const Galleries: React.FC<GalleriesProps> = () => {
         </ul>
 
         <Grid container spacing={3}>
-          {filteredImages.map((image) => (
+          {filteredImages.map((image, idx) => (
             <Grid item xs={12} sm={4} md={3} key={image.id}>
-              <div className={styles.item} onClick={() => setOpen(true)}>
+              <div className={styles.item} onClick={() => openImage(idx)}>
                 <img src={image.src} alt={image.alt} />
-
                 <div className={styles.meta}>
                   <div className={styles.icon}>
                     <svg width="30" height="30" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
@@ -58,6 +57,7 @@ const Galleries: React.FC<GalleriesProps> = () => {
         </Grid>
       </Container>
       <Lightbox
+        index={imageIndex}
         open={open}
         close={() => setOpen(false)}
         slides={images}

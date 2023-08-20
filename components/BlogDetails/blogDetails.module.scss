@@ -76,13 +76,14 @@
         width: 33%;
         padding: 7.5px;
         display: inline-block;
-        a {
+        div {
           display: grid;
           align-content: center;
           justify-content: center;
           place-content: center;
           position: relative;
           width: 100%;
+          cursor: pointer;
           &::before {
             content: "";
             position: absolute;

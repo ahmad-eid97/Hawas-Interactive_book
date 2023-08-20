@@ -13,12 +13,8 @@ import styles from './blogDetails.module.scss';
 
 interface BlogDetailsProps { }
 
-import image1 from "../../public/images/home/photo-23.jpg";
-import image2 from "../../public/images/home/photo-24.jpg";
-import image3 from "../../public/images/home/photo-25.jpg";
-
 const BlogDetails: React.FC<BlogDetailsProps> = () => {
-  const { open, setOpen } = useLogic();
+  const { items, open, imageIndex, setOpen, openImage } = useLogic();
 
   return (
     <>
@@ -153,30 +149,14 @@ const BlogDetails: React.FC<BlogDetailsProps> = () => {
                 <div className={styles.widget}>
                   <h3 className={styles.title}>Gallery</h3>
                   <ul className={styles.galleryContainer}>
-                    <li className={styles.gallery}>
-                      <div onClick={() => setOpen(true)}>
-                        <Link href="#">
+                    {items.map((item, idx) => (
+                      <li className={styles.gallery} key={idx}>
+                        <div onClick={() => openImage(idx)}>
                           <i className="fa-solid fa-eye"></i>
-                          <img src="/images/home/photo-23.jpg" alt="Images" />
-                        </Link>
-                      </div>
-                    </li>
-                    <li className={styles.gallery}>
-                      <div onClick={() => setOpen(true)}>
-                        <Link href="#">
-                          <i className="fa-solid fa-eye"></i>
-                          <img src="/images/home/photo-24.jpg" alt="Images" />
-                        </Link>
-                      </div>
-                    </li>
-                    <li className={styles.gallery}>
-                      <div onClick={() => setOpen(true)}>
-                        <Link href="#">
-                          <i className="fa-solid fa-eye"></i>
-                          <img src="/images/home/photo-25.jpg" alt="Images" />
-                        </Link>
-                      </div>
-                    </li>
+                          <img src={item.src} alt="Images" />
+                        </div>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </aside>
@@ -185,9 +165,10 @@ const BlogDetails: React.FC<BlogDetailsProps> = () => {
         </Container>
       </section>
       <Lightbox
+        index={imageIndex}
         open={open}
         close={() => setOpen(false)}
-        slides={[image1, image2, image3]}
+        slides={[...items]}
       />
     </>
   );

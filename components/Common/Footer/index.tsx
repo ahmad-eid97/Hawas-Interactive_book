@@ -16,26 +16,28 @@ const Footer: React.FC<FooterProps> = () => {
       <Container maxWidth="xl" >
         <Grid container>
           <Grid item lg={4} md={4} xs={12}>
-            <img src="/images/navbar/footer_logo.png" alt="logo" />
+            <Link href='/'>
+              <img src="/images/navbar/footer_logo.png" alt="logo" />
+            </Link>
             <a href="#">support@gridsapps.com</a>
             <ul className={styles.socials}>
               <li   >
-                <a href="#"    >
+                <a href="#">
                   <i className="fab fa-facebook-f"></i>
                 </a>
               </li>
               <li   >
-                <a href="#"    >
+                <a href="#">
                   <i className="fab fa-twitter"></i>
                 </a>
               </li>
               <li   >
-                <a href="#"    >
+                <a href="#">
                   <i className="fab fa-instagram"></i>
                 </a>
               </li>
               <li   >
-                <a href="#"    >
+                <a href="#">
                   <i className="fab fa-linkedin-in"></i>
                 </a>
               </li>
@@ -47,24 +49,24 @@ const Footer: React.FC<FooterProps> = () => {
             </h5>
             <ul>
               <li >
-                <a href="/gallery" >
+                <Link href="/gallery" >
                   الألبومات
-                </a>
+                </Link>
               </li>
               <li >
-                <a href="/faqs" >
+                <Link href="/faqs" >
                   الأسئلة الشائعة
-                </a>
+                </Link>
               </li>
               <li >
-                <a href="/about-us" >
+                <Link href="/about-us" >
                   من نحن
-                </a>
+                </Link>
               </li>
               <li >
-                <a href="/contact-us" >
+                <Link href="/contact-us" >
                   تواصل معنا
-                </a>
+                </Link>
               </li>
             </ul>
           </Grid>
@@ -74,24 +76,24 @@ const Footer: React.FC<FooterProps> = () => {
             </h5>
             <ul>
               <li >
-                <a href="/blogs" >
+                <Link href="/blogs" >
                   المدونة
-                </a>
+                </Link>
               </li>
               <li >
-                <a href="/services" >
+                <Link href="/services" >
                   الخدمات
-                </a>
+                </Link>
               </li>
               <li >
-                <a href="/terms" >
+                <Link href="/terms" >
                   الشروط والأحكام
-                </a>
+                </Link>
               </li>
               <li >
-                <a href="/policy" >
+                <Link href="/policy" >
                   سياسة الخصوصية
-                </a>
+                </Link>
               </li>
             </ul>
           </Grid>

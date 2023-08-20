@@ -12,12 +12,8 @@ import styles from './serviceDetails.module.scss';
 
 interface ServiceProps { }
 
-import image1 from "../../../public/images/home/photo-23.jpg";
-import image2 from "../../../public/images/home/photo-24.jpg";
-import image3 from "../../../public/images/home/photo-25.jpg";
-
 const Service: React.FC<ServiceProps> = () => {
-  const { open, setOpen } = useLogic();
+  const { items, open, imageIndex, setOpen, openImage } = useLogic();
 
   return (
     <>
@@ -63,33 +59,24 @@ const Service: React.FC<ServiceProps> = () => {
             <div className={styles.widget}>
               <h3 className={styles.title}>Gallery</h3>
               <ul className={styles.gallery}>
-                <li onClick={() => setOpen(true)}>
-                  <a>
-                    <i className="fa-solid fa-eye"></i>
-                    <img src="/images/home/photo-23.jpg" alt="image" />
-                  </a>
-                </li>
-                <li onClick={() => setOpen(true)}>
-                  <a>
-                    <i className="fa-solid fa-eye"></i>
-                    <img src="/images/home/photo-24.jpg" alt="image" />
-                  </a>
-                </li>
-                <li onClick={() => setOpen(true)}>
-                  <a>
-                    <i className="fa-solid fa-eye"></i>
-                    <img src="/images/home/photo-25.jpg" alt="image" />
-                  </a>
-                </li>
+                {items.map((item, idx) => (
+                  <li className={styles.gallery}>
+                    <div onClick={() => openImage(idx)}>
+                      <i className="fa-solid fa-eye"></i>
+                      <img src={item.src} alt="Images" />
+                    </div>
+                  </li>
+                ))}
               </ul>
             </div>
           </Grid>
         </Grid>
       </Container>
       <Lightbox
+        index={imageIndex}
         open={open}
         close={() => setOpen(false)}
-        slides={[image1, image2, image3]}
+        slides={[...items]}
       />
     </>
   );

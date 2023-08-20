@@ -4,6 +4,7 @@ import { useState } from 'react'
 export default function useLogic() {
   const [open, setOpen] = useState(false)
   const [filter, setFilter] = useState('all');
+  const [imageIndex, setImageIndex] = useState(0);
   const images = [
     { id: 1, src: './images/home/photo-23.jpg', alt: 'Nature 1', category: 'business' },
     { id: 2, src: './images/home/photo-24.jpg', alt: 'City 1', category: 'design' },
@@ -19,9 +20,16 @@ export default function useLogic() {
     setFilter(newFilter);
   };
 
+  const openImage = (index: number) => {
+    setOpen(true)
+    setImageIndex(index)
+  }
+
   return {
     open,
     setOpen,
+    openImage,
+    imageIndex,
     filter,
     handleFilterClick,
     images

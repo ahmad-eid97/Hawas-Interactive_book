@@ -20,19 +20,19 @@ const ContactForm: React.FC<ContactFormProps> = () => {
           <Grid item xs={12} md={7}>
             <form autoComplete="off">
               <div className={styles.formControl}>
-                <input type="text" placeholder="CONTACT NAME" required={true} />
+                <input type="text" placeholder="الإسم" required={true} />
               </div>
               <div className={styles.formControl}>
-                <input type="email" placeholder="EMAIL ADDRESS" required={true} />
+                <input type="email" placeholder="البريد الإلكتروني" required={true} />
 
               </div>
               <div className={styles.formControl}>
-                <input type="text" placeholder="PHONE NUMBER" />
+                <input type="text" placeholder="رقم الهاتف" />
               </div>
               <div className={styles.formControl}>
-                <textarea className="accountInfo__contact-inputs w-100 rounded" name="message" placeholder="MESSAGE" required={true}></textarea>
+                <textarea className="accountInfo__contact-inputs w-100 rounded" name="message" placeholder="الرسالة" required={true}></textarea>
               </div>
-              <button className={styles.btn}>SEND MESSAGE</button>
+              <button className={styles.btn}>إرسال الرسالة</button>
             </form>
           </Grid>
           <Grid item xs={12} md={5}>
