@@ -17,8 +17,6 @@ interface CProps {
 const BookBox = ({ book }: CProps) => {
   const { router } = useLogic();
 
-  console.log('==============', book)
-
   return (
     <div className={`${styles.card}`} onClick={() => router.push(`/books/${book.id}/lessons`)}>
       <div className={styles.container}>

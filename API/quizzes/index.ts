@@ -74,7 +74,6 @@ export async function getQuestionRandomImageWithPosition(questionId: number) {
       answersArray.push(item.title)
     }
   })
-  console.log(answersArray)
   const ModifiedData = { questionImage, choices, droppables, correctAnswer: answersArray };
   if (response) return ModifiedData;
 }

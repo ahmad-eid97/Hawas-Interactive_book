@@ -207,7 +207,6 @@ export default function () {
   }
 
   function onPasswordToggleClick(e) {
-    //console.log("click: " + e.target.id);
     e.target.focus();
   }
 
@@ -299,7 +298,6 @@ export default function () {
 
       el = el.offsetParent;
     }
-    //console.log("xPos: " + xPos + ", yPos: " + yPos);
     return {
       x: xPos,
       y: yPos

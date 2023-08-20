@@ -1,6 +1,6 @@
 "use client";
 //== Modules
-import { Matching, SortDragging, TableDragging, ImageWordSingleChoice, WordDragging, ChooseLetter, FillThePlaces, ChooseWord, ChooseAdjective, ContinueTyping, ArrangeWords, Choosing, SignleChoose, ImageChoose, ImageTyping, FillFields, CompleteWords, Drawing, ImageColoring, ImageDragging, RandomImageWithPosition, GroupTrueAndFalse, ShortAnswerWithImage } from "@/components";
+import { Matching, SortDragging, TableDragging, ImageWordSingleChoice, WordDragging, ChooseLetter, FillThePlaces, ChooseWord, ChooseAdjective, ContinueTyping, ArrangeWords, Choosing, SignleChoose, ImageChoose, ImageTyping, FillFields, CompleteWords, Drawing, ImageColoring, ImageDragging, RandomImageWithPosition, GroupTrueAndFalse, ShortAnswerWithImage, ImagesPuzzle } from "@/components";
 
 export default function useLogic({ questionData }: { questionData: any }) {
   const renderQuestion = () => {
@@ -41,7 +41,8 @@ export default function useLogic({ questionData }: { questionData: any }) {
       'matching_with_position': <ImageDragging questionData={questionData.children[0]} />,  // Done
       "random_image_with_position": <RandomImageWithPosition questionData={questionData.children[0]} />,  // Done
       "group_true_false": <GroupTrueAndFalse questionData={questionData.children[0]} />,  // Done
-      "short_answer_with_image": <ShortAnswerWithImage questionData={questionData.children[0]} />  // Done
+      "short_answer_with_image": <ShortAnswerWithImage questionData={questionData.children[0]} />,  // Done
+      "images_puzzle": <ImagesPuzzle questionData={questionData.children[0]} />  // Done
     }
     return ComponentRendered[questionData.children[0]["question_type"]]
   }

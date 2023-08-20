@@ -6,7 +6,6 @@ interface CProps {
 }
 
 const IFrameSection = ({ data }: CProps) => {
-  console.log(data)
   return (
     <div className={styles.iFrameSection}>
       <iframe src={data.iframe} frameBorder="0"></iframe>

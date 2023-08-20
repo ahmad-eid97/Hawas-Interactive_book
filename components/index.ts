@@ -60,6 +60,7 @@ export { default as VideoWithQuestion } from './LessonContent/Quizzes/VideoWithQ
 export { default as RandomImageWithPosition } from './LessonContent/Quizzes/RandomImageWithPosition';
 export { default as GroupTrueAndFalse } from './LessonContent/Quizzes/GroupTrueAndFalse';
 export { default as ShortAnswerWithImage } from './LessonContent/Quizzes/ShortAnswerWithImage';
+export { default as ImagesPuzzle } from './LessonContent/Quizzes/ImagesPuzzle';
 //== Lesson Sections
 export { default as TextSection } from './LessonContent/LessonSections/TextSection';
 export { default as ImageSection } from './LessonContent/LessonSections/ImageSection';
