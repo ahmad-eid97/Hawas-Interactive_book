@@ -8,7 +8,7 @@ export const metadata = {
   description: "Experience the power of a dynamic book designed specifically for primary school children, offering an immersive journey filled with captivating visuals, hands-on exercises, and vibrant storytelling to foster a love for learning"
 }
 
-const Contact: React.FC<ContactProps> = () => {
+const ContactUs: React.FC<ContactProps> = () => {
   return (
     <>
       <PageHeader title="تواصل معنا" />
@@ -17,4 +17,4 @@ const Contact: React.FC<ContactProps> = () => {
   );
 }
 
-export default Contact;
+export default ContactUs;

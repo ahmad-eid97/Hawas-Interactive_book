@@ -3,7 +3,7 @@ import { PageHeader, Services as ServicesComponent } from "@/components";
 
 interface ServicesProps { }
 
-const Services: React.FC<ServicesProps> = () => {
+const ServiceDetails: React.FC<ServicesProps> = () => {
   return (
     <>
       <PageHeader title="خدمة حواس" />
@@ -12,4 +12,4 @@ const Services: React.FC<ServicesProps> = () => {
   );
 }
 
-export default Services;
+export default ServiceDetails;
