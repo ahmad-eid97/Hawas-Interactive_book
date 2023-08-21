@@ -291,6 +291,18 @@ export async function getGroupRoundedSingleChoiceQuestion(questionId: number) {
   if (response) return { items };
 }
 
+export async function getGroupRoundedMultipleChoiceQuestion(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  const items = response?.data?.data?.children?.map((item: any) => ({
+    id: item.id,
+    question: item.title,
+    image: item.question_img,
+    words: item.answers.map((item: any) => ({ type: item.answer_view_format, text: item.title, image: item.answer_img })),
+    correct: item.answers.filter((item: any) => item.is_correct === 1).map((item: any) => ({ text: item.title, image: item.answer_img }))
+  }));
+  if (response) return { items };
+}
+
 export async function getGroupRadioSingleChoiceQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
   const items = response?.data?.data?.children?.map((item: any) => ({

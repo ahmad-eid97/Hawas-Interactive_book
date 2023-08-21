@@ -61,6 +61,7 @@ export { default as RandomImageWithPosition } from './LessonContent/Quizzes/Rand
 export { default as GroupTrueAndFalse } from './LessonContent/Quizzes/GroupTrueAndFalse';
 export { default as ShortAnswerWithImage } from './LessonContent/Quizzes/ShortAnswerWithImage';
 export { default as ImagesPuzzle } from './LessonContent/Quizzes/ImagesPuzzle';
+export { default as MultipleChoose } from './LessonContent/Quizzes/MultipleChoose';
 //== Lesson Sections
 export { default as TextSection } from './LessonContent/LessonSections/TextSection';
 export { default as ImageSection } from './LessonContent/LessonSections/ImageSection';
