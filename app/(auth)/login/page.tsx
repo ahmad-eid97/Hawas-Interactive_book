@@ -1,10 +1,10 @@
 //== Components
-import { LoginForm } from "@/components";
+import { LoginWrapper } from "@/components";
 
 const Login = () => {
   return (
     <>
-      <LoginForm />
+      <LoginWrapper />
     </>
   )
 }

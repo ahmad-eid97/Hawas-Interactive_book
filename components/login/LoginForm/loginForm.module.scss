@@ -1,17 +1,30 @@
 .loginForm {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   display: block;
   width: 100%;
   max-width: 400px;
   background-color: #FFF;
   margin: 0;
-  padding: 2.25em;
+  padding: 7em 2.25em 2.25em 2.25em;
   box-sizing: border-box;
-  border: solid 1px #DDD;
   border-radius: .5em;
+  position: relative;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, .1);
+  overflow: hidden;
+  .head {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--main-color);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 5px 20px;
+    img {
+      height: 70px;
+      object-fit: contain;
+    }
+  }
   .svgContainer {
     position: relative;
     width: 200px;
@@ -103,9 +116,23 @@
     color: #FFF;
     font-weight: 600;
     transition: background-color .2s ease-out;
+    cursor: pointer;
     &:hover,
     &:active {
       background-color: var(--main-color);
+    }
+  }
+
+  .switch {
+    margin-top: 10px;
+    font-weight: 600;
+    a {
+      color: var(--main-color);
+      font-weight: 700;
+      margin: 0 5px;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
@@ -182,6 +209,11 @@
         &:after {
           visibility: hidden;
         }
+      }
+    }
+    label {
+      input {
+        cursor: pointer;
       }
     }
   }

@@ -8,12 +8,21 @@ export { default as Fail } from './Common/Fail';
 export { default as Navbar } from './Common/Navbar';
 export { default as Footer } from './Common/Footer';
 export { default as PageHeader } from './Common/PageHeader';
+//== UIs Components
+export { default as AnimatedIcons } from './UIs/AnimatedIcons/AnimatedIcons';
 //== 404 page components
 export { default as NotFound } from './404';
 //== Error page components
 export { default as Error } from './Error';
 //== Login Components
+export { default as LoginWrapper } from './login/LoginWrapper';
 export { default as LoginForm } from './login/LoginForm';
+//== Parent Login Components
+export { default as ParentLoginWrapper } from './ParentLogin/LoginWrapper';
+export { default as ParentLoginForm } from './ParentLogin/LoginForm';
+//== School Login Components
+export { default as SchoolLoginWrapper } from './SchoolLogin/LoginWrapper';
+export { default as SchoolLoginForm } from './SchoolLogin/LoginForm';
 //== Book Components
 export { default as Flippy } from './Flippy/Flippy';
 export { default as FrontCover } from './LessonContent/Covers/FrontCover';
