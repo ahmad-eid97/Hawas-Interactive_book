@@ -2,7 +2,7 @@
 //== Hooks
 import { useState, useRef } from "react";
 //== Modules
-import { Matching, SortDragging, TableDragging, ImageWordSingleChoice, WordDragging, ChooseLetter, FillThePlaces, ChooseWord, ChooseAdjective, ContinueTyping, ArrangeWords, Choosing, SignleChoose, ImageChoose, ImageTyping, FillFields, CompleteWords, Drawing, ImageColoring, ImageDragging, RandomImageWithPosition, GroupTrueAndFalse, ShortAnswerWithImage, ImagesPuzzle, MultipleChoose } from "@/components";
+import { Matching, SortDragging, TableDragging, ImageWordSingleChoice, WordDragging, ChooseLetter, FillThePlaces, ChooseWord, ChooseAdjective, ContinueTyping, ArrangeWords, Choosing, SignleChoose, ImageChoose, ImageTyping, FillFields, CompleteWords, Drawing, ImageColoring, ImageDragging, RandomImageWithPosition, GroupTrueAndFalse, ShortAnswerWithImage, ImagesPuzzle, MultipleChoose, ListSingleChoice } from "@/components";
 
 export default function useLogic({ questionData }: { questionData: any }) {
   const [audioOpened, setAudioOpened] = useState(false);
@@ -59,7 +59,8 @@ export default function useLogic({ questionData }: { questionData: any }) {
       "group_true_false": <GroupTrueAndFalse questionData={questionData.children[0]} />,  // Done
       "short_answer_with_image": <ShortAnswerWithImage questionData={questionData.children[0]} />,  // Done
       "images_puzzle": <ImagesPuzzle questionData={questionData.children[0]} />,  // Done
-      "group_multiple_choice": <MultipleChoose questionData={questionData.children[0]} />  // Done
+      "group_multiple_choice": <MultipleChoose questionData={questionData.children[0]} />,  // Done
+      "group_list_single_choice": <ListSingleChoice questionData={questionData.children[0]} />  // Done
     }
 
     return ComponentRendered[questionData.children[0]["question_type"]]

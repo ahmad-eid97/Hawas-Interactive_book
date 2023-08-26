@@ -197,6 +197,23 @@ export async function getGroupShortAnswer(questionId: number) {
   if (response) return data;
 }
 
+export async function getGroupListSingleChhoice(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  const items = response?.data?.data?.children?.map((item: any) => (
+    {
+      id: item.id,
+      text: item.title,
+      choices: item.answers.map((item: any) => item.title),
+    }
+  ));
+  const correctAnswer: any = {}
+  response?.data?.data?.children?.forEach((item: any, index: number) => {
+    correctAnswer[index] = item.answers.find((answer: any) => answer.is_correct === 1)?.title
+  })
+  const data = { items, correctAnswer };
+  if (response) return data;
+}
+
 export async function getGroupImageShortAnswer(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
   const items = response?.data?.data?.answers?.map((item: any) => (
