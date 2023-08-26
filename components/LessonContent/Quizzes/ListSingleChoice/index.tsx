@@ -23,8 +23,8 @@ const ListSingleChoice = ({ questionData }: { questionData: QuestionData }) => {
             <i className="fa-duotone fa-pencil"></i>
             <span>{item.text}:</span>
             {/* <input type="text" onChange={(e) => handleFields(e, idx)} /> */}
-            <select name="" id="" onChange={(e) => handleFields(e, idx)}>
-              <option value="" selected disabled>إختر إجابة</option>
+            <select name="" id="" defaultValue="إختر إجابة" onChange={(e) => handleFields(e, idx)}>
+              <option disabled>إختر إجابة</option>
               {item.choices.map((choice: any, index: number) => (
                 <option value={choice} key={index}>{choice}</option>
               ))}
