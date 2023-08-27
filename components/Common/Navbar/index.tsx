@@ -29,7 +29,7 @@ const Navbar: React.FC<NavbarProps> = () => {
         </Link>
         <div className={styles.links}>
           <ul className={`${styles.navLinks}`}>
-            <li
+            {/* <li
               className={`${styles.link} ${styles.maxWidth}`}
               onMouseEnter={() => setNavDropdown(1)}
               onMouseLeave={() => setNavDropdown(0)}
@@ -111,6 +111,13 @@ const Navbar: React.FC<NavbarProps> = () => {
                   </Grid>
                 </div>
               )}
+            </li> */}
+            <li
+              className={styles.link}
+            >
+              <Link href='/'>
+                <span>الرئيسية</span>
+              </Link>
             </li>
             <li
               className={styles.link}

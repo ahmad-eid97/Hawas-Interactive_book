@@ -17,8 +17,26 @@
     .item {
       padding-left: 12px;
       padding-right: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       i {
         color: #fff;
+      }
+      &>i {
+        width: 35px;
+        height: 35px;
+        background-color: #fff;
+        border-radius: 50%;
+        color: var(--main-color);
+        display: grid;
+        place-content: center;
+        cursor: pointer;
+        border: 1px solid #fff;
+        &:hover {
+          background-color: transparent;
+          color: #fff;
+        }
       }
     }
   }

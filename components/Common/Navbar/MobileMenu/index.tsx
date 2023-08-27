@@ -22,7 +22,7 @@ const MobileMenu: React.FC<MobileMenuProps> = () => {
             >
               <Link href="/">
                 <i className="fa-light fa-house"></i>
-                الصفحة الرئيسية
+                الرئيسية
               </Link>
             </li>
             <li
