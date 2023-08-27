@@ -11,7 +11,7 @@ export default function useLogic() {
   const logout = () => {
     cookie.remove("hawas-auth");
     setTimeout(() => {
-      router.push('/login');
+      location.href = '/login';
     }, 200)
   }
 

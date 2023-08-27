@@ -34,7 +34,7 @@ export default function useLogic() {
       console.log(loginData)
       cookies.set('hawas-auth', 'true', { path: '/' });
       setTimeout(() => {
-        router.push('/');
+        location.href = '/';
       }, 1000)
     }
   }

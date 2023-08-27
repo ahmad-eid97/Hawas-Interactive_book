@@ -314,7 +314,7 @@ export default function () {
     // some measurements for the svg's elements
     svgCoords = getPosition(mySVG);
     emailCoords = getPosition(email);
-    screenCenter = svgCoords.x + (mySVG.offsetWidth / 2);
+    screenCenter = svgCoords.x + (mySVG?.offsetWidth / 2);
     eyeLCoords = { x: svgCoords.x + 84, y: svgCoords.y + 76 };
     eyeRCoords = { x: svgCoords.x + 113, y: svgCoords.y + 76 };
     noseCoords = { x: svgCoords.x + 97, y: svgCoords.y + 81 };

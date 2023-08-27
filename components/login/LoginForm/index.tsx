@@ -15,7 +15,9 @@ const LoginForm = () => {
     <>
       <form className={styles.loginForm} onSubmit={(e) => login(e)}>
         <div className={styles.head}>
-          <img src="/images/navbar/navbar_logo.png" alt="logo" />
+          <Link href="/">
+            <img src="/images/navbar/navbar_logo.png" alt="logo" />
+          </Link>
         </div>
 
         <Svg />

@@ -1,9 +1,14 @@
+"use client";
+//== Utils
+import Cookies from 'universal-cookie';
 //== Component Logic
 import useLogic from './logic';
 //== Styles
 import styles from './topBar.module.scss';
 //== Component Interface
 interface TopBarProps { }
+
+const cookie = new Cookies();
 
 const TopBar: React.FC<TopBarProps> = () => {
   const { logout } = useLogic();
@@ -12,7 +17,11 @@ const TopBar: React.FC<TopBarProps> = () => {
     <div className={styles.topBar}>
       <ul className={styles.nav}>
         <li className={styles.item}>
-          <i className="fa-regular fa-right-from-bracket" onClick={logout}></i>
+          {cookie.get('hawas-auth') ?
+            <i className="fa-regular fa-right-from-bracket" onClick={logout}></i>
+            :
+            null
+          }
           <span>support@gridsapps.com</span>
         </li>
       </ul>
