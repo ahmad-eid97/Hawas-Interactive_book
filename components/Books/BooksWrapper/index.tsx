@@ -21,7 +21,7 @@ const BooksWrapper = ({ books }: CProps) => {
   return (
     <Container maxWidth="xl" className={styles.courses}>
       <div className={styles.header} >
-        <p>المتوفر لديك الاَن هو {books.length} كتاب</p>
+        <p>المتوفر لديك الاَن هو {books?.length} كتاب</p>
         <form>
           <div className={styles.inputGroup}>
             <input type="search" placeholder="إبحث عن كتاب" />

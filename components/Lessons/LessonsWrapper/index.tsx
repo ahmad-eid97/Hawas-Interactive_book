@@ -21,7 +21,7 @@ const BooksWrapper = ({ lessons }: CProps) => {
   return (
     <Container maxWidth="xl" className={styles.courses}>
       <div className={styles.header} >
-        <p>تم العثور علي {lessons.length} فصل</p>
+        <p>تم العثور علي {lessons?.length} فصل</p>
 
         <form>
           <div className={styles.inputGroup}>

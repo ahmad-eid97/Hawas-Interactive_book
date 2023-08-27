@@ -7,11 +7,12 @@ import useLogic from './logic';
 import styles from './nextButton.module.scss';
 
 interface CProps {
+  bookId: number,
   nextLesson: any,
   prevLesson: any
 }
 
-const NextButton = ({ nextLesson, prevLesson }: CProps) => {
+const NextButton = ({ bookId, nextLesson, prevLesson }: CProps) => {
   const { mounted, goToNextLesson, goToPreviousLesson } = useLogic();
 
   if (!mounted) return null;
@@ -26,7 +27,7 @@ const NextButton = ({ nextLesson, prevLesson }: CProps) => {
         null
       }
       <button className={styles.middle}>
-        <Link href="/">
+        <Link href={`/books/${bookId}/lessons`}>
           <i className="fa-regular fa-house"></i>
         </Link>
       </button>
