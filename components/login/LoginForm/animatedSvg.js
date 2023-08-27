@@ -321,23 +321,23 @@ export default function () {
     mouthCoords = { x: svgCoords.x + 100, y: svgCoords.y + 100 };
 
     // handle events for email input
-    email.addEventListener('focus', onEmailFocus);
-    email.addEventListener('blur', onEmailBlur);
-    email.addEventListener('input', onEmailInput);
-    emailLabel.addEventListener('click', onEmailLabelClick);
+    email?.addEventListener('focus', onEmailFocus);
+    email?.addEventListener('blur', onEmailBlur);
+    email?.addEventListener('input', onEmailInput);
+    emailLabel?.addEventListener('click', onEmailLabelClick);
 
     // handle events for password input
-    password.addEventListener('focus', onPasswordFocus);
-    password.addEventListener('blur', onPasswordBlur);
+    password?.addEventListener('focus', onPasswordFocus);
+    password?.addEventListener('blur', onPasswordBlur);
     //passwordLabel.addEventListener('click', onPasswordLabelClick);
 
     // handle events for password checkbox
-    showPasswordCheck.addEventListener('change', onPasswordToggleChange);
-    showPasswordCheck.addEventListener('focus', onPasswordToggleFocus);
-    showPasswordCheck.addEventListener('blur', onPasswordToggleBlur);
-    showPasswordCheck.addEventListener('click', onPasswordToggleClick);
-    showPasswordToggle.addEventListener('mouseup', onPasswordToggleMouseUp);
-    showPasswordToggle.addEventListener('mousedown', onPasswordToggleMouseDown);
+    showPasswordCheck?.addEventListener('change', onPasswordToggleChange);
+    showPasswordCheck?.addEventListener('focus', onPasswordToggleFocus);
+    showPasswordCheck?.addEventListener('blur', onPasswordToggleBlur);
+    showPasswordCheck?.addEventListener('click', onPasswordToggleClick);
+    showPasswordToggle?.addEventListener('mouseup', onPasswordToggleMouseUp);
+    showPasswordToggle?.addEventListener('mousedown', onPasswordToggleMouseDown);
 
     // move arms to initial positions
     TweenMax.set(armL, { x: -93, y: 220, rotation: 105, transformOrigin: "top left" });

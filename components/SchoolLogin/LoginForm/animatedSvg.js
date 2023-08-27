@@ -314,30 +314,30 @@ export default function () {
     // some measurements for the svg's elements
     svgCoords = getPosition(mySVG);
     emailCoords = getPosition(email);
-    screenCenter = svgCoords.x + (mySVG.offsetWidth / 2);
+    screenCenter = svgCoords.x + (mySVG?.offsetWidth / 2);
     eyeLCoords = { x: svgCoords.x + 84, y: svgCoords.y + 76 };
     eyeRCoords = { x: svgCoords.x + 113, y: svgCoords.y + 76 };
     noseCoords = { x: svgCoords.x + 97, y: svgCoords.y + 81 };
     mouthCoords = { x: svgCoords.x + 100, y: svgCoords.y + 100 };
 
     // handle events for email input
-    email.addEventListener('focus', onEmailFocus);
-    email.addEventListener('blur', onEmailBlur);
-    email.addEventListener('input', onEmailInput);
-    emailLabel.addEventListener('click', onEmailLabelClick);
+    email?.addEventListener('focus', onEmailFocus);
+    email?.addEventListener('blur', onEmailBlur);
+    email?.addEventListener('input', onEmailInput);
+    emailLabel?.addEventListener('click', onEmailLabelClick);
 
     // handle events for password input
-    password.addEventListener('focus', onPasswordFocus);
-    password.addEventListener('blur', onPasswordBlur);
+    password?.addEventListener('focus', onPasswordFocus);
+    password?.addEventListener('blur', onPasswordBlur);
     //passwordLabel.addEventListener('click', onPasswordLabelClick);
 
     // handle events for password checkbox
-    showPasswordCheck.addEventListener('change', onPasswordToggleChange);
-    showPasswordCheck.addEventListener('focus', onPasswordToggleFocus);
-    showPasswordCheck.addEventListener('blur', onPasswordToggleBlur);
-    showPasswordCheck.addEventListener('click', onPasswordToggleClick);
-    showPasswordToggle.addEventListener('mouseup', onPasswordToggleMouseUp);
-    showPasswordToggle.addEventListener('mousedown', onPasswordToggleMouseDown);
+    showPasswordCheck?.addEventListener('change', onPasswordToggleChange);
+    showPasswordCheck?.addEventListener('focus', onPasswordToggleFocus);
+    showPasswordCheck?.addEventListener('blur', onPasswordToggleBlur);
+    showPasswordCheck?.addEventListener('click', onPasswordToggleClick);
+    showPasswordToggle?.addEventListener('mouseup', onPasswordToggleMouseUp);
+    showPasswordToggle?.addEventListener('mousedown', onPasswordToggleMouseDown);
 
     // move arms to initial positions
     TweenMax.set(armL, { x: -93, y: 220, rotation: 105, transformOrigin: "top left" });
