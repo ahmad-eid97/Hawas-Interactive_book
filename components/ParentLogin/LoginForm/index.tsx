@@ -12,7 +12,7 @@ import animatedPicture from '../../../public/animatedPictures/Father.json';
 import styles from './loginForm.module.scss';
 
 const LoginForm = () => {
-  const { loginData, handleFields, login } = useLogic();
+  const { loginData, handleFields, login, showMyPassword, showPassword } = useLogic();
 
   return (
     <>
@@ -35,11 +35,11 @@ const LoginForm = () => {
           <div>
             <label htmlFor="loginPassword" id="loginPasswordLabel">كلمة المرور</label>
             <label id="showPasswordToggle" htmlFor="showPasswordCheck">عرض
-              <input id="showPasswordCheck" type="checkbox" />
+              <input id="showPasswordCheck" type="checkbox" onChange={showMyPassword} />
               <div className={styles.indicator}></div>
             </label>
           </div>
-          <input type="password" name='password' id="loginPassword" placeholder='كلمة المرور' autoComplete='off' value={loginData.password} onChange={(e) => handleFields(e)} />
+          <input type={showPassword ? "text" : "password"} name='password' id="loginPassword" placeholder='كلمة المرور' autoComplete='off' value={loginData.password} onChange={(e) => handleFields(e)} />
         </div>
         <div className={`${styles.inputGroup} ${styles.inputGroup3}`}>
           <button id="login" onClick={login}>تسجيل الدخول</button>

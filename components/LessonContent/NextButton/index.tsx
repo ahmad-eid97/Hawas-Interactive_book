@@ -1,4 +1,6 @@
 "use client";
+//== Hooks
+import Link from 'next/link';
 //== Component Logic
 import useLogic from './logic';
 //== Styles
@@ -18,20 +20,26 @@ const NextButton = ({ nextLesson, prevLesson }: CProps) => {
       {prevLesson ?
         <button onClick={() => goToPreviousLesson(prevLesson.id)}>
           <i className="fa-duotone fa-arrow-right"></i>
-          الفصل السابق
+          السابق: {prevLesson.title}
         </button>
         :
         null
       }
-      {nextLesson ?
-        <button onClick={() => goToNextLesson(nextLesson.id)}>
-          الفصل التالي
-          <i className="fa-duotone fa-arrow-left"></i>
-        </button>
-        :
-        null
+      <button className={styles.middle}>
+        <Link href="/">
+          <i className="fa-regular fa-house"></i>
+        </Link>
+      </button>
+      {
+        nextLesson ?
+          <button onClick={() => goToNextLesson(nextLesson.id)}>
+            التالي: {nextLesson.title}
+            <i className="fa-duotone fa-arrow-left"></i>
+          </button>
+          :
+          null
       }
-    </div>
+    </div >
   )
 }
 

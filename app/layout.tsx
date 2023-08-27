@@ -3,6 +3,7 @@ import Providers from './providers';
 //== Modules
 import ThemeContextProvider from '@/styles/theme/theme';
 import StoreProvider from '@/store/provider';
+import { Toaster } from 'react-hot-toast';
 //== Styles
 import '@/styles/global.scss';
 
@@ -24,6 +25,32 @@ export default function RootLayout({
         <link rel="icon" href="/book.png" />
       </head>
       <body>
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+          gutter={8}
+          containerClassName=""
+          containerStyle={{}}
+          toastOptions={{
+            // Define default options
+            className: '',
+            duration: 5000,
+            style: {
+              background: '#fff',
+              color: '#000',
+            },
+
+            // Default options for specific types
+            success: {
+              duration: 3000,
+              // @ts-ignore
+              theme: {
+                primary: 'green',
+                secondary: 'black',
+              },
+            },
+          }}
+        />
         <Providers>
           <StoreProvider>
             <ThemeContextProvider>

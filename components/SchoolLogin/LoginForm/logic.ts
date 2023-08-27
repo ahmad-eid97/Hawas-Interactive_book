@@ -11,7 +11,7 @@ export default function useLogic() {
     email: "",
     password: "",
   })
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleFields = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoginData({
