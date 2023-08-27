@@ -18,7 +18,7 @@ const NextButton = ({ nextLesson, prevLesson }: CProps) => {
   return (
     <div className={styles.nextButton}>
       {prevLesson ?
-        <button onClick={() => goToPreviousLesson(prevLesson.id)}>
+        <button onClick={() => goToPreviousLesson(prevLesson.id)} className={styles.first}>
           <i className="fa-duotone fa-arrow-right"></i>
           السابق: {prevLesson.title}
         </button>
@@ -32,7 +32,7 @@ const NextButton = ({ nextLesson, prevLesson }: CProps) => {
       </button>
       {
         nextLesson ?
-          <button onClick={() => goToNextLesson(nextLesson.id)}>
+          <button onClick={() => goToNextLesson(nextLesson.id)} className={styles.last}>
             التالي: {nextLesson.title}
             <i className="fa-duotone fa-arrow-left"></i>
           </button>

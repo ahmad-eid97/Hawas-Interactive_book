@@ -34,7 +34,9 @@ export default function useLogic() {
     if (loginData.email === 'ahmad@eid.com' && loginData.password === '12345678') {
       console.log(loginData)
       cookies.set('hawas-auth', 'true', { path: '/' });
-      router.push('/');
+      setTimeout(() => {
+        router.push('/');
+      }, 1000)
     }
   }
 
