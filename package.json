@@ -44,6 +44,7 @@
     "yet-another-react-lightbox": "^3.12.0"
   },
   "devDependencies": {
-    "file-loader": "^6.2.0"
+    "file-loader": "^6.2.0",
+    "url-loader": "^4.1.1"
   }
 }

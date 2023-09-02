@@ -10,7 +10,9 @@ export default function useLogic() {
     switch (status) {
       case true:
         setAudioOpened(status);
-        Audio?.current?.play();
+        setTimeout(() => {
+          Audio.current?.play();
+        }, 100)
       case false:
         setAudioOpened(status);
         Audio?.current?.pause();

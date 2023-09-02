@@ -3,13 +3,19 @@ const nextConfig = {
   reactStrictMode: true,
   webpack: (config) => {
     config.module.rules.push({
-      test: /\.(mp3)$/i,
+      test: /\.(ogg|mp3|wav|mpe?g)$/i,
+      exclude: config.exclude,
       use: [
         {
-          loader: 'file-loader',
+          loader: require.resolve("url-loader"),
+          // loader: 'file-loader',
           options: {
+            limit: config.inlineImageLimit,
+            fallback: require.resolve("file-loader"),
+
             publicPath: '/_next',
             name: 'static/media/[name].[hash].[ext]',
+            esModule: config.esModule || false,
           },
         },
       ],
