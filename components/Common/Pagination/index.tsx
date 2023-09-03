@@ -16,7 +16,7 @@ const PagePagination = ({ count, changePage, position }: CProps) => {
   return (
     <div className={`${styles.pagination} ${position === 'top' ? styles.top : ''}`}>
       <Stack spacing={2}>
-        <Pagination count={count} variant="outlined" shape="rounded" onChange={changePage} />
+        {count <= 1 ? null : <Pagination count={count} variant="outlined" shape="rounded" onChange={changePage} />}
       </Stack>
     </div>
   )
