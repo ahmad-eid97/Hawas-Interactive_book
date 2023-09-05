@@ -72,6 +72,7 @@ export { default as ShortAnswerWithImage } from './LessonContent/Quizzes/ShortAn
 export { default as ImagesPuzzle } from './LessonContent/Quizzes/ImagesPuzzle';
 export { default as MultipleChoose } from './LessonContent/Quizzes/MultipleChoose';
 export { default as ListSingleChoice } from './LessonContent/Quizzes/ListSingleChoice';
+export { default as ColoringAndDragging } from './LessonContent/Quizzes/Coloring&Dragging';
 //== Lesson Sections
 export { default as TextSection } from './LessonContent/LessonSections/TextSection';
 export { default as ImageSection } from './LessonContent/LessonSections/ImageSection';

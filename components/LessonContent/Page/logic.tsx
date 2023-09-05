@@ -2,7 +2,7 @@
 //== Hooks
 import { useState } from "react";
 //== Modules
-import { Matching, SortDragging, TableDragging, ImageWordSingleChoice, WordDragging, ChooseLetter, FillThePlaces, ChooseWord, ChooseAdjective, ContinueTyping, ArrangeWords, Choosing, SignleChoose, ImageChoose, ImageTyping, FillFields, CompleteWords, Drawing, ImageColoring, ImageDragging, ImageWithQuestion, AudioWithQuestion, VideoWithQuestion, RandomImageWithPosition, GroupTrueAndFalse, ShortAnswerWithImage, ImagesPuzzle, MultipleChoose, ListSingleChoice } from "@/components";
+import { Matching, SortDragging, TableDragging, ImageWordSingleChoice, WordDragging, ChooseLetter, FillThePlaces, ChooseWord, ChooseAdjective, ContinueTyping, ArrangeWords, Choosing, SignleChoose, ImageChoose, ImageTyping, FillFields, CompleteWords, Drawing, ImageColoring, ImageDragging, ImageWithQuestion, AudioWithQuestion, VideoWithQuestion, RandomImageWithPosition, GroupTrueAndFalse, ShortAnswerWithImage, ImagesPuzzle, MultipleChoose, ListSingleChoice, ColoringAndDragging } from "@/components";
 //== Store
 import { useAppSelector } from "@/store/hooks";
 
@@ -56,7 +56,8 @@ export default function useLogic({ quizzes }: any) {
       "short_answer_with_image": <ShortAnswerWithImage questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
       "images_puzzle": <ImagesPuzzle questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
       "group_multiple_choice": <MultipleChoose questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
-      "group_list_single_choice": <ListSingleChoice questionData={quizzes[pageNum - 1]} key={pageNum - 1} />  // Done
+      "group_list_single_choice": <ListSingleChoice questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
+      "open_ended": <ColoringAndDragging key={pageNum - 1} />  // Done
     }
     return ComponentRendered[quizzes[pageNum - 1]["question_type"]];
   }
