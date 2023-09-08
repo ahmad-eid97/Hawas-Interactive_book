@@ -57,7 +57,18 @@ export default function ColoringAndDragging({ questionData }: { questionData: Qu
           }
         </div>
         <div className={styles.secondQuestion}>
-          <img src="/images/quizzes/speed.png" alt="first_question" />
+          {/* @ts-ignore */}
+          {!questionData?.question_audio && !questionData.question_video_link &&
+            <img src="/images/quizzes/speed.png" alt="first_question" />
+          }
+          {/* @ts-ignore */}
+          {questionData?.question_audio &&
+            <img src="/images/quizzes/mates.png" alt="first_question" />
+          }
+          {/* @ts-ignore */}
+          {questionData.question_video_link &&
+            <img src="/images/quizzes/signs.png" alt="first_question" />
+          }
           {/* @ts-ignore */}
           {!questionData?.question_audio && !questionData.question_video_link &&
             <div className={styles.dragging}>
