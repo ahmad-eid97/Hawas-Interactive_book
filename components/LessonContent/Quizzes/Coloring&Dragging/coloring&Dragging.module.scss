@@ -54,10 +54,14 @@
   }
 
   .secondQuestion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     img {
       height: 140px;
       object-fit: cover;
       border-radius: 10px;
+      margin-bottom: 10px;
     }
     .dragging {
       display: flex;
@@ -71,8 +75,8 @@
         gap: 3px;
         border-radius: 10px;
         div {
-          width: 55px;
-          height: 45px;
+          width: 45px;
+          height: 40px;
           border: 1px solid var(--main-color);
           border-radius: 5px;
           display: grid;
@@ -88,7 +92,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 45px;
+        gap: 35px;
         p {
           font-size: 28px;
           font-weight: bold;

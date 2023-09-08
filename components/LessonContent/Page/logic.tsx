@@ -54,10 +54,10 @@ export default function useLogic({ quizzes }: any) {
       "random_image_with_position": <RandomImageWithPosition questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
       "group_true_false": <GroupTrueAndFalse questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
       "short_answer_with_image": <ShortAnswerWithImage questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
-      "images_puzzle": <ImagesPuzzle questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
+      "images_puzzle": <ImagesPuzzle questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,
       "group_multiple_choice": <MultipleChoose questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
       "group_list_single_choice": <ListSingleChoice questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
-      "open_ended": <ColoringAndDragging key={pageNum - 1} />  // Done
+      "open_ended": <ColoringAndDragging questionData={quizzes[pageNum - 1]} key={pageNum - 1} />  // Done
     }
     return ComponentRendered[quizzes[pageNum - 1]["question_type"]];
   }

@@ -1,13 +1,24 @@
 //== Hooks
 import { useState } from "react";
+//== Types
+import { QuestionData } from "../types";
 
-export default function useLogic() {
+export default function useLogic({ questionData }: { questionData: QuestionData }) {
   const [draggableItem, setDraggableItem] = useState<HTMLParagraphElement | null>(null);
   const [items] = useState([
-    // "ر",
     "ع",
     "ر",
-    // "ز",
+  ])
+  const [items2] = useState([
+    "ل",
+    "م",
+    "ا",
+  ])
+  const [items3] = useState([
+    "ا",
+    "ش",
+    "ا",
+    "ر",
   ])
   const [colors] = useState([
     "#d63031",
@@ -57,6 +68,8 @@ export default function useLogic() {
 
   return {
     items,
+    items2,
+    items3,
     dragStart,
     dragEnd,
     dragOver,
