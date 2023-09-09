@@ -7,7 +7,7 @@ import { QuestionData } from '../types';
 import styles from './coloring&Dragging.module.scss';
 
 export default function ColoringAndDragging({ questionData }: { questionData: QuestionData }) {
-  const { items, items2, items3, dragStart, dragOver, dragLeave, dragEnd, drop, colors, setChoosedColor, colorLetter, rendered, retry } = useLogic({ questionData });
+  const { items, items2, items3, items4, dragStart, dragOver, dragLeave, dragEnd, drop, colors, setChoosedColor, colorLetter, rendered, retry } = useLogic({ questionData });
 
   console.log(questionData)
 
@@ -23,7 +23,7 @@ export default function ColoringAndDragging({ questionData }: { questionData: Qu
             ))}
           </div>
           {/* @ts-ignore */}
-          {!questionData?.question_audio && !questionData.question_video_link &&
+          {!questionData?.question_audio && !questionData.question_video_link && questionData?.question_order !== 6 &&
             <>
               <p className={styles.word}>
                 سر<span onClick={(e) => colorLetter(e)}>عـ<span className={styles.layer}></span></span>ة
@@ -55,10 +55,21 @@ export default function ColoringAndDragging({ questionData }: { questionData: Qu
               </span>
             </>
           }
+          {/* @ts-ignore */}
+          {questionData?.question_order === 6 &&
+            <>
+              <p className={styles.word}>
+                مم<span onClick={(e) => colorLetter(e)}>ر<span className={styles.layer}></span></span>
+              </p>
+              <span onClick={(e) => colorLetter(e)}>ر
+                <span className={styles.layer}></span>
+              </span>
+            </>
+          }
         </div>
         <div className={styles.secondQuestion}>
           {/* @ts-ignore */}
-          {!questionData?.question_audio && !questionData.question_video_link &&
+          {!questionData?.question_audio && !questionData.question_video_link && questionData?.question_order !== 6 &&
             <img src="/images/quizzes/speed.png" alt="first_question" />
           }
           {/* @ts-ignore */}
@@ -70,33 +81,8 @@ export default function ColoringAndDragging({ questionData }: { questionData: Qu
             <img src="/images/quizzes/signs.png" alt="first_question" />
           }
           {/* @ts-ignore */}
-          {!questionData?.question_audio && !questionData.question_video_link &&
-            <div className={styles.dragging}>
-              <div className={styles.droppables}>
-                <div onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 0, 0)}>
-                  <p>س</p>
-                </div>
-                {items.map((_, index) => (
-                  <div onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 0, 0)} key={index}></div>
-                ))}
-                <div onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 0, 0)}>
-                  <p>ة</p>
-                </div>
-              </div>
-              <div className={styles.letters}>
-                <p>ة</p>
-                {items.map((item, index) => (
-                  <p
-                    draggable={true}
-                    onDragStart={(e) => dragStart(e)}
-                    onDragEnd={(e) => dragEnd(e)}
-                    key={index}>
-                    {item}
-                  </p>
-                ))}
-                <p>س</p>
-              </div>
-            </div>
+          {questionData.question_order === 6 &&
+            <img src="/images/quizzes/old.png" alt="first_question" />
           }
           {/* @ts-ignore */}
           {questionData?.question_audio &&
@@ -153,6 +139,31 @@ export default function ColoringAndDragging({ questionData }: { questionData: Qu
                   </p>
                 ))}
                 <p>ت</p>
+              </div>
+            </div>
+          }
+          {/* @ts-ignore */}
+          {questionData?.question_order === 6 &&
+            <div className={styles.dragging}>
+              <div className={styles.droppables}>
+                <div onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 0, 0)}>
+                  <p>م</p>
+                </div>
+                {items4.map((_, index) => (
+                  <div onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 0, 0)} key={index}></div>
+                ))}
+              </div>
+              <div className={styles.letters}>
+                <p>م</p>
+                {items4.map((item, index) => (
+                  <p
+                    draggable={true}
+                    onDragStart={(e) => dragStart(e)}
+                    onDragEnd={(e) => dragEnd(e)}
+                    key={index}>
+                    {item}
+                  </p>
+                ))}
               </div>
             </div>
           }

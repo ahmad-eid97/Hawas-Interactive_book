@@ -46,7 +46,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
       "group_multiple_choice": <MultipleChoose questionData={questionData.children[0]} />,  // Done
       "group_list_single_choice": <ListSingleChoice questionData={questionData.children[0]} />  // Done
     }
-    return ComponentRendered[questionData.children[0]["question_type"]]
+    return ComponentRendered[questionData.children[0]?.["question_type"]]
   }
 
   return {

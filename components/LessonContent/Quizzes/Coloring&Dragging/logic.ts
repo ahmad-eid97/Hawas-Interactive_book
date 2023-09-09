@@ -20,6 +20,10 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     "ا",
     "ر",
   ])
+  const [items4] = useState([
+    "ر",
+    "م",
+  ])
   const [colors] = useState([
     "#d63031",
     "#00b894",
@@ -70,6 +74,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     items,
     items2,
     items3,
+    items4,
     dragStart,
     dragEnd,
     dragOver,

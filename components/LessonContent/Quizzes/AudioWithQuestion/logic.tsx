@@ -12,7 +12,9 @@ export default function useLogic({ questionData }: { questionData: any }) {
     switch (status) {
       case true:
         setAudioOpened(status);
-        Audio?.current?.play();
+        setTimeout(() => {
+          Audio?.current?.play();
+        }, 100)
       case false:
         setAudioOpened(status);
         Audio?.current?.pause();
@@ -63,7 +65,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
       "group_list_single_choice": <ListSingleChoice questionData={questionData.children[0]} />  // Done
     }
 
-    return ComponentRendered[questionData.children[0]["question_type"]]
+    return ComponentRendered[questionData?.children[0]?.["question_type"]]
   }
 
   return {
