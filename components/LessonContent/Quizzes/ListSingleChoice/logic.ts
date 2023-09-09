@@ -15,6 +15,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   const [studentAnswer, setStudentAnswer] = useState<any>({});
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [rendered, setRendered] = useState(true);
+  const [studentScore, setStudentScore] = useState(0);
   const dispatch = useAppDispatch();
 
   const getQuestion = async () => {
@@ -33,6 +34,8 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     for (const key in obj1) {
       if (obj1[key] !== obj2[key]) {
         return false;
+      } else {
+        setStudentScore(prev => prev + 1)
       }
     }
     return true;
@@ -48,7 +51,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         correct: true,
         data: [
           "أحسنت",
-          "لقد حصلت على علامة كاملة",
+          `لقد حصلت على علامة ${studentScore} من ${data?.items.length}`,
         ]
       })
     } else {
@@ -60,7 +63,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         correct: false,
         data: [
           "حاول مرّة أخرى",
-          "بعض الإجابات غير صحيحة",
+          `لقد حصلت على علامة ${studentScore} من ${data?.items.length}`,
         ]
       })
     }

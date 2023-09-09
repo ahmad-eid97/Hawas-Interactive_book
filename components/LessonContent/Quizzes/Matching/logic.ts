@@ -30,8 +30,9 @@ export default function useLogic({ questionData }: CProps) {
   })
 
   const areArraysEqual = (arr1: any, arr2: any) => {
+    let score = 0;
     if (arr1.length !== arr2.length) {
-      return false;
+      return score;
     }
     const resultArray: any = []
     for (let i = 0; i < arr1.length; i++) {
@@ -42,14 +43,20 @@ export default function useLogic({ questionData }: CProps) {
         }
       })
     }
+    resultArray.forEach((element: any, index: number) => {
+      if (element.from === arr2[index].from && element.to === arr2[index].to) {
+        score += 1
+      }
+    })
     if (resultArray.length !== arr2.length) {
-      return false;
+      return score;
     }
-    return true;
+    return score;
   }
 
   const correctAnswer = () => {
-    if (areArraysEqual(studentAnswer, data?.correctAnswers)) {
+    const score = areArraysEqual(studentAnswer, data?.correctAnswers)
+    if (score) {
       dispatch(checkAnswer(true))
       setTimeout(() => {
         dispatch(checkAnswer(false))
@@ -58,7 +65,7 @@ export default function useLogic({ questionData }: CProps) {
         correct: true,
         data: [
           "أحسنت",
-          "لقد حصلت على علامة كاملة",
+          `لقد حصلت على علامة ${score} من ${data?.columnsData?.lefthand?.items.length}`,
         ]
       })
     } else {
@@ -70,7 +77,7 @@ export default function useLogic({ questionData }: CProps) {
         correct: false,
         data: [
           "حاول مرّة أخرى",
-          "بعض الإجابات غير صحيحة",
+          `لقد حصلت على علامة ${score} من ${data?.columnsData?.lefthand?.items.length}`,
         ]
       })
     }

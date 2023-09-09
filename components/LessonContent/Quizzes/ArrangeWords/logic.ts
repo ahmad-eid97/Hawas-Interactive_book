@@ -19,29 +19,6 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   const droppingArea = useRef<HTMLDivElement | null>(null);
   const dispatch = useAppDispatch();
 
-  const choices = [
-    {
-      id: 1,
-      text: "عشا"
-    },
-    {
-      id: 2,
-      text: "علي"
-    },
-    {
-      id: 3,
-      text: "عثمان"
-    },
-    {
-      id: 4,
-      text: "رأي"
-    },
-    {
-      id: 5,
-      text: "الشجرة"
-    }
-  ]
-
   const getQuestion = async () => {
     return await getGroupOrderingQuestion(questionData.id);
   }
@@ -93,20 +70,21 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   const compareObjects = (object1: any, object2: any) => {
-    if (!object2) return false;
-    if (Object.keys(object1)?.length !== Object.keys(object2).length) return false;
+    if (!object2) return false
+    if (Object.keys(object1)?.length !== Object.keys(object2).length) return false
     for (let i = 0; i < Object.keys(object1).length; i++) {
-      if (object1[i] !== object2[i]) return false;
+      if (object1[i] !== object2[i]) return false
     }
     return true;
   }
 
   const correctAnswer = () => {
-    const answers = []
+    const answers: any = []
     for (let i = 0; i < Object.keys(data?.correctAnswer).length; i++) {
       answers.push(compareObjects(data?.correctAnswer[i], studentAnswer[i]))
     }
-    if (answers.every((answer) => answer === true)) {
+    const score = data?.items.length - answers.filter((item: any) => !item).length
+    if (answers.every((answer: any) => answer === true)) {
       dispatch(checkAnswer(true))
       setTimeout(() => {
         dispatch(checkAnswer(false))
@@ -115,7 +93,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         correct: true,
         data: [
           "أحسنت",
-          "لقد حصلت على علامة كاملة",
+          `لقد حصلت على علامة ${score} من ${data?.items.length}`,
         ]
       })
     } else {
@@ -127,7 +105,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         correct: false,
         data: [
           "حاول مرّة أخرى",
-          "بعض الإجابات غير صحيحة",
+          `لقد حصلت على علامة ${score} من ${data?.items.length}`,
         ]
       })
     }
@@ -145,7 +123,6 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   return {
     items: data?.items,
     droppingArea,
-    choices,
     dragStart,
     dragEnd,
     dragOver,

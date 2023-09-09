@@ -25,6 +25,7 @@ const Lesson = ({ lessonNumber, lessonTitle, content }: CProps) => {
         <div className={styles.right}></div>
         <div className={styles.left}></div>
         <h2>{lessonTitle}</h2>
+
       </div>
       <div className={styles.inside}>
         {content.length ? content[pageNum - 1].map((item: any, index: number) => (

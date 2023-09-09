@@ -14,6 +14,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
   const [studentAnswer, setStudentAnswer] = useState<any>({});
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [rendered, setRendered] = useState(true);
+  const [studentScore, setStudentScore] = useState(0);
   const droppingArea = useRef<HTMLDivElement | null>(null);
   const [newDataLoading, setNewDataLoading] = useState(true);
   const dispatch = useAppDispatch();
@@ -75,6 +76,8 @@ export default function useLogic({ questionData }: { questionData: any }) {
     for (const key in obj1) {
       if (obj1[key] !== obj2[key]) {
         return false;
+      } else {
+        setStudentScore(prev => prev + 1)
       }
     }
     return true;
@@ -90,7 +93,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
         correct: true,
         data: [
           "أحسنت",
-          "لقد حصلت على علامة كاملة",
+          `لقد حصلت على علامة ${studentScore} من ${1}`,
         ]
       })
     } else {
@@ -102,7 +105,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
         correct: false,
         data: [
           "حاول مرّة أخرى",
-          "بعض الإجابات غير صحيحة",
+          `لقد حصلت على علامة ${studentScore} من ${1}`,
         ]
       })
     }
