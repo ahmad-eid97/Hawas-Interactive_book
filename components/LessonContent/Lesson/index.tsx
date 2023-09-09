@@ -12,13 +12,13 @@ interface CProps {
 }
 
 const Lesson = ({ lessonNumber, lessonTitle, content }: CProps) => {
-  const { pageNum, changePage, renderPageSection } = useLogic();
+  const { pageNum, changePage, renderPageSection, lessonsLabel } = useLogic();
 
   return (
     <div className={styles.lesson}>
       <div className={styles.badge}>
         <p>الفصل</p>
-        <span>{lessonNumber}</span>
+        <span className={lessonNumber > 10 ? styles.small : ''}>{lessonsLabel[lessonNumber]}</span>
       </div>
       <Pagination count={content.length} changePage={changePage} position="top" />
       <div className={styles.frame}>

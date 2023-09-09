@@ -6,6 +6,21 @@ import { TextSection, ImageSection, ImageWithText, VideoSection, AudioSection, A
 
 export default function useLogic() {
   const [pageNum, setPageNum] = useState(1);
+  const [lessonsLabel] = useState<{ [key: number]: string }>({
+    1: "الأول",
+    2: "الثاني",
+    3: "الثالث",
+    4: "الرابع",
+    5: "الخامس",
+    6: "السادس",
+    7: "السابع",
+    8: "الثامن",
+    9: "التاسع",
+    10: "العاشر",
+    11: "الحادي عشر",
+    12: "الثاني عشر",
+    13: "الثالث عشر",
+  });
 
   const renderPageSection = (type: string, data: any) => {
     const allSections: any = {
@@ -31,6 +46,7 @@ export default function useLogic() {
   return {
     pageNum,
     changePage,
-    renderPageSection
+    renderPageSection,
+    lessonsLabel
   }
 } 

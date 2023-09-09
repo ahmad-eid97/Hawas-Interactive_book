@@ -35,9 +35,14 @@
       margin: 0;
       font-weight: 700;
       padding-right: 2px;
+      text-align: center !important;
+      font-size: 15px;
     }
     span {
       transform: translateY(-7px);
+      &.small {
+        font-size: 12px;
+      }
     }
   }
   .frame {
