@@ -30,16 +30,19 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   const compareObjects = (obj1: any, obj2: any) => {
+    let score = 0;
     for (const key in obj1) {
-      if (obj1[key] !== obj2[key]) {
-        return false;
+      if (obj1[key] === obj2[key]) {
+        // return false;
+        score += 1
       }
     }
-    return true;
+    return score;
   }
 
   const correctAnswer = () => {
-    if (compareObjects(data?.correctAnswer, studentAnswer)) {
+    const score = compareObjects(data?.correctAnswer, studentAnswer)
+    if (score === data?.items.length) {
       dispatch(checkAnswer(true))
       setTimeout(() => {
         dispatch(checkAnswer(false))
@@ -48,7 +51,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         correct: true,
         data: [
           "أحسنت",
-          "لقد حصلت على علامة كاملة",
+          `لقد حصلت على علامة ${score} من ${data?.items.length}`,
         ]
       })
     } else {
@@ -60,7 +63,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         correct: false,
         data: [
           "حاول مرّة أخرى",
-          "بعض الإجابات غير صحيحة",
+          `لقد حصلت على علامة ${score} من ${data?.items.length}`,
         ]
       })
     }

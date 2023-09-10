@@ -101,7 +101,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
         correct: true,
         data: [
           "أحسنت",
-          "لقد حصلت على علامة كاملة",
+          "لقد حصلت على العلامة الكاملة",
         ]
       })
     } else {
@@ -113,7 +113,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
         correct: false,
         data: [
           "حاول مرّة أخرى",
-          "بعض الإجابات غير صحيحة",
+          "الإجابة غير صحيحة",
         ]
       })
     }

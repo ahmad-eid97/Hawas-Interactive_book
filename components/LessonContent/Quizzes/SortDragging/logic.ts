@@ -58,7 +58,7 @@ export default function useLogic({ questionData }: LogicProps) {
           correct: false,
           data: [
             "حاول مرّة أخرى",
-            "بعض الإجابات غير صحيحة",
+            "الإجابة غير صحيحة",
           ]
         })
         return;
@@ -73,7 +73,7 @@ export default function useLogic({ questionData }: LogicProps) {
       correct: true,
       data: [
         "أحسنت",
-        "لقد حصلت على علامة كاملة",
+        "لقد حصلت على العلامة الكاملة",
       ]
     })
   }

@@ -15,7 +15,6 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   const [studentAnswer, setStudentAnswer] = useState<any>({});
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [rendered, setRendered] = useState(true);
-  const [studentScore, setStudentScore] = useState(0);
   const dispatch = useAppDispatch();
 
   const getQuestion = async () => {
@@ -31,18 +30,18 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   const compareObjects = (obj1: any, obj2: any) => {
+    let score = 0;
     for (const key in obj1) {
-      if (obj1[key] !== obj2[key]) {
-        return false;
-      } else {
-        setStudentScore(prev => prev + 1)
+      if (obj1[key] === obj2[key]) {
+        score += 1
       }
     }
-    return true;
+    return score;
   }
 
   const correctAnswer = () => {
-    if (compareObjects(data?.correctAnswer, studentAnswer)) {
+    const score = compareObjects(data?.correctAnswer, studentAnswer)
+    if (score === data?.items.length) {
       dispatch(checkAnswer(true))
       setTimeout(() => {
         dispatch(checkAnswer(false))
@@ -51,7 +50,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         correct: true,
         data: [
           "أحسنت",
-          `لقد حصلت على علامة ${studentScore} من ${data?.items.length}`,
+          `لقد حصلت على علامة ${score} من ${data?.items.length}`,
         ]
       })
     } else {
@@ -63,7 +62,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         correct: false,
         data: [
           "حاول مرّة أخرى",
-          `لقد حصلت على علامة ${studentScore} من ${data?.items.length}`,
+          `لقد حصلت على علامة ${score} من ${data?.items.length}`,
         ]
       })
     }

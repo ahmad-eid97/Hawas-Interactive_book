@@ -31,21 +31,20 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   const compareObjects = (object1: any, object2: any) => {
-    if (!object2) return false;
-    if (Object.keys(object1)?.length !== Object.keys(object2).length) return false;
+    let score = 0;
+    if (!object2) return score;
+    // if (Object.keys(object1)?.length !== Object.keys(object2).length) return score;
     for (let i = 0; i < Object.keys(object1).length; i++) {
-      if (object1[i] !== object2[i]) {
-        return false;
-      } else {
-        setStudentScore(prev => prev + 1)
+      if (object1[i] === object2[i]) {
+        score += 1
       }
     }
-    return true;
+    return score;
   }
 
   const correctAnswer = () => {
     const result = compareObjects(data?.correctAnswer, studentAnswer);
-    if (result) {
+    if (result === data?.items.length) {
       dispatch(checkAnswer(true))
       setTimeout(() => {
         dispatch(checkAnswer(false))
@@ -54,7 +53,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         correct: true,
         data: [
           "أحسنت",
-          `لقد حصلت على علامة ${studentScore} من ${data?.items.length}`,
+          `لقد حصلت على علامة ${result} من ${data?.items.length}`,
         ]
       })
     } else {
@@ -66,7 +65,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         correct: false,
         data: [
           "حاول مرّة أخرى",
-          `لقد حصلت على علامة ${studentScore} من ${data?.items.length}`,
+          `لقد حصلت على علامة ${result} من ${data?.items.length}`,
         ]
       })
     }
