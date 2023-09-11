@@ -19,11 +19,14 @@ const ContinueTyping = ({ questionData }: { questionData: QuestionData }) => {
       <h2>{questionData.title}</h2>
       <div className={styles.wrapper}>
         {items.map((item: any, idx: number) => (
-          <div className={styles.item} key={item.id}>
-            <i className="fa-duotone fa-pencil"></i>
-            <span>{item.text}:</span>
-            <input type="text" onChange={(e) => handleFields(e, idx)} />
-          </div>
+          <>
+            {item.image && <img src={item.image} alt={item.text} />}
+            <div className={styles.item} key={item.id}>
+              <i className="fa-duotone fa-pencil"></i>
+              <span>{item.text}:</span>
+              <input type="text" onChange={(e) => handleFields(e, idx)} />
+            </div>
+          </>
         ))}
       </div>
       {showCorrection &&

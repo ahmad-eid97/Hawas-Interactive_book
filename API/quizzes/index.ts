@@ -187,6 +187,7 @@ export async function getGroupShortAnswer(questionId: number) {
     {
       id: item.id,
       text: item.title,
+      image: item.question_img
     }
   ));
   const correctAnswer: any = {}
@@ -204,6 +205,7 @@ export async function getGroupListSingleChhoice(questionId: number) {
       id: item.id,
       text: item.title,
       choices: item.answers.map((item: any) => item.title),
+      image: item.question_img
     }
   ));
   const correctAnswer: any = {}
@@ -394,4 +396,46 @@ export async function getGroupTrueAndFalseQuestion(questionId: number) {
     })
   })
   if (response) return { items, correctAnswer: answers };
+}
+
+export async function getFillInBlankWithColor(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  const title = response?.data?.data?.title;
+  const image = response?.data?.data?.question_img;
+  const colors = response?.data?.data?.colors.split(',');
+  const word = response?.data?.data?.word_color;
+  const letterIndex = +response?.data?.data?.word_color_index;
+  const rightColor = response?.data?.data?.word_color_right;
+  const fixedLetters = response?.data?.data?.answers[0].title.split(' ').map((str: string) => str === '{dash}' ? '-' : str);
+  const choices = response?.data?.data?.answers[0].answer_two_gap_match.split('|');
+  shuffleArray(choices)
+
+  let correctAnswer: any = {}
+  response?.data?.data?.answers?.forEach((answer: any, index: number) => {
+    const places = [...answer.title.split(' ').map((str: string) => str === '{dash}' ? '-' : str)]
+    const indexes: any = [];
+    places.forEach((one: any, index: number) => {
+      if (one === '-') {
+        indexes.push(index)
+      }
+    })
+    const group = [...answer.answer_two_gap_match.split('|')];
+    const groupObject: any = {}
+    indexes.forEach((one: any, index: number) => {
+      groupObject[one] = group[index].trim();
+    })
+    correctAnswer = groupObject
+  })
+  const data = {
+    title,
+    image,
+    colors,
+    word,
+    letterIndex,
+    rightColor,
+    fixedLetters,
+    choices,
+    correctChoices: correctAnswer
+  }
+  if (response) return data;
 }

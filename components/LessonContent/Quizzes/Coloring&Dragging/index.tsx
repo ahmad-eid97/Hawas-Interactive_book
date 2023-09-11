@@ -1,4 +1,8 @@
 "use client";
+//== Hooks
+import { Fragment } from 'react';
+//== Components
+import { PageLoader } from '@/components';
 //== Component Logic
 import useLogic from './logic';
 //== Types
@@ -7,170 +11,84 @@ import { QuestionData } from '../types';
 import styles from './coloring&Dragging.module.scss';
 
 export default function ColoringAndDragging({ questionData }: { questionData: QuestionData }) {
-  const { items, items2, items3, items4, dragStart, dragOver, dragLeave, dragEnd, drop, colors, setChoosedColor, colorLetter, rendered, retry } = useLogic({ questionData });
-
-  console.log(questionData)
+  const { questionDetails, dragStart, dragOver, dragLeave, dragEnd, drop, setChoosedColor, colorLetter, rendered, retry, correctAnswer, showCorrection, isLoading } = useLogic({ questionData });
 
   if (!rendered) return null;
+  if (isLoading) return <PageLoader />
   return (
     <>
-      <h2 className={styles.heading}>أكمل الكلمة الناقصة وقم بتلوين حرف العين ( ع ) باللون الأحمر:</h2>
+      <h2 className={styles.heading}>{questionDetails?.title}</h2>
       <div className={styles.coloringAndDragging}>
         <div className={styles.firstQuestion}>
           <div className={styles.colors}>
-            {colors.map((color, index) => (
+            {questionDetails?.colors.map((color: string, index: number) => (
               <p onClick={() => setChoosedColor(color)} key={index} style={{ backgroundColor: color }}></p>
             ))}
           </div>
-          {/* @ts-ignore */}
-          {!questionData?.question_audio && !questionData.question_video_link && questionData?.question_order !== 6 &&
-            <>
-              <p className={styles.word}>
-                سر<span onClick={(e) => colorLetter(e)}>عـ<span className={styles.layer}></span></span>ة
-              </p>
-              <span onClick={(e) => colorLetter(e)}>عـ
-                <span className={styles.layer}></span>
-              </span>
-            </>
-          }
-          {/* @ts-ignore */}
-          {questionData?.question_audio &&
-            <>
-              <p className={styles.word}>
-                <span onClick={(e) => colorLetter(e)}>ز<span className={styles.layer}></span></span>ملاء
-              </p>
-              <span onClick={(e) => colorLetter(e)}>ز
-                <span className={styles.layer}></span>
-              </span>
-            </>
-          }
-          {/* @ts-ignore */}
-          {questionData?.question_video_link &&
-            <>
-              <p className={styles.word}>
-                إشارا<span onClick={(e) => colorLetter(e)}>ت<span className={styles.layer}></span></span>
-              </p>
-              <span onClick={(e) => colorLetter(e)}>ت
-                <span className={styles.layer}></span>
-              </span>
-            </>
-          }
-          {/* @ts-ignore */}
-          {questionData?.question_order === 6 &&
-            <>
-              <p className={styles.word}>
-                مم<span onClick={(e) => colorLetter(e)}>ر<span className={styles.layer}></span></span>
-              </p>
-              <span onClick={(e) => colorLetter(e)}>ر
-                <span className={styles.layer}></span>
-              </span>
-            </>
-          }
+          <div className={styles.wordArea}>
+            <div>
+              {questionDetails?.word.split('').map((letter: string, index: number) => (
+                <Fragment key={index}>
+                  {index === questionDetails.letterIndex ?
+                    <span onClick={(e) => colorLetter(e)}>{questionDetails?.word[questionDetails.letterIndex]}{questionDetails.letterIndex !== 0 && questionDetails.letterIndex !== questionDetails.word.length - 1 ? 'ـ' : ''}<span className={styles.layer}></span></span>
+                    :
+                    <p key={index}>{letter}</p>
+                  }
+                </Fragment>
+              ))}
+            </div>
+            <span onClick={(e) => colorLetter(e)}>{questionDetails?.word[questionDetails.letterIndex]}
+              <span className={styles.layer}></span>
+            </span>
+          </div>
         </div>
         <div className={styles.secondQuestion}>
-          {/* @ts-ignore */}
-          {!questionData?.question_audio && !questionData.question_video_link && questionData?.question_order !== 6 &&
-            <img src="/images/quizzes/speed.png" alt="first_question" />
-          }
-          {/* @ts-ignore */}
-          {questionData?.question_audio &&
-            <img src="/images/quizzes/mates.png" alt="first_question" />
-          }
-          {/* @ts-ignore */}
-          {questionData.question_video_link &&
-            <img src="/images/quizzes/signs.png" alt="first_question" />
-          }
-          {/* @ts-ignore */}
-          {questionData.question_order === 6 &&
-            <img src="/images/quizzes/old.png" alt="first_question" />
-          }
-          {/* @ts-ignore */}
-          {questionData?.question_audio &&
-            <div className={styles.dragging}>
-              <div className={styles.droppables}>
-                <div onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 0, 0)}>
-                  <p>ز</p>
-                </div>
-                {items2.map((_, index) => (
-                  <div onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 0, 0)} key={index}></div>
-                ))}
-                <div onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 0, 0)}>
-                  <p>ء</p>
-                </div>
-              </div>
-              <div className={styles.letters}>
-                <p>ز</p>
-                {items2.map((item, index) => (
+          <img src={questionDetails?.image} alt="question_image" />
+          <div className={styles.dragging}>
+            <div className={styles.droppables}>
+              {questionDetails?.fixedLetters.map((letter: string, index: number) => (
+                <Fragment key={index}>
+                  {letter === '-' ?
+                    <div onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, index)} key={index}></div>
+                    :
+                    <div onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, index)} key={index}>
+                      <p>{letter}</p>
+                    </div>
+                  }
+                </Fragment>
+              ))}
+            </div>
+            <div className={styles.letters}>
+              {questionDetails?.choices.map((letter: string, index: number) => (
+                <Fragment key={index}>
                   <p
                     draggable={true}
                     onDragStart={(e) => dragStart(e)}
                     onDragEnd={(e) => dragEnd(e)}
                     key={index}>
-                    {item}
+                    {letter}
                   </p>
-                ))}
-                <p>ء</p>
-              </div>
+                </Fragment>
+              ))}
             </div>
-          }
-          {/* @ts-ignore */}
-          {questionData?.question_video_link &&
-            <div className={styles.dragging}>
-              <div className={styles.droppables}>
-                <div onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 0, 0)}>
-                  <p>إ</p>
-                </div>
-                {items3.map((_, index) => (
-                  <div onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 0, 0)} key={index}></div>
-                ))}
-                <div onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 0, 0)}>
-                  <p>ت</p>
-                </div>
-              </div>
-              <div className={styles.letters}>
-                <p>إ</p>
-                {items3.map((item, index) => (
-                  <p
-                    draggable={true}
-                    onDragStart={(e) => dragStart(e)}
-                    onDragEnd={(e) => dragEnd(e)}
-                    key={index}>
-                    {item}
-                  </p>
-                ))}
-                <p>ت</p>
-              </div>
-            </div>
-          }
-          {/* @ts-ignore */}
-          {questionData?.question_order === 6 &&
-            <div className={styles.dragging}>
-              <div className={styles.droppables}>
-                <div onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 0, 0)}>
-                  <p>م</p>
-                </div>
-                {items4.map((_, index) => (
-                  <div onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 0, 0)} key={index}></div>
-                ))}
-              </div>
-              <div className={styles.letters}>
-                <p>م</p>
-                {items4.map((item, index) => (
-                  <p
-                    draggable={true}
-                    onDragStart={(e) => dragStart(e)}
-                    onDragEnd={(e) => dragEnd(e)}
-                    key={index}>
-                    {item}
-                  </p>
-                ))}
-              </div>
-            </div>
-          }
+          </div>
         </div>
       </div >
+      {showCorrection &&
+        <div className={`correctData ${showCorrection.correct ? 'correct' : 'wrong'}`}>
+          {showCorrection.data.map((one, idx) => (
+            <Fragment key={idx}>
+              {idx === 0 ?
+                <p><i className="fa-solid fa-lightbulb-on"></i> {one}</p>
+                :
+                <p>{one}</p>
+              }
+            </Fragment>
+          ))}
+        </div>
+      }
       <div className="checkAnswer">
-        <button><i className="fa-regular fa-badge-check"></i> فحص الإجابات</button>
+        <button onClick={correctAnswer}><i className="fa-regular fa-badge-check"></i> فحص الإجابات</button>
         <button onClick={retry}><i className="fa-regular fa-arrows-rotate"></i> إعادة المحاولة</button>
       </div>
     </>

@@ -19,16 +19,19 @@ const ListSingleChoice = ({ questionData }: { questionData: QuestionData }) => {
       <h2>{questionData.title}</h2>
       <div className={styles.wrapper}>
         {items.map((item: any, idx: number) => (
-          <div className={styles.item} key={item.id}>
-            <i className="fa-duotone fa-pencil"></i>
-            <span>{item.text}:</span>
-            <select name="" id="" defaultValue="إختر إجابة" onChange={(e) => handleFields(e, idx)}>
-              <option disabled>إختر إجابة</option>
-              {item.choices.map((choice: any, index: number) => (
-                <option value={choice} key={index}>{choice}</option>
-              ))}
-            </select>
-          </div>
+          <>
+            <img src={item.image} alt={item.text} />
+            <div className={styles.item} key={item.id}>
+              <i className="fa-duotone fa-pencil"></i>
+              <span>{item.text}:</span>
+              <select name="" id="" defaultValue="إختر إجابة" onChange={(e) => handleFields(e, idx)}>
+                <option disabled>إختر إجابة</option>
+                {item.choices.map((choice: any, index: number) => (
+                  <option value={choice} key={index}>{choice}</option>
+                ))}
+              </select>
+            </div>
+          </>
         ))}
       </div>
       {showCorrection &&

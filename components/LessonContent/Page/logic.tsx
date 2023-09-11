@@ -57,7 +57,7 @@ export default function useLogic({ quizzes }: any) {
       "images_puzzle": <ImagesPuzzle questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,
       "group_multiple_choice": <MultipleChoose questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
       "group_list_single_choice": <ListSingleChoice questionData={quizzes[pageNum - 1]} key={pageNum - 1} />,  // Done
-      "open_ended": <ColoringAndDragging questionData={quizzes[pageNum - 1]} key={pageNum - 1} />  // Done
+      "fill_in_the_blank_with_color": <ColoringAndDragging questionData={quizzes[pageNum - 1]} key={pageNum - 1} />  // Done
     }
     return ComponentRendered[quizzes[pageNum - 1]["question_type"]];
   }
