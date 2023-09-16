@@ -5,7 +5,7 @@ const FrontCover = ({ cover, lessonNumber }: { cover: string, lessonNumber: numb
   console.log(lessonNumber)
   return (
     <div className={styles.frontCover}>
-      <img src={lessonNumber !== 1 ? cover : "/images/lesson/lessonCover.jpeg"} alt="logo_file" />
+      <img src={`/images/lesson/${lessonNumber}.png`} alt="logo_file" />
       <button>إفتح الفصل</button>
     </div>
   )
