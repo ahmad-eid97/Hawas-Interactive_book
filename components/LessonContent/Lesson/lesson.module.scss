@@ -19,6 +19,7 @@
   }
   .badge {
     position: absolute;
+    z-index: 99;
     top: 10px;
     right: 10px;
     display: flex;
@@ -105,7 +106,7 @@
     h2 {
       display: inline-block;
       text-align: center !important;
-      font-weight: 700;
+      font-weight: 600;
       transform: translateY(-10px);
       font-size: 1.15rem;
       background-color: var(--secondary-color);
