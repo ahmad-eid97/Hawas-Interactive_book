@@ -29,7 +29,7 @@ const BookPages = ({ data }: CProps) => {
           // flipPrev={goToPrevPage}
           ref={flippy}
         >
-          <FrontCover cover={data?.book?.logo_file} />
+          <FrontCover cover={data?.book?.logo_file} lessonNumber={data?.current_lesson.sort} />
           <Lesson lessonNumber={data?.current_lesson.sort} lessonTitle={data?.current_lesson?.title} content={data?.content} />
           <Page quizzes={data?.quizzes} />
           <BackCover />
