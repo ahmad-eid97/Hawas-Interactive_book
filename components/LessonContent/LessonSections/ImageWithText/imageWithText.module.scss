@@ -7,8 +7,11 @@
   img {
     width: 220px;
   }
-  p {
-    font-size: 1.1rem !important;
+  div {
+    * {
+      font-size: 1.1rem !important;
+      font-weight: 700 !important;
+    }
   }
   img {
     border-radius: 10px;

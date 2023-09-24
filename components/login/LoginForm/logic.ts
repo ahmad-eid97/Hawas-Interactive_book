@@ -31,7 +31,6 @@ export default function useLogic() {
     // const response = await studentLogin(loginData);
     // console.log(response);
     if (loginData.email === 'admin@hawas.com' && loginData.password === '12345678') {
-      console.log(loginData)
       cookies.set('hawas-auth', 'true', { path: '/' });
       setTimeout(() => {
         location.href = '/';

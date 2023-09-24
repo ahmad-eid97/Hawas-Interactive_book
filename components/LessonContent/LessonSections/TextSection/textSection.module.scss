@@ -19,6 +19,10 @@
       animation: 15s highlight ease-out;
     }
 
+    div {
+      font-weight: 700;
+    }
+
     @keyframes highlight {
       to {
         background-position: 100% 0%;

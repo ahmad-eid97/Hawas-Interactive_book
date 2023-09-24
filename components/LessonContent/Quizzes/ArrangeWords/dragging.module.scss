@@ -1,5 +1,14 @@
 @import '../../../../styles/extends.scss';
 
+.questionImage {
+  height: 180px;
+  width: 300px;
+  margin: 10px auto 0;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+}
+
 .arrangeWords {
   @extend %quizFrame;
   display: flex;

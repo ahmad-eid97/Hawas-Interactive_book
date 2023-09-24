@@ -10,14 +10,19 @@ import { QuestionData } from '../types';
 //== Styles
 import styles from './dragging.module.scss';
 
-const ArrangeWords = ({ questionData }: { questionData: QuestionData }) => {
+const ArrangeWords = ({ questionData }: { questionData: any }) => {
   const { items, droppingArea, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, correctAnswer, showCorrection, retry, rendered, isLoading } = useLogic({ questionData });
 
   if (!rendered) return null;
   if (isLoading) return <PageLoader />
+
   return (
     <>
       <h2>{questionData?.title}</h2>
+      {questionData?.question_img ?
+        <img className={styles.questionImage} src={questionData?.question_img} alt="question_image" />
+        : null
+      }
       <div className={styles.arrangeWords}>
         {items.map((item: any, idx: number) => (
           <div className={styles.wrapper} key={idx}>
