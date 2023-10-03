@@ -19,7 +19,7 @@
     position: relative;
     z-index: 2;
     @extend %mainBtn;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     padding: 7px 20px;
     &:hover {
       background-color: var(--main-color);
