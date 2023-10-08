@@ -20,10 +20,14 @@ const ListSingleChoice = ({ questionData }: { questionData: QuestionData }) => {
       <div className={styles.wrapper}>
         {items.map((item: any, idx: number) => (
           <>
-            <img src={item.image} alt={item.text} />
+            {item.image ?
+              <img src={item.image} alt={item?.text} />
+              :
+              null
+            }
             <div className={styles.item} key={item.id}>
               <i className="fa-duotone fa-pencil"></i>
-              <span>{item.text}:</span>
+              <span>{item?.text}:</span>
               <select name="" id="" defaultValue="إختر إجابة" onChange={(e) => handleFields(e, idx)}>
                 <option disabled>إختر إجابة</option>
                 {item.choices.map((choice: any, index: number) => (

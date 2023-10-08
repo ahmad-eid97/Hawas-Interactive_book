@@ -27,7 +27,7 @@ const ImageTyping = ({ questionData }: { questionData: QuestionData }) => {
         {items.map((item: Item, idx: number) => (
           <div className={styles.item} key={item.id}>
             <i className="fa-duotone fa-star"></i>
-            <span>{item.text}:</span>
+            <span>{item?.text}:</span>
             <input type="text" onChange={(e) => handleFields(e, idx)} />
             <img src={item.image} alt="image" loading='lazy' />
           </div>

@@ -59,6 +59,7 @@ export async function getQuestionImageWithPosition(questionId: number) {
       answersArray[index] = item.title
     }
   })
+  console.log(response)
   const ModifiedData = { questionImage, choices, droppables, correctAnswer: answersArray };
   if (response) return ModifiedData;
 }
@@ -284,7 +285,7 @@ export async function getGroupOrderingQuestion(questionId: number) {
   const items = response?.data?.data?.children?.map((item: any) => {
     const arr = item?.answers.map((item: any) => item.title);
     shuffleArray(arr);
-    return ({ answers: arr });
+    return ({ answers: arr, image: item.question_img });
   });
   const correctAnswer: any = {}
   response?.data?.data?.children?.forEach((item: any, index: number) => {
@@ -305,7 +306,7 @@ export async function getGroupRoundedSingleChoiceQuestion(questionId: number) {
     question: item.title,
     image: item.question_img,
     words: item.answers.map((item: any) => ({ type: item.answer_view_format, text: item.title, image: item.answer_img })),
-    correct: item.answers.filter((item: any) => item.is_correct === 1).map((item: any) => ({ text: item.title, image: item.answer_img }))[0]
+    correct: item.answers.filter((item: any) => item.is_correct === 1)?.map((item: any) => ({ text: item.title, image: item.answer_img }))[0]
   }));
   if (response) return { items };
 }
@@ -438,4 +439,15 @@ export async function getFillInBlankWithColor(questionId: number) {
     correctChoices: correctAnswer
   }
   if (response) return data;
+}
+
+export async function getImagesPuzzleQuestion(questionId: number) {
+  const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
+  const puzzleImages = response?.data.data.answers;
+  const correctAnswer: { [key: number]: number } = {};
+  response?.data.data.answers.forEach((answer: any, index: number) => {
+    correctAnswer[index] = answer.answer_order
+  });
+  shuffleArray(puzzleImages);
+  if (response) return { puzzleImages, correctAnswer };
 }

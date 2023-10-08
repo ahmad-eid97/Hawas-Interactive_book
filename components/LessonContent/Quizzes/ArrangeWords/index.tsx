@@ -31,7 +31,7 @@ const ArrangeWords = ({ questionData }: { questionData: any }) => {
               dragLeave={dragLeave}
               drop={drop}
               index={idx}
-              droppables={item.answers}
+              droppables={item}
             />
             <ArrangeDraggables
               choices={item.answers}

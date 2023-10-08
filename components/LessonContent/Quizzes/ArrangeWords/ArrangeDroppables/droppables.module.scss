@@ -7,6 +7,10 @@
   background-color: var(--third-color);
   padding: 10px;
   border-radius: 10px 10px 0 0;
+  img {
+    width: 80px;
+    object-fit: contain;
+  }
   .dropable {
     min-width: 55px;
     min-height: 40px;

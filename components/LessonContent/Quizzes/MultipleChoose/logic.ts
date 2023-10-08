@@ -21,7 +21,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
 
   const addToChoices = (index: number, choice: any) => {
     if (choices[index] && choices[index].includes(choice)) {
-      setChoices(prev => ({ ...prev, [index]: choices[index].filter((item: any) => item.text !== choice.text) }));
+      setChoices(prev => ({ ...prev, [index]: choices[index].filter((item: any) => item?.text !== choice?.text) }));
       return;
     }
     let updatedChoices: string[] = [];

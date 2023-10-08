@@ -25,34 +25,34 @@ const MultipleChoose = ({ questionData }: { questionData: QuestionData }) => {
                   {(word.type === 'text_image') &&
                     <span>
                       <img src={word.image} alt={word.text} />
-                      <span>{word.text}</span>
+                      <span>{word?.text}</span>
                     </span>
                   }
                   {(word.type === 'image') &&
                     <>
-                      <img src={word.image} alt={word.text} />
+                      <img src={word.image} alt={word?.text} />
                     </>
                   }
                   {(word.type === 'text') &&
                     <>
-                      {word.text}
+                      {word?.text}
                     </>
                   }
                   {word.type === 'image' || word.type === 'text' ?
                     <>
-                      {item.correct.find((one: any) => one.text === word.text)?.text !== choices[idx]?.find((one: any) => one.text === word.text)?.text && choices[idx]?.find((one: any) => one.text === word.text) &&
+                      {item.correct.find((one: any) => one?.text === word?.text)?.text !== choices[idx]?.find((one: any) => one?.text === word.text)?.text && choices[idx]?.find((one: any) => one?.text === word?.text) &&
                         <i className={`fa-duotone fa-triangle-exclamation ${styles.wrong}`}></i>
                       }
-                      {item.correct.find((one: any) => one.text === word.text)?.text === choices[idx]?.find((one: any) => one.text === word.text)?.text && choices[idx]?.find((one: any) => one.text === word.text) &&
+                      {item.correct.find((one: any) => one?.text === word?.text)?.text === choices[idx]?.find((one: any) => one?.text === word.text)?.text && choices[idx]?.find((one: any) => one?.text === word?.text) &&
                         <i className={`fa-duotone fa-circle-check ${styles.correct}`}></i>
                       }
                     </>
                     :
                     <>
-                      {item.correct.find((one: any) => one.text === word.text)?.text !== choices[idx]?.find((one: any) => one.text === word.text)?.text && choices[idx]?.find((one: any) => one.text === word.text) &&
+                      {item.correct.find((one: any) => one?.text === word?.text)?.text !== choices[idx]?.find((one: any) => one?.text === word.text)?.text && choices[idx]?.find((one: any) => one?.text === word?.text) &&
                         <i className={`fa-duotone fa-triangle-exclamation ${styles.wrong}`}></i>
                       }
-                      {item.correct.find((one: any) => one.text === word.text)?.text === choices[idx]?.find((one: any) => one.text === word.text)?.text && choices[idx]?.find((one: any) => one.text === word.text) &&
+                      {item.correct.find((one: any) => one.text === word?.text)?.text === choices[idx]?.find((one: any) => one?.text === word.text)?.text && choices[idx]?.find((one: any) => one?.text === word?.text) &&
                         <i className={`fa-duotone fa-circle-check ${styles.correct}`}></i>
                       }
                     </>

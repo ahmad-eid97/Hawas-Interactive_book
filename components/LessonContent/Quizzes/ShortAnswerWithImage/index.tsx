@@ -16,6 +16,13 @@ const ShortAnswerWithImage = ({ questionData }: { questionData: QuestionData }) 
   if (isLoading) return <PageLoader />
   return (
     <div className={styles.continueTyping}>
+      {questionData.question_img ?
+        <div className={styles.question_img}>
+          <img src={questionData.question_img} alt="question_image" />
+        </div>
+        :
+        null
+      }
       <h2>{questionData.title}</h2>
       <div className={styles.wrapper}>
         {items.map((item: any, idx: number) => (

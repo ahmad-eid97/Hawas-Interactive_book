@@ -23,7 +23,7 @@ const Draggables = ({ choices, droppingArea, dragStart, dragEnd, removeChoice }:
           onDragEnd={(e) => dragEnd(e)}
           key={choice.id}
         >
-          {choice.text}
+          {choice?.text}
           <i className="fa-duotone fa-ban" onClick={(e) => removeChoice(e, idx)}></i>
         </p>
       ))}

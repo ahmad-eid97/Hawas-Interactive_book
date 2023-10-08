@@ -433,6 +433,11 @@ function Matching({
           }
         </div>
       </div>
+      {questionData.question_img ?
+        <img src={questionData.question_img} alt="question_image" className={classes.question_image} />
+        :
+        null
+      }
       {showCorrection &&
         <div className={`correctData ${showCorrection.correct ? 'correct' : 'wrong'}`}>
           {showCorrection.data.map((one, idx) => (

@@ -9,4 +9,7 @@ export type QuestionData = {
   question_type: string
   quiz_id: number
   title: string
+  question_img: string
+  additional_image: string
+  additional_image_direction: string
 }

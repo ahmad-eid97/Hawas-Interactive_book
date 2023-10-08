@@ -25,7 +25,7 @@ const ChooseAdjective = ({ questionData }: { questionData: QuestionData }) => {
               </div>
               <div className={styles.item} key={item.id}>
                 <i className="fa-duotone fa-star"></i>
-                {item.text}
+                {item?.text}
                 <div className={styles.box}>
                   {answers[idx] &&
                     <>

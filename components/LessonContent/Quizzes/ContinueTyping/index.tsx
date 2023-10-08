@@ -20,10 +20,10 @@ const ContinueTyping = ({ questionData }: { questionData: QuestionData }) => {
       <div className={styles.wrapper}>
         {items.map((item: any, idx: number) => (
           <>
-            {item.image && <img src={item.image} alt={item.text} />}
+            {item.image && <img src={item.image} alt={item?.text} />}
             <div className={styles.item} key={item.id}>
               <i className="fa-duotone fa-pencil"></i>
-              <span>{item.text}:</span>
+              <span>{item?.text}:</span>
               <input type="text" onChange={(e) => handleFields(e, idx)} />
             </div>
           </>

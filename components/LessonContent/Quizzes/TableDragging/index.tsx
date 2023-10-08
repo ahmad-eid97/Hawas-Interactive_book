@@ -20,19 +20,21 @@ const TableDragging = ({ questionData }: { questionData: QuestionData }) => {
       <h2>{questionData.title}</h2>
       <div className={styles.words}>
         <h2>الكلمات</h2>
-        {questionDetails?.items.map((item: any, idx: number) => (
-          <p
-            key={item.id}
-            className={`${styles.item} item`}
-            draggable={true}
-            onDragStart={(e) => dragStart(e)}
-            onDragEnd={(e) => dragEnd(e)}
-          >
-            {item.title}
-          </p>
-        ))}
+        <div className={styles.items}>
+          {questionDetails?.items.map((item: any, idx: number) => (
+            <p
+              key={item.id}
+              className={`${styles.item} item`}
+              draggable={true}
+              onDragStart={(e) => dragStart(e)}
+              onDragEnd={(e) => dragEnd(e)}
+            >
+              {item.title}
+            </p>
+          ))}
+        </div>
       </div>
-      <Boxes titles={questionDetails?.titles} dragOver={dragOver} dragLeave={dragLeave} drop={drop} />
+      <Boxes titles={questionDetails?.titles} dragOver={dragOver} dragLeave={dragLeave} drop={drop} questionData={questionData} />
       {showCorrection &&
         <div className={`correctData ${showCorrection.correct ? 'correct' : 'wrong'}`}>
           {showCorrection.data.map((one, idx) => (

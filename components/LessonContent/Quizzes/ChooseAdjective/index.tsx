@@ -20,12 +20,12 @@ const ChooseAdjective = ({ questionData }: { questionData: QuestionData }) => {
         <div className={styles.items}>
           {items.map((item: any, idx: number) => (
             <>
-              {item.image && item.text &&
-                <img src={item.image} alt={item.text} />
+              {item.image && item?.text &&
+                <img src={item.image} alt={item?.text} />
               }
               <div className={styles.item} key={item.id}>
                 <i className="fa-duotone fa-star"></i>
-                {item.text}
+                {item?.text}
                 <div className={styles.box}>
                   {answers[idx] &&
                     <>

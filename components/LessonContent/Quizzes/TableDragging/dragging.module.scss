@@ -16,16 +16,24 @@
       margin-bottom: 10px;
     }
   }
-  .item {
-    background-color: var(--box-background);
-    padding: 5px 20px;
-    margin-bottom: 5px;
-    cursor: move;
-    max-width: 250px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    // border: 1px solid var(--main-color);
-    font-size: 1.1rem;
-    color: var(--text-inside);
+  .items {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    .item {
+      background-color: var(--box-background);
+      padding: 5px 20px;
+      margin-bottom: 5px;
+      cursor: move;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      font-size: 1.1rem;
+      color: var(--text-inside);
+      min-width: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }

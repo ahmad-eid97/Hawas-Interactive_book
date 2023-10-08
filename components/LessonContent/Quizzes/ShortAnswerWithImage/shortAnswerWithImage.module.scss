@@ -2,6 +2,16 @@
 
 .continueTyping {
   max-width: 98%;
+  .question_img {
+    display: flex;
+    justify-content: center;
+    img {
+      height: 200px;
+      width: 300px;
+      margin: 0 auto 10px;
+      border-radius: 10px;
+    }
+  }
   h2 {
     margin-bottom: 20px;
   }

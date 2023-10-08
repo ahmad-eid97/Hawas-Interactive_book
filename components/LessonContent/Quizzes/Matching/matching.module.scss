@@ -74,10 +74,10 @@
     direction: var(--dir);
     text-align: var(--align);
     p {
-      padding: 7px 25px;
+      padding: 7px 15px 7px 30px;
     }
     p.big {
-      height: 80px;
+      min-height: 80px;
       display: flex;
       align-items: center;
     }
@@ -164,4 +164,9 @@
       }
     }
   }
+}
+.question_image {
+  width: 100%;
+  max-height: 200px;
+  margin-top: 20px;
 }
