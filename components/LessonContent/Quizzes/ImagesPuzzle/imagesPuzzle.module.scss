@@ -1,0 +1,71 @@
+.imagesPuzzle {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  h2 {
+    margin-bottom: 20px;
+  }
+  .images {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 20px;
+    img {
+      width: 100px;
+      height: 80px;
+      cursor: pointer;
+      background-color: #fff;
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    }
+  }
+  .area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    img {
+      flex: 1;
+      object-fit: contain;
+    }
+    .items {
+      display: grid;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 2px;
+      flex: 1;
+      .item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 120px;
+        background-color: #f8f8f8;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ccc;
+        grid-column: span 6;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: fill;
+        }
+      }
+    }
+  }
+  .actions {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button {
+      padding: 10px 30px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  }
+}

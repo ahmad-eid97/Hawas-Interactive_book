@@ -1,0 +1,114 @@
+@import '@/styles/extends.scss';
+
+.heading {
+  margin-bottom: 20px;
+}
+.coloringAndDragging {
+  @extend %quizFrame;
+  background: url('/images/quizzes/chart.svg');
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  .firstQuestion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .colors {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      p {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+    }
+    .wordArea {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      p {
+        font-size: 35px;
+        font-weight: 700;
+        display: inline;
+      }
+    }
+    .word {
+      font-size: 35px;
+      font-weight: 700;
+    }
+    span {
+      font-size: 50px;
+      font-weight: 700;
+      color: #fff;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: black;
+      cursor: pointer;
+      position: relative;
+      .layer {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 50px;
+        height: 50px;
+        transform: translate(-50%, -30%);
+        z-index: -1;
+        background-color: rgb(141, 215, 247);
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .secondQuestion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+      height: 140px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    .dragging {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      .droppables {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        border-radius: 10px;
+        div {
+          width: 45px;
+          height: 40px;
+          border: 1px solid var(--main-color);
+          border-radius: 5px;
+          display: grid;
+          place-content: center;
+          p {
+            font-size: 25px;
+            font-weight: 700;
+            margin: 0;
+          }
+        }
+      }
+      .letters {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 35px;
+        p {
+          font-size: 28px;
+          font-weight: bold;
+          cursor: url('/images/quizzes/point.png') 20 0, move;
+        }
+      }
+    }
+  }
+}

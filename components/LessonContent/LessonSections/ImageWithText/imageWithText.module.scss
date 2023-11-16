@@ -1,0 +1,49 @@
+.imageWithText {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  p,
+  img {
+    width: 220px;
+  }
+  div {
+    * {
+      font-size: 1.1rem !important;
+      font-weight: 700 !important;
+    }
+  }
+  img {
+    border-radius: 10px;
+  }
+  &.right {
+    flex-direction: row-reverse;
+  }
+  &.left {}
+  &.bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    p,
+    img {
+      width: 100%;
+    }
+    img {
+      max-width: 400px;
+    }
+  }
+  &.top {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    p,
+    img {
+      width: 100%;
+    }
+    img {
+      max-width: 400px;
+    }
+  }
+}

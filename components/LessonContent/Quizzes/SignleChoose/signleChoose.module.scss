@@ -1,0 +1,57 @@
+@import '../../../../styles/extends.scss';
+
+.chooseLetter {
+  max-width: 100%;
+  h2 {
+    margin-bottom: 20px;
+  }
+  .itemsWrapper {
+    max-width: 600px;
+    width: 90%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 5px;
+    .item {
+      &:not(:last-of-type) {
+        border-bottom: 2px dashed var(--box-background);
+        padding-bottom: 30px;
+      }
+      h2 {
+        margin-bottom: 10px;
+        font-weight: 700;
+        font-size: 1.3rem;
+      }
+      .choices {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        border: 2px dashed var(--main-color);
+        padding: 20px;
+        border-radius: 20px;
+        background: url('../../../../public/images/quizzes/small.svg');
+        background-position: center;
+        background-size: cover;
+        span {
+          font-size: 1.1rem;
+          font-weight: 600;
+          cursor: pointer;
+          border-radius: 50px;
+          display: flex;
+          align-items: center;
+          gap: 3px;
+          .wrong {
+            color: var(--delete-warn);
+          }
+          .correct {
+            color: var(--success);
+          }
+          &:hover {
+            color: var(--main-color);
+          }
+        }
+      }
+    }
+  }
+}

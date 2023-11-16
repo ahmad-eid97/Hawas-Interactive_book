@@ -1,0 +1,33 @@
+.dropables {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 1.1rem;
+  gap: 5px;
+  background-color: var(--third-color);
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+  img {
+    width: 80px;
+    object-fit: contain;
+  }
+  .dropable {
+    min-width: 55px;
+    min-height: 40px;
+    background-color: rgb(250, 250, 212);
+    border: 1px dashed #000;
+    border-radius: 10px;
+    display: grid;
+    place-content: center;
+    padding: 0px 10px;
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    i {
+      color: var(--delete-warn);
+      cursor: pointer;
+    }
+  }
+}

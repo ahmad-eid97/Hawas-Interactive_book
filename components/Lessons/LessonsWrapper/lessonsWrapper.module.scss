@@ -1,0 +1,151 @@
+@import "../../../styles/mixins.scss";
+
+.courses {
+  @include lg {
+    max-width: 960px;
+  }
+
+  @include md {
+    max-width: 720px;
+  }
+
+  @include sm {
+    max-width: 540px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    p {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 25.6px;
+      margin-bottom: 0px;
+      margin-top: 0px;
+      text-align: start !important;
+      color: #77838f;
+
+      span {
+        color: #2f2d51;
+      }
+    }
+
+    form {
+      display: inline-block;
+      .inputGroup {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+
+        input {
+          position: relative;
+          flex: 1;
+          border-radius: 0px 4px 4px 0px;
+          height: 50px;
+          padding: 9px 16px;
+          box-shadow: none;
+          font-weight: 400;
+          line-height: 1.64;
+          color: #77838f;
+          background-color: #fff;
+          border: 1px solid #e7e7ec;
+          transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+          outline-offset: -2px;
+          z-index: 3;
+          border-left: 0;
+
+          &:focus {
+            border-color: var(--main-color);
+            outline: none;
+
+            +.inputGroupBtn {
+              button {
+                border-color: var(--main-color);
+
+              }
+            }
+          }
+        }
+
+        .inputGroupBtn {
+          margin-left: -1px;
+          border-radius: 0 4px 4px 0;
+          display: flex;
+
+          button {
+            margin-left: -1px;
+            z-index: 2;
+            position: relative;
+            border-radius: 4px 0px 0px 4px;
+            padding: 9px 16px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.64;
+            text-align: center !important;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            background-color: #fff;
+            border: 1px solid transparent;
+            border-color: #e7e7ec;
+          }
+
+        }
+      }
+    }
+
+    margin-bottom: 48px;
+  }
+
+  .accordion {
+    margin-bottom: 32px;
+    border: 1px solid #e7e7ec !important;
+    box-shadow: none;
+    &::before {
+      content: none;
+    }
+
+    :global(.MuiAccordionSummary-root) {
+      padding: 32px;
+
+      :global(.MuiAccordionSummary-content) {
+        margin: 0;
+        color: #2f2d51;
+        p {
+          font-size: 20px;
+          font-weight: 500;
+          line-height: 20px;
+        }
+      }
+    }
+    :global(.MuiCollapse-root) {
+      padding: 0 32px 0;
+      &:global(.MuiCollapse-entered) {
+        padding: 0 32px 32px;
+      }
+      :global(.MuiAccordionDetails-root) {
+        padding: 0;
+        label {
+          display: block;
+          span {
+            font-size: 16px;
+            padding: 8px 8px;
+            color: #77838f;
+          }
+        }
+      }
+    }
+  }
+  .filterBtn {
+    display: block;
+    padding: 20px;
+    background-color: var(--main-color);
+    color: #fff;
+    border-radius: 4px;
+    text-align: center !important;
+  }
+
+
+}

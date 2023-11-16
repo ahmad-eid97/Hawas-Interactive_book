@@ -1,0 +1,16 @@
+@import '../../../../styles/extends.scss';
+
+.content {
+  display: flex;
+  flex-direction: column;
+  .additionalImage {
+    margin-top: 20px;
+    width: 100%;
+  }
+  .arrangeWords {
+    margin-top: 20px;
+  }
+  &.bottom {
+    flex-direction: column-reverse;
+  }
+}

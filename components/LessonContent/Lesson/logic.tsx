@@ -1,0 +1,52 @@
+"use client";
+//== Hooks
+import { useState } from "react";
+//== Components
+import { TextSection, ImageSection, ImageWithText, VideoSection, AudioSection, ActivitySection, GameSection, IFrameSection, ImageAudioSection, ImageVideoSection, ImageActivitySection } from '@/components';
+
+export default function useLogic() {
+  const [pageNum, setPageNum] = useState(1);
+  const [lessonsLabel] = useState<{ [key: number]: string }>({
+    1: "الأول",
+    2: "الثاني",
+    3: "الثالث",
+    4: "الرابع",
+    5: "الخامس",
+    6: "السادس",
+    7: "السابع",
+    8: "الثامن",
+    9: "التاسع",
+    10: "العاشر",
+    11: "الحادي عشر",
+    12: "الثاني عشر",
+    13: "الثالث عشر",
+  });
+
+  const renderPageSection = (type: string, data: any) => {
+    const allSections: any = {
+      text: <TextSection data={data} />,
+      image: <ImageSection data={data} />,
+      image_with_text: <ImageWithText data={data} />,
+      video: <VideoSection data={data} />,
+      audio: <AudioSection data={data} />,
+      activity: <ActivitySection />,
+      game: <GameSection />,
+      iframe: <IFrameSection data={data} />,
+      big_image_with_audio: <ImageAudioSection />,
+      big_image_with_video: <ImageVideoSection />,
+      big_image_with_activity: <ImageActivitySection />
+    }
+    return allSections[type];
+  }
+
+  const changePage = async (event: any, pageNum: number) => {
+    setPageNum(pageNum);
+  };
+
+  return {
+    pageNum,
+    changePage,
+    renderPageSection,
+    lessonsLabel
+  }
+} 

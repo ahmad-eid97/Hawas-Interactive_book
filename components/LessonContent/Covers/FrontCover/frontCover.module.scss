@@ -1,0 +1,29 @@
+@import '../../../../styles/extends.scss';
+
+.frontCover {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  background-color: var(--main-color);
+  position: relative;
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  button {
+    position: relative;
+    z-index: 2;
+    @extend %mainBtn;
+    margin-bottom: 40px;
+    padding: 7px 20px;
+    &:hover {
+      background-color: var(--main-color);
+      color: var(--text-inside);
+    }
+  }
+}

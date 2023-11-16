@@ -1,0 +1,39 @@
+@import '../../../../styles/extends.scss';
+
+.dragging {
+  max-width: 99%;
+  h2 {
+    margin-bottom: 20px;
+  }
+  .words {
+    @extend %quizFrame;
+    background: url('../../../../public/images/quizzes/03.svg');
+    background-position: 100% 100%;
+    background-size: cover;
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+  }
+  .items {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    .item {
+      background-color: var(--box-background);
+      padding: 5px 20px;
+      margin-bottom: 5px;
+      cursor: move;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      font-size: 1.1rem;
+      color: var(--text-inside);
+      min-width: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

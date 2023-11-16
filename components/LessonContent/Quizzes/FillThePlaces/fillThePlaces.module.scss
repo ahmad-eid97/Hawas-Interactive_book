@@ -1,0 +1,17 @@
+@import '../../../../styles/extends.scss';
+
+.fillThePlaces {
+  @extend %quizFrame;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 20px;
+  max-width: 98%;
+  background: url('../../../../public/images/quizzes/polygon.svg');
+  padding: 15px 35px;
+  .droppablesArea {
+    padding: 20px 0;
+  }
+}

@@ -1,0 +1,16 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 20px;
+  width: 95%;
+  button {
+    font-size: 1rem;
+    width: 40px;
+    height: 40px;
+  }
+  &.top {
+    position: relative;
+  }
+}

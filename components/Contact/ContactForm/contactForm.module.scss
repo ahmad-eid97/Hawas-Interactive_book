@@ -1,0 +1,126 @@
+@import "../../../styles/mixins.scss";
+
+.contact {
+  padding-bottom: 50px;
+  .heading {
+    h2 {
+      text-align: center !important;
+      color: var(--main-color);
+      font-size: 42px;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+  }
+  .contactForm {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+    overflow: hidden;
+    form {
+      padding: 2rem;
+      display: flex !important;
+      flex-direction: column !important;
+      background-color: var(--background-light);
+      height: 100%;
+      .formControl {
+        input {
+          margin: 16px 0;
+          padding: 0 18px;
+          font-size: 14px;
+          font-weight: 400;
+          height: 40px;
+          border-radius: 15px;
+          border: 1px solid #fff;
+          color: var(--main-color);
+          width: calc(100% - 36px);
+          outline: none;
+        }
+        textarea {
+          margin: 16px 0;
+          padding: 18px;
+          font-size: 14px;
+          font-weight: 400;
+          height: 40px;
+          border-radius: 15px;
+          border: 1px solid #fff;
+          color: var(--main-color);
+          display: block;
+          width: calc(100% - 36px);
+          height: 200px;
+          &:focus {
+            outline: none;
+            box-shadow: none;
+          }
+          resize: none;
+        }
+      }
+      .btn {
+        z-index: 1;
+        position: relative;
+        background-attachment: scroll;
+        background-color: var(--main-color);
+        border: 1px solid var(--main-color);
+        border-radius: 15px;
+        box-shadow: rgba(140, 152, 164, 0.1) 0px 8px 14.992px 0px;
+        box-sizing: border-box;
+        color: #fff;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 26.2333px;
+        margin-bottom: 0px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+        text-align: center !important;
+        text-decoration: none;
+        transform: none;
+        transition-delay: 0s;
+        transition-duration: 0.2s;
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        vertical-align: middle;
+        text-transform: uppercase;
+      }
+    }
+    .text {
+      padding: 2rem 3rem;
+      // background: transparent linear-gradient(180deg, var(--main-color) 0%, var(--secondary-color) 80%) 0% 0% no-repeat padding-box;
+      h3 {
+        // color: #fff;
+        font-size: 30px;
+      }
+      p {
+        // color: #fff;
+        line-height: 32px;
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+      hr {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border: 0;
+        border-top: 1px solid var(--background-light);
+      }
+      ul {
+        margin: 0;
+        padding-top: 1rem;
+        // color: #fff;
+        li {
+          padding-bottom: 1.5rem;
+          align-items: center !important;
+          display: flex !important;
+          i {
+            font-size: 20px;
+            margin: 0 1rem;
+          }
+        }
+      }
+      img {
+        max-height: 250px;
+        width: 100%;
+      }
+    }
+  }
+}

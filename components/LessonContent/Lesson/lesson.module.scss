@@ -1,0 +1,146 @@
+.lesson {
+  position: relative;
+  height: 90%;
+  padding: 40px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &::-webkit-scrollbar {
+    width: 6px !important;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--third-color);
+    border-radius: 20px;
+  }
+  .badge {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 65px;
+    height: 65px;
+    background-image: url('../../../public/images/lesson/badge.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    p,
+    span {
+      margin: 0;
+      font-weight: 700;
+      padding-right: 2px;
+      text-align: center !important;
+      font-size: 15px;
+    }
+    span {
+      transform: translateY(-7px);
+      &.small {
+        font-size: 12px;
+      }
+    }
+  }
+  .frame {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .right {
+      position: absolute;
+      top: -7px;
+      right: 5px;
+      transform: rotate(-90deg);
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: 12px;
+        height: 15px;
+      }
+
+      &::before {
+        border-left: solid 25px var(--third-color);
+        border-top: solid 10px var(--third-color);
+        border-bottom: solid 10px transparent;
+      }
+
+      &::after {
+        border-right: solid 25px var(--third-color);
+        border-top: solid 10px var(--third-color);
+        border-bottom: solid 10px transparent;
+        z-index: -1;
+      }
+    }
+    .left {
+      position: absolute;
+      top: 70%;
+      left: 5px;
+      transform: rotate(90deg);
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: 12px;
+        height: 15px;
+      }
+
+      &::before {
+        border-left: solid 25px var(--third-color);
+        border-top: solid 10px var(--third-color);
+        border-bottom: solid 10px transparent;
+      }
+
+      &::after {
+        border-right: solid 25px var(--third-color);
+        border-top: solid 10px var(--third-color);
+        border-bottom: solid 10px transparent;
+      }
+    }
+
+    h2 {
+      display: inline-block;
+      text-align: center !important;
+      font-weight: 600;
+      transform: translateY(-10px);
+      font-size: 1.15rem;
+      background-color: var(--secondary-color);
+      padding: 5px 15px;
+      position: relative;
+      border-radius: 2px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
+      color: var(--main-color);
+    }
+  }
+  .inside {
+    border: 2px solid var(--main-color);
+    border-radius: 10px;
+    padding: 20px;
+    width: 90%;
+    background-image: url('../../../public/images/quizzes/chart.svg');
+    background-position: top right;
+    background-size: fill;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    h1 {
+      text-align: center !important;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    p {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    .image {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+  }
+}

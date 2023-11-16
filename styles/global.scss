@@ -1,0 +1,141 @@
+//== Cairo font
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+//== Styles
+@import './variables.scss';
+@import './mixins.scss';
+
+body {
+  font-family: 'Cairo', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--main-background);
+  color: var(--text-color);
+  overflow-x: hidden;
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  width: 7px;
+  height: 7px;
+  background: var(--main-color);
+}
+
+button,
+input,
+textarea {
+  font-family: 'Cairo', sans-serif;
+}
+
+* {
+  // transition: all 0.2s ease-in-out;
+  font-weight: 400;
+}
+
+#en {
+  text-align: left !important;
+  direction: ltr;
+}
+
+#ar {
+  text-align: right !important;
+  direction: rtl;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.MuiPagination-ul {
+  li {
+    button {
+      border-color: var(--main-color);
+      color: var(--main-color);
+      &:hover {
+        background-color: var(--main-color);
+        color: var(--text-inside);
+      }
+    }
+    .Mui-selected {
+      background-color: var(--main-color);
+      color: var(--text-inside);
+      &:hover {
+        background-color: var(--main-color);
+        color: var(--text-inside);
+      }
+    }
+    &:first-of-type {
+      button {
+        transform: rotate(180deg)
+      }
+    }
+    &:last-of-type {
+      button {
+        transform: rotate(180deg)
+      }
+    }
+  }
+}
+
+.checkAnswer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+  button {
+    background-color: #218838;
+    color: var(--text-inside);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    &:hover {
+      background-color: #1e7531;
+    }
+    &:last-of-type {
+      background-color: #373636;
+    }
+  }
+}
+
+.correctData {
+  margin-top: 20px;
+  background-color: #c1e3ca;
+  border: 1px solid #1e7531;
+  padding: 10px 20px;
+  border-radius: 5px;
+  p {
+    color: #10521e;
+  }
+  &.wrong {
+    background-color: #fdf1c8;
+    border-color: #ffdd6e;
+  }
+}

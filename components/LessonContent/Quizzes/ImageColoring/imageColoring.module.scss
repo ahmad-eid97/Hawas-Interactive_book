@@ -1,0 +1,32 @@
+.imageColoring {
+  h2 {
+    margin-bottom: 20px;
+  }
+  .colors {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    span {
+      display: block;
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      background-color: #000;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+  }
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .targetImage {
+      svg {
+        * {
+          cursor: url('../../../../public/images/quizzes/brush.png') 0 30, move;
+        }
+      }
+    }
+  }
+}

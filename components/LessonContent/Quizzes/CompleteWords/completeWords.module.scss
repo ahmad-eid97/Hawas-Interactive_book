@@ -1,0 +1,14 @@
+@import '../../../../styles/extends.scss';
+
+.fillThePlaces {
+  max-width: 98%;
+  @extend %quizFrame;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 20px;
+  background: url('../../../../public/images/quizzes/polygon.svg');
+  padding: 15px 20px;
+}

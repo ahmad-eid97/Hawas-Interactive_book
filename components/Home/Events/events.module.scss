@@ -1,0 +1,57 @@
+@import "../../../styles/mixins.scss";
+
+.why {
+  padding-bottom: 128px;
+  padding-top: 128px;
+  background-color: #e0eeff;
+  @include md {
+    padding-right: 64px;
+    padding-left: 64px;
+  }
+  @include sm {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+  @include xs {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+  img {
+    border-radius: 4px;
+    width: 100%;
+  }
+  h1 {
+    font-size: 34.992px;
+    font-weight: 700;
+    line-height: 45.4833px;
+    margin-bottom: 16px;
+    margin-top: 0px;
+    text-align: start !important;
+    color: #2f2d51;
+  }
+  p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 32px;
+    margin-bottom: 24px;
+    margin-top: 0px;
+    text-align: start !important;
+  }
+  a {
+    background-color: #feb800;
+    border-radius: 16px;
+    box-shadow: rgba(255, 255, 255, 0.15) 0px 1px 0px 0px inset, rgba(22, 28, 45, 0.075) 0px 1px 1px 0px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
+    min-width: 100px;
+    padding: 16px 20px;
+    text-align: center !important;
+    i {
+      margin: 0 5px;
+    }
+
+  }
+}
