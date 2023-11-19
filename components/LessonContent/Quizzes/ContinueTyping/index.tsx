@@ -12,13 +12,16 @@ import styles from './continueTyping.module.scss';
 const ContinueTyping = ({ questionData }: { questionData: QuestionData }) => {
   const { items, handleFields, correctAnswer, showCorrection, retry, rendered, isLoading } = useLogic({ questionData });
 
+  console.log(questionData)
+  console.log(items)
+
   if (!rendered) return null;
   if (isLoading) return <PageLoader />
   return (
     <div className={styles.continueTyping}>
       <h2>{questionData.title}</h2>
       <div className={styles.wrapper}>
-        {items.map((item: any, idx: number) => (
+        {items?.map((item: any, idx: number) => (
           <>
             {item.image && <img src={item.image} alt={item?.text} />}
             <div className={styles.item} key={item.id}>
@@ -31,7 +34,7 @@ const ContinueTyping = ({ questionData }: { questionData: QuestionData }) => {
       </div>
       {showCorrection &&
         <div className={`correctData ${showCorrection.correct ? 'correct' : 'wrong'}`}>
-          {showCorrection.data.map((one, idx) => (
+          {showCorrection?.data?.map((one, idx) => (
             <Fragment key={idx}>
               {idx === 0 ?
                 <p><i className="fa-solid fa-lightbulb-on"></i> {one}</p>
