@@ -23,6 +23,9 @@
       padding: 15px;
       background-color: #fff;
       cursor: url('../../../../public/images/quizzes/pencil.png') 0 30, auto;
+      &.noImage {
+        flex: 1;
+      }
       .controls {
         display: flex;
         align-items: center;

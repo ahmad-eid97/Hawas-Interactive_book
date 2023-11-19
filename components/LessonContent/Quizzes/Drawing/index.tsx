@@ -18,10 +18,14 @@ const Drawing = ({ questionData }: { questionData: QuestionData }) => {
     <div className={styles.drawing}>
       <h2>{questionData.title}</h2>
       <div className={styles.wrapper}>
-        <div className={styles.image}>
-          <img src={questionDetails?.questionImage} alt="drwawing_image" loading='lazy' />
-        </div>
-        <div className={styles.drawingArea}>
+        {questionDetails?.questionImage ?
+          <div className={styles.image}>
+            <img src={questionDetails?.questionImage} alt="drwawing_image" loading='lazy' />
+          </div>
+          :
+          null
+        }
+        <div className={`${styles.drawingArea} ${!questionDetails?.questionImage ? styles.noImage : ''}`}>
           <ReactSketchCanvas
             style={canvasStyles}
             strokeWidth={4}
