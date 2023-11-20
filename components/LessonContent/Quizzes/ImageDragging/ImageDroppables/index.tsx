@@ -12,9 +12,10 @@ interface CProps {
 }
 
 const Droppables = ({ dragOver, dragLeave, drop, questionDetails }: CProps) => {
-
+  console.log(questionDetails)
   return (
-    <div className={styles.dropables} style={{ backgroundImage: `url(${questionDetails?.questionImage})` }}>
+    <div className={styles.dropables} style={{ backgroundImage: `url(${questionDetails.questionImage})` }}>
+      <img className={styles.question_image} src={questionDetails.questionImage} alt="question_image" />
       {questionDetails?.droppables.map((one: any, idx: number) => (
         <Fragment key={idx}>
           {one.left &&

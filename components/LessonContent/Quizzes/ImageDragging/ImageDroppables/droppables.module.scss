@@ -6,12 +6,18 @@
   gap: 5px;
   padding: 10px;
   border-radius: 10px 10px 0 0;
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
   width: 500px;
   height: 400px;
   position: relative;
+  .question_image {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
   .dropable {
     min-width: 60px;
     min-height: 75px;
