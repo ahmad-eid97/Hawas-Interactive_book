@@ -11,7 +11,7 @@ import { QuestionData } from '../types';
 import styles from './draggingParts.module.scss';
 
 const ImageDragging = ({ questionData }: { questionData: QuestionData }) => {
-  const { droppingArea, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, showCorrection, correctAnswer, retry, rendered, isLoading, newDataLoading, questionDetails } = useLogic({ questionData });
+  const { droppingArea, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, showCorrection, correctAnswer, retry, rendered, isLoading, newDataLoading, questionDetails, audioOpened, setAudioOpened, openAudio, Audio } = useLogic({ questionData });
 
   console.log(questionData)
 
@@ -21,6 +21,28 @@ const ImageDragging = ({ questionData }: { questionData: QuestionData }) => {
   return (
     <>
       <h2>{questionData.title}</h2>
+      {questionData.question_audio ?
+        <div className={styles.audioSection}>
+          <div className={styles.audioImage}>
+            {audioOpened ?
+              <img src="/images/quizzes/audio.gif" alt="audio" />
+              :
+              <img src="/images/quizzes/audio2.gif" alt="audio" />
+            }
+            {audioOpened ?
+              <button onClick={() => openAudio(false)}>إيقاف</button>
+              :
+              <button onClick={() => openAudio(true)}>تشغيل</button>
+            }
+          </div>
+          <audio
+            src={questionData.question_audio}
+            ref={Audio}
+            onEnded={() => setAudioOpened(false)}
+          ></audio>
+        </div> :
+        null
+      }
       <div className={`${styles.content} ${styles[questionData?.additional_image_direction]}`}>
         {questionData.additional_image ?
           <img className={styles.additionalImage} src={questionData.additional_image} alt="question_image" />

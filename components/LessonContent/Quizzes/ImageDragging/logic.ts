@@ -17,6 +17,9 @@ export default function useLogic({ questionData }: { questionData: any }) {
   const droppingArea = useRef<HTMLDivElement | null>(null);
   const [newDataLoading, setNewDataLoading] = useState(true);
   const dispatch = useAppDispatch();
+  //== Audio part
+  const [audioOpened, setAudioOpened] = useState(false);
+  const Audio = useRef<HTMLAudioElement | null>(null);
 
   const getQuestionData = () => {
     return getQuestionImageWithPosition(questionData.id)
@@ -58,6 +61,19 @@ export default function useLogic({ questionData }: { questionData: any }) {
     if (draggableItem && !e.currentTarget.children.length) e.currentTarget.appendChild(draggableItem);
     setStudentAnswer({ ...studentAnswer, [index]: draggableItem?.innerText })
   }
+
+  const openAudio = async (status: boolean) => {
+    switch (status) {
+      case true:
+        setAudioOpened(status);
+        setTimeout(() => {
+          Audio?.current?.play();
+        }, 100)
+      case false:
+        setAudioOpened(status);
+        Audio?.current?.pause();
+    }
+  };
 
   const removeChoice = (e: React.MouseEvent<HTMLElement, MouseEvent>, idx: number) => {
     if (e.currentTarget.parentElement) droppingArea.current?.insertBefore(e.currentTarget.parentElement, droppingArea?.current.children[idx]);
@@ -131,6 +147,10 @@ export default function useLogic({ questionData }: { questionData: any }) {
     rendered,
     questionDetails: data,
     isLoading,
-    newDataLoading
+    newDataLoading,
+    openAudio,
+    audioOpened,
+    setAudioOpened,
+    Audio
   }
 }

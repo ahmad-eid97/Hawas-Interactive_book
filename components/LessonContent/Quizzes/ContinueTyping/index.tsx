@@ -12,9 +12,6 @@ import styles from './continueTyping.module.scss';
 const ContinueTyping = ({ questionData }: { questionData: QuestionData }) => {
   const { items, handleFields, correctAnswer, showCorrection, retry, rendered, isLoading } = useLogic({ questionData });
 
-  console.log(questionData)
-  console.log(items)
-
   if (!rendered) return null;
   if (isLoading) return <PageLoader />
   return (
