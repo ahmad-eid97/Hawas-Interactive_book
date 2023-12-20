@@ -11,11 +11,14 @@ import styles from './chooseWord.module.scss';
 
 const ChooseLetter = ({ questionData }: { questionData: QuestionData }) => {
   const { items, choices, addToChoices, isLoading } = useLogic({ questionData });
-
+  console.log(questionData)
   if (isLoading) return <PageLoader />;
   return (
     <div className={styles.chooseLetter}>
       <h2>{questionData.title}</h2>
+      <div className={styles.questionImage}>
+        <img src={questionData.question_img} alt="question_image" />
+      </div>
       <div className={styles.itemsWrapper}>
         {items.map((item: any, idx: number) => (
           <div className={styles.item} key={idx}>
