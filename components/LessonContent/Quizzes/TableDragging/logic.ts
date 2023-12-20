@@ -56,6 +56,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     e.preventDefault();
     e.currentTarget.style.backgroundColor = "var(--third-color)";
     if (draggableItem) e.currentTarget.appendChild(draggableItem);
+    console.log(draggableItem?.innerText)
     setStudentAnswer({
       ...studentAnswer,
       [index]: [...studentAnswer[index], draggableItem?.innerText]
@@ -86,6 +87,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   const correctAnswer = () => {
+    console.log(studentAnswer, data)
     if (areArraysEqual(studentAnswer[0], data?.correctAnswer[0]) && areArraysEqual(studentAnswer[1], data?.correctAnswer[1])) {
       dispatch(checkAnswer(true))
       setTimeout(() => {
