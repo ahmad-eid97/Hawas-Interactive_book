@@ -4,6 +4,11 @@
   max-width: 98%;
   h2 {
     margin-bottom: 20px;
+    background-color: #cce0f3;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: var(--main-color);
   }
   .wrapper {
     background: url('../../../../public/images/quizzes/chart.svg');

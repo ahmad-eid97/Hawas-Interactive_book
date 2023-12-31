@@ -20,7 +20,7 @@ const ImageDragging = ({ questionData }: { questionData: QuestionData }) => {
 
   return (
     <>
-      <h2>{questionData.title}</h2>
+      <h2 className={styles.title}>{questionData.title}</h2>
       {questionData.question_audio ?
         <div className={styles.audioSection}>
           <div className={styles.audioImage}>

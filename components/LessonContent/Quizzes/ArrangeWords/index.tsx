@@ -18,7 +18,7 @@ const ArrangeWords = ({ questionData }: { questionData: any }) => {
 
   return (
     <>
-      <h2>{questionData?.title}</h2>
+      <h2 className={styles.title}>{questionData?.title}</h2>
       {questionData?.question_img ?
         <img className={styles.questionImage} src={questionData?.question_img} alt="question_image" />
         : null

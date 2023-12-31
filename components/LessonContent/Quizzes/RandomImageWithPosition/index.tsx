@@ -17,7 +17,7 @@ const ImageDragging = ({ questionData }: { questionData: QuestionData }) => {
   if (isLoading || newDataLoading) return <PageLoader />
   return (
     <>
-      <h2>{questionData.title}</h2>
+      <h2 className={styles.title}>{questionData.title}</h2>
       {questionData.additional_image ?
         <img className={styles.additionalImage} src={questionData.additional_image} alt="question_image" />
         :
