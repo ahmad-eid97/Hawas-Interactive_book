@@ -4,10 +4,14 @@
   flex-wrap: wrap;
   font-size: 1.1rem;
   gap: 5px;
-  // background-color: rgb(131, 201, 234);
   background-color: var(--third-color);
   padding: 10px;
   border-radius: 10px 10px 0 0;
+
+  span {
+    font-weight: 700;
+  }
+
   .dropable {
     min-width: 70px;
     min-height: 40px;

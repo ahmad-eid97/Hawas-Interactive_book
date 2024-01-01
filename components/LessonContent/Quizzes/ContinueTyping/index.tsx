@@ -16,7 +16,9 @@ const ContinueTyping = ({ questionData }: { questionData: QuestionData }) => {
   if (isLoading) return <PageLoader />
   return (
     <div className={styles.continueTyping}>
-      <h2>{questionData.title}</h2>
+      {questionData.title && questionData.title !== '.' &&
+        <h2>{questionData.title}</h2>
+      }
       <div className={styles.wrapper}>
         {items?.map((item: any, idx: number) => (
           <>

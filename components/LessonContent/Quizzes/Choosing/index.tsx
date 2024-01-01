@@ -13,7 +13,7 @@ const Choosing = ({ questionData }: { questionData: QuestionData }) => {
   if (isLoading) return <PageLoader />
   return (
     <div className={styles.chooseLetter}>
-      <h2>{questionData.title}</h2>
+      {questionData.title !== '.' && <h2>{questionData.title}</h2>}
       <div className={styles.itemsWrapper}>
         {items && items?.length ? items.map((item: any, idx: number) => (
           <div className={styles.item} key={idx}>

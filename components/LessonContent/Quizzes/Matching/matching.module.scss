@@ -48,12 +48,16 @@
       margin-bottom: 5px;
       border: 2px solid rgba(0, 0, 0, 0.1);
       background-color: rgb(224, 232, 241);
-      color: #000;
       border-radius: 5px;
       padding: 7px 20px;
       position: relative;
       z-index: 2;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0);
+      font-weight: 700;
+      color: #232323;
+      span {
+        font-weight: 700;
+      }
 
       span.matching_box {
         content: '';
