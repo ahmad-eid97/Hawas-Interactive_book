@@ -13,8 +13,6 @@ import styles from './draggingParts.module.scss';
 const ImageDragging = ({ questionData }: { questionData: QuestionData }) => {
   const { droppingArea, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, showCorrection, correctAnswer, retry, rendered, isLoading, newDataLoading, questionDetails, audioOpened, setAudioOpened, openAudio, Audio } = useLogic({ questionData });
 
-  console.log(questionData)
-
   if (!rendered) return null;
   if (isLoading || newDataLoading) return <PageLoader />
 
