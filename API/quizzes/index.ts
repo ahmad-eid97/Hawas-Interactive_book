@@ -14,7 +14,7 @@ export async function getMatchingQuestion(questionId: number) {
   const correctAnswers = response.data.data.answers.map((item: any) => ({ from: item.title, to: item.answer_two_gap_match ? item.answer_two_gap_match : item.answer_img }));
   const items = response.data.data.answers.map((item: any) => item)
   const answers = items.map((item: any) => item.answer_two_gap_match ? item.answer_two_gap_match : item.answer_img);
-  shuffleArray(answers);
+  shuffleArray(items);
   const columnsData = {
     righthand: {
       title: response.data.data.title_right,
@@ -34,7 +34,7 @@ export async function getMatchingQuestion(questionId: number) {
 
 export async function getSortingQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
-  const answers = response.data.data.answers.map((item: any) => item.title)
+  const answers = response.data.data.answers.map((item: any) => ({ title: item.title, image: item.answer_img }))
   function shuffleArray(answers: string[]) {
     function compareRandom(a: string, b: string) {
       return Math.random() - 0.5;

@@ -64,20 +64,20 @@ const ImageDragging = ({ questionData }: { questionData: QuestionData }) => {
             />
           </div>
         </div>
-        {showCorrection &&
-          <div className={`correctData ${showCorrection.correct ? 'correct' : 'wrong'}`}>
-            {showCorrection.data.map((one, idx) => (
-              <Fragment key={idx}>
-                {idx === 0 ?
-                  <p><i className="fa-solid fa-lightbulb-on"></i> {one}</p>
-                  :
-                  <p key={idx}>{one}</p>
-                }
-              </Fragment>
-            ))}
-          </div>
-        }
       </div>
+      {showCorrection &&
+        <div className={`correctData ${showCorrection.correct ? 'correct' : 'wrong'}`}>
+          {showCorrection.data.map((one, idx) => (
+            <Fragment key={idx}>
+              {idx === 0 ?
+                <p><i className="fa-solid fa-lightbulb-on"></i> {one}</p>
+                :
+                <p key={idx}>{one}</p>
+              }
+            </Fragment>
+          ))}
+        </div>
+      }
       <div className="checkAnswer">
         <button onClick={correctAnswer}><i className="fa-regular fa-badge-check"></i> فحص الإجابات</button>
         <button onClick={retry}><i className="fa-regular fa-arrows-rotate"></i> إعادة المحاولة</button>

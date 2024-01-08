@@ -79,8 +79,8 @@ export default function useLogic({ questionData }: { questionData: any }) {
     if (e.currentTarget.parentElement) droppingArea.current?.insertBefore(e.currentTarget.parentElement, droppingArea?.current.children[idx]);
     const answers = { ...studentAnswer };
     for (const key in answers) {
-      if (answers[key] === e.currentTarget.parentElement?.innerText) {
-        delete answers[key];
+      if (answers[idx] === e.currentTarget.parentElement?.innerText) {
+        delete answers[idx];
         break;
       }
     }
@@ -97,6 +97,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
   }
 
   const correctAnswer = () => {
+    console.log(data?.correctAnswer, studentAnswer)
     if (compareObjects(data?.correctAnswer, studentAnswer)) {
       dispatch(checkAnswer(true))
       setTimeout(() => {

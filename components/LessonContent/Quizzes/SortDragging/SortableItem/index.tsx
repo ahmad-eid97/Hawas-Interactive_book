@@ -21,7 +21,11 @@ export default function SortableItem(props: any) {
 
   return (
     <div ref={setNodeRef} style={style} {...attributes} {...listeners} className={styles.item}>
-      {props.id}
+      {props.id.image ?
+        <img src={props.id.image} alt="choice_img" />
+        : null
+      }
+      {props.id.title}
     </div>
   )
 }

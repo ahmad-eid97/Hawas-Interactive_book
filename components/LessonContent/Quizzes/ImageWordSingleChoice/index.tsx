@@ -16,6 +16,10 @@ const ChooseAdjective = ({ questionData }: { questionData: QuestionData }) => {
   return (
     <>
       <h2 className={styles.title}>{questionData.title}</h2>
+      {questionData.question_img ?
+        <img src={questionData.question_img} alt="question_image" className={styles.questionImage} />
+        : null
+      }
       <div className={styles.imageWordSingleChoice}>
         <div className={styles.items}>
           {items?.map((item: any, idx: number) => (
