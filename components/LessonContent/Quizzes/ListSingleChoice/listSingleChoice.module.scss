@@ -10,6 +10,12 @@
     font-weight: 600;
     color: var(--main-color);
   }
+
+  .itemImage {
+    height: 120px;
+    object-fit: contain;
+  }
+
   .wrapper {
     background: url('../../../../public/images/quizzes/chart.svg');
     background-position: center;
