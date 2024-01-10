@@ -1,13 +1,22 @@
 //== Components
 import { PageHeader, Policy as PolicyComponent } from "@/components";
+//= Api
+import { getPrivacy } from '@/API/pages';
+//= Types
+import type { PrivacyData } from "@/types";
 
-interface TermsProps { }
+const Policy: React.FC = async () => {
+  let privacyData: PrivacyData | null = null;
 
-const Policy: React.FC<TermsProps> = () => {
+  try {
+    const data = await getPrivacy();
+    if (data) privacyData = data;
+  } catch (err) { }
+
   return (
     <>
       <PageHeader title="سياسة الخصوصية" />
-      <PolicyComponent />
+      <PolicyComponent data={privacyData} />
     </>
   );
 }

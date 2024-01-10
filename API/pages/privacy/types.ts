@@ -1,9 +1,9 @@
 export interface PrivacyData {
   id: number;
-  name: null | string;
-  description: null | string;
-  breadcrumb_title: null | string;
-  breadcrumb_subtitle: null | string;
+  name: string;
+  description: string;
+  breadcrumb_title: string;
+  breadcrumb_subtitle: string;
   status: number;
-  code: null | number;
+  code: null;
 }
