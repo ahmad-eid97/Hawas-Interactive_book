@@ -1,0 +1,65 @@
+@import "../../../styles/mixins.scss";
+
+.courses {
+  padding-bottom: 128px;
+
+  @include lg {
+    padding-right: 64px;
+    padding-left: 64px;
+  }
+
+  @include xs {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .header {
+    margin-bottom: 24px;
+    h1 {
+      margin-bottom: 4px !important;
+      line-height: 1.3;
+      font-size: 35px;
+      font-weight: 600;
+      text-align: center !important;
+    }
+    p {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 28.8px;
+      margin-bottom: 16px;
+      color: #aaa;
+      text-align: center !important;
+    }
+
+    .select {
+      background-color: var(--bg-alt-color);
+      label {
+        color: var(--main-color-dark);
+      }
+      &:hover {
+        fieldset {
+          border-color: var(--main-color-dark);
+        }
+      }
+      :global(.MuiInputBase-root) {
+        color: var(--main-color-dark);
+      }
+    }
+  }
+
+  :global(.swiper) {
+    padding-bottom: 60px;
+    :global(.swiper-pagination) {
+      bottom: -5px;
+      text-align: center !important;
+      :global(.swiper-pagination-bullet) {
+        background-color: #fff;
+      }
+      :global(.swiper-pagination-bullet-active) {
+        width: 20px;
+        background-color: #fff;
+        border-radius: 20px;
+      }
+    }
+  }
+}

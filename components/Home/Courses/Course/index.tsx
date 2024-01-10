@@ -19,7 +19,7 @@ const Course: React.FC<CourseProps> = ({ data }) => {
       </div>
       <div className={styles.cardFooter}>
         <div className={styles.details}>
-          <Link href="#"><h4>{data.title}</h4></Link>
+          <Link href={`/courses/${data.id}`}><h4>{data.title}</h4></Link>
           <Grid container alignItems="flex-end" >
             <Grid item xs>
               <ul className={styles.nav}>

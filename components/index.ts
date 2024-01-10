@@ -111,6 +111,10 @@ export { default as ContactForm } from './Contact/ContactForm';
 export { default as BlogsList } from './Blogs/BlogsList';
 //== Blog details page components
 export { default as BlogDetails } from './BlogDetails';
+//== Blogs page components
+export { default as CoursesList } from './Courses/CoursesList';
+//== Blog details page components
+export { default as CourseDetails } from './Courses/CourseDetails';
 //== Services page components
 export { default as ServicesList } from './Services/ServicesList';
 //== Service details page components

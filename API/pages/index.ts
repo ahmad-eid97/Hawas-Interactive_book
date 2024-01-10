@@ -7,6 +7,7 @@ export * from './home';
 export * from './faq';
 export * from './services';
 export * from './blog';
+export * from './course';
 export * from './terms';
 export * from './privacy';
 
