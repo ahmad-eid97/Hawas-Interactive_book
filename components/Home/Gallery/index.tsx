@@ -5,14 +5,23 @@ import Grid from '@mui/material/Grid';
 import Lightbox from "yet-another-react-lightbox";
 //== Component Logic
 import useLogic from './logic';
+//= Types
+import type { GalleryItem } from '@/types';
 //== Styles
 import "yet-another-react-lightbox/styles.css";
 import styles from './gallery.module.scss';
 
-interface GalleryProps { }
+interface GalleryProps {
+  data: GalleryItem[];
+}
 
-const Gallery: React.FC<GalleryProps> = () => {
-  const { items, open, setOpen, openImage, imageIndex } = useLogic();
+const Gallery: React.FC<GalleryProps> = ({ data }) => {
+  const { open, setOpen, openImage, imageIndex } = useLogic();
+
+  const items = data.length ? data.map(item => ({
+    id: item.id,
+    src: item.images[0] || ''
+  })) : [];
 
   return (
     <section className={styles.gallery}>

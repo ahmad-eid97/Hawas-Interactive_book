@@ -4,13 +4,16 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 //== Components
 import SingleEvent from './SingleEvent';
+//= Types
+import { IEvent } from '@/types';
 //== Styles
 import styles from './eventList.module.scss';
 
 interface EventsListProps {
+  data: IEvent[];
 }
 
-const EventsList: React.FC<EventsListProps> = () => {
+const EventsList: React.FC<EventsListProps> = ({ data }) => {
   return (
     <section className={styles.events}>
       <Container maxWidth="xl">
@@ -21,18 +24,14 @@ const EventsList: React.FC<EventsListProps> = () => {
           </Grid>
         </Grid>
         <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <SingleEvent />
-          </Grid>
-          <Grid item xs={12}>
-            <SingleEvent />
-          </Grid>
-          <Grid item xs={12}>
-            <SingleEvent />
-          </Grid>
-          <Grid item xs={12}>
-            <SingleEvent />
-          </Grid>
+          {
+            data.length > 0 &&
+            data.map((event) => (
+              <Grid item xs={12} key={event.id}>
+                <SingleEvent data={event} />
+              </Grid>
+            ))
+          }
         </Grid>
       </Container>
     </section>

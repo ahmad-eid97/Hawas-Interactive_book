@@ -82,6 +82,13 @@
         transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
         vertical-align: middle;
         text-transform: uppercase;
+
+        &:disabled {
+          border-color: #aaa;
+          background-color: #aaa;
+          color: #000;
+          cursor: not-allowed;
+        }
       }
     }
     .text {

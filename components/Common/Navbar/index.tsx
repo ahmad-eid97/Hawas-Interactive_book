@@ -9,13 +9,16 @@ import TopBar from './TopBar';
 import MobileMenu from './MobileMenu';
 //== Component Logic
 import useLogic from './logic';
+//= Types
+import { MenuItem } from '@/types';
 //== Styles
 import styles from './navbar.module.scss';
 
 interface NavbarProps {
+  menus: MenuItem[];
 }
 
-const Navbar: React.FC<NavbarProps> = () => {
+const Navbar: React.FC<NavbarProps> = ({ menus }) => {
   const { navDropdown, setNavDropdown } = useLogic();
 
   return (
@@ -29,127 +32,15 @@ const Navbar: React.FC<NavbarProps> = () => {
         </Link>
         <div className={styles.links}>
           <ul className={`${styles.navLinks}`}>
-            {/* <li
-              className={`${styles.link} ${styles.maxWidth}`}
-              onMouseEnter={() => setNavDropdown(1)}
-              onMouseLeave={() => setNavDropdown(0)}
-            >
-              <span>
-                برامجنا
-                <i className="fa-regular fa-angle-down"></i>
-              </span>
-              {navDropdown === 1 && (
-                <div className={styles.linkDropdown2}>
-                  <Grid container>
-                    <Grid item md={4}>
-                      <h5 className="dropdown-header">
-                        Courses List
-                      </h5>
-                      <a href="#">
-                        Courses List v1
-                      </a>
-                      <a href="#">
-                        Courses List v2
-                      </a>
-                      <a href="#">
-                        Courses List v3
-                      </a>
-                      <a href="#">
-                        Courses List v4
-                      </a>
-                      <a href="#">
-                        Courses List v5
-                      </a>
-                      <a className="dropdown-item mb-5" href="#">
-                        Courses List v6
-                      </a>
-                    </Grid>
-                    <Grid item md={4}>
-                      <h5 className="dropdown-header">
-                        Courses Single
-                      </h5>
-                      <a href="#">
-                        Courses Single v1
-                      </a>
-                      <a href="#">
-                        Courses Single v2
-                      </a>
-                      <a href="#">
-                        Courses Single v3
-                      </a>
-                      <a href="#">
-                        Courses Single v4
-                      </a>
-                      <a href="#">
-                        Courses Single v5
-                      </a>
-                    </Grid>
-                    <Grid item md={4}>
-                      <h5 className="dropdown-header">
-                        Lesson Single
-                      </h5>
-                      <a href="#">
-                        Lesson Single v1
-                      </a>
-                      <a href=".#">
-                        Lesson Single v2
-                      </a>
-
-                      <h5 className="dropdown-header">
-                        Instructors
-                      </h5>
-                      <a href="#">
-                        Instructors List v1
-                      </a>
-                      <a href="#">
-                        Instructors List v2
-                      </a>
-                      <a href="#">
-                        Instructors Single
-                      </a>
-                    </Grid>
-                  </Grid>
-                </div>
-              )}
-            </li> */}
-            <li
-              className={styles.link}
-            >
-              <Link href='/'>
-                <span>الرئيسية</span>
-              </Link>
-            </li>
-            <li
-              className={styles.link}
-            >
-              <Link href='/books'>
-                <span>الكتب</span>
-              </Link>
-            </li>
-            <li
-              className={styles.link}
-            >
-              <Link href='/blogs'>
-                <span>المدونة</span>
-              </Link>
-            </li>
-            <li
-              className={styles.link}
-            >
-              <Link href='/about-us'>
-                <span>من نحن</span>
-              </Link>
-            </li>
-            <li
-              className={styles.link}
-
-              onMouseEnter={() => setNavDropdown(6)}
-              onMouseLeave={() => setNavDropdown(0)}
-            >
-              <Link href="/contact-us">
-                <span>اتصل بنا</span>
-              </Link>
-            </li>
+            {
+              menus.map((menu) => (
+                <li className={styles.link} key={menu.id}>
+                  <Link href={menu.link}>
+                    <span>{menu.label}</span>
+                  </Link>
+                </li>
+              ))
+            }
           </ul>
         </div>
         <ul className={styles.drawers}>

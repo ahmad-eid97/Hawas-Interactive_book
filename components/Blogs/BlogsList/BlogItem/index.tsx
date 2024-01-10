@@ -1,22 +1,30 @@
+import { format } from 'date-fns';
+import { ar } from 'date-fns/locale';
 //== Utils
 import Link from 'next/link';
+//= Types
+import type { Blog } from '@/types';
 //== Styles
 import styles from './blogItem.module.scss';
 
-interface BlogItemProps { }
+interface BlogItemProps {
+  data: Blog;
+}
 
-const BlogItem: React.FC<BlogItemProps> = () => {
+const BlogItem: React.FC<BlogItemProps> = ({ data }) => {
+  const dateDay = format(new Date(data.publish_date), 'dd', { locale: ar });
+  const dateMonth = format(new Date(data.publish_date), 'MMMM', { locale: ar });
+
   return (
     <>
       <div className={`${styles.card} ${styles.primary}`}>
-        <img src="/images/home/photo-20.jpg" alt="blog_image" />
+        <img src={data.image} alt="blog_image" />
         <div className={styles.lateDate}>
-          <h3>26<span>March</span></h3>
+          <h3>{dateDay}<span>{dateMonth}</span></h3>
         </div>
         <div className={styles.text}>
-          <h3><Link href="/blogs/1">Beauty Weeks With Experts</Link></h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-            ut labore et dolore magna aliqua. </p>
+          <h3><Link href={`/blogs/${data.id}`}>{data.title}</Link></h3>
+          <div dangerouslySetInnerHTML={{ __html: data.description }} />
         </div>
       </div>
     </>

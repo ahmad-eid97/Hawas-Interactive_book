@@ -2,8 +2,8 @@
 import axios from '@/utils/axios';
 import { errorNotify } from '@/utils/toast';
 
-interface Response<T> {
-  succuss: boolean
+export interface Response<T> {
+  success: boolean
   message: string
   data: T
 }
@@ -21,7 +21,7 @@ class API {
     try {
       const response = await axios.post<Response<T>>(endpoint, headers, payload);
       const data = response.data;
-      if (data.succuss) return data;
+      if (data.success) return data;
       else errorNotify(data.message)
     } catch (error) {
       console.log(error)

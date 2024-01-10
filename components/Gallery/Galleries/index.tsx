@@ -5,14 +5,19 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 //== Component Logic
 import useLogic from "./logic";
+//= Types
+import type { GalleryItem, GalleryCategory } from '@/types';
 //== Styles
 import "yet-another-react-lightbox/styles.css";
 import styles from './galleries.module.scss';
 
-interface GalleriesProps { }
+interface GalleriesProps {
+  data: GalleryItem[];
+  categories: GalleryCategory[];
+}
 
-const Galleries: React.FC<GalleriesProps> = () => {
-  const { open, imageIndex, setOpen, openImage, filter, handleFilterClick, images } = useLogic();
+const Galleries: React.FC<GalleriesProps> = ({ data, categories }) => {
+  const { open, imageIndex, setOpen, openImage, filter, handleFilterClick, images } = useLogic({ data, categories });
   const filteredImages = filter === 'all' ? images : images.filter((image) => image.category === filter);
 
   return (
@@ -21,21 +26,19 @@ const Galleries: React.FC<GalleriesProps> = () => {
         <ul className={styles.nav}>
           <li className="nav-item">
             <a onClick={() => handleFilterClick('all')} className={filter === 'all' ? styles.active : ''}>
-              All
+              الكل
             </a>
           </li>
-
-          <li className="nav-item">
-            <a onClick={() => handleFilterClick('business')} className={filter === 'business' ? styles.active : ''}>
-              Business
-            </a>
-          </li>
-
-          <li className="nav-item">
-            <a onClick={() => handleFilterClick('design')} className={filter === 'design' ? styles.active : ''}>
-              Design
-            </a>
-          </li>
+          {
+            categories.length > 0 &&
+            categories.map((category) => (
+              <li className="nav-item" key={category.id}>
+                <a onClick={() => handleFilterClick(category.name)} className={filter === category.name ? styles.active : ''}>
+                  {category.name}
+                </a>
+              </li>
+            ))
+          }
         </ul>
 
         <Grid container spacing={3}>

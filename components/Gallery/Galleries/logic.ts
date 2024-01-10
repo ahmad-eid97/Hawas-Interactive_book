@@ -1,20 +1,27 @@
 //== Hooks
 import { useState } from 'react'
+//= Types
+import type { GalleryItem, GalleryCategory } from '@/types';
 
-export default function useLogic() {
+interface GalleriesProps {
+  data: GalleryItem[];
+  categories: GalleryCategory[];
+}
+
+export default function useLogic({ data, categories }: GalleriesProps) {
   const [open, setOpen] = useState(false)
   const [filter, setFilter] = useState('all');
   const [imageIndex, setImageIndex] = useState(0);
-  const images = [
-    { id: 1, src: './images/home/photo-23.jpg', alt: 'Nature 1', category: 'business' },
-    { id: 2, src: './images/home/photo-24.jpg', alt: 'City 1', category: 'design' },
-    { id: 3, src: './images/home/photo-25.jpg', alt: 'Nature 2', category: 'business' },
-    { id: 4, src: './images/home/photo-26.jpg', alt: 'City 2', category: 'design' },
-    { id: 5, src: './images/home/photo-27.jpg', alt: 'Nature 1', category: 'business' },
-    { id: 6, src: './images/home/photo-28.jpg', alt: 'City 1', category: 'design' },
-    { id: 7, src: './images/home/photo-29.jpg', alt: 'Nature 2', category: 'business' },
-    { id: 8, src: './images/home/photo-30.jpg', alt: 'City 2', category: 'design' },
-  ];
+  const images =
+    data.length ?
+      data.map(img => ({
+        id: img.id,
+        src: img.images[0],
+        alt: '',
+        category: img.category.name
+      }))
+      :
+      [];
 
   const handleFilterClick = (newFilter: string) => {
     setFilter(newFilter);

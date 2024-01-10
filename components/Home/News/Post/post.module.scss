@@ -1,15 +1,21 @@
 @import "../../../../styles/mixins.scss";
 
 .post {
-  transition: box-shadow .25s ease, transform .25s ease, -webkit-transform .25s ease;
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease,
+    -webkit-transform 0.25s ease;
   position: relative;
   padding: 8px !important;
   border: 1px solid var(--border-color);
   border-radius: 16px;
+  height: calc(100% - 16px);
+
   @include sm {
     max-width: 510px;
     margin: 0 auto;
   }
+
   .cardZoom {
     overflow: hidden;
     border-radius: inherit;
@@ -26,7 +32,7 @@
       transform: translateY(25px) translateZ(0);
       opacity: 0;
       visibility: hidden;
-      transition: all .3s ease;
+      transition: all 0.3s ease;
       left: 0;
       bottom: 0;
       position: absolute;
@@ -75,11 +81,13 @@
       text-overflow: ellipsis;
       margin-bottom: 10px;
       font-size: 1rem;
-      color: var(--main-color)
+      color: var(--main-color);
     }
   }
   &:hover {
-    box-shadow: 0 1rem 2.5rem rgba(140, 152, 164, .1), 0 .5rem 1rem -.75rem rgba(140, 152, 164, .1);
+    box-shadow:
+      0 1rem 2.5rem rgba(140, 152, 164, 0.1),
+      0 0.5rem 1rem -0.75rem rgba(140, 152, 164, 0.1);
     transform: translate3d(0, -3px, 0);
     .cardZoom {
       img {
@@ -88,7 +96,7 @@
       }
       .badge {
         transform: translateY(0) translateZ(0);
-        opacity: .6;
+        opacity: 0.6;
         visibility: visible;
         &:hover {
           opacity: 1;

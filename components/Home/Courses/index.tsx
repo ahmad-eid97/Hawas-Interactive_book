@@ -7,15 +7,18 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from "swiper";
 //== Components
 import Course from './Course';
+//= Types
+import type { Course as ICourse } from '@/types';
 //== Styles
 import 'swiper/css';
 import "swiper/css/pagination";
 import styles from './courses.module.scss';
 
 interface CoursesProps {
+  data: ICourse[];
 }
 
-const Courses: React.FC<CoursesProps> = () => {
+const Courses: React.FC<CoursesProps> = ({ data }) => {
   return (
     <MouseParallaxContainer>
       <section className={styles.courses}>
@@ -37,40 +40,38 @@ const Courses: React.FC<CoursesProps> = () => {
               <p>اكتشف برنامجك المثالي في دوراتنا.</p>
             </Grid>
           </Grid>
-          <Swiper
-            slidesPerView={1}
-            dir='rtl'
-            spaceBetween={20}
-            pagination={{ clickable: true }}
-            modules={[Pagination]}
-            breakpoints={{
-              500: {
-                slidesPerView: 1,
-              },
-              768: {
-                slidesPerView: 2,
-              },
-              992: {
-                slidesPerView: 2,
-              },
-              1200: {
-                slidesPerView: 3,
-              },
-            }}
-          >
-            <SwiperSlide>
-              <Course />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Course />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Course />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Course />
-            </SwiperSlide>
-          </Swiper>
+          {
+            data.length > 0 &&
+            <Swiper
+              slidesPerView={1}
+              dir='rtl'
+              spaceBetween={20}
+              pagination={{ clickable: true }}
+              modules={[Pagination]}
+              breakpoints={{
+                500: {
+                  slidesPerView: 1,
+                },
+                768: {
+                  slidesPerView: 2,
+                },
+                992: {
+                  slidesPerView: 2,
+                },
+                1200: {
+                  slidesPerView: 3,
+                },
+              }}
+            >
+              {
+                data.map(course => (
+                  <SwiperSlide key={course.id}>
+                    <Course data={course} />
+                  </SwiperSlide>
+                ))
+              }
+            </Swiper>
+          }
         </Container>
       </section>
     </MouseParallaxContainer>

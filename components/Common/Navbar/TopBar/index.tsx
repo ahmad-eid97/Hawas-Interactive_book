@@ -17,15 +17,15 @@ const TopBar: React.FC<TopBarProps> = () => {
     <div className={styles.topBar}>
       <ul className={styles.nav}>
         <li className={styles.item}>
-          {cookie.get('hawas-auth') ?
-            <i className="fa-regular fa-right-from-bracket" onClick={logout}></i>
-            :
-            null
+          {
+            cookie.get('hawas-auth') ?
+              <i className="fa-regular fa-right-from-bracket" onClick={logout}></i>
+              :
+              null
           }
           <span>support@gridsapps.com</span>
         </li>
       </ul>
-
       <ul className={styles.nav}>
         <li className={styles.item}>
           <a href="#" className="nav-link p-0 text-white">

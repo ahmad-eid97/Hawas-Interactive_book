@@ -3,12 +3,16 @@
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { MouseParallaxContainer, MouseParallaxChild } from "react-parallax-mouse";
+//= Types
+import type { Slider } from '@/types';
 //== Styles
 import styles from './banner.module.scss';
 
-interface BannerProps { }
+interface BannerProps {
+  data: Slider | null;
+}
 
-const Banner: React.FC<BannerProps> = () => {
+const Banner: React.FC<BannerProps> = ({ data }) => {
   return (
     <MouseParallaxContainer>
       <section className={`${styles.intro}`}>
@@ -47,9 +51,7 @@ const Banner: React.FC<BannerProps> = () => {
         <Container maxWidth="xl" className={styles.introContent}>
           <Grid container alignItems="center">
             <Grid item xs={12} md={7} lg={6}>
-              <h1>
-                افضل البرامج التربوية  <span>بوسائل تدريبية متطورة</span>
-              </h1>
+              <h1>{data?.title || ''}</h1>
               <form>
                 <div className={styles.inputGroup}>
                   <div className={styles.inputGroupPrepend}>
@@ -63,7 +65,7 @@ const Banner: React.FC<BannerProps> = () => {
               <p> بحث شائع: تطوير ، أعمال ، تصميم ، تسويق </p>
             </Grid>
             <Grid item xs={12} md={5} lg={6} className={styles.bannerImg}>
-              <img src="/images/home/intro.png" alt="banner" />
+              <img src={data?.image || '/images/home/intro.png'} alt="banner" />
             </Grid>
           </Grid>
         </Container>
