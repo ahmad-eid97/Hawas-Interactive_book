@@ -21,7 +21,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     return await getGroupShortAnswer(questionData.id);
   }
 
-  const { data, isLoading } = useQuery(['groupShortAnswerQuestion'], getQuestion, {
+  const { data, isLoading } = useQuery(['getGroupShortAnswerQuestion'], getQuestion, {
     cacheTime: 0
   });
 

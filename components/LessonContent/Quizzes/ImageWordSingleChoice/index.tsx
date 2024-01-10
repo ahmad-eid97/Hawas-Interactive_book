@@ -15,11 +15,15 @@ const ChooseAdjective = ({ questionData }: { questionData: QuestionData }) => {
   if (isLoading) return <PageLoader />
   return (
     <>
-      <h2>{questionData.title}</h2>
+      <h2 className={styles.title}>{questionData.title}</h2>
+      {questionData.question_img ?
+        <img src={questionData.question_img} alt="question_image" className={styles.questionImage} />
+        : null
+      }
       <div className={styles.imageWordSingleChoice}>
         <div className={styles.items}>
           {items?.map((item: any, idx: number) => (
-            <div className={styles.itemWrapper}>
+            <div className={styles.itemWrapper} key={idx}>
               <div className={styles.pointImage}>
                 <img src={item.image} alt={item.text} />
               </div>

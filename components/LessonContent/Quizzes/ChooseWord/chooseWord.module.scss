@@ -1,15 +1,39 @@
-@import '../../../../styles/extends.scss';
+@import "../../../../styles/extends.scss";
 
 .chooseLetter {
   max-width: 100%;
   h2 {
     margin-bottom: 20px;
+    background-color: #d8e6f3;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: var(--main-color);
   }
+
+  .questionContentWrapper {
+    display: flex;
+    flex-direction: column;
+    &.reversed {
+      flex-direction: column-reverse;
+    }
+  }
+
+  .questionImage {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    max-height: 200px;
+    object-fit: contain;
+  }
+
   .itemsWrapper {
     @extend %quizFrame;
     max-width: 600px;
     width: 90%;
-    background: url('../../../../public/images/quizzes/chart.svg');
+    background: url("../../../../public/images/quizzes/chart.svg");
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -25,7 +49,7 @@
         gap: 15px;
         span {
           font-size: 1.1rem;
-          font-weight: 600;
+          font-weight: 700;
           cursor: pointer;
           padding: 0 10px;
           border-radius: 10px;

@@ -1,12 +1,17 @@
-@import '../../../../styles/extends.scss';
+@import "../../../../styles/extends.scss";
 
 .continueTyping {
   max-width: 98%;
   h2 {
     margin-bottom: 20px;
+    background-color: #d8e6f3;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: var(--main-color);
   }
   .wrapper {
-    background: url('../../../../public/images/quizzes/chart.svg');
+    background: url("../../../../public/images/quizzes/chart.svg");
     background-position: center;
     background-size: cover;
     @extend %quizFrame;
@@ -28,7 +33,7 @@
         grid-column: span 1;
       }
       span {
-        font-weight: 600;
+        font-weight: 700;
         grid-column: span 10;
       }
       input {

@@ -15,5 +15,13 @@
   background-position: 0% 0%;
   background-size: cover;
   margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  img {
+    height: 80px;
+    object-fit: contain;
+    border-radius: 10px;
+    margin: 0 auto 10px;
+  }
   // color: #fff;
 }

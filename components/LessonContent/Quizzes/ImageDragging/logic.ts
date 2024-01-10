@@ -17,6 +17,9 @@ export default function useLogic({ questionData }: { questionData: any }) {
   const droppingArea = useRef<HTMLDivElement | null>(null);
   const [newDataLoading, setNewDataLoading] = useState(true);
   const dispatch = useAppDispatch();
+  //== Audio part
+  const [audioOpened, setAudioOpened] = useState(false);
+  const Audio = useRef<HTMLAudioElement | null>(null);
 
   const getQuestionData = () => {
     return getQuestionImageWithPosition(questionData.id)
@@ -59,12 +62,25 @@ export default function useLogic({ questionData }: { questionData: any }) {
     setStudentAnswer({ ...studentAnswer, [index]: draggableItem?.innerText })
   }
 
+  const openAudio = async (status: boolean) => {
+    switch (status) {
+      case true:
+        setAudioOpened(status);
+        setTimeout(() => {
+          Audio?.current?.play();
+        }, 100)
+      case false:
+        setAudioOpened(status);
+        Audio?.current?.pause();
+    }
+  };
+
   const removeChoice = (e: React.MouseEvent<HTMLElement, MouseEvent>, idx: number) => {
     if (e.currentTarget.parentElement) droppingArea.current?.insertBefore(e.currentTarget.parentElement, droppingArea?.current.children[idx]);
     const answers = { ...studentAnswer };
     for (const key in answers) {
-      if (answers[key] === e.currentTarget.parentElement?.innerText) {
-        delete answers[key];
+      if (answers[idx] === e.currentTarget.parentElement?.innerText) {
+        delete answers[idx];
         break;
       }
     }
@@ -81,6 +97,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
   }
 
   const correctAnswer = () => {
+    console.log(data?.correctAnswer, studentAnswer)
     if (compareObjects(data?.correctAnswer, studentAnswer)) {
       dispatch(checkAnswer(true))
       setTimeout(() => {
@@ -131,6 +148,10 @@ export default function useLogic({ questionData }: { questionData: any }) {
     rendered,
     questionDetails: data,
     isLoading,
-    newDataLoading
+    newDataLoading,
+    openAudio,
+    audioOpened,
+    setAudioOpened,
+    Audio
   }
 }

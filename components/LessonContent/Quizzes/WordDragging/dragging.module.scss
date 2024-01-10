@@ -1,4 +1,12 @@
-@import '../../../../styles/extends.scss';
+@import "../../../../styles/extends.scss";
+
+.title {
+  background-color: #d8e6f3;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--main-color);
+}
 
 .wordDragging {
   @extend %quizFrame;
@@ -9,7 +17,7 @@
   align-items: center;
   gap: 20px;
   margin-top: 20px;
-  background: url('../../../../public/images/quizzes/polygon.svg');
+  background: url("../../../../public/images/quizzes/polygon.svg");
   .wrapper {
     // border: 2px solid var(--main-color);
     border-radius: 10px;

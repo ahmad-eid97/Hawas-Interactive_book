@@ -15,7 +15,7 @@ const ChooseAdjective = ({ questionData }: { questionData: QuestionData }) => {
   if (isLoading) return <PageLoader />
   return (
     <>
-      <h2>{questionData.title}</h2>
+      <h2 className={styles.title}>{questionData.title}</h2>
       <div className={styles.chooseAdjective}>
         <div className={styles.items}>
           {items.map((item: any, idx: number) => (

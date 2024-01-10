@@ -12,4 +12,5 @@ export type QuestionData = {
   question_img: string
   additional_image: string
   additional_image_direction: string
+  question_audio?: string;
 }

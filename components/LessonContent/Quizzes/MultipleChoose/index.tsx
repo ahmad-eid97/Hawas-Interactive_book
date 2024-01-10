@@ -16,9 +16,9 @@ const MultipleChoose = ({ questionData }: { questionData: QuestionData }) => {
       <div className={styles.itemsWrapper}>
         {items ? items.map((item: any, idx: number) => (
           <div className={styles.item} key={idx}>
-            <span>السؤال {idx + 1}:</span>
+            {/* <span>السؤال {idx + 1}:</span> */}
             {item.image && <img src={item.image} alt="quiz-image" loading='lazy' />}
-            <h2>{item.question}</h2>
+            {item.question !== '.' && <h2>{item.question}</h2>}
             <div className={styles.choices}>
               {item.words.map((word: any, index: number) => (
                 <span key={index} onClick={() => addToChoices(idx, word)} className={word.type === 'image' ? (choices[idx]?.image === word.image ? styles.active : '') : (choices[idx]?.includes(word) ? styles.active : '')}>

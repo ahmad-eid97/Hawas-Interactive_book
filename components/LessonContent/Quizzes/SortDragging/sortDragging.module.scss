@@ -1,10 +1,18 @@
-@import '../../../../styles/extends.scss';
+@import "../../../../styles/extends.scss";
+
+.title {
+  background-color: #d8e6f3;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--main-color);
+}
 
 .sorting {
   max-width: 95%;
   @extend %quizFrame;
   padding: 20px 30px;
-  background: url('../../../../public/images/quizzes/05.svg');
+  background: url("../../../../public/images/quizzes/05.svg");
   background-position: 100% 100%;
   background-size: cover;
   margin-top: 20px;

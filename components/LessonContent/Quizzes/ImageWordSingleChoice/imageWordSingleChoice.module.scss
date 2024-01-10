@@ -1,8 +1,23 @@
-@import '../../../../styles/extends.scss';
+@import "../../../../styles/extends.scss";
+
+.title {
+  background-color: #d8e6f3;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--main-color);
+}
+
+.questionImage {
+  width: 100%;
+  object-fit: contain;
+  max-height: 120px;
+  margin-top: 20px;
+}
 
 .imageWordSingleChoice {
   @extend %quizFrame;
-  background: url('../../../../public/images/quizzes/chart.svg');
+  background: url("../../../../public/images/quizzes/chart.svg");
   margin-top: 20px;
   max-width: 90%;
   .items {
@@ -15,8 +30,10 @@
       justify-content: center;
       img {
         width: 200px;
+        height: 100px;
         border-radius: 10px;
         margin-bottom: 10px;
+        object-fit: contain;
       }
     }
     .itemWrapper {
@@ -31,7 +48,7 @@
       align-items: center;
       gap: 10px;
       flex-wrap: wrap;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       i {
         font-size: 1.1rem;
         color: var(--box-background);
@@ -70,9 +87,13 @@
       justify-content: center;
       gap: 5px;
       span {
-        cursor: url('../../../../public/images/quizzes/point.png') 30 0, move;
+        cursor:
+          url("../../../../public/images/quizzes/point.png") 30 0,
+          move;
         padding: 2px 10px;
         border-radius: 5px;
+        font-weight: 600;
+        font-size: 20px;
         &.active {
           border: 1px solid var(--main-color);
         }

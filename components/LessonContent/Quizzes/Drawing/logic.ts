@@ -27,7 +27,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   });
 
   const canvasStyles = {
-    width: 280,
+    width: 500,
     height: 400,
     borderRadius: 10,
     backgroundColor: 'transparent',

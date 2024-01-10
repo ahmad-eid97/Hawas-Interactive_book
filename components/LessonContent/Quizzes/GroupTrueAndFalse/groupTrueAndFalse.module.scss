@@ -1,6 +1,11 @@
 .groupTrueAndFalse {
   h2 {
     margin-bottom: 20px;
+    background-color: #d8e6f3;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: var(--main-color);
   }
   ul {
     border: 1px solid var(--border-color);
@@ -12,6 +17,7 @@
       justify-content: space-between;
       padding: 0px 20px;
       font-size: 1.1rem;
+      font-weight: 700;
       position: relative;
       &:not(:last-of-type) {
         border-bottom: 1px solid var(--border-color);
@@ -45,7 +51,7 @@
         }
       }
       &:after {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 107px;

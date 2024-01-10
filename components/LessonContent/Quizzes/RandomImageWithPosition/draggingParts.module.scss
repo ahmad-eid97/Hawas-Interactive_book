@@ -1,4 +1,12 @@
-@import '../../../../styles/extends.scss';
+@import "../../../../styles/extends.scss";
+
+.title {
+  background-color: #d8e6f3;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--main-color);
+}
 
 .arrangeWords {
   margin-top: 20px;

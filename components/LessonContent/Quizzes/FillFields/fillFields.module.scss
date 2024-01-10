@@ -1,9 +1,14 @@
-@import '../../../../styles/extends.scss';
+@import "../../../../styles/extends.scss";
 
 .fillFields {
   max-width: 98%;
   h2 {
     margin-bottom: 20px;
+    background-color: #d8e6f3;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: var(--main-color);
   }
   .titles {
     display: flex;
@@ -12,7 +17,7 @@
     gap: 80px;
   }
   .fields {
-    background: url('../../../../public/images/quizzes/04.svg');
+    background: url("../../../../public/images/quizzes/04.svg");
     background-position: center;
     background-size: cover;
     @extend %quizFrame;

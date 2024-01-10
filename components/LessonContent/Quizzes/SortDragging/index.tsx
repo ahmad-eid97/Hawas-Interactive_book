@@ -26,12 +26,12 @@ interface Cprops {
 
 function SortDragging({ questionData }: Cprops) {
   const { items, handleDragEnd, correctAnswer, showCorrection, retry, rendered, isLoading } = useLogic({ questionData });
-
+  console.log(items)
   if (!rendered) return null;
   if (isLoading) return <PageLoader />
   return (
     <>
-      <h2>{questionData.title}</h2>
+      <h2 className={styles.title}>{questionData.title}</h2>
       <div className={styles.sorting}>
         <DndContext
           collisionDetection={closestCenter}
@@ -43,6 +43,7 @@ function SortDragging({ questionData }: Cprops) {
               strategy={verticalListSortingStrategy}
             >
               {/* We need components that use the useSortable hook */}
+              <></>
               {items.map((item: any, index: number) =>
                 <SortableItem key={index} id={item} />
               )}

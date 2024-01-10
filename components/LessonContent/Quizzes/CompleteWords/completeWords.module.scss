@@ -1,4 +1,12 @@
-@import '../../../../styles/extends.scss';
+@import "../../../../styles/extends.scss";
+
+.title {
+  background-color: #d8e6f3;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--main-color);
+}
 
 .fillThePlaces {
   max-width: 98%;
@@ -9,6 +17,6 @@
   align-items: center;
   overflow: hidden;
   margin-top: 20px;
-  background: url('../../../../public/images/quizzes/polygon.svg');
+  background: url("../../../../public/images/quizzes/polygon.svg");
   padding: 15px 20px;
 }

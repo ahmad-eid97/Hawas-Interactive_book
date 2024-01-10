@@ -18,10 +18,10 @@ const ListSingleChoice = ({ questionData }: { questionData: QuestionData }) => {
     <div className={styles.listSingleChoice}>
       <h2>{questionData.title}</h2>
       <div className={styles.wrapper}>
-        {items.map((item: any, idx: number) => (
+        {items?.map((item: any, idx: number) => (
           <>
             {item.image ?
-              <img src={item.image} alt={item?.text} />
+              <img className={styles.itemImage} src={item.image} alt={item?.text} />
               :
               null
             }
@@ -30,7 +30,7 @@ const ListSingleChoice = ({ questionData }: { questionData: QuestionData }) => {
               <span>{item?.text}:</span>
               <select name="" id="" defaultValue="إختر إجابة" onChange={(e) => handleFields(e, idx)}>
                 <option disabled>إختر إجابة</option>
-                {item.choices.map((choice: any, index: number) => (
+                {item?.choices?.map((choice: any, index: number) => (
                   <option value={choice} key={index}>{choice}</option>
                 ))}
               </select>
@@ -40,7 +40,7 @@ const ListSingleChoice = ({ questionData }: { questionData: QuestionData }) => {
       </div>
       {showCorrection &&
         <div className={`correctData ${showCorrection.correct ? 'correct' : 'wrong'}`}>
-          {showCorrection.data.map((one, idx) => (
+          {showCorrection?.data?.map((one, idx) => (
             <Fragment key={idx}>
               {idx === 0 ?
                 <p><i className="fa-solid fa-lightbulb-on"></i> {one}</p>

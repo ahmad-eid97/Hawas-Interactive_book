@@ -1,6 +1,11 @@
 .imageColoring {
   h2 {
     margin-bottom: 20px;
+    background-color: #d8e6f3;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: var(--main-color);
   }
   .colors {
     display: flex;
@@ -24,7 +29,9 @@
     .targetImage {
       svg {
         * {
-          cursor: url('../../../../public/images/quizzes/brush.png') 0 30, move;
+          cursor:
+            url("../../../../public/images/quizzes/brush.png") 0 30,
+            move;
         }
       }
     }

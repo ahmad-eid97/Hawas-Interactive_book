@@ -1,18 +1,24 @@
-@import '../../../../styles/extends.scss';
+@import "../../../../styles/extends.scss";
+
+.title {
+  margin-bottom: 20px;
+  background-color: #d8e6f3;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--main-color);
+}
 
 .imageChoose {
   max-width: 98%;
   @extend %quizFrame;
   border-color: var(--main-color);
-  background: url('../../../../public/images/quizzes/04.svg');
+  background: url("../../../../public/images/quizzes/04.svg");
   background-position: center;
   background-size: cover;
   display: flex;
   align-items: center;
   flex-direction: column;
-  h2 {
-    margin-bottom: 20px;
-  }
   .choices {
     display: flex;
     align-items: center;
@@ -29,7 +35,9 @@
       padding: 20px;
       object-fit: contain;
       border-radius: 10px;
-      cursor: url('../../../../public/images/quizzes/point.png') 30 0, move;
+      cursor:
+        url("../../../../public/images/quizzes/point.png") 30 0,
+        move;
       &.choosed {
         border: 2px solid var(--main-color);
       }
@@ -38,6 +46,8 @@
       cursor: pointer;
       padding: 5px 10px;
       border-radius: 10px;
+      font-size: 1.2rem;
+      font-weight: 700;
       &.choosed {
         border: 2px solid var(--main-color);
       }

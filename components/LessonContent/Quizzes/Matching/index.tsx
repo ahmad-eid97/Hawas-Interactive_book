@@ -364,7 +364,7 @@ function Matching({
   if (isLoading) return <PageLoader />
   return (
     <>
-      <h2>{questionData.title}</h2>
+      <h2 className={classes.title}>{questionData.title}</h2>
       <div className={`${classes.matching} ${className} ${dir === 'ltr' ? classes.ltr : ''}`} onMouseMove={handleMouseMove} onMouseUp={(event) => handleStopMatching(null, event)}>
         {/* Right Hand Items */}
         <div className={classes.righthand}>

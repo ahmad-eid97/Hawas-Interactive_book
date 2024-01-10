@@ -1,4 +1,4 @@
-@import '../../../../styles/extends.scss';
+@import "../../../../styles/extends.scss";
 
 .chooseLetter {
   max-width: 100%;
@@ -30,12 +30,12 @@
         border: 2px dashed var(--main-color);
         padding: 20px;
         border-radius: 20px;
-        background: url('../../../../public/images/quizzes/small.svg');
+        background: url("../../../../public/images/quizzes/small.svg");
         background-position: center;
         background-size: cover;
         span {
           font-size: 1.1rem;
-          font-weight: 600;
+          font-weight: 700;
           cursor: pointer;
           border-radius: 50px;
           display: flex;

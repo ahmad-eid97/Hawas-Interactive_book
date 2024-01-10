@@ -1,15 +1,20 @@
-@import '../../../../styles/extends.scss';
+@import "../../../../styles/extends.scss";
 
 .chooseLetter {
   max-width: 100%;
   h2 {
     margin-bottom: 20px;
+    background-color: #d8e6f3;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: var(--main-color);
   }
   .itemsWrapper {
     @extend %quizFrame;
     max-width: 600px;
     width: 90%;
-    background: url('../../../../public/images/quizzes/03.svg');
+    background: url("../../../../public/images/quizzes/03.svg");
     background-position: 100% 100%;
     background-size: cover;
     display: flex;

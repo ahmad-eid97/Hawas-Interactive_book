@@ -1,11 +1,16 @@
-@import '@/styles/extends.scss';
+@import "@/styles/extends.scss";
 
 .heading {
   margin-bottom: 20px;
+  background-color: #d8e6f3;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--main-color);
 }
 .coloringAndDragging {
   @extend %quizFrame;
-  background: url('/images/quizzes/chart.svg');
+  background: url("/images/quizzes/chart.svg");
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -106,7 +111,9 @@
         p {
           font-size: 28px;
           font-weight: bold;
-          cursor: url('/images/quizzes/point.png') 20 0, move;
+          cursor:
+            url("/images/quizzes/point.png") 20 0,
+            move;
         }
       }
     }

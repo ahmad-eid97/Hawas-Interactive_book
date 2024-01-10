@@ -13,7 +13,7 @@ const ImageChoose = ({ questionData }: { questionData: QuestionData }) => {
   if (isLoading) return <PageLoader />;
   return (
     <>
-      <h2>{questionData.title}</h2>
+      <h2 className={styles.title}>{questionData.title}</h2>
       <div className={styles.imageChoose}>
         <div className={styles.choices}>
           {items.map((item: any) => (

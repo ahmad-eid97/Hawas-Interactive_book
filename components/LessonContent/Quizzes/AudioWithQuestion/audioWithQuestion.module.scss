@@ -1,4 +1,12 @@
 .audioWithQuestion {
+  h2 {
+    background-color: #d8e6f3;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: var(--main-color);
+  }
+
   .audioSection {
     .audioImage {
       display: flex;

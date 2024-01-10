@@ -14,7 +14,7 @@ export async function getMatchingQuestion(questionId: number) {
   const correctAnswers = response.data.data.answers.map((item: any) => ({ from: item.title, to: item.answer_two_gap_match ? item.answer_two_gap_match : item.answer_img }));
   const items = response.data.data.answers.map((item: any) => item)
   const answers = items.map((item: any) => item.answer_two_gap_match ? item.answer_two_gap_match : item.answer_img);
-  shuffleArray(answers);
+  shuffleArray(items);
   const columnsData = {
     righthand: {
       title: response.data.data.title_right,
@@ -34,7 +34,7 @@ export async function getMatchingQuestion(questionId: number) {
 
 export async function getSortingQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
-  const answers = response.data.data.answers.map((item: any) => item.title)
+  const answers = response.data.data.answers.map((item: any) => ({ title: item.title, image: item.answer_img }))
   function shuffleArray(answers: string[]) {
     function compareRandom(a: string, b: string) {
       return Math.random() - 0.5;
@@ -59,7 +59,6 @@ export async function getQuestionImageWithPosition(questionId: number) {
       answersArray[index] = item.title
     }
   })
-  console.log(response)
   const ModifiedData = { questionImage, choices, droppables, correctAnswer: answersArray };
   if (response) return ModifiedData;
 }
@@ -83,8 +82,8 @@ export async function getMatchingWithTableQuestion(questionId: number) {
   const response = await api.GET(`/e-books/questions/${questionId}?lang=ar`);
   const titles = { right: response.data.data.title_right, left: response.data.data.title_left };
   const items = response.data.data.answers.map((item: any) => ({ id: item.id, title: item.title }));
-  const rightBox = response.data.data.answers.map((item: any) => item).filter((item: any) => item.answer_two_gap_match === titles.right).map((item: any) => item.title);
-  const leftBox = response.data.data.answers.map((item: any) => item).filter((item: any) => item.answer_two_gap_match === titles.left).map((item: any) => item.title);
+  const rightBox = response.data.data.answers.map((item: any) => item).filter((item: any) => item.match_type === 'right').map((item: any) => item.title);
+  const leftBox = response.data.data.answers.map((item: any) => item).filter((item: any) => item.match_type === 'left').map((item: any) => item.title);
   const correctAnswer = {
     0: rightBox,
     1: leftBox

@@ -17,7 +17,7 @@ const WordDragging = ({ questionData }: { questionData: QuestionData }) => {
   if (isLoading) return <PageLoader />
   return (
     <>
-      <h2>{questionData.title}</h2>
+      <h2 className={styles.title}>{questionData.title}</h2>
       <div className={styles.wordDragging}>
         {items.map((item: any, idx: number) => (
           <div className={styles.wrapper} key={idx}>

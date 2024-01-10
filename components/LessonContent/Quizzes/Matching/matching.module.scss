@@ -1,10 +1,18 @@
-@import '../../../../styles/extends.scss';
+@import "../../../../styles/extends.scss";
+
+.title {
+  background-color: #d8e6f3;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--main-color);
+}
 
 .matching {
   --dir: rtl;
   --align: right;
   @extend %quizFrame;
-  background-image: url('../../../../public/images/quizzes/waves.svg');
+  background-image: url("../../../../public/images/quizzes/waves.svg");
   background-position: center;
   background-size: cover;
   color: #fff;
@@ -40,15 +48,19 @@
       margin-bottom: 5px;
       border: 2px solid rgba(0, 0, 0, 0.1);
       background-color: rgb(224, 232, 241);
-      color: #000;
       border-radius: 5px;
       padding: 7px 20px;
       position: relative;
       z-index: 2;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0);
+      font-weight: 700;
+      color: #232323;
+      span {
+        font-weight: 700;
+      }
 
       span.matching_box {
-        content: '';
+        content: "";
         width: 18px;
         height: 18px;
         // border: 1px solid #000;
@@ -103,7 +115,6 @@
 
     .righthand,
     .lefthand {
-
       p span.matching_box {
         right: 15px;
         left: unset;
