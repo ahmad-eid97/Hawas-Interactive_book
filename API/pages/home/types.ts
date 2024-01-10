@@ -198,7 +198,7 @@ export interface BlogCategory {
 
 export interface FooterLinksResponse {
   current_page: number;
-  data: any[];
+  data: FooterItem[];
   first_page_url: string;
   from: null;
   last_page: number;
@@ -210,6 +210,53 @@ export interface FooterLinksResponse {
   prev_page_url: null;
   to: null;
   total: number;
+}
+
+export interface FooterItem {
+  id: number;
+  is_translatable: boolean;
+  url: string;
+  deleted_at: null;
+  name: null;
+  meta_keywords: null;
+  meta_description: null;
+  translations: {
+    id: number;
+    locale: string;
+    name: string;
+    meta_keywords: null;
+    meta_description: null;
+    userful_link_id: number;
+    created_at: Date;
+    updated_at: Date;
+  }[];
+}
+
+export interface FooterSocialLinks {
+  id: number;
+  is_translatable: boolean;
+  footer_image: string;
+  facebook: string;
+  instagram: string;
+  youtube: string;
+  linkedin: string;
+  footer_text: string;
+  footer_newsletter_text: string;
+  copy_right: string;
+  meta_keywords: null;
+  meta_description: null;
+  translations: {
+    id: number;
+    locale: string;
+    footer_text: string;
+    footer_newsletter_text: string;
+    copy_right: string;
+    meta_keywords: null;
+    meta_description: null;
+    footer_id: number;
+    created_at: Date;
+    updated_at: Date;
+  }[];
 }
 
 export interface SettingsResponse {

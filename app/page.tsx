@@ -1,9 +1,9 @@
 //== Components
 import { Navbar, Footer, Banner, MainSections, Experince, Video, Courses, EventsList, CountUp, News, Gallery } from "@/components";
 //= Api
-import { getAllCourses, getAllSliders, getAllMenus, getAllBlogs, getExperinceSection, getWhyChooseUsSection, getCounters, getAllGalleries, getAllEvents } from '@/API/pages';
+import { getAllCourses, getAllSliders, getAllMenus, getAllBlogs, getExperinceSection, getWhyChooseUsSection, getCounters, getAllGalleries, getAllEvents, getFooterLinks, getFooterSocialLinks } from '@/API/pages';
 //= Types
-import type { Course, Slider, MenuItem, Blog, GalleryItem, IEvent } from "@/types";
+import type { Course, Slider, MenuItem, Blog, GalleryItem, IEvent, FooterItem, FooterSocialLinks } from "@/types";
 
 export const metadata = {
   title: 'Hawas',
@@ -20,6 +20,8 @@ export default async function Home() {
   let experinceData: Awaited<ReturnType<typeof getExperinceSection>> | null = null;
   let countersData: Awaited<ReturnType<typeof getCounters>> | null = null;
   let galleryData: GalleryItem[] = [];
+  let footerLinksData: FooterItem[] = [];
+  let footerSocialLinksData: FooterSocialLinks | null = null;
 
   try {
     const data = await getAllMenus();
@@ -66,6 +68,16 @@ export default async function Home() {
     if (data) galleryData = data;
   } catch (err) { }
 
+  try {
+    const data = await getFooterLinks();
+    if (data) footerLinksData = data;
+  } catch (err) { }
+
+  try {
+    const data = await getFooterSocialLinks();
+    if (data) footerSocialLinksData = data;
+  } catch (err) { }
+
   return (
     <>
       <Navbar menus={menus} />
@@ -78,7 +90,7 @@ export default async function Home() {
       <CountUp data={countersData} />
       <News data={blogsData} />
       <Gallery data={galleryData} />
-      <Footer />
+      <Footer data={{ links: footerLinksData, socialLinks: footerSocialLinksData }} />
     </>
   )
 }

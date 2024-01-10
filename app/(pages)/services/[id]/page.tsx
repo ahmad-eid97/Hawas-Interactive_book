@@ -21,7 +21,7 @@ const ServiceDetails: React.FC<ServicesProps> = async ({ params: { id } }) => {
 
   return (
     <>
-      <PageHeader title={serviceDetails?.title || "خدمة حواس"} />
+      <PageHeader title={serviceDetails?.title ? 'خدمة ' + serviceDetails?.title : "خدمة حواس"} />
       <ServicesComponent data={serviceDetails} />
     </>
   );

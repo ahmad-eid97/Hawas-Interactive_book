@@ -1,16 +1,43 @@
 "use client";
 //== Utils
 import Link from 'next/link';
+import toast from 'react-hot-toast';
 //== Modules
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+//= Api
+import { subscribeToNewsletter } from '@/API/pages';
+//= Types
+import { FooterItem, FooterSocialLinks } from '@/types';
 //== Styles
 import styles from './footer.module.scss';
 
 interface FooterProps {
+  data: {
+    links: FooterItem[];
+    socialLinks: FooterSocialLinks | null;
+  }
 }
 
-const Footer: React.FC<FooterProps> = () => {
+const Footer: React.FC<FooterProps> = ({ data: { links, socialLinks } }) => {
+
+  async function handleSubscribeToNewsLetter(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
+    const btn = event.currentTarget;
+    btn.setAttribute('disabled', 'disabled');
+
+    const email = document.querySelector<HTMLInputElement>('#newsletter-email')!;
+
+    const response = await subscribeToNewsletter(email.value);
+
+    if (response && response.success) {
+      toast.success('شكراً لتواصلك معنا, تم إشتراكك بنجاح');
+      email.value = ''
+    }
+
+    btn.removeAttribute('disabled');
+  }
+
   return (
     <footer className={`${styles.footer}`}>
       <Container maxWidth="xl" >
@@ -19,25 +46,25 @@ const Footer: React.FC<FooterProps> = () => {
             <Link href='/'>
               <img src="/images/navbar/footer_logo.png" alt="logo" />
             </Link>
-            <a href="#">support@gridsapps.com</a>
+            <a href="/">support@gridsapps.com</a>
             <ul className={styles.socials}>
-              <li   >
-                <a href="#">
+              <li>
+                <a href={'https://' + socialLinks?.facebook || ''}>
                   <i className="fab fa-facebook-f"></i>
                 </a>
               </li>
-              <li   >
-                <a href="#">
-                  <i className="fab fa-twitter"></i>
-                </a>
-              </li>
-              <li   >
-                <a href="#">
+              <li>
+                <a href={'https://' + socialLinks?.instagram || ''}>
                   <i className="fab fa-instagram"></i>
                 </a>
               </li>
-              <li   >
-                <a href="#">
+              <li>
+                <a href={'https://' + socialLinks?.youtube || ''}>
+                  <i className="fab fa-youtube"></i>
+                </a>
+              </li>
+              <li>
+                <a href={'https://' + socialLinks?.linkedin || ''}>
                   <i className="fab fa-linkedin-in"></i>
                 </a>
               </li>
@@ -45,29 +72,19 @@ const Footer: React.FC<FooterProps> = () => {
           </Grid>
           <Grid item lg={2} md={4} xs={12} className={styles.widgit}>
             <h5>
-              شركتا
+              شركتنا
             </h5>
             <ul>
-              <li >
-                <Link href="/gallery" >
-                  الألبومات
-                </Link>
-              </li>
-              <li >
-                <Link href="/faqs" >
-                  الأسئلة الشائعة
-                </Link>
-              </li>
-              <li >
-                <Link href="/about-us" >
-                  من نحن
-                </Link>
-              </li>
-              <li >
-                <Link href="/contact-us" >
-                  تواصل معنا
-                </Link>
-              </li>
+              {
+                links.length > 0 &&
+                links.slice(0, 4).map(link => (
+                  <li key={link.id}>
+                    <Link href={link.url}>
+                      {link.translations[0].name}
+                    </Link>
+                  </li>
+                ))
+              }
             </ul>
           </Grid>
           <Grid item lg={2} md={4} xs={12} className={styles.widgit}>
@@ -75,26 +92,16 @@ const Footer: React.FC<FooterProps> = () => {
               مواضيعنا
             </h5>
             <ul>
-              <li >
-                <Link href="/blogs" >
-                  المدونة
-                </Link>
-              </li>
-              <li >
-                <Link href="/services" >
-                  الخدمات
-                </Link>
-              </li>
-              <li >
-                <Link href="/terms" >
-                  الشروط والأحكام
-                </Link>
-              </li>
-              <li >
-                <Link href="/policy" >
-                  سياسة الخصوصية
-                </Link>
-              </li>
+              {
+                links.length > 0 &&
+                links.slice(4, 8).map(link => (
+                  <li key={link.id}>
+                    <Link href={link.url}>
+                      {link.translations[0].name}
+                    </Link>
+                  </li>
+                ))
+              }
             </ul>
           </Grid>
           <Grid item lg={4} md={8} xs={12} className={styles.widgit}>
@@ -104,8 +111,8 @@ const Footer: React.FC<FooterProps> = () => {
             <p>أرسل إلينا بريدك الإلكتروني لتحصل علي كل جديد عن شركتنا والعروض المقدمة.</p>
             <form>
               <div className={styles.inputGroup}>
-                <input type="text" placeholder="البريد الإلكتروني" />
-                <button className={styles.inputGroupAppend} type="button">إشترك الاَن</button>
+                <input type="text" placeholder="البريد الإلكتروني" id="newsletter-email" />
+                <button className={styles.inputGroupAppend} onClick={handleSubscribeToNewsLetter}>إشترك الاَن</button>
               </div>
             </form>
           </Grid>

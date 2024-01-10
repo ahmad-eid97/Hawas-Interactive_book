@@ -1,5 +1,5 @@
 import { cache } from 'react';
-import API from "@/API/handlers";
+import API, { type Response } from "@/API/handlers";
 //= Helpers
 import { generateQuery, generateLanguageHeader, convertWhyChooseUsArrayToObject, convertCounterArrayToObject, convertExperienceDataArrayToObject, convertSettingsArrayToObject } from '..';
 //= Types
@@ -17,6 +17,7 @@ import type {
   SettingsResponse,
   WhyChooseUsResponse,
   CounterItem,
+  FooterSocialLinks,
   GalleriesCategoriesDataResponse,
   ExperienceSectionData
 } from '@/types';
@@ -110,6 +111,12 @@ export const getFooterLinks = cache(async () => {
 });
 
 
+export const getFooterSocialLinks = cache(async () => {
+  const response = await API.GET<FooterSocialLinks>(`/footer/1`, { headers: generateLanguageHeader() });
+  return (response?.data?.data as FooterSocialLinks);
+});
+
+
 export const getAllSettings = cache(async () => {
   const response = await API.GET<SettingsResponse[]>(`/settings`, { headers: generateLanguageHeader() });
   return convertSettingsArrayToObject(response?.data?.data as SettingsResponse[]);
@@ -117,6 +124,6 @@ export const getAllSettings = cache(async () => {
 
 
 export const subscribeToNewsletter = cache(async (email: string) => {
-  const response = await API.POST<NewsletterResponse>(`/newsletter`, { body: { email } });
-  return response?.data?.data as NewsletterResponse;
+  const response = await API.POST<Response<NewsletterResponse>>(`/newsletter`, { body: { email } });
+  return response.data;
 });
