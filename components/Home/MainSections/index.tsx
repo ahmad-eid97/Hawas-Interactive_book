@@ -19,7 +19,7 @@ const MainSections: React.FC<MainSectionsProps> = () => {
       </div>
       <Grid container spacing={4} justifyContent="center">
         <Grid item xs={12} sm={6} md={4} xl={2} lg={3}>
-          <Link href="#" className={styles.card} style={{ backgroundColor: "#0F8AC2", backgroundImage: 'url(/images/home/photo-19.jpg)' }}>
+          <Link href="/library" className={styles.card} style={{ backgroundColor: "#0F8AC2", backgroundImage: 'url(/images/home/photo-19.jpg)' }}>
             <div className={styles.content}>
               <div className={styles.iconContainer}>
                 <div className={styles.icon}>
@@ -37,7 +37,7 @@ const MainSections: React.FC<MainSectionsProps> = () => {
           </Link>
         </Grid>
         <Grid item xs={12} sm={6} md={4} xl={2} lg={3}>
-          <Link href="#" className={styles.card} style={{ backgroundColor: "#4E35A3", backgroundImage: 'url(/images/home/photo-20.jpg)' }}>
+          <Link href="/plays" className={styles.card} style={{ backgroundColor: "#4E35A3", backgroundImage: 'url(/images/home/photo-20.jpg)' }}>
             <div className={styles.content}>
               <div className={styles.iconContainer}>
                 <div className={styles.icon}>
@@ -55,7 +55,7 @@ const MainSections: React.FC<MainSectionsProps> = () => {
           </Link>
         </Grid>
         <Grid item xs={12} sm={6} md={4} xl={2} lg={3}>
-          <Link href="#" className={styles.card} style={{ backgroundColor: "#FEBE44", backgroundImage: 'url(/images/home/photo-21.jpg)' }}>
+          <Link href="/films" className={styles.card} style={{ backgroundColor: "#FEBE44", backgroundImage: 'url(/images/home/photo-21.jpg)' }}>
             <div className={styles.content}>
               <div className={styles.iconContainer}>
                 <div className={styles.icon}>
@@ -75,7 +75,7 @@ const MainSections: React.FC<MainSectionsProps> = () => {
           </Link>
         </Grid>
         <Grid item xs={12} sm={6} md={4} xl={2} lg={3}>
-          <Link href="#" className={styles.card} style={{ backgroundColor: "#4CAA5F", backgroundImage: 'url(/images/home/photo-22.jpg)' }}>
+          <Link href="/lectures" className={styles.card} style={{ backgroundColor: "#4CAA5F", backgroundImage: 'url(/images/home/photo-22.jpg)' }}>
             <div className={styles.content}>
               <div className={styles.iconContainer}>
                 <div className={styles.icon}>
@@ -95,7 +95,7 @@ const MainSections: React.FC<MainSectionsProps> = () => {
           </Link>
         </Grid>
         <Grid item xs={12} sm={6} md={4} xl={2} lg={3}>
-          <Link href="#" className={styles.card} style={{ backgroundColor: "#d039ab", backgroundImage: 'url(/images/home/photo-22.jpg)' }}>
+          <Link href="/workshops" className={styles.card} style={{ backgroundColor: "#d039ab", backgroundImage: 'url(/images/home/photo-22.jpg)' }}>
             <div className={styles.content}>
               <div className={styles.iconContainer}>
                 <div className={styles.icon}>
@@ -114,7 +114,7 @@ const MainSections: React.FC<MainSectionsProps> = () => {
           </Link>
         </Grid>
         <Grid item xs={12} sm={6} md={4} xl={2} lg={3}>
-          <Link href="#" className={styles.card} style={{ backgroundColor: "#FF8E71", backgroundImage: 'url(/images/home/photo-22.jpg)' }}>
+          <Link href="/channel" className={styles.card} style={{ backgroundColor: "#FF8E71", backgroundImage: 'url(/images/home/photo-22.jpg)' }}>
             <div className={styles.content}>
               <div className={styles.iconContainer}>
                 <div className={styles.icon}>

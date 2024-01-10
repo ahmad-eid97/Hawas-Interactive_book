@@ -127,3 +127,13 @@ export { default as Galleries } from './Gallery/Galleries';
 export { default as Portfolio } from './Portfolio';
 //== Portfolio Details page components
 export { default as PortfolioDetails } from './PortfolioDetails';
+//== Plays page components
+export { default as HawasPlays } from './HawasPlays';
+//== Plays page components
+export { default as HawasFilms } from './HawasFilms';
+//== Plays page components
+export { default as HawasLectures } from './HawasLectures';
+//== Plays page components
+export { default as HawasWorkshops } from './HawasWorkshops';
+//== Plays page components
+export { default as HawasChannel } from './HawasChannel';
