@@ -1,21 +1,18 @@
 //== Hooks
 import { useState } from "react"
+//= Types
+import { IBlogDetails } from '@/types';
 
-export default function useLogic() {
-  const [items] = useState([
-    {
-      id: 1,
-      src: "/images/home/photo-23.jpg"
-    },
-    {
-      id: 2,
-      src: "/images/home/photo-24.jpg"
-    },
-    {
-      id: 3,
-      src: "/images/home/photo-25.jpg"
-    },
-  ])
+interface BlogDetailsProps {
+  data: IBlogDetails | null;
+}
+
+export default function useLogic({ data }: BlogDetailsProps) {
+  const [items] = useState(data?.gallery && data?.gallery.length > 0 ?
+    data?.gallery.map(item => ({
+      id: item.id,
+      src: item.image
+    })) : [])
   const [open, setOpen] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
 

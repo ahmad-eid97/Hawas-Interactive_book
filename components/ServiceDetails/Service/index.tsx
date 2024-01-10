@@ -7,66 +7,64 @@ import Grid from '@mui/material/Grid';
 import Lightbox from "yet-another-react-lightbox";
 //== Component Logic
 import useLogic from './logic';
+//= Types
+import { IService } from '@/types';
 //== Styles
 import styles from './serviceDetails.module.scss';
 
-interface ServiceProps { }
+interface ServiceProps {
+  data: IService | null;
+}
 
-const Service: React.FC<ServiceProps> = () => {
+const Service: React.FC<ServiceProps> = ({ data }) => {
   const { items, open, imageIndex, setOpen, openImage } = useLogic();
 
   return (
     <>
       <Container maxWidth="xl" className={styles.service}>
-        <h2>Service Name</h2>
+        <h2>{data?.title || ''}</h2>
         <Grid container spacing={4}>
           <Grid item lg={8} xs={12}>
-            <img src="/images/home/photo-23.jpg" alt="Images" />
-            <p>
-              QA establishes and maintains set requirements for developing or manufacturing reliable products. A quality assurance system is meant to increase customer confidence and a company's credibility, while also improving work processes and efficiency, and it enables a company to better compete with others.
-              The ISO (International Organization for Standardization) is a driving force behind QA practices and mapping the processes used to implement QA. QA is often paired with the ISO 9000 international standard. Many companies use ISO 9000 to ensure that their quality assurance system is in place and effective.
-              The concept of QA as a formalized practice started in the manufacturing industry, and it has since spread to most industries, including software development
-            </p>
+            <img src={data?.image || ''} alt="Images" />
+            <p dangerouslySetInnerHTML={{ __html: data?.description || '' }} />
           </Grid>
           <Grid item lg={4} xs={12}>
             <div className={styles.widget}>
-              <h3 className={styles.title}>Our Main Services</h3>
+              <h3 className={styles.title}>خدمات أخرى</h3>
               <div className={styles.services}>
                 <ul>
-                  <li>
-                    <i className="fa-solid fa-circle-dot"></i>
-                    <Link href="/service" className="">Service Name</Link>
-                  </li>
-                  <li>
-                    <i className="fa-solid fa-circle-dot"></i>
-                    <Link href="/service" className="">Service Name</Link>
-                  </li>
-                  <li>
-                    <i className="fa-solid fa-circle-dot"></i>
-                    <Link href="/service" className="">Service Name</Link>
-                  </li>
-                  <li>
-                    <i className="fa-solid fa-circle-dot"></i>
-                    <Link href="/service" className="">Service Name</Link>
-                  </li>
-                  <li>
-                    <i className="fa-solid fa-circle-dot"></i>
-                    <Link href="/service" className="">Service Name</Link>
-                  </li>
+                  {
+                    data?.features.length ?
+                      data.features.map((feature) => (
+                        <li key={feature.id}>
+                          <i className="fa-solid fa-circle-dot"></i>
+                          <Link href={`/service/${feature.id}`} className="">{feature.title}</Link>
+                        </li>
+                      ))
+                      :
+                      <li>
+                        <p>لا توجد خدمات أخرى</p>
+                      </li>
+                  }
                 </ul>
               </div>
             </div>
             <div className={styles.widget}>
-              <h3 className={styles.title}>Gallery</h3>
+              <h3 className={styles.title}>المعرض</h3>
               <ul className={styles.gallery}>
-                {items.map((item, idx) => (
-                  <li className={styles.gallery}>
-                    <div onClick={() => openImage(idx)}>
-                      <i className="fa-solid fa-eye"></i>
-                      <img src={item.src} alt="Images" />
-                    </div>
-                  </li>
-                ))}
+                {
+                  items.length ?
+                    items.map((item, idx) => (
+                      <li className={styles.gallery} key={item.id}>
+                        <div onClick={() => openImage(idx)}>
+                          <i className="fa-solid fa-eye"></i>
+                          <img src={item.src} alt="Images" />
+                        </div>
+                      </li>
+                    ))
+                    :
+                    <p>لا توجد صور في المعرض</p>
+                }
               </ul>
             </div>
           </Grid>

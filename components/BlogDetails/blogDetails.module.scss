@@ -1,4 +1,4 @@
-@import '../../styles/mixins.scss';
+@import "../../styles/mixins.scss";
 
 .blogDetails {
   margin-bottom: 40px;
@@ -45,7 +45,7 @@
         }
         &:hover {
           a {
-            color: var(--main-color)
+            color: var(--main-color);
           }
         }
         .item {
@@ -90,7 +90,7 @@
             width: 100%;
             height: 100%;
             background-color: var(--main-color);
-            transition: all .5s;
+            transition: all 0.5s;
             opacity: 0;
             visibility: hidden;
             border-radius: 15px;
@@ -101,7 +101,7 @@
             text-align: center;
             top: 28%;
             left: 35%;
-            transition: all .5s;
+            transition: all 0.5s;
             opacity: 0;
             visibility: hidden;
             font-size: 30px;
@@ -115,7 +115,7 @@
           }
           &:hover {
             &::before {
-              opacity: .5;
+              opacity: 0.5;
               visibility: visible;
             }
             i {
@@ -131,7 +131,7 @@
     img {
       margin-bottom: 30px;
       width: 100%;
-      max-height: 400px;
+      max-height: 600px;
       border-radius: 15px;
     }
     .content {
