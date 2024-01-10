@@ -3,6 +3,7 @@ export * from '@/API/pages/contact/types';
 export * from '@/API/pages/home/types';
 export * from '@/API/pages/faq/types';
 export * from '@/API/pages/services/types';
+export * from '@/API/pages/course/types';
 export * from '@/API/pages/blog/types';
 export * from '@/API/pages/terms/types';
 export * from '@/API/pages/privacy/types';
