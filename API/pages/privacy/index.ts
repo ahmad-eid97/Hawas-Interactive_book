@@ -4,6 +4,6 @@ import API from "@/API/handlers";
 import type { PrivacyData } from './types';
 
 export const getPrivacy = cache(async () => {
-  const response = await API.GET<PrivacyData>('pages/4', { headers: { 'Accept-Language': 'ar' } });
+  const response = await API.GET<PrivacyData>('pages/3', { headers: { 'Accept-Language': 'ar' } });
   return (response.data.data as PrivacyData);
 });
