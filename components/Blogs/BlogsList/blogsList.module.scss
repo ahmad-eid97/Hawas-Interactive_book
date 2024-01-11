@@ -1,7 +1,8 @@
-@import '../../../styles/mixins.scss';
+@import "../../../styles/mixins.scss";
 
 .blog {
-  padding-bottom: 50px;
+  padding-bottom: 120px;
+
   h2 {
     text-align: center !important;
     color: var(--main-color);

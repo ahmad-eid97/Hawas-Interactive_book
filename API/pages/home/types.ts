@@ -36,9 +36,18 @@ export interface Slider {
 }
 
 export interface CategoriesDataResponse {
-  categories: any[];
+  categories: ICategory[];
   links: Links;
   meta: Meta;
+}
+
+export interface ICategory {
+  id: number;
+  image: string;
+  isFeatured: boolean;
+  status: boolean;
+  code: null;
+  name: string;
 }
 
 export interface CoursesDataResponse {

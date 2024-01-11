@@ -22,7 +22,7 @@ const BlogsList: React.FC<BlogsListProps> = ({ data }) => {
             <h2>المقالات</h2>
           </Grid>
         </Grid>
-        <Grid container spacing={3}>
+        <Grid container spacing={4}>
           {
             data.length > 0 &&
             data.map(article => (

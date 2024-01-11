@@ -6,50 +6,55 @@
   height: 100%;
   position: relative;
   min-height: 360px;
-  max-height: 450px;
-  border-radius: 15px;
-  .lateDate {
-    z-index: 999;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: var(--main-color);
-    width: 85px;
-    height: 100px;
+  border-radius: 8px;
+  border: 1px solid rgba(var(--main-color-rgb), 0.1);
+  background-color: #fff;
+
+  img {
+    border-radius: 8px;
+    height: 250px;
+    width: calc(100% - 40px);
+    box-sizing: border-box;
+    object-fit: cover;
+    margin: 20px;
+    margin-bottom: 0;
+    border: 1px solid rgba(var(--main-color-rgb), 0.1);
+  }
+
+  .info {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom-left-radius: 15px;
-    h3 {
-      font-size: 36px;
-      color: var(--text-inside);
-      text-align: center;
-      margin: 0;
-      font-weight: 700;
-      span {
-        display: block;
-        font-size: 18px;
-        font-weight: 600;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0 20px;
+
+    p {
+      color: var(--border-color);
+      i {
+        margin-left: 10px;
       }
     }
   }
 
   .text {
+    box-sizing: border-box;
     z-index: 99;
     width: 100%;
     padding: 0 20px;
 
     h3 {
       font-size: 22px;
-      color: #fff;
-      margin-bottom: 15px;
-      font-weight: 700;
+      color: var(--main-color);
+      margin-top: 10px;
+      margin-bottom: 10px;
+      line-height: 30px;
+      font-weight: bold;
     }
 
     p {
       font-size: 15px;
-      color: #eee;
+      color: var(--pale-text-color);
       margin: 0;
+      margin-bottom: 20px;
       text-align: flex-start;
       overflow: hidden;
       display: -webkit-box;
@@ -64,6 +69,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
+
     &::before {
       position: absolute;
       content: "";
@@ -85,11 +91,13 @@
         rgba(20, 38, 99, 0.47) 45%,
         var(--main-color) 100%
       );
+
       filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#081e5799', endColorstr='#142663', GradientType=0);
       height: 100%;
       width: 100%;
       z-index: 9;
     }
+
     img {
       transition: all 0.3s ease;
       width: 100%;

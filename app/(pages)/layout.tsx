@@ -1,7 +1,7 @@
 //== Components
 import { Navbar, Footer } from '@/components';
 //= Api
-import { getAllMenus, getFooterLinks, getFooterSocialLinks } from '@/API/pages';
+import { getAllMenus, getAllSettings, getFooterLinks, getFooterSocialLinks } from '@/API/pages';
 //= Types
 import type { FooterItem, FooterSocialLinks, MenuItem } from "@/types";
 
@@ -13,6 +13,7 @@ const PagesLayout = async ({ children }: PagesLayoutProps) => {
   let menus: MenuItem[] = [];
   let footerLinksData: FooterItem[] = [];
   let footerSocialLinksData: FooterSocialLinks | null = null;
+  let settingsData: Awaited<ReturnType<typeof getAllSettings>> | null = null;
 
   try {
     const data = await getAllMenus();
@@ -29,11 +30,16 @@ const PagesLayout = async ({ children }: PagesLayoutProps) => {
     if (data) footerSocialLinksData = data;
   } catch (err) { }
 
+  try {
+    const data = await getAllSettings();
+    if (data) settingsData = data;
+  } catch (err) { }
+
   return (
     <>
-      <Navbar menus={menus} />
+      <Navbar menus={menus} socialLinks={footerSocialLinksData} contactEmail={settingsData?.contact_email || ''} />
       {children}
-      <Footer data={{ links: footerLinksData, socialLinks: footerSocialLinksData }} />
+      <Footer data={{ links: footerLinksData, socialLinks: footerSocialLinksData, contactEmail: settingsData?.contact_email || '' }} />
     </>
   )
 }

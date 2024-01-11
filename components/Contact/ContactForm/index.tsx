@@ -80,7 +80,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ data }) => {
                 </li>
                 <li>
                   <i className="fas fa-envelope"></i>
-                  <span>{data?.email}</span>
+                  <span>{data?.contact_email}</span>
                 </li>
                 <li>
                   <i className="fas fa-map-pin"></i>

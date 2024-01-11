@@ -12,15 +12,21 @@ interface BlogItemProps {
 }
 
 const BlogItem: React.FC<BlogItemProps> = ({ data }) => {
-  const dateDay = format(new Date(data.publish_date), 'dd', { locale: ar });
-  const dateMonth = format(new Date(data.publish_date), 'MMMM', { locale: ar });
-
   return (
     <>
-      <div className={`${styles.card} ${styles.primary}`}>
-        <img src={data.image} alt="blog_image" />
-        <div className={styles.lateDate}>
-          <h3>{dateDay}<span>{dateMonth}</span></h3>
+      <div className={`${styles.card}`}>
+        <Link href={`/blogs/${data.id}`}>
+          <img src={data.image} alt="blog_image" />
+        </Link>
+        <div className={styles.info}>
+          <p>
+            <i className="fa-regular fa-user"></i>
+            {data?.username || ''}
+          </p>
+          <p>
+            <i className="fa-regular fa-calendar"></i>
+            {format(new Date(data?.publish_date || ''), 'dd MMMM yyy', { locale: ar })}
+          </p>
         </div>
         <div className={styles.text}>
           <h3><Link href={`/blogs/${data.id}`}>{data.title}</Link></h3>

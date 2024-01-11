@@ -1,11 +1,5 @@
 import { Links, Link, Meta } from "../types";
 
-export interface PartnersDataResponse {
-  partners: any[];
-  links: Links;
-  meta: Meta;
-}
-
 export interface TestimonialsDataResponse {
   testimonials: Testimonial[];
   links: Links;

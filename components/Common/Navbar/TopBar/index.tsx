@@ -3,14 +3,20 @@
 import Cookies from 'universal-cookie';
 //== Component Logic
 import useLogic from './logic';
+//= Types
+import { FooterSocialLinks } from '@/types';
 //== Styles
 import styles from './topBar.module.scss';
-//== Component Interface
-interface TopBarProps { }
+
+
+interface TopBarProps {
+  socialLinks: FooterSocialLinks | null;
+  contactEmail: string;
+}
 
 const cookie = new Cookies();
 
-const TopBar: React.FC<TopBarProps> = () => {
+const TopBar: React.FC<TopBarProps> = ({ socialLinks, contactEmail }) => {
   const { logout } = useLogic();
 
   return (
@@ -23,22 +29,22 @@ const TopBar: React.FC<TopBarProps> = () => {
               :
               null
           }
-          <span>support@gridsapps.com</span>
+          <span>{contactEmail}</span>
         </li>
       </ul>
       <ul className={styles.nav}>
         <li className={styles.item}>
-          <a href="#" className="nav-link p-0 text-white">
+          <a href={'https://' + socialLinks?.facebook || ''} className="nav-link p-0 text-white">
             <i className="fab fa-facebook-f"></i>
           </a>
         </li>
         <li className={styles.item}>
-          <a href="#" className="nav-link p-0 text-white">
+          <a href={'https://' + socialLinks?.instagram || ''} className="nav-link p-0 text-white">
             <i className="fab fa-instagram"></i>
           </a>
         </li>
         <li className={styles.item}>
-          <a href="#" className="nav-link p-0 text-white">
+          <a href={'https://' + socialLinks?.youtube || ''} className="nav-link p-0 text-white">
             <i className="fab fa-youtube"></i>
           </a>
         </li>

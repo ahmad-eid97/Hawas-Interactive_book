@@ -106,6 +106,7 @@ export function convertSettingsArrayToObject(data: SettingsResponse[]) {
     name: data.find(item => item.key === 'application_name')?.plain_value,
     contact_phone: data.find(item => item.key === 'contact_phone')?.plain_value,
     contact_address: data.find(item => item.key === 'contact_address')?.plain_value,
+    contact_email: data.find(item => item.key === 'contact_email')?.plain_value,
     facebook_url: data.find(item => item.key === 'facebook_url')?.plain_value,
     twitter_url: data.find(item => item.key === 'twitter_url')?.plain_value,
     instagram_url: data.find(item => item.key === 'instagram_url')?.plain_value,

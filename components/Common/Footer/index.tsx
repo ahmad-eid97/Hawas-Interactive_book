@@ -16,10 +16,11 @@ interface FooterProps {
   data: {
     links: FooterItem[];
     socialLinks: FooterSocialLinks | null;
+    contactEmail: string;
   }
 }
 
-const Footer: React.FC<FooterProps> = ({ data: { links, socialLinks } }) => {
+const Footer: React.FC<FooterProps> = ({ data: { links, socialLinks, contactEmail } }) => {
 
   async function handleSubscribeToNewsLetter(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
@@ -46,7 +47,7 @@ const Footer: React.FC<FooterProps> = ({ data: { links, socialLinks } }) => {
             <Link href='/'>
               <img src="/images/navbar/footer_logo.png" alt="logo" />
             </Link>
-            <a href="/">support@gridsapps.com</a>
+            <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
             <ul className={styles.socials}>
               <li>
                 <a href={'https://' + socialLinks?.facebook || ''}>

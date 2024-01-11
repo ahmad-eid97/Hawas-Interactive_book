@@ -44,7 +44,6 @@ const About: React.FC<AboutProps> = async () => {
       <Video data={videoData} />
       <CountUp data={countersData} />
       <Testimonials data={testimonialsData} />
-      <Partners />
     </>
   );
 }

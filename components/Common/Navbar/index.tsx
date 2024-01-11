@@ -10,21 +10,23 @@ import MobileMenu from './MobileMenu';
 //== Component Logic
 import useLogic from './logic';
 //= Types
-import { MenuItem } from '@/types';
+import { FooterSocialLinks, MenuItem } from '@/types';
 //== Styles
 import styles from './navbar.module.scss';
 
 interface NavbarProps {
   menus: MenuItem[];
+  socialLinks: FooterSocialLinks | null;
+  contactEmail: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ menus }) => {
+const Navbar: React.FC<NavbarProps> = ({ menus, socialLinks, contactEmail }) => {
   const { navDropdown, setNavDropdown } = useLogic();
 
   return (
     <header className={`${styles.navbar}`}>
       <Container maxWidth="xl" className={styles.topContainer}>
-        <TopBar />
+        <TopBar socialLinks={socialLinks} contactEmail={contactEmail} />
       </Container>
       <Container maxWidth="xl" className={styles.container}>
         <Link className={styles.logo} href="/">

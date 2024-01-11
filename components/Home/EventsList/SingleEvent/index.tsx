@@ -64,7 +64,7 @@ const SingleEvent: React.FC<SingleEventProps> = ({ data }) => {
             </Grid>
             <Grid item xs="auto">
               <Link href="/contact-us" className={styles.ticket}>
-                شراء تذكرة
+                طلب تذكرة
               </Link>
             </Grid>
           </Grid>

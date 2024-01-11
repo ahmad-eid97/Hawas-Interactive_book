@@ -1,11 +1,15 @@
 //== Cairo font
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap");
 //== Styles
-@import './variables.scss';
-@import './mixins.scss';
+@import "./variables.scss";
+@import "./mixins.scss";
+
+html {
+  overflow-x: hidden;
+}
 
 body {
-  font-family: 'Cairo', sans-serif;
+  font-family: "Cairo", sans-serif;
   margin: 0;
   padding: 0;
   background-color: var(--main-background);
@@ -29,7 +33,7 @@ body {
 button,
 input,
 textarea {
-  font-family: 'Cairo', sans-serif;
+  font-family: "Cairo", sans-serif;
 }
 
 * {
@@ -88,12 +92,12 @@ ul {
     }
     &:first-of-type {
       button {
-        transform: rotate(180deg)
+        transform: rotate(180deg);
       }
     }
     &:last-of-type {
       button {
-        transform: rotate(180deg)
+        transform: rotate(180deg);
       }
     }
   }

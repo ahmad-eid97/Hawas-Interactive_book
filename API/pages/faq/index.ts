@@ -10,6 +10,6 @@ import type { Filters } from '@/types';
 export const getAllFaqs = cache(async (filters?: Filters) => {
   const query = generateQuery(filters);
 
-  const response = await API.GET<FaqDataResponse>(`/faqs${query ? query : ''}`);
-  return response;
+  const response = await API.GET<FaqDataResponse>(`/faqs${query ? query : ''}`, { headers: { 'Accept-Language': 'ar' } });
+  return (response?.data?.data as FaqDataResponse).faqs;
 });
