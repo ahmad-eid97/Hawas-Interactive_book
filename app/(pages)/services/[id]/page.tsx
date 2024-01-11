@@ -5,6 +5,13 @@ import { getServiceById } from "@/API/pages";
 //= Types
 import type { IService } from '@/types';
 
+export async function generateMetadata() {
+  return {
+    title: `حواس - خدماتنا`,
+    description: 'خدمات حواس لتنمية الصحة والأمان - استفد من مجموعة متنوعة من الخدمات المصممة لتعزيز صحتك وضمان سلامتك'
+  }
+}
+
 interface ServicesProps {
   params: {
     id: number;

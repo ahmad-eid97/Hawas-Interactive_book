@@ -8,11 +8,14 @@
   @include sm {
     padding: 48px 0;
   }
-  a {
+
+  button {
     position: relative;
+    border: 0;
+    outline: 0;
     padding-bottom: 192px;
     padding-top: 192px;
-    background-image: url('/images/home/cover-18.jpg');
+    background-image: url("/images/home/cover-18.jpg");
     background-size: cover;
     margin: 24px 0;
     display: block;
@@ -24,16 +27,51 @@
       padding-top: 64px;
     }
     ::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 10px;
       bottom: 10px;
       right: 10px;
       left: 10px;
-      background-image: repeating-linear-gradient(to right, rgba(255, 255, 255, .7) 0, rgba(255, 255, 255, .7) 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to right, rgba(255, 255, 255, .7) 0, rgba(255, 255, 255, .7) 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to bottom, rgba(255, 255, 255, .7) 0, rgba(255, 255, 255, .7) 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to bottom, rgba(255, 255, 255, .7) 0, rgba(255, 255, 255, .7) 50%, transparent 50%, transparent 100%);
-      background-position: left top, left bottom, left top, right top;
+      background-image: repeating-linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0.7) 0,
+          rgba(255, 255, 255, 0.7) 50%,
+          transparent 50%,
+          transparent 100%
+        ),
+        repeating-linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0.7) 0,
+          rgba(255, 255, 255, 0.7) 50%,
+          transparent 50%,
+          transparent 100%
+        ),
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.7) 0,
+          rgba(255, 255, 255, 0.7) 50%,
+          transparent 50%,
+          transparent 100%
+        ),
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.7) 0,
+          rgba(255, 255, 255, 0.7) 50%,
+          transparent 50%,
+          transparent 100%
+        );
+      background-position:
+        left top,
+        left bottom,
+        left top,
+        right top;
       background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
-      background-size: 20px 2px, 20px 2px, 2px 20px, 2px 20px;
+      background-size:
+        20px 2px,
+        20px 2px,
+        2px 20px,
+        2px 20px;
       border-radius: 8px;
     }
     h1 {
@@ -63,14 +101,17 @@
       margin: 0 auto;
       height: 90px;
       width: 90px;
-      transition: box-shadow .25s ease, transform .25s ease, -webkit-transform .25s ease;
+      transition:
+        box-shadow 0.25s ease,
+        transform 0.25s ease,
+        -webkit-transform 0.25s ease;
       background-color: #fff;
       border-radius: 50%;
-      box-shadow: 0 .5rem .937rem rgba(140, 152, 164, .1) !important;
+      box-shadow: 0 0.5rem 0.937rem rgba(140, 152, 164, 0.1) !important;
       display: flex;
       justify-content: center !important;
       align-items: center !important;
-      box-shadow: 0 .5rem .937rem rgba(140, 152, 164, .1) !important;
+      box-shadow: 0 0.5rem 0.937rem rgba(140, 152, 164, 0.1) !important;
       svg {
         width: 30px;
         height: 30px;

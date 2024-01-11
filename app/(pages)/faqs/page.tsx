@@ -5,9 +5,14 @@ import { getAllFaqs } from '@/API/pages';
 //= Types
 import type { FAQItem } from "@/types";
 
-interface FAQsProps { }
+export async function generateMetadata() {
+  return {
+    title: `حواس - الدورات`,
+    description: 'الأسئلة الشائعة حول حواس - استفد من إجاباتنا على الأسئلة الشائعة حول الخدمات والموارد التي نقدمها'
+  }
+}
 
-const FAQs: React.FC<FAQsProps> = async () => {
+const FAQs: React.FC = async () => {
   let faqsData: FAQItem[] = [];
 
   try {

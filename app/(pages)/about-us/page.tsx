@@ -4,14 +4,16 @@ import { getWhyChooseUsSection, getCounters, getAllTestimonials, getAboutSection
 //= Types
 import type { Testimonial } from "@/types";
 
-interface AboutProps { }
 
-export const metadata = {
-  title: 'Hawas | About Us',
-  description: "Experience the power of a dynamic book designed specifically for primary school children, offering an immersive journey filled with captivating visuals, hands-on exercises, and vibrant storytelling to foster a love for learning"
+export async function generateMetadata() {
+  return {
+    title: `حواس - من نحن`,
+    description: 'تعرف على قصة حواس ورؤيتنا في تعزيز الصحة والأمان - اقرأ عن فريقنا والتزامنا بتحقيق تحول إيجابي'
+  }
 }
 
-const About: React.FC<AboutProps> = async () => {
+
+const About: React.FC = async () => {
   let aboutData: Awaited<ReturnType<typeof getAboutSection>> | null = null;
   let videoData: Awaited<ReturnType<typeof getWhyChooseUsSection>> | null = null;
   let countersData: Awaited<ReturnType<typeof getCounters>> | null = null;

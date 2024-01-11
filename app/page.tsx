@@ -5,9 +5,12 @@ import { getAllCourses, getAllSliders, getAllMenus, getAllBlogs, getExperinceSec
 //= Types
 import type { Course, Slider, MenuItem, Blog, GalleryItem, IEvent, FooterItem, FooterSocialLinks } from "@/types";
 
-export const metadata = {
-  title: 'Hawas',
-  description: "Experience the power of a dynamic book designed specifically for primary school children, offering an immersive journey filled with captivating visuals, hands-on exercises, and vibrant storytelling to foster a love for learning"
+
+export async function generateMetadata() {
+  return {
+    title: `حواس - الرئيسية`,
+    description: 'استكشف عالم حواس لتنمية الصحة والأمان - اكتشف مواردنا المتنوعة لدعم حياة صحية وآمنة'
+  }
 }
 
 export default async function Home() {

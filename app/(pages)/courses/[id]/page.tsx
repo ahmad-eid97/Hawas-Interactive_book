@@ -5,6 +5,12 @@ import { getCourseById } from "@/API/pages";
 //= Types
 import type { ICourse } from '@/types';
 
+export async function generateMetadata() {
+  return {
+    title: `حواس - الدورات`,
+    description: 'اكتسب المهارات والمعرفة من خلال دورات حواس - اختر من بين تشكيلة من الدورات المصممة لتعزيز صحتك وسلامتك'
+  }
+}
 
 interface CourseDetailsProps {
   params: {
