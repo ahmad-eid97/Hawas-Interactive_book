@@ -4,6 +4,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 //= Styles
 import cls from './hawasPlays.module.scss';
+import Link from 'next/link';
 
 const HawasPlays = () => {
   return (
@@ -13,24 +14,28 @@ const HawasPlays = () => {
         <div className={cls.playsList}>
           <Grid container spacing={2} justifyContent="center">
             <Grid item xs={12} sm={6} md={4}>
-              <div className={cls.play}>
-                <div className={cls.playImg}>
-                  <img src="/images/plays/play1.png" alt="hawasPlays" />
+              <Link href={`/plays/1`}>
+                <div className={cls.play}>
+                  <div className={cls.playImg}>
+                    <img src="/images/plays/play1.png" alt="hawasPlays" />
+                  </div>
+                  <div className={cls.playContent}>
+                    <p>مسرحية زعتر وعنتر في الطريق</p>
+                  </div>
                 </div>
-                <div className={cls.playContent}>
-                  <p>مسرحية زعتر وعنتر في الطريق</p>
-                </div>
-              </div>
+              </Link>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-              <div className={cls.play}>
-                <div className={cls.playImg}>
-                  <img src="/images/plays/play2.png" alt="hawasPlays" />
+              <Link href={`/plays/2`}>
+                <div className={cls.play}>
+                  <div className={cls.playImg}>
+                    <img src="/images/plays/play2.png" alt="hawasPlays" />
+                  </div>
+                  <div className={cls.playContent}>
+                    <p>مسرحية زعتر وعنتر في الطريق</p>
+                  </div>
                 </div>
-                <div className={cls.playContent}>
-                  <p>مسرحية زعتر وعنتر في الطريق</p>
-                </div>
-              </div>
+              </Link>
             </Grid>
           </Grid>
         </div>

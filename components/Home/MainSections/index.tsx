@@ -4,10 +4,13 @@ import Link from 'next/link';
 //== Modules
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+//= Types
+import type { ICategory } from '@/types';
 //== Styles
 import styles from './mainSections.module.scss';
 
 interface MainSectionsProps {
+  // data: ICategory[];
 }
 
 const MainSections: React.FC<MainSectionsProps> = () => {
@@ -18,6 +21,29 @@ const MainSections: React.FC<MainSectionsProps> = () => {
         <p>أقسام حواس الرئيسية لتجد ما يناسبك من المحتوي حسب المرحلة العلمية والمجال العلمي.</p>
       </div>
       <Grid container spacing={4} justifyContent="center">
+        {/* {
+          data.length > 0 ?
+            data.map(category => (
+              <Grid item xs={12} sm={6} md={4} xl={2} lg={3} key={category.id}>
+                <Link href="/library" className={styles.card} style={{ backgroundColor: "#0F8AC2", backgroundImage: 'url(/images/home/photo-19.jpg)' }}>
+                  <div className={styles.content}>
+                    <div className={styles.iconContainer}>
+                      <div className={styles.icon}>
+                      </div>
+                      <svg width="120" height="100" viewBox="0 0 150 106" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.4187 85.1091C15.4187 85.1091 26.4761 93.6132 45.3188 90.5343C64.1614 87.4555 98.2625 101.399 98.2625 101.399C98.2625 101.399 116.382 111.021 134.544 102.436C152.706 93.8503 149.834 76.0424 149.834 76.0424C149.668 73.4378 149.49 60.6871 126.152 28.4475C117.729 16.808 108.827 9.0224 98.2058 4.84294C76.0661 -3.86635 48.8639 -0.578698 29.6207 12.6922C20.1267 19.2392 9.89887 28.5289 3.93941 40.7205C-9.4011 68.0126 15.4187 85.1091 15.4187 85.1091Z" fill="currentColor"></path>
+                      </svg>
+                    </div>
+                    <div className={styles.footer}>
+                      <h5>مكتبة الحواس</h5>
+                    </div>
+                  </div>
+                </Link>
+              </Grid>
+            ))
+            :
+            <p>لا توجد فئات</p>
+        } */}
         <Grid item xs={12} sm={6} md={4} xl={2} lg={3}>
           <Link href="/library" className={styles.card} style={{ backgroundColor: "#0F8AC2", backgroundImage: 'url(/images/home/photo-19.jpg)' }}>
             <div className={styles.content}>

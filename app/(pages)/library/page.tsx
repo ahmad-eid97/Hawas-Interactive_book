@@ -1,5 +1,6 @@
 //== Components
 import { PageHeader } from "@/components";
+import HawasLibrary from "@/components/HawasLibrary";
 
 export async function generateMetadata() {
   return {
@@ -12,6 +13,7 @@ const Library = () => {
   return (
     <div>
       <PageHeader title="مكتبة حواس" />
+      <HawasLibrary />
     </div>
   )
 }

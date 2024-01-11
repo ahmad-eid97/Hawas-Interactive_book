@@ -1,9 +1,9 @@
 //== Components
 import { Navbar, Footer, Banner, MainSections, Experince, Video, Courses, EventsList, CountUp, News, Gallery } from "@/components";
 //= Api
-import { getAllCourses, getAllSliders, getAllMenus, getAllBlogs, getExperinceSection, getWhyChooseUsSection, getCounters, getAllGalleries, getAllEvents, getFooterLinks, getFooterSocialLinks, getAllSettings } from '@/API/pages';
+import { getAllCourses, getAllSliders, getAllMenus, getAllCategories, getAllBlogs, getExperinceSection, getWhyChooseUsSection, getCounters, getAllGalleries, getAllEvents, getFooterLinks, getFooterSocialLinks, getAllSettings } from '@/API/pages';
 //= Types
-import type { Course, Slider, MenuItem, Blog, GalleryItem, IEvent, FooterItem, FooterSocialLinks } from "@/types";
+import type { Course, Slider, MenuItem, Blog, GalleryItem, IEvent, FooterItem, FooterSocialLinks, ICategory } from "@/types";
 
 
 export async function generateMetadata() {
@@ -17,6 +17,7 @@ export default async function Home() {
   let menus: MenuItem[] = [];
   let headerData: Slider | null = null;
   let coursesData: Course[] = [];
+  // let categoriesData: ICategory[] = [];
   let blogsData: Blog[] = [];
   let eventsData: IEvent[] = [];
   let videoData: Awaited<ReturnType<typeof getWhyChooseUsSection>> | null = null;
@@ -36,6 +37,11 @@ export default async function Home() {
     const data = await getAllSliders();
     if (data) headerData = data;
   } catch (err) { }
+
+  // try {
+  //   const data = await getAllCategories({ limit: 6 });
+  //   if (data) categoriesData = data;
+  // } catch (err) { }
 
   try {
     const data = await getAllCourses({ limit: 6 });
