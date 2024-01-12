@@ -1,3 +1,5 @@
+@import "@/styles/mixins.scss";
+
 .dropables {
   display: flex;
   align-items: center;
@@ -55,5 +57,14 @@
     //   top: 235px;
     //   left: 150px;
     // }
+  }
+  @include sm {
+    width: 500px;
+    height: 400px;
+  }
+
+  @include xs {
+    width: 100%;
+    height: 300px;
   }
 }

@@ -1,4 +1,15 @@
+@import "@/styles/mixins.scss";
+
 .bookPages {
   display: flex;
   justify-content: center;
+  @include md {
+    margin-top: 0px;
+  }
+  @include sm {
+    margin-top: 100px;
+  }
+  @include xs {
+    margin-top: 70px;
+  }
 }

@@ -6,6 +6,10 @@
   border-radius: 10px;
   font-weight: 600;
   color: var(--main-color);
+
+  @include sm {
+    font-size: 15px;
+  }
 }
 
 .arrangeWords {

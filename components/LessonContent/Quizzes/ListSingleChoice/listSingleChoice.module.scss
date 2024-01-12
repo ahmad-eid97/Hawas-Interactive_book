@@ -1,4 +1,5 @@
-@import "../../../../styles/extends.scss";
+@import "@/styles/extends.scss";
+@import "@/styles/mixins.scss";
 
 .listSingleChoice {
   max-width: 98%;
@@ -58,6 +59,24 @@
         cursor: pointer;
         &:focus {
           border-color: var(--delete-warn);
+        }
+      }
+
+      @include sm {
+        font-size: 13px;
+        display: block;
+        span {
+          margin: 0 10px;
+        }
+        span,
+        select {
+          font-size: 13px;
+        }
+        select {
+          padding: 0px 10px;
+          width: 100px;
+          height: 30px;
+          margin-top: 5px;
         }
       }
     }

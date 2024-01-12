@@ -127,6 +127,13 @@ ul {
       background-color: #373636;
     }
   }
+
+  @include sm {
+    button {
+      font-size: 12px;
+      padding: 6px 15px;
+    }
+  }
 }
 
 .correctData {
@@ -141,5 +148,9 @@ ul {
   &.wrong {
     background-color: #fdf1c8;
     border-color: #ffdd6e;
+  }
+
+  @include sm {
+    font-size: 15px;
   }
 }

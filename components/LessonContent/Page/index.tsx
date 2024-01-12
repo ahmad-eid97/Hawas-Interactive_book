@@ -15,7 +15,9 @@ const Page = ({ quizzes }: CProps) => {
 
   return (
     <div className={styles.page}>
-      {renderQuiz()}
+      <div className={styles.quiz}>
+        {renderQuiz()}
+      </div>
       <Pagination count={quizzes.length} changePage={changePage} />
       {correctAnswer && <Success />}
       {wrongAnswer && <Fail />}

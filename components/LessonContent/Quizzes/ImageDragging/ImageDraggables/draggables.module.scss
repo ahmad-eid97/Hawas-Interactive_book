@@ -1,3 +1,5 @@
+@import "@/styles/mixins.scss";
+
 .draggables {
   display: flex;
   align-items: center;
@@ -8,8 +10,6 @@
   padding: 5px;
   border-radius: 0 0 10px 10px;
   .item {
-    // width: 60px;
-    // height: 60px;
     border-radius: 5px;
     padding: 3px 10px;
     background-color: var(--box-background);
@@ -28,6 +28,10 @@
     i {
       color: var(--delete-warn);
       display: none;
+    }
+
+    @include sm {
+      font-size: 13px;
     }
   }
 }

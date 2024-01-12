@@ -1,3 +1,5 @@
+@import "@/styles/mixins.scss";
+
 .audioWithQuestion {
   h2 {
     background-color: #d8e6f3;
@@ -5,6 +7,10 @@
     border-radius: 10px;
     font-weight: 600;
     color: var(--main-color);
+
+    @include sm {
+      font-size: 13px;
+    }
   }
 
   .audioSection {
@@ -20,6 +26,13 @@
         padding: 4px 15px;
         border-radius: 6px;
         cursor: pointer;
+      }
+
+      @include sm {
+        img {
+          width: 100px;
+          object-fit: contain;
+        }
       }
     }
   }
