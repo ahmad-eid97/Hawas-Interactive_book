@@ -5,6 +5,12 @@ import { getBlogById } from "@/API/pages";
 //= Types
 import type { IBlogDetails } from '@/types';
 
+export async function generateMetadata() {
+  return {
+    title: `حواس - المدونة`,
+    description: 'تصفح مقالات حواس - اكتسب المعرفة حول مختلف جوانب الصحة والأمان من خلال مدوناتنا الممتعة والإلهامية.'
+  }
+}
 
 interface BlogDetailsProps {
   params: {

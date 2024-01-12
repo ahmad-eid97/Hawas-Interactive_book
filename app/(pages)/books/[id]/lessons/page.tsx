@@ -2,9 +2,11 @@
 import { getBookLessons } from "@/API/lessons";
 import { PageHeader, LessonsWrapper } from "@/components";
 
-export const metadata = {
-  title: 'Hawas | lessons',
-  description: "Experience the power of a dynamic book designed specifically for primary school children, offering an immersive journey filled with captivating visuals, hands-on exercises, and vibrant storytelling to foster a love for learning"
+export async function generateMetadata() {
+  return {
+    title: `حواس - الدروس`,
+    description: 'استعرض مجموعتنا من الكتب - اكتشف الموارد المفيدة التي تساعدك على تعزيز فهمك للصحة وتحقيق الأمان.'
+  }
 }
 
 const Lessons = async ({ params }: { params: { id: number } }) => {

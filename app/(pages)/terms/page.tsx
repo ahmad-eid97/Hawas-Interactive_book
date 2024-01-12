@@ -5,9 +5,14 @@ import { getTerms } from '@/API/pages';
 //= Types
 import type { TermsData } from "@/types";
 
-interface TermsProps { }
+export async function generateMetadata() {
+  return {
+    title: `حواس - الشروط و الاحكام`,
+    description: 'شروط الاستخدام لحواس - اطلع على البنود والشروط التي تحكم استخدام موقعنا والتفاعل مع خدماتنا'
+  }
+}
 
-const Terms: React.FC<TermsProps> = async () => {
+const Terms: React.FC = async () => {
   let termsData: TermsData | null = null;
 
   try {

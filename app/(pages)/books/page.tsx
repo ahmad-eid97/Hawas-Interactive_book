@@ -3,9 +3,11 @@ import { PageHeader, BooksWrapper } from "@/components";
 //== API
 import { getBooks } from "@/API/books";
 
-export const metadata = {
-  title: 'Hawas | books',
-  description: "Experience the power of a dynamic book designed specifically for primary school children, offering an immersive journey filled with captivating visuals, hands-on exercises, and vibrant storytelling to foster a love for learning"
+export async function generateMetadata() {
+  return {
+    title: `حواس - الكتب`,
+    description: 'استعرض مجموعتنا من الكتب - اكتشف الموارد المفيدة التي تساعدك على تعزيز فهمك للصحة وتحقيق الأمان.'
+  }
 }
 
 const Books: React.FC = async () => {

@@ -5,9 +5,14 @@ import { getAllServices } from "@/API/pages";
 //= Types
 import type { IService } from '@/types';
 
-interface ServicesProps { }
+export async function generateMetadata() {
+  return {
+    title: `حواس - خدماتنا`,
+    description: 'خدمات حواس لتنمية الصحة والأمان - استفد من مجموعة متنوعة من الخدمات المصممة لتعزيز صحتك وضمان سلامتك'
+  }
+}
 
-const Services: React.FC<ServicesProps> = async () => {
+const Services: React.FC = async () => {
   let services: IService[] = [];
 
   try {

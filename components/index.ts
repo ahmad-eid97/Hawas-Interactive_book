@@ -133,6 +133,7 @@ export { default as Portfolio } from './Portfolio';
 export { default as PortfolioDetails } from './PortfolioDetails';
 //== Plays page components
 export { default as HawasPlays } from './HawasPlays';
+export { default as HawasPlayDetails } from './HawasPlays/Details';
 //== Plays page components
 export { default as HawasFilms } from './HawasFilms';
 //== Plays page components

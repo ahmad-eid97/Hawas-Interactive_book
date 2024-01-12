@@ -5,9 +5,16 @@ import { getAllBlogs } from '@/API/pages';
 //= Types
 import type { Blog } from "@/types";
 
-interface BlogsProps { }
 
-const Blogs: React.FC<BlogsProps> = async () => {
+export async function generateMetadata() {
+  return {
+    title: `حواس - المدونة`,
+    description: 'تصفح مقالات حواس - اكتسب المعرفة حول مختلف جوانب الصحة والأمان من خلال مدوناتنا الممتعة والإلهامية.'
+  }
+}
+
+
+const Blogs: React.FC = async () => {
   let blogsData: Blog[] = [];
 
   try {

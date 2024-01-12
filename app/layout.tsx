@@ -6,6 +6,7 @@ import StoreProvider from '@/store/provider';
 import { Toaster } from 'react-hot-toast';
 //== Styles
 import '@/styles/global.scss';
+import 'node_modules/react-modal-video/scss/modal-video.scss';
 
 export const metadata = {
   title: 'Hawas',

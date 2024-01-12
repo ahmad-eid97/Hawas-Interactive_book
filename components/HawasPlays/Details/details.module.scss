@@ -1,0 +1,125 @@
+@import "../../../styles/mixins.scss";
+
+.details {
+  margin-bottom: 40px;
+
+  .body {
+    img {
+      width: 100%;
+      max-height: 600px;
+      border-radius: 15px;
+      object-fit: cover;
+    }
+
+    .content {
+      color: var(--text-color);
+      .meta {
+        ul {
+          margin: 0px;
+          padding: 0px;
+          display: table;
+          li {
+            position: relative;
+            float: left;
+            font-size: 14px;
+            .postAdmin {
+              display: table;
+              font-size: 14px;
+              color: var(--main-color);
+              span {
+                float: left;
+                width: 40px;
+                height: 40px;
+                overflow: hidden;
+                margin: -9px 0px;
+                margin-right: 0px;
+                margin-right: 10px;
+                border-radius: 100%;
+                border: 1px solid var(--main-color);
+                background-color: var(--main-color);
+              }
+            }
+            &::after {
+              top: 0px;
+              content: "/";
+              right: -2.5px;
+              position: absolute;
+            }
+            &:last-of-type {
+              &::after {
+                content: none;
+              }
+            }
+          }
+        }
+      }
+
+      .title {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        color: var(--main-color);
+      }
+
+      h4 {
+        font-size: 28px;
+        font-weight: bold;
+        color: var(--main-color);
+        margin: 20px 0 10px;
+      }
+
+      .gallery {
+        display: flex;
+        gap: 20px;
+
+        img {
+          width: 50%;
+          height: 250px;
+          object-fit: cover;
+        }
+      }
+
+      video {
+        width: 100%;
+        height: 450px;
+        border-radius: 8px;
+      }
+
+      p {
+        margin-bottom: 30px;
+      }
+
+      h3 {
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 30px;
+        color: var(--main-color);
+      }
+      blockquote {
+        padding: 20px;
+        padding-right: 40px;
+        max-width: 715px;
+        margin: 50px auto;
+        border-right: 6px solid var(--main-color);
+      }
+      .shareLinks {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 10px;
+        border-top: 1px solid #dbdbdc;
+        opacity: 0.7;
+        ul {
+          margin: 0px;
+          padding: 0px;
+          float: right;
+          display: table;
+          li {
+            margin-right: 20px;
+            float: left;
+          }
+        }
+      }
+    }
+  }
+}
