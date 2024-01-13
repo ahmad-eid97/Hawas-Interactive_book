@@ -2,6 +2,7 @@
 //== Modules
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import Service from './Item';
 //== Component Logic
 import useLogic from './logic';
 //= Types
@@ -32,13 +33,7 @@ const ServicesList: React.FC<ServicesListProps> = ({ data }) => {
             data.length > 0 &&
             data.map((item, index) => (
               <Grid item md={4} sm={6} xs={12} key={index}>
-                <div className={styles.servicesCard} onClick={() => router.push(`/services/${item.id}`)}>
-                  <div className={styles.icon}>
-                    <img src={item.image} alt="" />
-                  </div>
-                  <h3>{item.title}</h3>
-                  <p dangerouslySetInnerHTML={{ __html: item.description }}></p>
-                </div>
+                <Service item={item} />
               </Grid>
             ))}
         </Grid>

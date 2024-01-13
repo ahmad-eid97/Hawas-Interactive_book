@@ -1,3 +1,4 @@
+import { IService } from "../services/types";
 import { Links, Link, Meta } from "../types";
 
 export interface MenuItem {
@@ -368,4 +369,14 @@ export interface ExperienceSectionData {
   value: number | null | string;
   meta_keywords: null;
   meta_description: null;
+}
+
+
+export interface SearchResponse {
+  blogs: Blog[];
+  categories: ICategory[];
+  services: IService[];
+  jobs: any[];
+  products: any[];
+  events: IEvent[];
 }

@@ -10,7 +10,6 @@
   @include md {
     padding-top: 96px;
     padding-bottom: 128px;
-
   }
   @include sm {
     padding-right: 64px;
@@ -122,6 +121,7 @@
             text-align: center !important;
             white-space: nowrap;
             background-color: var(--bg-alt-color);
+            cursor: pointer;
           }
         }
         input {

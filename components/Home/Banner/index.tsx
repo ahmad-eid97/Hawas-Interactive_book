@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from 'next/navigation';
 //== Modules
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -13,6 +14,13 @@ interface BannerProps {
 }
 
 const Banner: React.FC<BannerProps> = ({ data }) => {
+  const router = useRouter();
+
+  function handleSearch(event: React.MouseEvent<HTMLSpanElement>) {
+    const searchValue = document.querySelector<HTMLInputElement>('#search-input')!.value;
+    router.push('/search?keyword=' + searchValue);
+  }
+
   return (
     <MouseParallaxContainer>
       <section className={`${styles.intro}`}>
@@ -55,11 +63,11 @@ const Banner: React.FC<BannerProps> = ({ data }) => {
               <form>
                 <div className={styles.inputGroup}>
                   <div className={styles.inputGroupPrepend}>
-                    <span className="input-group-text border-right-0 text-primary icon-xs rounded-left-xl">
+                    <span className="input-group-text border-right-0 text-primary icon-xs rounded-left-xl" onClick={handleSearch}>
                       <i className="fa-regular fa-magnifying-glass"></i>
                     </span>
                   </div>
-                  <input type="search" placeholder="ابحث في حواس …" />
+                  <input type="search" placeholder="ابحث في حواس …" id="search-input" />
                 </div>
               </form>
               <p> بحث شائع: تطوير ، أعمال ، تصميم ، تسويق </p>
@@ -73,7 +81,6 @@ const Banner: React.FC<BannerProps> = ({ data }) => {
           <svg viewBox="0 0 1920 230" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill="currentColor" d="M0,229l1920,0V-0.4c0,25.8-19.6,47.3-45.2,49.8L54.8,223.8C25.4,226.6,0,203.5,0,174V229z"></path>
           </svg>
-
         </div>
       </section>
     </MouseParallaxContainer>
