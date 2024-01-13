@@ -19,7 +19,8 @@ import type {
   CounterItem,
   FooterSocialLinks,
   GalleriesCategoriesDataResponse,
-  ExperienceSectionData
+  ExperienceSectionData,
+  SearchResponse
 } from '@/types';
 
 
@@ -126,4 +127,10 @@ export const getAllSettings = cache(async () => {
 export const subscribeToNewsletter = cache(async (email: string) => {
   const response = await API.POST<Response<NewsletterResponse>>(`/newsletter`, { body: { email } });
   return response.data;
+});
+
+
+export const searchInDatabase = cache(async (keyword: string) => {
+  const response = await API.GET<SearchResponse>(`/search?keyword=${keyword}`, { headers: generateLanguageHeader() });
+  return response?.data?.data as SearchResponse;
 });
