@@ -11,7 +11,7 @@ import styles from './chooseWord.module.scss';
 
 const ChooseLetter = ({ questionData }: { questionData: QuestionData }) => {
   const { items, choices, addToChoices, isLoading } = useLogic({ questionData });
-  console.log(questionData)
+
   if (isLoading) return <PageLoader />;
   return (
     <div className={styles.chooseLetter}>

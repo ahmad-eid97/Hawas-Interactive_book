@@ -1,3 +1,5 @@
+@import "@/styles/mixins.scss";
+
 .imagesPuzzle {
   max-width: 900px;
   margin-left: auto;
@@ -9,6 +11,10 @@
     border-radius: 10px;
     font-weight: 600;
     color: var(--main-color);
+
+    @include sm {
+      font-size: 15px;
+    }
   }
   .images {
     display: flex;
@@ -23,6 +29,11 @@
       cursor: pointer;
       background-color: #fff;
       box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+
+      @include sm {
+        width: 80px;
+        height: 60px;
+      }
     }
   }
   .area {
@@ -33,6 +44,9 @@
     img {
       flex: 1;
       object-fit: contain;
+      @include sm {
+        width: 45%;
+      }
     }
     .items {
       display: grid;
@@ -56,6 +70,10 @@
           width: 100%;
           height: 100%;
           object-fit: fill;
+        }
+
+        @include sm {
+          height: 70px;
         }
       }
     }

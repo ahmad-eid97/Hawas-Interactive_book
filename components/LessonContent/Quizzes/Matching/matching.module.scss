@@ -1,4 +1,5 @@
-@import "../../../../styles/extends.scss";
+@import "@/styles/extends.scss";
+@import "@/styles/mixins.scss";
 
 .title {
   background-color: #d8e6f3;
@@ -6,6 +7,10 @@
   border-radius: 10px;
   font-weight: 600;
   color: var(--main-color);
+
+  @include sm {
+    font-size: 15px;
+  }
 }
 
 .matching {
@@ -25,6 +30,10 @@
   z-index: 1;
   margin-top: 20px;
 
+  @include sm {
+    width: auto;
+  }
+
   .righthand,
   .lefthand {
     -moz-user-select: -moz-none;
@@ -41,6 +50,10 @@
       padding: 7px 0;
       background-color: var(--box-background);
       color: var(--text-inside);
+
+      @include sm {
+        font-size: 13px;
+      }
     }
 
     p {
@@ -55,6 +68,11 @@
       box-shadow: 0 0 5px rgba(0, 0, 0, 0);
       font-weight: 700;
       color: #232323;
+
+      @include sm {
+        font-size: 13px;
+      }
+
       span {
         font-weight: 700;
       }
@@ -71,6 +89,11 @@
         top: 50%;
         transform: translateY(-50%);
         cursor: pointer;
+
+        @include sm {
+          width: 12px;
+          height: 12px;
+        }
       }
     }
     img {
@@ -78,6 +101,11 @@
       height: 72px;
       object-fit: contain;
       border-radius: 10px;
+
+      @include sm {
+        width: 70px;
+        height: 55px;
+      }
     }
   }
 
@@ -87,11 +115,17 @@
     text-align: var(--align);
     p {
       padding: 7px 15px 7px 30px;
+      @include sm {
+        padding: 5px 10px 7px 20px;
+      }
     }
     p.big {
       min-height: 80px;
       display: flex;
       align-items: center;
+      @include sm {
+        min-height: 65px;
+      }
     }
   }
 
@@ -106,6 +140,10 @@
       span.matching_box {
         right: 15px;
         left: unset;
+      }
+
+      @include sm {
+        padding-inline-start: 30px;
       }
     }
   }

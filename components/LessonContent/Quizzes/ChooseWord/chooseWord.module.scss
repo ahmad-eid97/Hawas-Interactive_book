@@ -1,4 +1,5 @@
 @import "../../../../styles/extends.scss";
+@import "../../../../styles/mixins.scss";
 
 .chooseLetter {
   max-width: 100%;
@@ -9,6 +10,10 @@
     border-radius: 10px;
     font-weight: 600;
     color: var(--main-color);
+
+    @include sm {
+      font-size: 15px;
+    }
   }
 
   .questionContentWrapper {
@@ -32,7 +37,7 @@
   .itemsWrapper {
     @extend %quizFrame;
     max-width: 600px;
-    width: 90%;
+    // width: 90%;
     background: url("../../../../public/images/quizzes/chart.svg");
     display: flex;
     flex-direction: column;
@@ -42,6 +47,10 @@
       i {
         font-size: 1.1rem;
         color: var(--box-background);
+
+        @include sm {
+          font-size: 15px;
+        }
       }
       .choices {
         display: flex;
@@ -69,6 +78,13 @@
           &:hover {
             color: var(--main-color);
           }
+          @include sm {
+            font-size: 13px;
+          }
+        }
+
+        @include sm {
+          gap: 0px;
         }
       }
     }

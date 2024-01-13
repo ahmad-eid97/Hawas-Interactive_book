@@ -1,8 +1,16 @@
+@import "@/styles/mixins.scss";
+
 .page {
   height: 83%;
   padding: 20px 40px;
   overflow-y: auto;
   overflow-x: hidden;
+
+  @include sm {
+    padding: 20px 10px;
+    height: 80%;
+  }
+
   &::-webkit-scrollbar {
     width: 6px !important;
     /* width of the entire scrollbar */

@@ -1,9 +1,18 @@
 @import '../../../../styles/extends.scss';
+@import '../../../../styles/mixins.scss';
 
 .dragging {
   max-width: 99%;
-  h2 {
+  &>h2 {
     margin-bottom: 20px;
+    background-color: #d8e6f3;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+
+    @include sm {
+      font-size: 15px;
+    }
   }
   .words {
     @extend %quizFrame;
@@ -34,6 +43,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
+      @include sm {
+        font-size: 13px;
+        min-width: 70px;
+      }
     }
   }
 }

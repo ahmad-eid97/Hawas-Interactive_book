@@ -1,3 +1,5 @@
+@import "@/styles/mixins.scss";
+
 .draggables {
   display: flex;
   align-items: center;
@@ -26,6 +28,10 @@
     i {
       color: var(--delete-warn);
       display: none;
+    }
+
+    @include sm {
+      font-size: 13px;
     }
   }
 }

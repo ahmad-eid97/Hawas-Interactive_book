@@ -14,8 +14,7 @@ const ArrangeWords = ({ questionData }: { questionData: any }) => {
   const { items, droppingArea, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, correctAnswer, showCorrection, retry, rendered, isLoading } = useLogic({ questionData });
 
   if (!rendered) return null;
-  if (isLoading) return <PageLoader />
-
+  if (isLoading) return <PageLoader />;
   return (
     <>
       <h2 className={styles.title}>{questionData?.title}</h2>

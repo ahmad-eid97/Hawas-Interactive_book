@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 10px;
   width: 100%;
   button {
@@ -33,6 +34,9 @@
     &.last {
       flex: 1;
       max-width: 500px;
+      @include sm {
+        display: none;
+      }
     }
   }
 }
