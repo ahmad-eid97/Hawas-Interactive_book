@@ -1,4 +1,5 @@
-@import "../../../../styles/extends.scss";
+@import "@/styles/extends.scss";
+@import "@/styles/mixins.scss";
 
 .continueTyping {
   max-width: 98%;
@@ -9,6 +10,10 @@
     border-radius: 10px;
     font-weight: 600;
     color: var(--main-color);
+
+    @include sm {
+      font-size: 15px;
+    }
   }
   .wrapper {
     background: url("../../../../public/images/quizzes/chart.svg");
@@ -49,6 +54,17 @@
         border: 1px solid transparent;
         &:focus {
           border-color: var(--delete-warn);
+        }
+      }
+
+      @include sm {
+        font-size: 13px;
+        display: block;
+        input {
+          margin-top: 10px;
+          width: 80px;
+          height: 40px;
+          font-size: 13px;
         }
       }
     }

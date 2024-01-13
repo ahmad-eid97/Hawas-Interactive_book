@@ -1,3 +1,5 @@
+@import "@/styles/mixins.scss";
+
 .imageWithText {
   display: flex;
   align-items: flex-start;
@@ -7,10 +9,30 @@
   img {
     width: 220px;
   }
+
+  img {
+    @include sm {
+      width: 40%;
+    }
+  }
+
+  div {
+    @include sm {
+      width: 60%;
+      * {
+        width: 95%;
+      }
+    }
+  }
+
   div {
     * {
       font-size: 1.1rem !important;
       font-weight: 700 !important;
+
+      @include sm {
+        font-size: 12px !important;
+      }
     }
   }
   img {
@@ -19,7 +41,6 @@
   &.right {
     flex-direction: row-reverse;
   }
-  &.left {}
   &.bottom {
     display: flex;
     flex-direction: column;

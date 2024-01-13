@@ -1,4 +1,5 @@
-@import "../../../../styles/extends.scss";
+@import "@/styles/extends.scss";
+@import "@/styles/mixins.scss";
 
 .title {
   background-color: #d8e6f3;
@@ -6,10 +7,14 @@
   border-radius: 10px;
   font-weight: 600;
   color: var(--main-color);
+
+  @include sm {
+    font-size: 15px;
+  }
 }
 
 .sorting {
-  max-width: 95%;
+  max-width: 100%;
   @extend %quizFrame;
   padding: 20px 30px;
   background: url("../../../../public/images/quizzes/05.svg");

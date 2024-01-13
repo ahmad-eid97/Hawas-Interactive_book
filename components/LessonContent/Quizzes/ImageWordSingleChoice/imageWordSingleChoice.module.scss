@@ -99,6 +99,10 @@
       .wrong {
         color: var(--delete-warn) !important;
       }
+
+      @include sm {
+        font-size: 13px;
+      }
     }
     .choices {
       display: flex;

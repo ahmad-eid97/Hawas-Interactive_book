@@ -1,9 +1,13 @@
-@import "../../../../styles/extends.scss";
+@import "@/styles/extends.scss";
+@import "@/styles/mixins.scss";
 
 .chooseLetter {
   max-width: 100%;
   h2 {
     margin-bottom: 20px;
+    @include sm {
+      font-size: 15px;
+    }
   }
   .itemsWrapper {
     max-width: 600px;
@@ -22,6 +26,9 @@
         margin-bottom: 10px;
         font-weight: 700;
         font-size: 1.3rem;
+        @include sm {
+          font-size: 15px;
+        }
       }
       .choices {
         display: flex;
@@ -49,6 +56,12 @@
           }
           &:hover {
             color: var(--main-color);
+          }
+        }
+
+        @include sm {
+          span {
+            font-size: 13px;
           }
         }
       }

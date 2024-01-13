@@ -1,6 +1,6 @@
 "use client";
 //== Hooks
-import { useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 //== Modules
 import { useQuery } from "@tanstack/react-query";
 //== API
@@ -16,7 +16,20 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     "#e17055",
   ]);
   const [choosedColor, setChoosedColor] = useState<string>(colors[0]);
+  const [dimensions, setDimensions] = useState({ width: 160, height: 30 });
   const drawingCanvas = useRef<any>(null);
+
+  useEffect(() => {
+    if (window.matchMedia(`(max-width: 400px)`).matches) {
+      setDimensions({ width: 280, height: 300 });
+    } else if (window.matchMedia(`(max-width: 750px)`).matches) {
+      setDimensions({ width: 300, height: 350 });
+    } else if (window.matchMedia(`(max-width: 992px)`).matches) {
+      setDimensions({ width: 350, height: 380 });
+    } else if (window.matchMedia(`(max-width: 1200px)`).matches) {
+      setDimensions({ width: 500, height: 400 });
+    }
+  }, [])
 
   const getQuestion = async () => {
     return await getDrawingQuestion(questionData.id);
@@ -27,8 +40,8 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   });
 
   const canvasStyles = {
-    width: 500,
-    height: 400,
+    width: dimensions.width,
+    height: dimensions.height,
     borderRadius: 10,
     backgroundColor: 'transparent',
   };

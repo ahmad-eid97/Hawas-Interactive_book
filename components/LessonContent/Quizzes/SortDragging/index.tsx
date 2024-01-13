@@ -26,7 +26,7 @@ interface Cprops {
 
 function SortDragging({ questionData }: Cprops) {
   const { items, handleDragEnd, correctAnswer, showCorrection, retry, rendered, isLoading } = useLogic({ questionData });
-  console.log(items)
+
   if (!rendered) return null;
   if (isLoading) return <PageLoader />
   return (

@@ -1,3 +1,5 @@
+@import "@/styles/mixins.scss";
+
 .groupTrueAndFalse {
   h2 {
     margin-bottom: 20px;
@@ -6,6 +8,10 @@
     border-radius: 10px;
     font-weight: 600;
     color: var(--main-color);
+
+    @include sm {
+      font-size: 15px;
+    }
   }
   ul {
     border: 1px solid var(--border-color);
@@ -58,6 +64,17 @@
         height: 100%;
         width: 1px;
         border-right: 1px solid var(--border-color);
+      }
+
+      @include sm {
+        font-size: 13px;
+
+        span {
+          i {
+            width: 25px;
+            height: 25px;
+          }
+        }
       }
     }
   }

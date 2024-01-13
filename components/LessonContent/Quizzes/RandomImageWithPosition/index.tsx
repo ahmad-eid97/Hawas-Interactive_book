@@ -18,11 +18,13 @@ const ImageDragging = ({ questionData }: { questionData: QuestionData }) => {
   return (
     <>
       <h2 className={styles.title}>{questionData.title}</h2>
-      {questionData.additional_image ?
-        <img className={styles.additionalImage} src={questionData.additional_image} alt="question_image" />
-        :
-        null
-      }
+      <div className={styles.additionalImage}>
+        {questionData.additional_image ?
+          <img src={questionData.additional_image} alt="question_image" />
+          :
+          null
+        }
+      </div>
       <div className={styles.arrangeWords}>
         <div className={styles.wrapper}>
           <ImageDroppables

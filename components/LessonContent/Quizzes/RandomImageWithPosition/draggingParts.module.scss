@@ -12,6 +12,20 @@
   }
 }
 
+.additionalImage {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include sm {
+    img {
+      max-height: 200px;
+      max-width: 200px;
+    }
+  }
+}
+
 .arrangeWords {
   margin-top: 20px;
 }

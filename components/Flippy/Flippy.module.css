@@ -120,7 +120,7 @@
 .flippy_container .flippy .page .face.front {
   width: 50%;
   isolation: isolate;
-  z-index: 1;
+  z-index: 9;
   box-shadow: inset -10px 0 30px -7px rgba(0, 0, 0, 0.35);
   border: none;
 }
@@ -182,7 +182,7 @@
   transform-origin: left;
 }
 .flippy_container .flippy .page.cover .face.front {
-  z-index: 1;
+  z-index: 9;
   backface-visibility: hidden;
 }
 .flippy_container .flippy .page.cover .face.back {
@@ -216,7 +216,7 @@
   transform-origin: right;
 }
 .flippy_container .flippy .page.cover_end .face.front {
-  z-index: 1;
+  z-index: 9;
   backface-visibility: hidden;
 }
 .flippy_container .flippy .page.cover_end .face.back {

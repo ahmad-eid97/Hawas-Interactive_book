@@ -1,3 +1,5 @@
+@import "@/styles/mixins.scss";
+
 .draggables {
   display: flex;
   align-items: center;
@@ -7,7 +9,6 @@
   row-gap: 10px;
   padding: 20px;
   border-radius: 10px;
-  // background: url('../../../../../public/images/quizzes/9.png');
   background-color: var(--third-color);
   width: 100%;
   .item {
@@ -26,5 +27,14 @@
       color: var(--delete-warn);
       display: none;
     }
+
+    @include sm {
+      font-size: 13px;
+    }
+  }
+
+  @include sm {
+    column-gap: 10px;
+    row-gap: 5px;
   }
 }
