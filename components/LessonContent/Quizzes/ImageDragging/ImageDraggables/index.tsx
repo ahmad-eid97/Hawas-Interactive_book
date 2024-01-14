@@ -8,9 +8,10 @@ interface CProps {
   dragEnd: (e: React.DragEvent<HTMLParagraphElement>) => void;
   removeChoice: (e: React.MouseEvent<HTMLElement, MouseEvent>, idx: number) => void;
   questionDetails: any;
+  dragByClick: (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>) => void
 }
 
-const Draggables = ({ droppingArea, dragStart, dragEnd, removeChoice, questionDetails }: CProps) => {
+const Draggables = ({ droppingArea, dragStart, dragEnd, removeChoice, questionDetails, dragByClick }: CProps) => {
   return (
     <div className={styles.draggables} ref={droppingArea}>
       {questionDetails?.choices.map((choice: any, idx: number) => (
@@ -20,6 +21,7 @@ const Draggables = ({ droppingArea, dragStart, dragEnd, removeChoice, questionDe
           onDragStart={(e) => dragStart(e)}
           onDragEnd={(e) => dragEnd(e)}
           key={choice.id}
+          onClick={(e) => dragByClick(e)}
         >
           {choice.title}
           <i className="fa-duotone fa-ban" onClick={(e) => removeChoice(e, idx)}></i>

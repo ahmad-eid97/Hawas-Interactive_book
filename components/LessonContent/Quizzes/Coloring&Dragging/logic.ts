@@ -57,16 +57,16 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
 
   const dragByClick = (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>) => {
     if (clickedItem) return;
-    e.currentTarget.classList.add('activeForDragging')
-    setClickedItem(e.currentTarget)
+    e.currentTarget.classList.add('activeForDragging');
+    setClickedItem(e.currentTarget);
   }
 
   const dropByClick = (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>, index: number) => {
     if (e.currentTarget.children.length > 0) return;
-    clickedItem?.classList.remove('activeForDragging')
+    clickedItem?.classList.remove('activeForDragging');
     if (clickedItem) e.currentTarget.appendChild(clickedItem);
-    setClickedItem(null)
-    setStudentAnswer({ ...studentAnswer, [index]: clickedItem?.innerText })
+    setClickedItem(null);
+    setStudentAnswer({ ...studentAnswer, [index]: clickedItem?.innerText });
   }
 
   const colorLetter = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {

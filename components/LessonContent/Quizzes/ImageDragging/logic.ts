@@ -1,6 +1,6 @@
 "use client";
 //== Hooks 
-import { useState, useRef, useEffect, use } from "react";
+import { useState, useRef, useEffect } from "react";
 //== Modules
 import { useQuery } from "@tanstack/react-query";
 //== Store
@@ -16,6 +16,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
   const [rendered, setRendered] = useState(true);
   const droppingArea = useRef<HTMLDivElement | null>(null);
   const [newDataLoading, setNewDataLoading] = useState(true);
+  const [clickedItem, setClickedItem] = useState<HTMLElement | null>(null);
   const dispatch = useAppDispatch();
   //== Audio part
   const [audioOpened, setAudioOpened] = useState(false);
@@ -62,6 +63,23 @@ export default function useLogic({ questionData }: { questionData: any }) {
     setStudentAnswer({ ...studentAnswer, [index]: draggableItem?.innerText })
   }
 
+  const dragByClick = (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>) => {
+    if (clickedItem) return;
+    //@ts-ignore
+    if (e.target.tagName !== 'I') {
+      e.currentTarget.classList.add('activeBGForDragging');
+      setClickedItem(e.currentTarget);
+    };
+  }
+
+  const dropByClick = (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>, index: number) => {
+    if (e.currentTarget.children.length > 0) return;
+    clickedItem?.classList.remove('activeBGForDragging');
+    if (clickedItem) e.currentTarget.appendChild(clickedItem);
+    setClickedItem(null);
+    setStudentAnswer({ ...studentAnswer, [index]: clickedItem?.innerText })
+  }
+
   const openAudio = async (status: boolean) => {
     switch (status) {
       case true:
@@ -84,7 +102,8 @@ export default function useLogic({ questionData }: { questionData: any }) {
         break;
       }
     }
-    setStudentAnswer({ ...answers })
+    setStudentAnswer({ ...answers });
+    setClickedItem(null);
   }
 
   const compareObjects = (obj1: any, obj2: any) => {
@@ -97,7 +116,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
   }
 
   const correctAnswer = () => {
-    console.log(data?.correctAnswer, studentAnswer)
+    if (clickedItem) setClickedItem(null);
     if (compareObjects(data?.correctAnswer, studentAnswer)) {
       dispatch(checkAnswer(true))
       setTimeout(() => {
@@ -126,6 +145,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
   }
 
   const retry = () => {
+    if (clickedItem) setClickedItem(null);
     setRendered(false);
     setShowCorrection(null);
     setStudentAnswer({});
@@ -141,6 +161,8 @@ export default function useLogic({ questionData }: { questionData: any }) {
     dragOver,
     dragLeave,
     drop,
+    dragByClick,
+    dropByClick,
     removeChoice,
     showCorrection,
     correctAnswer,

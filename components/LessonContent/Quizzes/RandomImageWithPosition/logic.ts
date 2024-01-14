@@ -16,6 +16,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
   const [rendered, setRendered] = useState(true);
   const droppingArea = useRef<HTMLDivElement | null>(null);
   const [newDataLoading, setNewDataLoading] = useState(true);
+  const [clickedItem, setClickedItem] = useState<HTMLElement | null>(null);
   const dispatch = useAppDispatch();
 
   const getQuestionData = () => {
@@ -59,11 +60,29 @@ export default function useLogic({ questionData }: { questionData: any }) {
     setStudentAnswer([...studentAnswer, draggableItem?.innerText])
   }
 
+  const dragByClick = (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>) => {
+    if (clickedItem) return;
+    //@ts-ignore
+    if (e.target.tagName !== 'I') {
+      e.currentTarget.classList.add('activeBGForDragging');
+      setClickedItem(e.currentTarget);
+    };
+  }
+
+  const dropByClick = (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>, index: number) => {
+    if (e.currentTarget.children.length > 0) return;
+    clickedItem?.classList.remove('activeBGForDragging');
+    if (clickedItem) e.currentTarget.appendChild(clickedItem);
+    setClickedItem(null);
+    setStudentAnswer([...studentAnswer, clickedItem?.innerText])
+  }
+
   const removeChoice = (e: React.MouseEvent<HTMLElement, MouseEvent>, idx: number) => {
     if (e.currentTarget.parentElement) droppingArea.current?.insertBefore(e.currentTarget.parentElement, droppingArea?.current.children[idx]);
     const answers = [...studentAnswer];
     answers.filter((item) => item !== e.currentTarget.parentElement?.innerText);
     setStudentAnswer([...answers])
+    setClickedItem(null);
   }
 
   const compareArrays = (array1: any, array2: any) => {
@@ -92,6 +111,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
   }
 
   const correctAnswer = () => {
+    if (clickedItem) setClickedItem(null);
     if (compareArrays(data?.correctAnswer, studentAnswer)) {
       dispatch(checkAnswer(true))
       setTimeout(() => {
@@ -120,6 +140,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
   }
 
   const retry = () => {
+    if (clickedItem) setClickedItem(null);
     setRendered(false);
     setShowCorrection(null);
     setStudentAnswer([]);
@@ -135,6 +156,8 @@ export default function useLogic({ questionData }: { questionData: any }) {
     dragOver,
     dragLeave,
     drop,
+    dragByClick,
+    dropByClick,
     removeChoice,
     showCorrection,
     correctAnswer,

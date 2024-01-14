@@ -16,6 +16,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   const [rendered, setRendered] = useState(true);
   const [studentAnswer, setStudentAnswer] = useState({});
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
+  const [clickedItem, setClickedItem] = useState<HTMLElement | null>(null);
   const dispatch = useAppDispatch();
 
   const getQuestion = async () => {
@@ -26,14 +27,12 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     cacheTime: 0
   });
 
-  console.log(data)
-
   const dragStart = (e: React.DragEvent<HTMLImageElement>, index: number) => {
     setDraggableItem(e.currentTarget);
     let newElement: any = e.currentTarget.cloneNode(true)
     newElement.id = Math.random() * 20;
     e.dataTransfer.effectAllowed = 'move';
-    setDraggableItemIndex(index)
+    setDraggableItemIndex(index);
   }
 
   const dragEnd = (e: React.DragEvent<HTMLImageElement>) => {
@@ -48,10 +47,26 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     e.preventDefault();
     if (e.currentTarget.children.length >= 1) return;
     e.currentTarget.appendChild(draggableItem);
+    setStudentAnswer({ ...studentAnswer, [index]: draggableItemIndex });
+  }
+
+  const dragByClick = (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>, index: number) => {
+    if (clickedItem) return;
+    e.currentTarget.classList.add('activeBGForDragging');
+    setClickedItem(e.currentTarget);
+    setDraggableItemIndex(index);
+  }
+
+  const dropByClick = (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>, index: number) => {
+    if (e.currentTarget.children.length > 0) return;
+    clickedItem?.classList.remove('activeBGForDragging');
+    if (clickedItem) e.currentTarget.appendChild(clickedItem);
+    setClickedItem(null);
     setStudentAnswer({ ...studentAnswer, [index]: draggableItemIndex })
   }
 
   const retry = () => {
+    if (clickedItem) setClickedItem(null);
     setRendered(false);
     setShowCorrection(null);
     setStudentAnswer({});
@@ -70,6 +85,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   const correctAnswer = () => {
+    if (clickedItem) setClickedItem(null);
     if (compareObjects(data?.correctAnswer, studentAnswer)) {
       dispatch(checkAnswer(true))
       setTimeout(() => {
@@ -103,6 +119,8 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     dragEnd,
     dragOver,
     drop,
+    dragByClick,
+    dropByClick,
     retry,
     rendered,
     correctAnswer,
