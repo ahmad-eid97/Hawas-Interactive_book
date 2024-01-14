@@ -26,8 +26,6 @@ const BookPages = ({ data, flippy }: CProps) => {
           breakpoint={992}
           flippingTime={500}
           disableSound={false}
-          // flipNext={(pageNum: number) => goToNextPage(pageNum)}
-          // flipPrev={goToPrevPage}
           ref={flippy}
         >
           <FrontCover cover={data?.book?.logo_file} lessonNumber={data?.current_lesson.sort} lessonTitle={data?.current_lesson?.title} />

@@ -70,7 +70,6 @@ function Matching({
       const rightXOffset = document.querySelector(`.${classes.righthand}`)!.getBoundingClientRect().width + 20;
       const leftXOffset = document.querySelector(`.${classes.righthand}`)!.getBoundingClientRect().width + 20;
       const height = document.querySelector(`.${classes.matching}`)!.getBoundingClientRect().height;
-      console.log({ width, height, innerWidth, rightXOffset, leftXOffset });
       setSvgDims({ width, height, innerWidth, rightXOffset, leftXOffset });
     }, 200);
   }, [isLoading]);
@@ -208,7 +207,6 @@ function Matching({
     pathConfig.c1 = X2 * (isMobile ? mobileFactor : normalFactor);
     pathConfig.c2 = Y2;
     pathConfig.c3 = X2 / (isMobile ? mobileFactor : normalFactor);
-    console.log(pathConfig);
 
     PATH.setAttribute('d', `M${pathConfig.x1} ${pathConfig.y1} C ${dir === 'rtl'
       ? `${pathConfig.c1 * 2.5} ${pathConfig.c2}, ${pathConfig.c1} ${pathConfig.c2}`
