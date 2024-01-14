@@ -63,12 +63,16 @@ function Matching({
 
   useEffect(() => {
     if (isLoading) return;
-    const width = document.querySelector(`.${classes.matching}`)!.getBoundingClientRect().width;
-    const innerWidth = document.querySelector(`.${classes.matching_area}`)!.getBoundingClientRect().width + 20;
-    const rightXOffset = document.querySelector(`.${classes.righthand}`)!.getBoundingClientRect().width + 20;
-    const leftXOffset = document.querySelector(`.${classes.righthand}`)!.getBoundingClientRect().width + 20;
-    const height = document.querySelector(`.${classes.matching}`)!.getBoundingClientRect().height;
-    setSvgDims({ width, height, innerWidth, rightXOffset, leftXOffset });
+
+    setTimeout(() => {
+      const width = document.querySelector(`.${classes.matching}`)!.getBoundingClientRect().width;
+      const innerWidth = document.querySelector(`.${classes.matching_area}`)!.getBoundingClientRect().width + 20;
+      const rightXOffset = document.querySelector(`.${classes.righthand}`)!.getBoundingClientRect().width + 20;
+      const leftXOffset = document.querySelector(`.${classes.righthand}`)!.getBoundingClientRect().width + 20;
+      const height = document.querySelector(`.${classes.matching}`)!.getBoundingClientRect().height;
+      console.log({ width, height, innerWidth, rightXOffset, leftXOffset });
+      setSvgDims({ width, height, innerWidth, rightXOffset, leftXOffset });
+    }, 200);
   }, [isLoading]);
 
   /**
