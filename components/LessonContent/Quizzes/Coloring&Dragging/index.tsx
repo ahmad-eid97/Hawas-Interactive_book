@@ -11,7 +11,7 @@ import { QuestionData } from '../types';
 import styles from './coloring&Dragging.module.scss';
 
 export default function ColoringAndDragging({ questionData }: { questionData: QuestionData }) {
-  const { questionDetails, dragStart, dragOver, dragLeave, dragEnd, drop, setChoosedColor, colorLetter, rendered, retry, correctAnswer, showCorrection, isLoading } = useLogic({ questionData });
+  const { questionDetails, dragStart, dragOver, dragLeave, dragEnd, drop, dragByClick, dropByClick, setChoosedColor, colorLetter, rendered, retry, correctAnswer, showCorrection, isLoading } = useLogic({ questionData });
 
   if (!rendered) return null;
   if (isLoading) return <PageLoader />
@@ -50,9 +50,21 @@ export default function ColoringAndDragging({ questionData }: { questionData: Qu
               {questionDetails?.fixedLetters.map((letter: string, index: number) => (
                 <Fragment key={index}>
                   {letter === '-' ?
-                    <div onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, index)} key={index}></div>
+                    <div
+                      key={index}
+                      onDragOver={(e) => dragOver(e)}
+                      onDragLeave={(e) => dragLeave(e)}
+                      onDrop={(e) => drop(e, index)}
+                      onClick={(e) => dropByClick(e, index)}
+                    ></div>
                     :
-                    <div onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, index)} key={index}>
+                    <div
+                      key={index}
+                      onDragOver={(e) => dragOver(e)}
+                      onDragLeave={(e) => dragLeave(e)}
+                      onDrop={(e) => drop(e, index)}
+                      onClick={(e) => dropByClick(e, index)}
+                    >
                       <p>{letter}</p>
                     </div>
                   }
@@ -66,7 +78,9 @@ export default function ColoringAndDragging({ questionData }: { questionData: Qu
                     draggable={true}
                     onDragStart={(e) => dragStart(e)}
                     onDragEnd={(e) => dragEnd(e)}
-                    key={index}>
+                    key={index}
+                    onClick={dragByClick}
+                  >
                     {letter}
                   </p>
                 </Fragment>
