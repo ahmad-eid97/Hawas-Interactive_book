@@ -20,6 +20,11 @@
   }
   &.top {
     position: relative;
+
+    @include sm {
+      width: 110%;
+      transform: scale(0.9) translateX(0px);
+    }
   }
 
   @include sm {
