@@ -884,7 +884,7 @@ const Flippy = (
 
   return (
     <div
-      className={classes.flippy_container}
+      className={`${classes.flippy_container} ${currentPage !== 0 ? classes.bookOpened : ""}`}
       style={{ width: flippyWidth + 80, height: flippyHeight + 60 }}
     >
       <div

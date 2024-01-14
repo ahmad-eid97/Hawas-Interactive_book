@@ -7,11 +7,12 @@ import useLogic from "./logic";
 import styles from "./bookPages.module.scss";
 
 interface CProps {
-  data: { book: any, content: any[], quizzes: any[], current_lesson: any }
+  data: { book: any, content: any[], quizzes: any[], current_lesson: any };
+  flippy: any;
 }
 
-const BookPages = ({ data }: CProps) => {
-  const { pageLoaded, bookWidth, bookHeight, flippy } = useLogic();
+const BookPages = ({ data, flippy }: CProps) => {
+  const { pageLoaded, bookWidth, bookHeight } = useLogic();
 
   return (
     <div className={styles.bookPages}>
