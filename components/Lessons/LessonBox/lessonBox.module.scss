@@ -263,11 +263,6 @@
     z-index: 2;
     width: 40px;
 
-    @include sm {
-      transform: scale(0.8);
-      right: 10px;
-    }
-
     &::before,
     &::after {
       content: '';
@@ -320,6 +315,19 @@
       font-size: 18px;
       line-height: 1em;
       transform: translateY(10px);
+    }
+
+    @include sm {
+      transform: scale(0.8);
+      right: 10px;
+
+      &::before {
+        left: 0.5px;
+      }
+
+      &::after {
+        right: 0.5px;
+      }
     }
   }
 }
