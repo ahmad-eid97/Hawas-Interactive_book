@@ -27,13 +27,13 @@ const NextButton = ({ bookId, nextLesson, prevLesson, flippy }: CProps) => {
         :
         null
       }
-      <button className={styles.smallScreenBtn} onClick={() => flippy.flipNext()}><i className="fa-solid fa-angles-right"></i></button>
+      <button className={styles.smallScreenBtn} onClick={() => flippy.flipPrev()}><i className="fa-solid fa-angles-right"></i></button>
       <button className={styles.middle}>
         <Link href={`/books/${bookId}/lessons`}>
           <i className="fa-regular fa-house"></i>
         </Link>
       </button>
-      <button className={styles.smallScreenBtn} onClick={() => flippy.flipPrev()}><i className="fa-solid fa-angles-left"></i></button>
+      <button className={styles.smallScreenBtn} onClick={() => flippy.flipNext()}><i className="fa-solid fa-angles-left"></i></button>
       {
         nextLesson ?
           <button onClick={() => goToNextLesson(nextLesson.id)} className={styles.last}>
