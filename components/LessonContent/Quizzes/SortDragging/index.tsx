@@ -2,16 +2,8 @@
 //== Hooks
 import { Fragment } from "react";
 //== Modules
-import {
-  DndContext,
-  closestCenter
-} from "@dnd-kit/core";
-import {
-  SortableContext,
-  verticalListSortingStrategy
-} from "@dnd-kit/sortable";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 //== Components
-import SortableItem from './SortableItem';
 import { PageLoader } from '@/components';
 //== Component Logic
 import useLogic from './logic';
@@ -25,7 +17,7 @@ interface Cprops {
 }
 
 function SortDragging({ questionData }: Cprops) {
-  const { items, handleDragEnd, correctAnswer, showCorrection, retry, rendered, isLoading } = useLogic({ questionData });
+  const { items, handleOndragEnd, correctAnswer, showCorrection, retry, rendered, isLoading } = useLogic({ questionData });
 
   if (!rendered) return null;
   if (isLoading) return <PageLoader />
@@ -33,23 +25,36 @@ function SortDragging({ questionData }: Cprops) {
     <>
       <h2 className={styles.title}>{questionData.title}</h2>
       <div className={styles.sorting}>
-        <DndContext
-          collisionDetection={closestCenter}
-          onDragEnd={(e) => handleDragEnd(e)}
-        >
-          <div>
-            <SortableContext
-              items={items}
-              strategy={verticalListSortingStrategy}
-            >
-              {/* We need components that use the useSortable hook */}
-              <></>
-              {items.map((item: any, index: number) =>
-                <SortableItem key={index} id={item} />
+        <DragDropContext onDragEnd={handleOndragEnd}>
+          <div className={styles.droppableWrapper}>
+            <Droppable droppableId="ordering">
+              {(provided) => (
+                <div {...provided.droppableProps} ref={provided.innerRef} className={styles.items}>
+                  {items.map((item: any, index: number) => (
+                    <Draggable
+                      key={item.id}
+                      draggableId={`${item.id}`}
+                      index={index}
+                    >
+                      {(provided) => (
+                        <div
+                          className={styles.item}
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                        >
+                          {item.image && <img src={item.image} alt="choice_img" />}
+                          {item.title}
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
               )}
-            </SortableContext>
+            </Droppable>
           </div>
-        </DndContext>
+        </DragDropContext>
       </div>
       {showCorrection &&
         <div className={`correctData ${showCorrection.correct ? 'correct' : 'wrong'}`}>

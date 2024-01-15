@@ -63,12 +63,12 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     };
   }
 
-  const dropByClick = (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>, index: number) => {
+  const dropByClick = (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>, index: number, droppapleIndex: number) => {
     if (e.currentTarget.children.length > 0) return;
     clickedItem?.classList.remove('activeBGForDragging');
     if (clickedItem) e.currentTarget.appendChild(clickedItem);
     setClickedItem(null);
-    setStudentAnswer({ ...studentAnswer, [index]: clickedItem?.innerText });
+    setStudentAnswer({ ...studentAnswer, [index]: { ...studentAnswer[index], [droppapleIndex]: clickedItem?.innerText } })
   }
 
   const removeChoice = (e: React.MouseEvent<HTMLElement, MouseEvent>, idx: number) => {

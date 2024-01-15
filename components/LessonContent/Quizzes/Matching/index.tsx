@@ -69,9 +69,9 @@ function Matching({
       const innerWidth = document.querySelector(`.${classes.matching_area}`)!.getBoundingClientRect().width + 20;
       const rightXOffset = document.querySelector(`.${classes.righthand}`)!.getBoundingClientRect().width + 20;
       const leftXOffset = document.querySelector(`.${classes.righthand}`)!.getBoundingClientRect().width + 20;
-      const height = document.querySelector(`.${classes.matching}`)!.getBoundingClientRect().height;
+      const height = document.querySelector(`.${classes.matching_area}`)!.getBoundingClientRect().height;
       setSvgDims({ width, height, innerWidth, rightXOffset, leftXOffset });
-    }, 200);
+    }, 500);
   }, [isLoading]);
 
   /**

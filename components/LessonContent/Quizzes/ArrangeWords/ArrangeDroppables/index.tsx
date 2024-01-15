@@ -8,7 +8,7 @@ interface CProps {
   dragLeave: (e: React.DragEvent<HTMLParagraphElement>) => void;
   drop: (e: React.DragEvent<HTMLParagraphElement>, index: number, droppableIndex: number) => void;
   index: number;
-  dropByClick: (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>, index: number) => void;
+  dropByClick: (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>, index: number, idx: number) => void;
 }
 
 const Droppables = ({ droppables, dragOver, dragLeave, drop, index, dropByClick }: CProps) => {
@@ -27,7 +27,7 @@ const Droppables = ({ droppables, dragOver, dragLeave, drop, index, dropByClick 
           onDragOver={(e) => dragOver(e)}
           onDragLeave={(e) => dragLeave(e)}
           onDrop={(e) => drop(e, index, idx)}
-          onClick={(e) => dropByClick(e, index)}
+          onClick={(e) => dropByClick(e, index, idx)}
         ></div>
       ))}
     </div>

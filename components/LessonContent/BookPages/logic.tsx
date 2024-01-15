@@ -16,7 +16,7 @@ export default function useLogic() {
   useEffect(() => {
     if (window.innerWidth <= 500) {
       setBookWidth(window.innerWidth - 50);
-      setBookHeight(600);
+      setBookHeight(550);
     } else if (window.innerWidth <= 750) {
       setBookWidth(window.innerWidth - 50);
       setBookHeight(750);

@@ -8,10 +8,11 @@ interface CProps {
   idx: number
   dragOver: (e: React.DragEvent<HTMLParagraphElement>) => void
   dragLeave: (e: React.DragEvent<HTMLParagraphElement>) => void
-  drop: (e: React.DragEvent<HTMLParagraphElement>, index: number, droppableIndex: number) => void
+  drop: (e: React.DragEvent<HTMLParagraphElement>, index: number, droppableIndex: number) => void;
+  dropByClick: (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>, idx: number, index: number) => void;
 }
 
-const Droppables = ({ items, idx, dragOver, dragLeave, drop }: CProps) => {
+const Droppables = ({ items, idx, dragOver, dragLeave, drop, dropByClick }: CProps) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.dropables}>
@@ -20,7 +21,13 @@ const Droppables = ({ items, idx, dragOver, dragLeave, drop }: CProps) => {
           <div className={styles.item} key={index}>
             {item === '-'
               ?
-              <div className={styles.dropable} onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, idx, index)}></div>
+              <div
+                className={styles.dropable}
+                onDragOver={(e) => dragOver(e)}
+                onDragLeave={(e) => dragLeave(e)}
+                onDrop={(e) => drop(e, idx, index)}
+                onClick={(e) => dropByClick(e, idx, index)}
+              ></div>
               :
               " " + item + " "
             }
