@@ -35,17 +35,17 @@ const TopBar: React.FC<TopBarProps> = ({ settingsData }) => {
       </ul>
       <ul className={styles.nav}>
         <li className={styles.item}>
-          <a href={'https://' + settingsData?.facebook_url || ''} className="nav-link p-0 text-white">
+          <a href={settingsData?.facebook_url || ''} className="nav-link p-0 text-white">
             <i className="fab fa-facebook-f"></i>
           </a>
         </li>
         <li className={styles.item}>
-          <a href={'https://' + settingsData?.instagram_url || ''} className="nav-link p-0 text-white">
+          <a href={settingsData?.instagram_url || ''} className="nav-link p-0 text-white">
             <i className="fab fa-instagram"></i>
           </a>
         </li>
         <li className={styles.item}>
-          <a href={'https://' + settingsData?.youtube_url || ''} className="nav-link p-0 text-white">
+          <a href={settingsData?.youtube_url || ''} className="nav-link p-0 text-white">
             <i className="fab fa-youtube"></i>
           </a>
         </li>

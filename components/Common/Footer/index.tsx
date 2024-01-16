@@ -49,22 +49,22 @@ const Footer: React.FC<FooterProps> = ({ data: { links, settingsData } }) => {
             <a href={`mailto:${settingsData?.contact_email}`}>{settingsData?.contact_address}</a>
             <ul className={styles.socials}>
               <li>
-                <a href={'https://' + settingsData?.facebook_url || ''}>
+                <a href={settingsData?.facebook_url || ''}>
                   <i className="fab fa-facebook-f"></i>
                 </a>
               </li>
               <li>
-                <a href={'https://' + settingsData?.instagram_url || ''}>
+                <a href={settingsData?.instagram_url || ''}>
                   <i className="fab fa-instagram"></i>
                 </a>
               </li>
               <li>
-                <a href={'https://' + settingsData?.youtube_url || ''}>
+                <a href={settingsData?.youtube_url || ''}>
                   <i className="fab fa-youtube"></i>
                 </a>
               </li>
               <li>
-                <a href={'https://' + settingsData?.linkedin_url || ''}>
+                <a href={settingsData?.linkedin_url || ''}>
                   <i className="fab fa-linkedin-in"></i>
                 </a>
               </li>
