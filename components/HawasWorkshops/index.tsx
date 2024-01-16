@@ -66,5 +66,4 @@ const HawasWorkshops = () => {
     </Container>
   )
 }
-
 export default HawasWorkshops;
