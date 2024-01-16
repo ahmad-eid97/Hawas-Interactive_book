@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 //= Api
-import { subscribeToNewsletter } from '@/API/pages';
+import { getAllSettings, subscribeToNewsletter } from '@/API/pages';
 //= Types
 import { FooterItem, FooterSocialLinks } from '@/types';
 //== Styles
@@ -15,12 +15,11 @@ import styles from './footer.module.scss';
 interface FooterProps {
   data: {
     links: FooterItem[];
-    socialLinks: FooterSocialLinks | null;
-    contactEmail: string;
+    settingsData: Awaited<ReturnType<typeof getAllSettings>> | null;
   }
 }
 
-const Footer: React.FC<FooterProps> = ({ data: { links, socialLinks, contactEmail } }) => {
+const Footer: React.FC<FooterProps> = ({ data: { links, settingsData } }) => {
 
   async function handleSubscribeToNewsLetter(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
@@ -47,25 +46,25 @@ const Footer: React.FC<FooterProps> = ({ data: { links, socialLinks, contactEmai
             <Link href='/'>
               <img src="/images/navbar/footer_logo.png" alt="logo" />
             </Link>
-            <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+            <a href={`mailto:${settingsData?.contact_email}`}>{settingsData?.contact_address}</a>
             <ul className={styles.socials}>
               <li>
-                <a href={'https://' + socialLinks?.facebook || ''}>
+                <a href={'https://' + settingsData?.facebook_url || ''}>
                   <i className="fab fa-facebook-f"></i>
                 </a>
               </li>
               <li>
-                <a href={'https://' + socialLinks?.instagram || ''}>
+                <a href={'https://' + settingsData?.instagram_url || ''}>
                   <i className="fab fa-instagram"></i>
                 </a>
               </li>
               <li>
-                <a href={'https://' + socialLinks?.youtube || ''}>
+                <a href={'https://' + settingsData?.youtube_url || ''}>
                   <i className="fab fa-youtube"></i>
                 </a>
               </li>
               <li>
-                <a href={'https://' + socialLinks?.linkedin || ''}>
+                <a href={'https://' + settingsData?.linkedin_url || ''}>
                   <i className="fab fa-linkedin-in"></i>
                 </a>
               </li>

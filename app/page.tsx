@@ -95,7 +95,7 @@ export default async function Home() {
 
   return (
     <>
-      <Navbar menus={menus} socialLinks={footerSocialLinksData} contactEmail={settingsData?.contact_email || ''} />
+      <Navbar menus={menus} settingsData={settingsData} />
       <Banner data={headerData} />
       <MainSections />
       <Experince data={experinceData} />
@@ -105,7 +105,7 @@ export default async function Home() {
       <CountUp data={countersData} />
       <News data={blogsData} />
       <Gallery data={galleryData} />
-      <Footer data={{ links: footerLinksData, socialLinks: footerSocialLinksData, contactEmail: settingsData?.contact_email || '' }} />
+      <Footer data={{ links: footerLinksData, settingsData }} />
     </>
   )
 }

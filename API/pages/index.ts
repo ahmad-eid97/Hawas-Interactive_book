@@ -110,7 +110,8 @@ export function convertSettingsArrayToObject(data: SettingsResponse[]) {
     facebook_url: data.find(item => item.key === 'facebook_url')?.plain_value,
     twitter_url: data.find(item => item.key === 'twitter_url')?.plain_value,
     instagram_url: data.find(item => item.key === 'instagram_url')?.plain_value,
-    youtube_url: data.find(item => item.key === 'youtube_url')?.plain_value
+    youtube_url: data.find(item => item.key === 'youtube_url')?.plain_value,
+    linkedin_url: data.find(item => item.key === 'linkedin_url')?.plain_value,
   }
 }
 
