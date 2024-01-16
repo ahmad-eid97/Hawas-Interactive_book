@@ -16,9 +16,14 @@ interface BannerProps {
 const Banner: React.FC<BannerProps> = ({ data }) => {
   const router = useRouter();
 
-  function handleSearch(event: React.MouseEvent<HTMLSpanElement>) {
+  function handleSearch() {
     const searchValue = document.querySelector<HTMLInputElement>('#search-input')!.value;
     router.push('/search?keyword=' + searchValue);
+  }
+
+  function handleEnterClick(event: React.KeyboardEvent<HTMLInputElement>) {
+    event.preventDefault();
+    if (event.key === 'Enter') handleSearch();
   }
 
   return (
@@ -60,14 +65,14 @@ const Banner: React.FC<BannerProps> = ({ data }) => {
           <Grid container alignItems="center">
             <Grid item xs={12} md={7} lg={6}>
               <h1>{data?.title || ''}</h1>
-              <form>
+              <form onSubmit={(e) => e.preventDefault()}>
                 <div className={styles.inputGroup}>
                   <div className={styles.inputGroupPrepend}>
                     <span className="input-group-text border-right-0 text-primary icon-xs rounded-left-xl" onClick={handleSearch}>
                       <i className="fa-regular fa-magnifying-glass"></i>
                     </span>
                   </div>
-                  <input type="search" placeholder="ابحث في حواس …" id="search-input" />
+                  <input type="search" placeholder="ابحث في حواس …" id="search-input" onKeyUp={handleEnterClick} />
                 </div>
               </form>
               <p> بحث شائع: تطوير ، أعمال ، تصميم ، تسويق </p>
