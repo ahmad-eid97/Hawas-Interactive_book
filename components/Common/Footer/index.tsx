@@ -46,7 +46,7 @@ const Footer: React.FC<FooterProps> = ({ data: { links, settingsData } }) => {
             <Link href='/'>
               <img src="/images/navbar/footer_logo.png" alt="logo" />
             </Link>
-            <a href={`mailto:${settingsData?.contact_email}`}>{settingsData?.contact_address}</a>
+            <a href={`mailto:${settingsData?.contact_email}`}>{settingsData?.contact_email}</a>
             <ul className={styles.socials}>
               <li>
                 <a href={settingsData?.facebook_url || ''}>
