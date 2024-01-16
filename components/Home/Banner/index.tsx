@@ -17,6 +17,9 @@ const Banner: React.FC<BannerProps> = ({ data }) => {
   const router = useRouter();
 
   function handleSearch() {
+    const btn = document.querySelector<HTMLSpanElement>('.btn-search')!
+    btn.classList.add('loading-btn');
+
     const searchValue = document.querySelector<HTMLInputElement>('#search-input')!.value;
     router.push('/search?keyword=' + searchValue);
   }
@@ -68,7 +71,7 @@ const Banner: React.FC<BannerProps> = ({ data }) => {
               <form onSubmit={(e) => e.preventDefault()}>
                 <div className={styles.inputGroup}>
                   <div className={styles.inputGroupPrepend}>
-                    <span className="input-group-text border-right-0 text-primary icon-xs rounded-left-xl" onClick={handleSearch}>
+                    <span className="input-group-text border-right-0 text-primary icon-xs rounded-left-xl btn-search" onClick={handleSearch}>
                       <i className="fa-regular fa-magnifying-glass"></i>
                     </span>
                   </div>
