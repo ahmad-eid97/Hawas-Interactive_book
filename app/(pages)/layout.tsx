@@ -37,9 +37,9 @@ const PagesLayout = async ({ children }: PagesLayoutProps) => {
 
   return (
     <>
-      <Navbar menus={menus} socialLinks={footerSocialLinksData} contactEmail={settingsData?.contact_email || ''} />
+      <Navbar menus={menus} settingsData={settingsData} />
       {children}
-      <Footer data={{ links: footerLinksData, socialLinks: footerSocialLinksData, contactEmail: settingsData?.contact_email || '' }} />
+      <Footer data={{ links: footerLinksData, settingsData }} />
     </>
   )
 }
