@@ -1,5 +1,5 @@
 //== Components
-import { BookPages, NextButton } from "@/components";
+import { BookPagesWrapper } from "@/components";
 //== API
 import { getLessonPages } from "@/API/lessonPages";
 
@@ -13,8 +13,7 @@ const Book = async ({ params }: { params: { id: number } }) => {
 
   return (
     <>
-      <BookPages data={response?.data?.data} />
-      <NextButton bookId={response?.data?.data?.book.id} nextLesson={response?.data?.data?.next_lesson} prevLesson={response?.data?.data?.prev_lesson} />
+      <BookPagesWrapper data={response?.data?.data} bookId={response?.data?.data?.book.id} nextLesson={response?.data?.data?.next_lesson} prevLesson={response?.data?.data?.prev_lesson} />
     </>
   )
 }

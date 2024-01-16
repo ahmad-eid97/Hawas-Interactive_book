@@ -16,6 +16,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   const [studentAnswer, setStudentAnswer] = useState<any>({ 0: [], 1: [] });
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [rendered, setRendered] = useState(true);
+  const [clickedItem, setClickedItem] = useState<HTMLElement | null>(null);
   const dispatch = useAppDispatch();
 
   const getQuestion = async () => {
@@ -56,13 +57,28 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     e.preventDefault();
     e.currentTarget.style.backgroundColor = "var(--third-color)";
     if (draggableItem) e.currentTarget.appendChild(draggableItem);
-    console.log(draggableItem?.innerText)
     setStudentAnswer({
       ...studentAnswer,
       [index]: [...studentAnswer[index], draggableItem?.innerText]
     })
   }
 
+  const dragByClick = (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>) => {
+    if (clickedItem) return;
+    e.currentTarget.classList.add('activeBGForDragging');
+    setClickedItem(e.currentTarget);
+  }
+
+  const dropByClick = (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>, index: number) => {
+    clickedItem?.classList.remove('activeBGForDragging');
+    if (clickedItem) e.currentTarget.appendChild(clickedItem);
+    setClickedItem(null);
+    setStudentAnswer({
+      ...studentAnswer,
+      [index]: [...studentAnswer[index], clickedItem?.innerText]
+    })
+    console.log(e.currentTarget, index)
+  }
 
   const areArraysEqual = (arr1: any, arr2: any) => {
     if (arr1.length !== arr2.length) {
@@ -87,7 +103,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   const correctAnswer = () => {
-    console.log(studentAnswer, data)
+    if (clickedItem) setClickedItem(null);
     if (areArraysEqual(studentAnswer[0], data?.correctAnswer[0]) && areArraysEqual(studentAnswer[1], data?.correctAnswer[1])) {
       dispatch(checkAnswer(true))
       setTimeout(() => {
@@ -116,6 +132,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   const retry = () => {
+    if (clickedItem) setClickedItem(null);
     setRendered(false);
     setShowCorrection(null);
     setStudentAnswer({ 0: [], 1: [] });
@@ -130,6 +147,8 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     dragOver,
     dragLeave,
     drop,
+    dragByClick,
+    dropByClick,
     correctAnswer,
     showCorrection,
     retry,

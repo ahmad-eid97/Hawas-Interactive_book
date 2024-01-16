@@ -1,9 +1,15 @@
+@import "@/styles/mixins.scss";
+
 .videoSection {
   .head {
     position: relative;
     h3 {
       font-size: 1.2rem;
       font-weight: 600;
+
+      @include sm {
+        font-size: 13px;
+      }
     }
     img {
       position: absolute;
@@ -13,6 +19,15 @@
       transform: rotate(-20deg) scale(0.7);
     }
   }
+
+  div {
+    * {
+      @include sm {
+        font-size: 13px !important;
+      }
+    }
+  }
+
   iframe {
     width: 95%;
     height: 300px;
@@ -20,5 +35,9 @@
     padding: 10px;
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+
+    @include sm {
+      height: 200px;
+    }
   }
 }

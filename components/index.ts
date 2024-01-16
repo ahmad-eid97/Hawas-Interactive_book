@@ -27,6 +27,7 @@ export { default as SchoolLoginForm } from './SchoolLogin/LoginForm';
 export { default as Flippy } from './Flippy/Flippy';
 export { default as FrontCover } from './LessonContent/Covers/FrontCover';
 export { default as BackCover } from './LessonContent/Covers/BackCover';
+export { default as BookPagesWrapper } from './LessonContent/BookPagesWrapper';
 export { default as BookPages } from './LessonContent/BookPages';
 export { default as Page } from './LessonContent/Page';
 export { default as Lesson } from './LessonContent/Lesson';

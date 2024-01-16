@@ -15,6 +15,14 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+
+    &.smallScreenBtn {
+      display: none;
+      @include md {
+        display: flex;
+      }
+    }
+
     &.middle {
       width: 65px;
       height: 65px;
@@ -29,12 +37,22 @@
           font-size: 1.5rem;
         }
       }
+
+      @include sm {
+        width: 50px;
+        height: 50px;
+        a {
+          i {
+            font-size: 20px;
+          }
+        }
+      }
     }
     &.first,
     &.last {
       flex: 1;
       max-width: 500px;
-      @include sm {
+      @include md {
         display: none;
       }
     }

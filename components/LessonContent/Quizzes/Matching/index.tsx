@@ -63,12 +63,15 @@ function Matching({
 
   useEffect(() => {
     if (isLoading) return;
-    const width = document.querySelector(`.${classes.matching}`)!.getBoundingClientRect().width;
-    const innerWidth = document.querySelector(`.${classes.matching_area}`)!.getBoundingClientRect().width + 20;
-    const rightXOffset = document.querySelector(`.${classes.righthand}`)!.getBoundingClientRect().width + 20;
-    const leftXOffset = document.querySelector(`.${classes.righthand}`)!.getBoundingClientRect().width + 20;
-    const height = document.querySelector(`.${classes.matching}`)!.getBoundingClientRect().height;
-    setSvgDims({ width, height, innerWidth, rightXOffset, leftXOffset });
+
+    setTimeout(() => {
+      const width = document.querySelector(`.${classes.matching}`)!.getBoundingClientRect().width;
+      const innerWidth = document.querySelector(`.${classes.matching_area}`)!.getBoundingClientRect().width + 20;
+      const rightXOffset = document.querySelector(`.${classes.righthand}`)!.getBoundingClientRect().width + 20;
+      const leftXOffset = document.querySelector(`.${classes.righthand}`)!.getBoundingClientRect().width + 20;
+      const height = document.querySelector(`.${classes.matching_area}`)!.getBoundingClientRect().height;
+      setSvgDims({ width, height, innerWidth, rightXOffset, leftXOffset });
+    }, 500);
   }, [isLoading]);
 
   /**
@@ -183,6 +186,9 @@ function Matching({
       c2: 0,
       c3: 0
     };
+    const mobileFactor = 1.2;
+    const normalFactor = 2;
+    const isMobile = window.matchMedia(`(max-width: 992px)`).matches;
 
     // if (dir === 'rtl') pathConfig.x1 = svgDims.innerWidth.toFixed(0);
     if (dir === 'rtl') pathConfig.x1 = (svgDims.innerWidth - 10).toFixed(0);
@@ -198,9 +204,10 @@ function Matching({
 
     pathConfig.x2 = X2.toFixed(0);
     pathConfig.y2 = Y2.toFixed(0);
-    pathConfig.c1 = X2 * 2;
+    pathConfig.c1 = X2 * (isMobile ? mobileFactor : normalFactor);
     pathConfig.c2 = Y2;
-    pathConfig.c3 = X2 / 2;
+    pathConfig.c3 = X2 / (isMobile ? mobileFactor : normalFactor);
+
     PATH.setAttribute('d', `M${pathConfig.x1} ${pathConfig.y1} C ${dir === 'rtl'
       ? `${pathConfig.c1 * 2.5} ${pathConfig.c2}, ${pathConfig.c1} ${pathConfig.c2}`
       : `${pathConfig.c1 / 2} ${pathConfig.c2}, ${pathConfig.c3 / 4} ${pathConfig.c2}`}, ${pathConfig.x2} ${pathConfig.y2}`)
@@ -306,7 +313,11 @@ function Matching({
    * - ReAppend `matching_area` element is helpful to refresh the svg element which allows lines to be shown correctly
    */
   function handleRemoveLine(event: React.MouseEvent<HTMLElement>) {
+    const isMobile = window.matchMedia(`(max-width: 992px)`).matches;
+    if (event.type === 'click' && !isMobile) return;
+
     const element = event.target as HTMLElement;
+
     if (element.tagName === "path") {
       const ID = element.id;
       element.remove();
@@ -375,14 +386,14 @@ function Matching({
                 columnsData?.righthand.items.map((matchingItem: any, index: number) => (
                   <p key={index} className={`${options?.itemsClassName || ''} ${columnsData?.righthand.type === 'image' ? classes.big : ''}`}>
                     {matchingItem[keyWord]}
-                    <span className={`matching-start-point ${classes.matching_box}`} onMouseDown={handleMouseDown}></span>
+                    <span className={`matching-start-point ${classes.matching_box}`} onMouseDown={handleMouseDown} onClick={handleMouseDown}></span>
                   </p>)
                 )
               ) : null
           }
         </div>
         {/* Matching Area Items */}
-        <div className={classes.matching_area} onDoubleClick={handleRemoveLine}>
+        <div className={classes.matching_area} onDoubleClick={handleRemoveLine} onClick={handleRemoveLine}>
           <svg
             height={svgDims.height}
             width={svgDims.width}
@@ -420,7 +431,7 @@ function Matching({
             columnsData?.lefthand.items.length ?
               (
                 columnsData.lefthand.items.map((matchingItem: any, index: number) => (
-                  <p key={index} onMouseUp={handleMouseUp} className={options?.itemsClassName || ''}>
+                  <p key={index} onMouseUp={handleMouseUp} onClick={handleMouseUp} className={options?.itemsClassName || ''}>
                     {columnsData?.lefthand.type === 'text' ?
                       <span>{matchingItem[keyWord]}</span>
                       :

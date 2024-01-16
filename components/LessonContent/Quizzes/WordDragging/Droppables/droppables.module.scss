@@ -1,3 +1,5 @@
+@import "@/styles/mixins.scss";
+
 .dropables {
   display: flex;
   align-items: center;
@@ -7,6 +9,10 @@
   background-color: var(--third-color);
   padding: 10px;
   border-radius: 10px 10px 0 0;
+
+  @include sm {
+    font-size: 13px;
+  }
 
   span {
     font-weight: 700;
@@ -29,6 +35,11 @@
     i {
       color: var(--delete-warn);
       cursor: pointer;
+    }
+
+    @include sm {
+      min-width: 60px;
+      min-height: 30px;
     }
   }
 }

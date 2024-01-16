@@ -1,14 +1,21 @@
+@import "@/styles/mixins.scss";
+
 .flippy_container {
   overflow: hidden;
-  // margin: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: width 0.3s;
 
+  @include xs {
+    transform: translateX(10px);
+    display: none !important;
+  }
+
   .flippy {
     position: relative;
     transition: transform 0.5s, width 0.3s, box-shadow 0.3s;
+    width: 100%;
 
     &.bookOpen {
       &::after {
@@ -142,9 +149,9 @@
         &.front {
           width: 50%;
           isolation: isolate;
-          z-index: 1;
           box-shadow: inset -10px 0 30px -7px rgba(0, 0, 0, .35);
           border: none;
+          z-index: 9;
         }
 
         &.back {
@@ -188,7 +195,7 @@
           transform-origin: left;
 
           &.front {
-            z-index: 1;
+            z-index: 9;
             backface-visibility: hidden;
           }
 
@@ -226,7 +233,7 @@
         }
 
         .face.front {
-          z-index: 1;
+          z-index: 9;
           backface-visibility: hidden;
         }
 
@@ -380,6 +387,7 @@
 
           &.front {
             box-shadow: inset 10px 0 15px -7px rgba(0, 0, 0, .35);
+            z-index: 9;
           }
 
           &.back {

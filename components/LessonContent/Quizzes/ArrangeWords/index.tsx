@@ -10,8 +10,8 @@ import { QuestionData } from '../types';
 //== Styles
 import styles from './dragging.module.scss';
 
-const ArrangeWords = ({ questionData }: { questionData: any }) => {
-  const { items, droppingArea, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, correctAnswer, showCorrection, retry, rendered, isLoading } = useLogic({ questionData });
+const ArrangeWords = ({ questionData }: { questionData: QuestionData }) => {
+  const { items, droppingArea, dragStart, dragEnd, dragOver, dragLeave, drop, dragByClick, dropByClick, removeChoice, correctAnswer, showCorrection, retry, rendered, isLoading } = useLogic({ questionData });
 
   if (!rendered) return null;
   if (isLoading) return <PageLoader />;
@@ -31,6 +31,7 @@ const ArrangeWords = ({ questionData }: { questionData: any }) => {
               drop={drop}
               index={idx}
               droppables={item}
+              dropByClick={dropByClick}
             />
             <ArrangeDraggables
               choices={item.answers}
@@ -39,6 +40,7 @@ const ArrangeWords = ({ questionData }: { questionData: any }) => {
               dragEnd={dragEnd}
               removeChoice={removeChoice}
               id={idx}
+              dragByClick={dragByClick}
             />
           </div>
         ))}

@@ -158,3 +158,27 @@ ul {
 .modal-video {
   background-color: rgba($color: #000000, $alpha: 0.85) !important;
 }
+
+.activeForDragging {
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-30%, 10%);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(253, 203, 110, 0.5);
+    border-radius: 50%;
+    min-width: 30px;
+    min-height: 30px;
+    z-index: -1;
+  }
+}
+
+.activeBGForDragging {
+  background-color: rgba(253, 203, 110, 0.5) !important;
+  color: #000000 !important;
+}

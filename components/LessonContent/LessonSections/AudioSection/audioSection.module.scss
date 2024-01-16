@@ -1,8 +1,23 @@
+@import "@/styles/mixins.scss";
+
 .audioSection {
   h3 {
     font-size: 1.2rem;
     font-weight: 600;
+
+    @include sm {
+      font-size: 13px;
+    }
   }
+
+  div {
+    @include sm {
+      * {
+        font-size: 13px !important;
+      }
+    }
+  }
+
   .audioImage {
     display: flex;
     align-items: center;
@@ -15,6 +30,15 @@
       padding: 4px 15px;
       border-radius: 6px;
       cursor: pointer;
+      @include sm {
+        font-size: 12px;
+      }
+    }
+
+    img {
+      @include sm {
+        width: 80px;
+      }
     }
   }
 }

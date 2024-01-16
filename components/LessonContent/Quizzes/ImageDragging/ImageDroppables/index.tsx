@@ -8,10 +8,11 @@ interface CProps {
   dragOver: (e: React.DragEvent<HTMLParagraphElement>) => void;
   dragLeave: (e: React.DragEvent<HTMLParagraphElement>) => void;
   drop: (e: React.DragEvent<HTMLParagraphElement>, index: number) => void;
-  questionDetails: any
+  questionDetails: any;
+  dropByClick: (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>, index: number) => void
 }
 
-const Droppables = ({ dragOver, dragLeave, drop, questionDetails }: CProps) => {
+const Droppables = ({ dragOver, dragLeave, drop, questionDetails, dropByClick }: CProps) => {
 
   return (
     // <div className={styles.dropables} style={{ backgroundImage: `url(${questionDetails.questionImage})` }}>
@@ -22,10 +23,11 @@ const Droppables = ({ dragOver, dragLeave, drop, questionDetails }: CProps) => {
           {one.left &&
             <div
               className={styles.dropable}
+              style={{ top: `${one.top}px`, left: `${one.left}px` }}
               onDragOver={(e) => dragOver(e)}
               onDragLeave={(e) => dragLeave(e)}
               onDrop={(e) => drop(e, idx)}
-              style={{ top: `${one.top}px`, left: `${one.left}px` }}
+              onClick={(e) => dropByClick(e, idx)}
             ></div>
           }
         </Fragment>

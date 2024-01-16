@@ -11,7 +11,7 @@ import { QuestionData } from '../types';
 import styles from './imagesPuzzle.module.scss';
 
 const NumberDragging = ({ questionData }: { questionData: QuestionData }) => {
-  const { puzzleImages, dragStart, dragEnd, dragOver, drop, retry, rendered, correctAnswer, isLoading, showCorrection } = useLogic({ questionData });
+  const { puzzleImages, dragStart, dragEnd, dragOver, drop, dragByClick, dropByClick, retry, rendered, correctAnswer, isLoading, showCorrection } = useLogic({ questionData });
 
   if (!rendered) return null;
   if (isLoading) return <PageLoader />
@@ -27,6 +27,7 @@ const NumberDragging = ({ questionData }: { questionData: QuestionData }) => {
             draggable={true}
             onDragStart={(e) => dragStart(e, image.answer_order)}
             onDragEnd={(e) => dragEnd(e)}
+            onClick={(e) => dragByClick(e, image.answer_order)}
           />
         ))}
       </div>
@@ -34,7 +35,13 @@ const NumberDragging = ({ questionData }: { questionData: QuestionData }) => {
         <img src={questionData.question_img} alt="question_image" />
         <div className={styles.items}>
           {[...Array(puzzleImages?.length)].map((_, index) => (
-            <div className={styles.item} key={index} onDragOver={(e) => dragOver(e)} onDrop={(e) => drop(e, index)}>
+            <div
+              className={styles.item}
+              key={index}
+              onDragOver={(e) => dragOver(e)}
+              onDrop={(e) => drop(e, index)}
+              onClick={(e) => dropByClick(e, index)}
+            >
             </div>
           ))}
         </div>

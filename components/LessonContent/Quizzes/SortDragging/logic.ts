@@ -19,7 +19,7 @@ interface LogicProps {
 }
 
 export default function useLogic({ questionData }: LogicProps) {
-  const [items, setItems] = useState([""]);
+  const [items, setItems] = useState<{ id: number, title: string }[]>([]);
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [rendered, setRendered] = useState(true);
   const dispatch = useAppDispatch();
@@ -35,21 +35,29 @@ export default function useLogic({ questionData }: LogicProps) {
     }
   })
 
-  function handleDragEnd(event: any) {
-    const { active, over } = event;
-    if (active.id !== over.id) {
-      setItems((items) => {
-        const activeIndex = items.indexOf(active.id);
-        const overIndex = items.indexOf(over.id);
-        return arrayMove(items, activeIndex, overIndex);
-      });
-    }
-  }
+  // function handleDragEnd(event: any) {
+  //   const { active, over } = event;
+  //   if (active.id !== over.id) {
+  //     setItems((items) => {
+  //       const activeIndex = items.indexOf(active.id);
+  //       const overIndex = items.indexOf(over.id);
+  //       return arrayMove(items, activeIndex, overIndex);
+  //     });
+  //   }
+  // }
+
+  const handleOndragEnd = (result: any) => {
+    if (!result.destination) return;
+    const allAnswers = Array.from(items);
+    const [reorderedItem] = allAnswers.splice(result.source.index, 1);
+    allAnswers.splice(result.destination.index, 0, reorderedItem);
+    setItems(allAnswers);
+  };
 
   const correctAnswer = () => {
     if (!data?.correctAnswers) return;
     for (let i = 0; i < items.length; i++) {
-      if (items[i] !== data?.correctAnswers[i]) {
+      if (items[i].title !== data?.correctAnswers[i]) {
         dispatch(checkWrong(true))
         setTimeout(() => {
           dispatch(checkWrong(false))
@@ -88,7 +96,7 @@ export default function useLogic({ questionData }: LogicProps) {
 
   return {
     items: items.length > 1 ? items : data?.items,
-    handleDragEnd,
+    handleOndragEnd,
     correctAnswer,
     showCorrection,
     retry,

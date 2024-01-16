@@ -11,7 +11,7 @@ import { QuestionData } from '../types';
 import styles from './fillThePlaces.module.scss';
 
 const FillThePlaces = ({ questionData }: { questionData: QuestionData }) => {
-  const { items, droppingArea, choices, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, correctAnswer, showCorrection, retry, rendered, isLoading } = useLogic({ questionData });
+  const { items, droppingArea, choices, dragStart, dragEnd, dragOver, dragLeave, drop, dragByClick, dropByClick, removeChoice, correctAnswer, showCorrection, retry, rendered, isLoading } = useLogic({ questionData });
 
   if (!rendered) return null;
   if (isLoading) return <PageLoader />
@@ -25,6 +25,7 @@ const FillThePlaces = ({ questionData }: { questionData: QuestionData }) => {
           dragStart={dragStart}
           dragEnd={dragEnd}
           removeChoice={removeChoice}
+          dragByClick={dragByClick}
         />
         <div className={styles.droppablesArea}>
           {items.map((item: any, idx: number) => (
@@ -35,6 +36,7 @@ const FillThePlaces = ({ questionData }: { questionData: QuestionData }) => {
                 dragOver={dragOver}
                 dragLeave={dragLeave}
                 drop={drop}
+                dropByClick={dropByClick}
               />
             </Fragment>
           ))}

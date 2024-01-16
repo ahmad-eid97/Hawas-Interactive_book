@@ -8,7 +8,7 @@ import styles from './pagination.module.scss';
 interface CProps {
   count: number
   changePage: (e: any, pageNum: number) => void
-  position?: string
+  position?: string;
 }
 
 const PagePagination = ({ count, changePage, position }: CProps) => {

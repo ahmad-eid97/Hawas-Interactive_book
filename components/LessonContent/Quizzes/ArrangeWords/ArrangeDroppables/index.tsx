@@ -8,9 +8,10 @@ interface CProps {
   dragLeave: (e: React.DragEvent<HTMLParagraphElement>) => void;
   drop: (e: React.DragEvent<HTMLParagraphElement>, index: number, droppableIndex: number) => void;
   index: number;
+  dropByClick: (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>, index: number, idx: number) => void;
 }
 
-const Droppables = ({ droppables, dragOver, dragLeave, drop, index }: CProps) => {
+const Droppables = ({ droppables, dragOver, dragLeave, drop, index, dropByClick }: CProps) => {
   return (
     <div className={styles.dropables}>
       {droppables.image ?
@@ -20,7 +21,14 @@ const Droppables = ({ droppables, dragOver, dragLeave, drop, index }: CProps) =>
       }
       <i className="fa-duotone fa-star"></i>
       {droppables.answers.map((one: string, idx: number) => (
-        <div key={idx} className={styles.dropable} onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, index, idx)}></div>
+        <div
+          key={idx}
+          className={styles.dropable}
+          onDragOver={(e) => dragOver(e)}
+          onDragLeave={(e) => dragLeave(e)}
+          onDrop={(e) => drop(e, index, idx)}
+          onClick={(e) => dropByClick(e, index, idx)}
+        ></div>
       ))}
     </div>
   )

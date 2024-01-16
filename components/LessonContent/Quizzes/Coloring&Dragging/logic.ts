@@ -17,6 +17,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   const [showCorrection, setShowCorrection] = useState<{ correct: boolean, data: string[] } | null>(null);
   const [coloredLetters, setColoredLetters] = useState(0);
   const [studentAnswer, setStudentAnswer] = useState<any>({});
+  const [clickedItem, setClickedItem] = useState<HTMLElement | null>(null);
   const dispatch = useAppDispatch();
 
   const getQuestion = async () => {
@@ -54,6 +55,20 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     setStudentAnswer({ ...studentAnswer, [index]: draggableItem?.innerText })
   }
 
+  const dragByClick = (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>) => {
+    if (clickedItem) return;
+    e.currentTarget.classList.add('activeForDragging');
+    setClickedItem(e.currentTarget);
+  }
+
+  const dropByClick = (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>, index: number) => {
+    if (e.currentTarget.children.length > 0) return;
+    clickedItem?.classList.remove('activeForDragging');
+    if (clickedItem) e.currentTarget.appendChild(clickedItem);
+    setClickedItem(null);
+    setStudentAnswer({ ...studentAnswer, [index]: clickedItem?.innerText });
+  }
+
   const colorLetter = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
     e.currentTarget.style.color = choosedColor;
     setColoredLetters(prev => prev + 1);
@@ -69,6 +84,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   const correctAnswer = () => {
+    if (clickedItem) setClickedItem(null);
     setColoredLetters(0)
     const correctLetters = compareObjects(data?.correctChoices, studentAnswer)
     if (correctLetters && coloredLetters >= 2 && data?.rightColor === choosedColor) {
@@ -99,6 +115,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   const retry = () => {
+    if (clickedItem) setClickedItem(null);
     setRendered(false);
     setTimeout(() => {
       setRendered(true)
@@ -112,6 +129,8 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
     dragOver,
     dragLeave,
     drop,
+    dragByClick,
+    dropByClick,
     setChoosedColor,
     colorLetter,
     rendered,

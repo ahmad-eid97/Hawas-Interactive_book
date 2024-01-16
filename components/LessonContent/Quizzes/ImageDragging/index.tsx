@@ -11,7 +11,7 @@ import { QuestionData } from '../types';
 import styles from './draggingParts.module.scss';
 
 const ImageDragging = ({ questionData }: { questionData: QuestionData }) => {
-  const { droppingArea, dragStart, dragEnd, dragOver, dragLeave, drop, removeChoice, showCorrection, correctAnswer, retry, rendered, isLoading, newDataLoading, questionDetails, audioOpened, setAudioOpened, openAudio, Audio } = useLogic({ questionData });
+  const { droppingArea, dragStart, dragEnd, dragOver, dragLeave, drop, dragByClick, dropByClick, removeChoice, showCorrection, correctAnswer, retry, rendered, isLoading, newDataLoading, questionDetails, audioOpened, setAudioOpened, openAudio, Audio } = useLogic({ questionData });
 
   if (!rendered) return null;
   if (isLoading || newDataLoading) return <PageLoader />
@@ -54,6 +54,7 @@ const ImageDragging = ({ questionData }: { questionData: QuestionData }) => {
               dragLeave={dragLeave}
               drop={drop}
               questionDetails={questionDetails}
+              dropByClick={dropByClick}
             />
             <ImageDraggables
               droppingArea={droppingArea}
@@ -61,6 +62,7 @@ const ImageDragging = ({ questionData }: { questionData: QuestionData }) => {
               dragEnd={dragEnd}
               removeChoice={removeChoice}
               questionDetails={questionDetails}
+              dragByClick={dragByClick}
             />
           </div>
         </div>

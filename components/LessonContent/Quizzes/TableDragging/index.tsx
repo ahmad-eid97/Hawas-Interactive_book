@@ -11,7 +11,7 @@ import { QuestionData } from '../types';
 import styles from './dragging.module.scss';
 
 const TableDragging = ({ questionData }: { questionData: QuestionData }) => {
-  const { dragStart, dragEnd, dragOver, dragLeave, drop, correctAnswer, showCorrection, retry, rendered, isLoading, questionDetails } = useLogic({ questionData });
+  const { dragStart, dragEnd, dragOver, dragLeave, drop, dragByClick, dropByClick, correctAnswer, showCorrection, retry, rendered, isLoading, questionDetails } = useLogic({ questionData });
 
   if (!rendered) return null;
   if (isLoading) return <PageLoader />
@@ -28,13 +28,21 @@ const TableDragging = ({ questionData }: { questionData: QuestionData }) => {
               draggable={true}
               onDragStart={(e) => dragStart(e)}
               onDragEnd={(e) => dragEnd(e)}
+              onClick={(e) => dragByClick(e)}
             >
               {item.title}
             </p>
           ))}
         </div>
       </div>
-      <Boxes titles={questionDetails?.titles} dragOver={dragOver} dragLeave={dragLeave} drop={drop} questionData={questionData} />
+      <Boxes
+        titles={questionDetails?.titles}
+        questionData={questionData}
+        dragOver={dragOver}
+        dragLeave={dragLeave}
+        drop={drop}
+        dropByClick={dropByClick}
+      />
       {showCorrection &&
         <div className={`correctData ${showCorrection.correct ? 'correct' : 'wrong'}`}>
           {showCorrection.data.map((one, idx) => (

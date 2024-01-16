@@ -7,12 +7,13 @@ import useLogic from './logic';
 import styles from './nextButton.module.scss';
 
 interface CProps {
-  bookId: number,
-  nextLesson: any,
-  prevLesson: any
+  bookId: number;
+  nextLesson: any;
+  prevLesson: any;
+  flippy: any;
 }
 
-const NextButton = ({ bookId, nextLesson, prevLesson }: CProps) => {
+const NextButton = ({ bookId, nextLesson, prevLesson, flippy }: CProps) => {
   const { mounted, goToNextLesson, goToPreviousLesson } = useLogic();
 
   if (!mounted) return null;
@@ -26,11 +27,13 @@ const NextButton = ({ bookId, nextLesson, prevLesson }: CProps) => {
         :
         null
       }
+      <button className={styles.smallScreenBtn} onClick={() => flippy.flipPrev()}><i className="fa-solid fa-angles-right"></i></button>
       <button className={styles.middle}>
         <Link href={`/books/${bookId}/lessons`}>
           <i className="fa-regular fa-house"></i>
         </Link>
       </button>
+      <button className={styles.smallScreenBtn} onClick={() => flippy.flipNext()}><i className="fa-solid fa-angles-left"></i></button>
       {
         nextLesson ?
           <button onClick={() => goToNextLesson(nextLesson.id)} className={styles.last}>

@@ -9,10 +9,11 @@ interface CProps {
   dragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
   drop: (e: React.DragEvent<HTMLDivElement>, index: number) => void;
   titles: { right: string; left: string } | undefined;
-  questionData: QuestionData
+  questionData: QuestionData;
+  dropByClick: (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>, index: number) => void;
 }
 
-const Boxes = ({ dragOver, dragLeave, drop, titles, questionData }: CProps) => {
+const Boxes = ({ dragOver, dragLeave, drop, titles, questionData, dropByClick }: CProps) => {
   return (
     <div className={styles.boxes}>
       <div className={styles.side}>
@@ -21,7 +22,13 @@ const Boxes = ({ dragOver, dragLeave, drop, titles, questionData }: CProps) => {
           :
           null
         }
-        <div className={styles.box} onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 0)}>
+        <div
+          className={styles.box}
+          onDragOver={(e) => dragOver(e)}
+          onDragLeave={(e) => dragLeave(e)}
+          onDrop={(e) => drop(e, 0)}
+          onClick={(e) => dropByClick(e, 0)}
+        >
           <h2>{titles?.right}</h2>
         </div>
       </div>
@@ -31,7 +38,13 @@ const Boxes = ({ dragOver, dragLeave, drop, titles, questionData }: CProps) => {
           :
           null
         }
-        <div className={styles.box} onDragOver={(e) => dragOver(e)} onDragLeave={(e) => dragLeave(e)} onDrop={(e) => drop(e, 1)}>
+        <div
+          className={styles.box}
+          onDragOver={(e) => dragOver(e)}
+          onDragLeave={(e) => dragLeave(e)}
+          onDrop={(e) => drop(e, 1)}
+          onClick={(e) => dropByClick(e, 1)}
+        >
           <h2>{titles?.left}</h2>
         </div>
       </div>

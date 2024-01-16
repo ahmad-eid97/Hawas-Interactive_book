@@ -1,10 +1,23 @@
-@import '../../../../styles/mixins.scss';
+@import '@/styles/mixins.scss';
 
 .textSection {
   h3 {
     font-size: 1.2rem;
     font-weight: 600;
+
+    @include sm {
+      font-size: 13px;
+    }
   }
+
+  div {
+    * {
+      @include sm {
+        font-size: 13px !important;
+      }
+    }
+  }
+
   .text {
     font-size: 1.2em !important;
     background-color: transparent;
@@ -28,16 +41,19 @@
         background-position: 100% 0%;
       }
     }
+
     &.long {
       &:hover {
         animation: highlight 60s ease-out;
       }
     }
+
     &.medium {
       &:hover {
         animation: highlight 30s ease-out;
       }
     }
+
     @include xs {
       font-size: 0.9rem !important;
       line-height: 25px !important;
