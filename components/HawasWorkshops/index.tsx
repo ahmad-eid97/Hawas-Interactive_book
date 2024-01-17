@@ -54,5 +54,4 @@ const HawasWorkshops = ({ data }: Props) => {
     </Container>
   )
 }
-
 export default HawasWorkshops;
