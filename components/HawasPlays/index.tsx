@@ -1,42 +1,43 @@
 'use client';
+import Link from 'next/link';
 //= Components
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+//= Types
+import type { PlaysPageResponse } from "@/types";
 //= Styles
 import cls from './hawasPlays.module.scss';
-import Link from 'next/link';
 
-const HawasPlays = () => {
+type Props = {
+  data: PlaysPageResponse | null;
+}
+
+const HawasPlays = ({ data }: Props) => {
   return (
     <Container maxWidth="xl">
       <div className={cls.hawasPlays}>
-        <h2>مسرحيات هادفة للأطفال من جيل 4 وحتى 10 بمواضيع السلامة والصحة والتسامح.</h2>
+        <h2 dangerouslySetInnerHTML={{ __html: data?.description || '' }} />
         <div className={cls.playsList}>
           <Grid container spacing={2} justifyContent="center">
-            <Grid item xs={12} sm={6} md={4}>
-              <Link href={`/plays/1`}>
-                <div className={cls.play}>
-                  <div className={cls.playImg}>
-                    <img src="/images/plays/play1.png" alt="hawasPlays" />
-                  </div>
-                  <div className={cls.playContent}>
-                    <p>مسرحية زعتر وعنتر في الطريق</p>
-                  </div>
-                </div>
-              </Link>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <Link href={`/plays/2`}>
-                <div className={cls.play}>
-                  <div className={cls.playImg}>
-                    <img src="/images/plays/play2.png" alt="hawasPlays" />
-                  </div>
-                  <div className={cls.playContent}>
-                    <p>مسرحية زعتر وعنتر في الطريق</p>
-                  </div>
-                </div>
-              </Link>
-            </Grid>
+            {
+              data?.options.length ?
+                data?.options.map(opt => (
+                  <Grid item xs={12} sm={6} md={4} key={opt.title}>
+                    <Link href={`/plays/${opt.title}`}>
+                      <div className={cls.play}>
+                        <div className={cls.playImg}>
+                          <img src={opt.image} alt="hawasPlays" />
+                        </div>
+                        <div className={cls.playContent}>
+                          <p>{opt.title}</p>
+                        </div>
+                      </div>
+                    </Link>
+                  </Grid>
+                ))
+                :
+                <p>لا توجد مسرحيات بعد</p>
+            }
           </Grid>
         </div>
       </div>

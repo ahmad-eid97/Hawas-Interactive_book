@@ -17,7 +17,7 @@ export default async function Home() {
   let menus: MenuItem[] = [];
   let headerData: Slider | null = null;
   let coursesData: Course[] = [];
-  // let categoriesData: ICategory[] = [];
+  let categoriesData: ICategory[] = [];
   let blogsData: Blog[] = [];
   let eventsData: IEvent[] = [];
   let videoData: Awaited<ReturnType<typeof getWhyChooseUsSection>> | null = null;
@@ -38,10 +38,10 @@ export default async function Home() {
     if (data) headerData = data;
   } catch (err) { }
 
-  // try {
-  //   const data = await getAllCategories({ limit: 6 });
-  //   if (data) categoriesData = data;
-  // } catch (err) { }
+  try {
+    const data = await getAllCategories({ limit: 6 });
+    if (data) categoriesData = data;
+  } catch (err) { }
 
   try {
     const data = await getAllCourses({ limit: 6 });
@@ -97,7 +97,7 @@ export default async function Home() {
     <>
       <Navbar menus={menus} settingsData={settingsData} />
       <Banner data={headerData} />
-      <MainSections />
+      <MainSections data={categoriesData} />
       <Experince data={experinceData} />
       <Video data={videoData} />
       <Courses data={coursesData} />

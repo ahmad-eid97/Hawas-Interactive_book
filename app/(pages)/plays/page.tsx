@@ -1,5 +1,9 @@
 //== Components
 import { PageHeader, HawasPlays } from "@/components";
+//= Api
+import { getPlaysPageData } from '@/API/pages';
+//= Types
+import type { PlaysPageResponse } from "@/types";
 
 export async function generateMetadata() {
   return {
@@ -8,11 +12,18 @@ export async function generateMetadata() {
   }
 }
 
-const Plays = () => {
+const Plays = async () => {
+  let fetchedData: PlaysPageResponse | null = null;
+
+  try {
+    const data = await getPlaysPageData();
+    if (data) fetchedData = data;
+  } catch (err) { }
+
   return (
     <div>
       <PageHeader title="مسرحيات حواس" />
-      <HawasPlays />
+      <HawasPlays data={fetchedData} />
     </div>
   )
 }

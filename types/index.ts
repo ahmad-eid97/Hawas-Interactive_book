@@ -7,4 +7,5 @@ export * from '@/API/pages/course/types';
 export * from '@/API/pages/blog/types';
 export * from '@/API/pages/terms/types';
 export * from '@/API/pages/privacy/types';
+export * from '@/API/pages/categories/types';
 export * from '@/API/pages/types';

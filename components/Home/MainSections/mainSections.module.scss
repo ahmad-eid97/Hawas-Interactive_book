@@ -35,11 +35,45 @@
       text-transform: capitalize;
     }
   }
+
+  .cardContainer {
+    &:nth-of-type(1) {
+      .card {
+        background-color: #0f8ac2;
+      }
+    }
+    &:nth-of-type(2) {
+      .card {
+        background-color: #4e35a3;
+      }
+    }
+    &:nth-of-type(3) {
+      .card {
+        background-color: #febe44;
+      }
+    }
+    &:nth-of-type(4) {
+      .card {
+        background-color: #4caa5f;
+      }
+    }
+    &:nth-of-type(5) {
+      .card {
+        background-color: #d039ab;
+      }
+    }
+    &:nth-of-type(6) {
+      .card {
+        background-color: #ff8e71;
+      }
+    }
+  }
+
   .card {
     color: #fff;
     border-radius: 16px;
     width: 100%;
-    transition: all .3s ease;
+    transition: all 0.3s ease;
     text-align: center !important;
     padding: 8px;
     position: relative;
@@ -52,12 +86,7 @@
     background-clip: border-box;
     border: 0 solid #e7e7ec;
     background-size: cover;
-    &:hover {
-      &::before {
 
-        opacity: .8;
-      }
-    }
     &::before {
       position: absolute;
       top: 0;
@@ -66,42 +95,71 @@
       left: 0;
       content: " ";
       border-radius: inherit;
-      -webkit-transition: all .2s ease-in-out;
-      transition: all .2s ease-in-out;
+      -webkit-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
       background-color: inherit;
-
     }
     .content {
-      background-image: repeating-linear-gradient(to right, rgba(255, 255, 255, .7) 0, rgba(255, 255, 255, .7) 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to right, rgba(255, 255, 255, .7) 0, rgba(255, 255, 255, .7) 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to bottom, rgba(255, 255, 255, .7) 0, rgba(255, 255, 255, .7) 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to bottom, rgba(255, 255, 255, .7) 0, rgba(255, 255, 255, .7) 50%, transparent 50%, transparent 100%);
-      background-position: left top, left bottom, left top, right top;
+      background-image: repeating-linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0.7) 0,
+          rgba(255, 255, 255, 0.7) 50%,
+          transparent 50%,
+          transparent 100%
+        ),
+        repeating-linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0.7) 0,
+          rgba(255, 255, 255, 0.7) 50%,
+          transparent 50%,
+          transparent 100%
+        ),
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.7) 0,
+          rgba(255, 255, 255, 0.7) 50%,
+          transparent 50%,
+          transparent 100%
+        ),
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.7) 0,
+          rgba(255, 255, 255, 0.7) 50%,
+          transparent 50%,
+          transparent 100%
+        );
+      background-position:
+        left top,
+        left bottom,
+        left top,
+        right top;
       background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
-      background-size: 20px 2px, 20px 2px, 2px 20px, 2px 20px;
+      background-size:
+        20px 2px,
+        20px 2px,
+        2px 20px,
+        2px 20px;
       border-radius: 12px;
       padding: 8px 0;
       position: relative;
       .iconContainer {
-        color: rgba(255, 255, 255, .2) !important;
+        color: rgba(255, 255, 255, 0.2) !important;
         position: relative;
         .icon {
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
           color: #fff;
           margin-top: 12px;
 
-          svg {
+          img {
             margin: 0 auto;
           }
         }
-        svg {
+        img {
           margin: 0 auto;
         }
       }
       .footer {
         position: relative;
-        padding-top: 16px;
+        padding-bottom: 5px;
         h5 {
           font-size: 16px;
           font-weight: 700;

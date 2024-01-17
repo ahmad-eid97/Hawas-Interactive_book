@@ -4,35 +4,23 @@ import { useState } from "react"
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Lightbox from "yet-another-react-lightbox";
+//= Types
+import type { WorkshopsPageResponse } from "@/types";
 //= Styles
 import "yet-another-react-lightbox/styles.css";
 import cls from './hawasWorkshops.module.scss';
 
-const HawasWorkshops = () => {
+type Props = {
+  data: WorkshopsPageResponse | null;
+}
+
+const HawasWorkshops = ({ data }: Props) => {
   const [open, setOpen] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
-  const items = [
-    {
-      id: 1,
-      src: '/images/plays/play1.png'
-    },
-    {
-      id: 2,
-      src: '/images/plays/play2.png'
-    },
-    {
-      id: 3,
-      src: '/images/plays/play1.png'
-    },
-    {
-      id: 4,
-      src: '/images/plays/play2.png'
-    },
-    {
-      id: 5,
-      src: '/images/films/film1.png'
-    }
-  ]
+  const items = data?.options.map(item => ({
+    id: Math.floor(Math.random() * 100000),
+    src: item.link
+  })) || [];
 
   const openImage = (index: number) => {
     setOpen(true)

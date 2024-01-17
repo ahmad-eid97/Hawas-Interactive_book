@@ -1,5 +1,7 @@
 //== Components
 import { PageHeader, HawasChannel } from "@/components";
+//= Api
+import { getAllSettings } from '@/API/pages';
 
 export async function generateMetadata() {
   return {
@@ -8,11 +10,18 @@ export async function generateMetadata() {
   }
 }
 
-const Channel = () => {
+const Channel = async () => {
+  let settingsData: Awaited<ReturnType<typeof getAllSettings>> | null = null;
+
+  try {
+    const data = await getAllSettings();
+    if (data) settingsData = data;
+  } catch (err) { }
+
   return (
     <div>
       <PageHeader title="قناة حواس" />
-      <HawasChannel />
+      <HawasChannel channelLink={settingsData?.youtube_url || ''} />
     </div>
   )
 }

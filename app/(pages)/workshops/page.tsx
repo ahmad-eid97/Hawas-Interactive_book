@@ -1,5 +1,9 @@
 //== Components
 import { PageHeader, HawasWorkshops } from "@/components";
+//= Api
+import { getWorkshopsPageData } from '@/API/pages';
+//= Types
+import type { WorkshopsPageResponse } from "@/types";
 
 export async function generateMetadata() {
   return {
@@ -8,11 +12,18 @@ export async function generateMetadata() {
   }
 }
 
-const Workshops = () => {
+const Workshops = async () => {
+  let fetchedData: WorkshopsPageResponse | null = null;
+
+  try {
+    const data = await getWorkshopsPageData();
+    if (data) fetchedData = data;
+  } catch (err) { }
+
   return (
     <div>
       <PageHeader title="ورشات حواس" />
-      <HawasWorkshops />
+      <HawasWorkshops data={fetchedData} />
     </div>
   )
 }
