@@ -29,7 +29,7 @@ const HawasLibrary = ({ data }: Props) => {
                     <div className={cls.book}>
                       <div className={cls.sign} onClick={() => openBook(opt.link)}><i className="fa-regular fa-file-pdf"></i></div>
                       <div className={cls.image} onClick={() => openBook(opt.link)}>
-                        <img src={'/images/book.png'} alt="hawas book" />
+                        <img src={opt.image || '/images/book.png'} alt="hawas book" />
                       </div>
                       <div className={cls.content}>
                         <h3 onClick={() => openBook(opt.link)}>{opt.title}</h3>

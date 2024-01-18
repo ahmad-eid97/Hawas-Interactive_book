@@ -8,6 +8,7 @@ export interface LibrayPageResponse {
   options: {
     title: string;
     link: string;
+    image: string;
     author: string;
   }[];
   status: number;
