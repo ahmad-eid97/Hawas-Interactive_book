@@ -57,6 +57,7 @@
     padding: 16px 8px 0;
     .nav {
       display: flex;
+      justify-content: space-between;
       gap: 20px;
       flex-wrap: wrap;
       padding-left: 0;

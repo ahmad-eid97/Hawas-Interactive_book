@@ -1,7 +1,7 @@
 //== Components
 import { PageHeader, BlogDetails as BlogDetailsComponent } from "@/components";
 //= Api
-import { getBlogById } from "@/API/pages";
+import { getBlogBySlug } from "@/API/pages";
 //= Types
 import type { IBlogDetails } from '@/types';
 
@@ -14,15 +14,15 @@ export async function generateMetadata() {
 
 interface BlogDetailsProps {
   params: {
-    id: number;
+    slug: string;
   }
 }
 
-const BlogDetails: React.FC<BlogDetailsProps> = async ({ params: { id } }) => {
+const BlogDetails: React.FC<BlogDetailsProps> = async ({ params: { slug } }) => {
   let blogDetails: IBlogDetails | null = null;
 
   try {
-    const data = await getBlogById(id);
+    const data = await getBlogBySlug(slug);
     if (data) blogDetails = data;
   } catch (err) { }
 

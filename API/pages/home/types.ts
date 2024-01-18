@@ -179,6 +179,7 @@ export interface BlogsDataResponse {
 
 export interface Blog {
   id: number;
+  slug: string;
   title: string;
   description: string;
   short_description: null;

@@ -65,6 +65,8 @@
       height: auto;
       display: block;
       min-height: 200px;
+      max-height: 300px;
+      object-fit: cover;
       width: 100%;
       transition:
         filter 0.3s,

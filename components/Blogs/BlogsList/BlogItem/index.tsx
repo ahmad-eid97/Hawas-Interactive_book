@@ -15,7 +15,7 @@ const BlogItem: React.FC<BlogItemProps> = ({ data }) => {
   return (
     <>
       <div className={`${styles.card}`}>
-        <Link href={`/blogs/${data.id}`}>
+        <Link href={`/blogs/${data.slug}`}>
           <img src={data.image} alt="blog_image" />
         </Link>
         <div className={styles.info}>
@@ -27,9 +27,13 @@ const BlogItem: React.FC<BlogItemProps> = ({ data }) => {
             <i className="fa-regular fa-calendar"></i>
             {format(new Date(data?.publish_date || ''), 'dd MMMM yyy', { locale: ar })}
           </p>
+          <p>
+            <i className="fa-regular fa-eye"></i>
+            {data?.views || '0'}
+          </p>
         </div>
         <div className={styles.text}>
-          <h3><Link href={`/blogs/${data.id}`}>{data.title}</Link></h3>
+          <h3><Link href={`/blogs/${data.slug}`}>{data.title}</Link></h3>
           <div dangerouslySetInnerHTML={{ __html: data.description }} />
         </div>
       </div>
