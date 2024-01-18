@@ -48,6 +48,7 @@ export interface ICategory {
   isFeatured: boolean;
   status: boolean;
   code: null;
+  slug: string;
   name: string;
 }
 
