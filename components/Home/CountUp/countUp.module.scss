@@ -34,6 +34,23 @@
       color: #fff;
     }
   }
+
+  .boxesContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+
+    @include md {
+      flex-wrap: wrap;
+      gap: 25px;
+      padding: 20px;
+    }
+
+    @include xs {
+      justify-content: center;
+    }
+  }
+
   .icon {
     height: 120px;
     width: 120px;

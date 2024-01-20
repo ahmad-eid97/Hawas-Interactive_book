@@ -22,11 +22,11 @@ const CoutUp: React.FC<CountUpProps> = ({ data }) => {
           <h1>{data?.title as string || ''}</h1>
           <p>{data?.sub_title as string || ''}</p>
         </div>
-        <Grid container>
+        <div className={styles.boxesContainer}>
           {
             data?.list && data?.list.length > 0 &&
             data?.list.map(item => (
-              <Grid item xs={12} sm={6} md={3} key={item.title}>
+              <div className={styles.item} key={item.title}>
                 <div className={styles.icon}>
                   <i className={item.icon}></i>
                 </div>
@@ -36,10 +36,10 @@ const CoutUp: React.FC<CountUpProps> = ({ data }) => {
                   duration={5}
                   enableScrollSpy={true} />
                 <p> {item.title}</p>
-              </Grid>
+              </div>
             ))
           }
-        </Grid>
+        </div>
       </Container>
     </div>
   );
