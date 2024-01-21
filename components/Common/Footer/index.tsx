@@ -25,16 +25,12 @@ const Footer: React.FC<FooterProps> = ({ data: { links, settingsData } }) => {
     event.preventDefault();
     const btn = event.currentTarget;
     btn.setAttribute('disabled', 'disabled');
-
     const email = document.querySelector<HTMLInputElement>('#newsletter-email')!;
-
     const response = await subscribeToNewsletter(email.value);
-
     if (response && response.success) {
       toast.success('شكراً لتواصلك معنا, تم إشتراكك بنجاح');
       email.value = ''
     }
-
     btn.removeAttribute('disabled');
   }
 
@@ -118,14 +114,11 @@ const Footer: React.FC<FooterProps> = ({ data: { links, settingsData } }) => {
           </Grid>
           <Grid item xs={12}>
             <div className={styles.footerBottom}>
-              <p>حقوق النشر © 2023 GridsApps. جميع الحقوق محفوظة.</p>
+              <p>حقوق النشر © 2024 GridsApps. جميع الحقوق محفوظة.</p>
               <div className={styles.links}>
                 <ul>
                   <li>
                     <Link href="/">الصفحة الرئيسية</Link>
-                  </li>
-                  <li>
-                    <Link href="/dashboard">لوحة التحكم</Link>
                   </li>
                   <li>
                     <Link href="/books">الكتب</Link>
