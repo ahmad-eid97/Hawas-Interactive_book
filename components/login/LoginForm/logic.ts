@@ -28,14 +28,14 @@ export default function useLogic() {
   }
   const login = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const response = await studentLogin(loginData);
-    console.log(response);
-    // if (loginData.email === 'admin@hawas.com' && loginData.password === '12345678') {
-    //   cookies.set('hawas-auth', 'true', { path: '/' });
-    //   setTimeout(() => {
-    //     location.href = '/';
-    //   }, 1000)
-    // }
+    // const response = await studentLogin(loginData);
+    // console.log(response);
+    if (loginData.email === 'admin@hawas.com' && loginData.password === '12345678') {
+      cookies.set('hawas-auth', 'true', { path: '/' });
+      setTimeout(() => {
+        location.href = '/';
+      }, 1000)
+    }
   }
 
   return {

@@ -23,11 +23,11 @@ const News: React.FC<NewsProps> = ({ data }) => {
             <p>اكتشف برنامجك المثالي في دوراتنا.</p>
           </Grid>
         </Grid>
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           {
             data.length > 0 &&
             data.map(article => (
-              <Grid item lg={4} sm={6} xs={12} key={article.id}>
+              <Grid item lg={6} md={12} sm={12} xs={12} key={article.id}>
                 <Post data={article} />
               </Grid>
             ))

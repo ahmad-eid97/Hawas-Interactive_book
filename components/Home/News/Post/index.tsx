@@ -18,7 +18,7 @@ const Post: React.FC<PostProps> = ({ data }) => {
           <span>{data.category.name}</span>
         </Link>
       </div>
-      <div className={styles.cardFooter}>
+      <div className={styles.content}>
         <ul className={styles.nav}>
           <li className={styles.navItem}>
             <i className="fa-regular fa-user"></i>
