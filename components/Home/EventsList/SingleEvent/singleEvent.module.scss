@@ -1,126 +1,99 @@
 @import "../../../../styles/mixins.scss";
 
 .event {
-  transition: box-shadow .25s ease, transform .25s ease, -webkit-transform .25s ease;
-  position: relative;
-  background: linear-gradient(288.36deg, #edbc1b 50.61%, var(--main-color) 79.04%);
-  width: 100%;
   padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0 .5rem .937rem rgba(140, 152, 164, .1) !important;
-  color: #fff;
-  &::before {
-    content: '';
-    position: absolute;
-    top: 5px;
-    bottom: 5px;
-    right: 5px;
-    left: 5px;
-    background-image: repeating-linear-gradient(to right, rgba(255, 255, 255, .7) 0, rgba(255, 255, 255, .7) 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to right, rgba(255, 255, 255, .7) 0, rgba(255, 255, 255, .7) 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to bottom, rgba(255, 255, 255, .7) 0, rgba(255, 255, 255, .7) 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to bottom, rgba(255, 255, 255, .7) 0, rgba(255, 255, 255, .7) 50%, transparent 50%, transparent 100%);
-    background-position: left top, left bottom, left top, right top;
-    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
-    background-size: 20px 2px, 20px 2px, 2px 20px, 2px 20px;
-    border-radius: 8px;
-  }
+  border-radius: 20px;
+  box-shadow: 0 0.5rem 0.937rem rgba(140, 152, 164, 0.1) !important;
+  background-color: #fff;
+  height: 92%;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+
   &:hover {
-    box-shadow: 0 1rem 2.5rem rgba(140, 152, 164, .1), 0 .5rem 1rem -.75rem rgba(140, 152, 164, .1) !important;
-    transform: translate3d(0, -3px, 0);
+    transform: translateY(-6px);
+    box-shadow: 0 1rem 1.8rem rgba(29, 83, 153, 0.15) !important;
+    border-color: rgba(var(--main-color-rgb), 0.2);
   }
+
   img {
-    box-shadow: 0 1.5rem 4rem rgba(140, 152, 164, .05) !important;
+    height: 200px;
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 14px;
     object-fit: cover;
-    border-radius: 50% !important;
-    max-width: 130px !important;
-    height: 130px;
-    @include xs {
-      max-width: 100px !important;
-      height: 100px;
-    }
   }
   .cardBody {
     position: relative;
-    min-height: 1px;
-    display: block;
-    padding: 0 24px !important;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     @include xs {
       padding: 0 0 0 8px !important;
     }
     h5 {
-      color: #fff;
+      // color: #fff;
       margin: 0;
       font-weight: 500;
       font-size: 1rem;
+      margin-bottom: 15px;
     }
+
+    .box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .date {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-right: 32px;
+        background-color: var(--alt-color);
+        color: #fff;
+        padding: 10px;
+        width: 50px;
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.12);
+      }
+    }
+
     .nav {
-      flex-wrap: wrap;
-      padding-left: 0;
-      margin-bottom: 0;
-      list-style: none;
-      margin-top: 0;
-      @include sm {
-        display: none !important;
-      }
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
       .navItem {
-        padding-right: 12px !important;
-        -webkit-box-align: center !important;
-        align-items: center !important;
-        display: inline-flex !important;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
         svg {
-          margin: 0 8px !important;
+          color: var(--alt-color);
         }
+
         .text {
-          font-size: 14px;
-          color: #fff;
+          opacity: 0.7;
         }
       }
-    }
-  }
-  .date {
-    place-items: center;
-    display: flex !important;
-    padding-right: 32px;
-    div {
-      width: 100%;
-      text-align: center;
-      h3 {
-        font-size: 26px;
-        font-weight: 600;
-        line-height: 36.4px;
-        margin-bottom: 0px;
-        margin-top: 0px;
-        overflow-wrap: break-word;
-        text-align: center !important;
-        color: var(--main-color-dark);
-      }
-      span {
-        display: block;
-        font-size: 20px;
-        font-weight: 400;
-        line-height: 29px;
-        margin-bottom: 0px;
-        margin-top: 0px;
-        overflow-wrap: break-word;
-        text-align: center !important;
-        color: var(--main-color-dark);
-      }
-    }
-    @include md {
-      display: none !important;
     }
   }
   .ticket {
+    display: block;
     font-size: 16px;
     font-weight: 600;
-    margin-top: 0px;
-    padding: 0 30px 0 15px;
+    margin-top: 20px;
     position: relative;
     z-index: 2;
     cursor: pointer;
+    color: var(--sec-color);
     &:hover {
       text-decoration: underline;
-    }
-    @include md {
-      display: none !important;
     }
   }
 }

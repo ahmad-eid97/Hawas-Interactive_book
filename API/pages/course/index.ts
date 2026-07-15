@@ -1,10 +1,5 @@
-import { cache } from 'react';
-import API from "@/API/handlers";
-//= Types
 import type { ICourse } from '@/types';
+import { coursesList } from '@/staticData/pages/courses';
 
-
-export const getCourseById = cache(async (id: number) => {
-  const response = await API.GET<ICourse>(`/courses/${id}`, { headers: { 'Accept-Language': 'ar' } });
-  return (response.data.data as ICourse);
-});
+export const getCourseById = async (id: number): Promise<ICourse | undefined> =>
+  coursesList.find(c => c.id === id) ?? coursesList[0];

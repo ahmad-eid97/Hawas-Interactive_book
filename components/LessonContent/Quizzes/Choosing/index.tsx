@@ -11,9 +11,17 @@ const Choosing = ({ questionData }: { questionData: QuestionData }) => {
   const { items, choices, addToChoices, isLoading } = useLogic({ questionData });
 
   if (isLoading) return <PageLoader />
+
   return (
     <div className={styles.chooseLetter}>
       {questionData.title !== '.' && <h2>{questionData.title}</h2>}
+      {questionData.question_img ?
+        <div className={styles.question_img}>
+          <img src={questionData.question_img} alt="question_image" />
+        </div>
+        :
+        null
+      }
       <div className={styles.itemsWrapper}>
         {items && items?.length ? items.map((item: any, idx: number) => (
           <div className={styles.item} key={idx}>

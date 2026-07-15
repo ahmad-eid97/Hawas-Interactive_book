@@ -65,9 +65,14 @@ const Banner: React.FC<BannerProps> = ({ data }) => {
           </MouseParallaxChild>
         </div>
         <Container maxWidth="xl" className={styles.introContent}>
+          <img src="/images/shapes/sparkle.svg" alt="" className={`deco-shape anim-pop ${styles.decoSparkle1}`} />
+          <img src="/images/shapes/sparkle-white.svg" alt="" className={`deco-shape anim-pop anim-delay-2 ${styles.decoSparkle2}`} />
+          <img src="/images/shapes/paper-plane.svg" alt="" className={`deco-shape anim-drift ${styles.decoPlane}`} />
+          <img src="/images/shapes/ring.svg" alt="" className={`deco-shape anim-float-slow anim-delay-1 ${styles.decoRing}`} />
           <Grid container alignItems="center">
-            <Grid item xs={12} md={7} lg={6}>
-              <h1>{data?.title || ''}</h1>
+            <Grid item xs={12} md={12} lg={6}>
+              <h1 className={styles.title}>{data?.title || ''}</h1>
+              <p>أفضل البرامج التربوية بوسائل تدريبية متطورة</p>
               <form onSubmit={(e) => e.preventDefault()}>
                 <div className={styles.inputGroup}>
                   <div className={styles.inputGroupPrepend}>
@@ -78,18 +83,19 @@ const Banner: React.FC<BannerProps> = ({ data }) => {
                   <input type="search" placeholder="ابحث في حواس …" id="search-input" onKeyUp={handleEnterClick} />
                 </div>
               </form>
-              <p> بحث شائع: تطوير ، أعمال ، تصميم ، تسويق </p>
             </Grid>
-            <Grid item xs={12} md={5} lg={6} className={styles.bannerImg}>
-              <img src={data?.image || '/images/home/intro.png'} alt="banner" />
+            <Grid item xs={12} md={12} lg={6} className={styles.bannerImg}>
+              <img src="/images/shapes/blob-white.svg" alt="" className={`deco-shape ${styles.decoBlob}`} />
+              <img src="/images/shapes/sun.svg" alt="" className={`deco-shape anim-spin ${styles.decoSun}`} />
+              <div className={styles.bookStack}>
+                <img src="/images/books/1.png" alt="banner" />
+                <img src="/images/books/2.png" alt="banner" />
+              </div>
             </Grid>
           </Grid>
         </Container>
-        <div className={styles.shapeBottom}>
-          <svg viewBox="0 0 1920 230" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill="currentColor" d="M0,229l1920,0V-0.4c0,25.8-19.6,47.3-45.2,49.8L54.8,223.8C25.4,226.6,0,203.5,0,174V229z"></path>
-          </svg>
-        </div>
+        <div className={`${styles.divider}`}></div>
+        <div className={`${styles.divider_op}`}></div>
       </section>
     </MouseParallaxContainer>
   );

@@ -1,10 +1,13 @@
 @import "../../../styles/mixins.scss";
 
 .infoBox {
-  padding-bottom: 96px;
-  padding-top: 96px;
+  padding-block: 150px;
+  padding-bottom: 240px;
   text-align: center;
   background-color: #fff;
+  position: relative;
+  overflow: hidden;
+
   @include md {
     padding-right: 64px;
     padding-left: 64px;
@@ -13,8 +16,66 @@
     padding-right: 16px;
     padding-left: 16px;
   }
+
+  .decoDotsRight {
+    width: 130px;
+    top: 90px;
+    right: 3%;
+    opacity: 0.6;
+
+    @include sm {
+      width: 80px;
+      right: -20px;
+    }
+  }
+
+  .decoDotsLeft {
+    width: 130px;
+    bottom: 120px;
+    left: 3%;
+    opacity: 0.6;
+
+    @include sm {
+      width: 80px;
+      left: -20px;
+    }
+  }
+
+  .decoRocket {
+    width: 64px;
+    top: 130px;
+    left: 8%;
+
+    @include md {
+      display: none;
+    }
+  }
+
+  .decoRainbow {
+    width: 90px;
+    bottom: 150px;
+    right: 6%;
+
+    @include md {
+      display: none;
+    }
+  }
+
+  .decoSparkle {
+    width: 34px;
+    top: 210px;
+    right: 14%;
+
+    @include md {
+      display: none;
+    }
+  }
+
   .header {
-    margin-bottom: 48px;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 2;
+
     h1 {
       font-size: 34.992px;
       font-weight: 700;
@@ -23,55 +84,162 @@
       margin-top: 0px;
       text-align: center !important;
       text-transform: capitalize;
-      color: var(--main-color-dark);
+      color: var(--main-color);
+      font-weight: bold !important;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 170px;
+        height: 16px;
+        margin: 6px auto 0;
+        background: url("/images/shapes/title-squiggle.svg") no-repeat center / contain;
+      }
     }
+
     p {
       font-size: 16px;
-      font-weight: 400;
+      font-weight: 500;
       line-height: 25.6px;
       margin-bottom: 0px;
       margin-top: 0px;
       text-align: center !important;
       text-transform: capitalize;
+      color: var(--main-color);
     }
   }
 
   .cardContainer {
+    background-color: #fff;
+
     &:nth-of-type(1) {
       .card {
-        background-color: #0f8ac2;
+        background: #0f8ac2;
+        background: linear-gradient(0deg, #0f8ac2 0%, #129edf 91%);
+        box-shadow:
+          3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+          rgba(15, 138, 194, 0.3) 5px 5px,
+          rgba(15, 138, 194, 0.15) 10px 10px,
+          rgba(15, 138, 194, 0.07) 15px 15px;
+
+        &:hover {
+          transform: scale(1.05);
+          box-shadow:
+            3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+            rgba(15, 138, 194, 0.3) 1px 1px,
+            rgba(15, 138, 194, 0.15) 3px 3px,
+            rgba(15, 138, 194, 0.07) 6px 6px;
+        }
       }
     }
     &:nth-of-type(2) {
       .card {
-        background-color: #4e35a3;
+        background: #4e35a3;
+        background: linear-gradient(0deg, #4e35a3 0%, #5b3ac9 91%);
+        box-shadow:
+          3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+          rgba(78, 53, 163, 0.3) 5px 5px,
+          rgba(78, 53, 163, 0.15) 10px 10px,
+          rgba(78, 53, 163, 0.07) 15px 15px;
+
+        &:hover {
+          transform: scale(1.05);
+          box-shadow:
+            3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+            rgba(78, 53, 163, 0.3) 1px 1px,
+            rgba(78, 53, 163, 0.15) 3px 3px,
+            rgba(78, 53, 163, 0.07) 6px 6px;
+        }
       }
     }
     &:nth-of-type(3) {
       .card {
-        background-color: #febe44;
+        background: rgb(254, 190, 68);
+        background: linear-gradient(0deg, #febe44 0%, #ffc456 91%);
+        box-shadow:
+          3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+          rgba(254, 190, 68, 0.3) 5px 5px,
+          rgba(254, 190, 68, 0.15) 10px 10px,
+          rgba(254, 190, 68, 0.07) 15px 15px;
+
+        &:hover {
+          transform: scale(1.05);
+          box-shadow:
+            3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+            rgba(254, 190, 68, 0.3) 1px 1px,
+            rgba(254, 190, 68, 0.15) 3px 3px,
+            rgba(254, 190, 68, 0.07) 6px 6px;
+        }
       }
     }
     &:nth-of-type(4) {
       .card {
-        background-color: #4caa5f;
+        background: rgb(76, 170, 95);
+        background: linear-gradient(0deg, #4caa5f 0%, #4dca66 91%);
+        box-shadow:
+          3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+          rgba(76, 170, 95, 0.3) 5px 5px,
+          rgba(76, 170, 95, 0.15) 10px 10px,
+          rgba(76, 170, 95, 0.07) 15px 15px;
+
+        &:hover {
+          transform: scale(1.05);
+          box-shadow:
+            3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+            rgba(76, 170, 95, 0.3) 1px 1px,
+            rgba(76, 170, 95, 0.15) 3px 3px,
+            rgba(76, 170, 95, 0.07) 6px 6px;
+        }
       }
     }
     &:nth-of-type(5) {
       .card {
-        background-color: #d039ab;
+        background: rgb(208, 57, 171);
+        background: linear-gradient(0deg, #d039ab 0%, #ef41c3 91%);
+        box-shadow:
+          3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+          rgba(208, 57, 171, 0.3) 5px 5px,
+          rgba(208, 57, 171, 0.15) 10px 10px,
+          rgba(208, 57, 171, 0.07) 15px 15px;
+
+        &:hover {
+          transform: scale(1.05);
+          box-shadow:
+            3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+            rgba(208, 57, 171, 0.3) 1px 1px,
+            rgba(208, 57, 171, 0.15) 3px 3px,
+            rgba(208, 57, 171, 0.07) 6px 6px;
+        }
       }
     }
     &:nth-of-type(6) {
       .card {
-        background-color: #ff8e71;
+        background: rgb(255, 142, 113);
+        background: linear-gradient(0deg, #ff8e71 0%, #ff9f87 91%);
+        box-shadow:
+          3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+          rgba(255, 142, 113, 0.3) 5px 5px,
+          rgba(255, 142, 113, 0.15) 10px 10px,
+          rgba(255, 142, 113, 0.07) 15px 15px;
+
+        &:hover {
+          transform: scale(1.05);
+          box-shadow:
+            3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+            rgba(255, 142, 113, 0.3) 1px 1px,
+            rgba(255, 142, 113, 0.15) 3px 3px,
+            rgba(255, 142, 113, 0.07) 6px 6px;
+        }
       }
     }
   }
 
   .card {
     color: #fff;
-    border-radius: 16px;
+    border-top-left-radius: 37px 140px;
+    border-top-right-radius: 37px 140px;
+    border-bottom-left-radius: 110px 19px;
+    border-bottom-right-radius: 120px 24px;
     width: 100%;
     transition: all 0.3s ease;
     text-align: center !important;
@@ -86,6 +254,7 @@
     background-clip: border-box;
     border: 0 solid #e7e7ec;
     background-size: cover;
+    transition: all 0.3s ease;
 
     &::before {
       position: absolute;
@@ -99,47 +268,18 @@
       transition: all 0.2s ease-in-out;
       background-color: inherit;
     }
+
+    &:hover {
+      .content .iconContainer .icon svg {
+        transform: translateY(-6px) rotate(-8deg) scale(1.12);
+      }
+    }
     .content {
-      background-image: repeating-linear-gradient(
-          to right,
-          rgba(255, 255, 255, 0.7) 0,
-          rgba(255, 255, 255, 0.7) 50%,
-          transparent 50%,
-          transparent 100%
-        ),
-        repeating-linear-gradient(
-          to right,
-          rgba(255, 255, 255, 0.7) 0,
-          rgba(255, 255, 255, 0.7) 50%,
-          transparent 50%,
-          transparent 100%
-        ),
-        repeating-linear-gradient(
-          to bottom,
-          rgba(255, 255, 255, 0.7) 0,
-          rgba(255, 255, 255, 0.7) 50%,
-          transparent 50%,
-          transparent 100%
-        ),
-        repeating-linear-gradient(
-          to bottom,
-          rgba(255, 255, 255, 0.7) 0,
-          rgba(255, 255, 255, 0.7) 50%,
-          transparent 50%,
-          transparent 100%
-        );
-      background-position:
-        left top,
-        left bottom,
-        left top,
-        right top;
-      background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
-      background-size:
-        20px 2px,
-        20px 2px,
-        2px 20px,
-        2px 20px;
-      border-radius: 12px;
+      border: 1px dashed #fff;
+      border-top-left-radius: 37px 140px;
+      border-top-right-radius: 37px 140px;
+      border-bottom-left-radius: 110px 19px;
+      border-bottom-right-radius: 120px 24px;
       padding: 8px 0;
       position: relative;
       .iconContainer {
@@ -148,33 +288,41 @@
         .icon {
           color: #fff;
           margin-top: 12px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 20px 0 10px;
 
-          img {
-            margin: 0 auto;
+          svg {
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
           }
         }
-        img {
-          margin: 0 auto;
-        }
       }
-      .footer {
-        position: relative;
-        padding-bottom: 5px;
-        h5 {
-          font-size: 16px;
-          font-weight: 700;
-          line-height: 27px;
-          margin-bottom: 0px;
-          margin-top: 0px;
-          overflow-wrap: break-word;
-          overflow-x: hidden;
-          overflow-y: hidden;
-          text-align: center !important;
-          text-overflow: ellipsis;
-          -moz-box-orient: vertical;
-          -webkit-line-clamp: 1;
-        }
+      img {
+        margin: 0 auto;
       }
+    }
+    img {
+      margin: 0 auto;
+    }
+  }
+  .footer {
+    position: relative;
+    padding-bottom: 5px;
+    h5 {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 27px;
+      margin-bottom: 0px;
+      margin-top: 0px;
+      overflow-wrap: break-word;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      text-align: center !important;
+      text-overflow: ellipsis;
+      -moz-box-orient: vertical;
+      -webkit-line-clamp: 1;
     }
   }
 }

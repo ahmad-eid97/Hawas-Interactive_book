@@ -22,7 +22,7 @@ const CoursesList: React.FC<CoursesProps> = ({ data }) => {
             <p>اكتشف برنامجك المثالي في دوراتنا.</p>
           </Grid>
         </Grid>
-        <Grid container spacing={3}>
+        <Grid container spacing={3} justifyContent="center">
           {
             data.length > 0 &&
             data.map(course => (

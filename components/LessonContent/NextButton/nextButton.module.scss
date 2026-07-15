@@ -16,6 +16,15 @@
     justify-content: center;
     gap: 10px;
 
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      &:hover {
+        background-color: var(--main-color);
+        color: #fff;
+      }
+    }
+
     &.smallScreenBtn {
       display: none;
       @include md {

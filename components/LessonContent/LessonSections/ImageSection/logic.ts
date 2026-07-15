@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 
 export default function useLogic({ data }: any) {
   const [rendered, setRendered] = useState(true);
+  const [openViewNotesModal, setOpenViewNotesModal] = useState(false);
+  const [openAddNoteModal, setOpenAddNoteModal] = useState(false);
 
   useEffect(() => {
     setRendered(false);
@@ -13,6 +15,10 @@ export default function useLogic({ data }: any) {
   }, [data])
 
   return {
-    rendered
+    rendered,
+    openViewNotesModal,
+    setOpenViewNotesModal,
+    openAddNoteModal,
+    setOpenAddNoteModal
   }
 }

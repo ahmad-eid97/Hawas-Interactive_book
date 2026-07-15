@@ -1,0 +1,77 @@
+@import "../../../styles/extends.scss";
+@import "../../../styles/mixins.scss";
+
+.wrapper {
+  width: 100vw;
+  height: 100%;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("/images/games-bg.png") no-repeat;
+    background-position: center center;
+    opacity: 0.7;
+    z-index: 1;
+  }
+}
+
+.card {
+  padding: 120px 0;
+  position: relative;
+  z-index: 2;
+  width: 800px;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+
+  @include md {
+    width: 600px;
+  }
+
+  @include sm {
+    width: 400px;
+  }
+
+  @include xs {
+    width: 380px;
+  }
+
+  h1 {
+    width: 100%;
+    margin: 0 0 24px;
+    padding: 15px;
+    text-align: center;
+    background-color: #20a238;
+    color: #fff;
+    border-radius: 4px;
+  }
+
+  iframe {
+    border: 4px solid #20a238;
+    box-shadow:
+      6px 6px 2px rgba(#20a238, 0.4),
+      -6px -6px 2px rgba(#20a238, 0.4) !important;
+    width: 800px;
+    aspect-ratio: 4/3;
+    border-radius: 8px;
+
+    @include md {
+      width: 600px;
+    }
+
+    @include sm {
+      width: 400px;
+    }
+
+    @include xs {
+      width: 380px;
+    }
+  }
+}

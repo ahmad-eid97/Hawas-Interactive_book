@@ -1,6 +1,8 @@
 @import "../../../styles/mixins.scss";
 
 .courses {
+  padding: 80px 0 120px;
+
   @include lg {
     max-width: 960px;
   }
@@ -19,6 +21,49 @@
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
+
+    .pdfViewer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 9;
+      padding: 5vh 0;
+
+      .backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: grid;
+        place-content: center;
+      }
+
+      &>div {
+        width: 90%;
+        height: 90vh;
+        position: relative;
+        z-index: 10;
+        margin: 0 auto;
+      }
+
+      .close {
+        position: absolute;
+        top: 1%;
+        right: 5%;
+        width: 30px;
+        height: 30px;
+        background-color: var(--alt-color);
+        color: #fff;
+        display: grid;
+        place-content: center;
+        cursor: pointer;
+      }
+    }
+
     p {
       font-size: 16px;
       font-weight: 400;
@@ -33,11 +78,12 @@
       }
     }
 
-    form {
+    .form {
       display: inline-block;
       .inputGroup {
         position: relative;
         display: flex;
+        align-items: center;
         flex-wrap: wrap;
         width: 100%;
 
@@ -45,8 +91,8 @@
           position: relative;
           flex: 1;
           border-radius: 0px 4px 4px 0px;
-          height: 50px;
-          padding: 9px 16px;
+          height: 45px;
+          padding: 6px 16px;
           box-shadow: none;
           font-weight: 400;
           line-height: 1.64;
@@ -81,7 +127,7 @@
             z-index: 2;
             position: relative;
             border-radius: 4px 0px 0px 4px;
-            padding: 9px 16px;
+            padding: 8px 16px;
             display: inline-block;
             font-weight: 500;
             line-height: 1.64;
@@ -93,10 +139,78 @@
           }
 
         }
+
+        .cardFooter {
+          .details {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transform: translateX(20px);
+
+            @include sm {
+              transform: translateX(0px);
+              margin-bottom: 20px;
+            }
+
+            a,
+            button {
+              padding: 8px 20px 5px;
+              background: url("/images/bg-3.png") no-repeat;
+              background-size: cover;
+              background-color: #fff;
+              border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+              border: 2px solid var(--alt-color);
+              text-align: center;
+              cursor: pointer;
+
+              span {
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                transform: translateY(-3px);
+                font-size: 0.8rem;
+                svg {
+                  transform: scale(1.5);
+                }
+
+                @include xs {
+                  font-size: 0.65rem;
+                }
+              }
+            }
+          }
+        }
+
       }
     }
 
     margin-bottom: 48px;
+  }
+
+  .things {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      font-weight: 500;
+
+      &:first-of-type {
+        img {
+          width: 55px;
+        }
+      }
+
+      img {
+        width: 40px;
+      }
+    }
   }
 
   .accordion {
@@ -138,6 +252,7 @@
       }
     }
   }
+
   .filterBtn {
     display: block;
     padding: 20px;
@@ -147,5 +262,15 @@
     text-align: center !important;
   }
 
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+  }
 
+  .text {
+    opacity: 0.7;
+    text-align: center;
+    margin-top: 100px;
+  }
 }

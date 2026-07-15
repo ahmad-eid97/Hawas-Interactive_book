@@ -2,7 +2,6 @@
 //== Utils
 import Link from 'next/link';
 //== Components
-import Svg from './Svg';
 import { AnimatedIcons } from '@/components';
 //== Component Logic
 import useLogic from './logic';
@@ -18,6 +17,9 @@ const LoginForm = () => {
     <>
       <form className={styles.loginForm}>
         <div className={styles.head}>
+          <Link href="/">
+            الصفحة الرئيسية
+          </Link>
           <Link href="/">
             <img src="/images/navbar/navbar_logo.png" alt="logo" />
           </Link>
@@ -47,7 +49,7 @@ const LoginForm = () => {
           <button id="login" onClick={login}>تسجيل الدخول</button>
         </div>
         <p className={styles.switch}>
-          تسجيل دخول ك <Link href="/login">طالب </Link> أو <Link href="/school-login">مدرسة </Link>
+          تسجيل دخول ك <Link href="/login">طالب </Link> أو <Link href="/teacher-login">مدرس </Link>
         </p>
       </form>
     </>

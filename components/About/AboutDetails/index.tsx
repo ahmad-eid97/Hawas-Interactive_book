@@ -12,15 +12,17 @@ interface AboutDetailsProps {
 
 const AboutDetails: React.FC<AboutDetailsProps> = ({ data }) => {
   return (
-    <Container maxWidth="xl" className={styles.about}>
-      <div className={styles.intro}>
-        <h1>{data?.title as string}</h1>
-        <p className={styles.big}>{data?.sub_title as string}</p>
-        <p className="w-xl-80 mx-auto line-height-md">
-          {data?.description as string}
-        </p>
-      </div>
-    </Container>
+    <div className={styles.about}>
+      <Container maxWidth="xl">
+        <div className={styles.intro}>
+          <h1>{data?.title as string}</h1>
+          <p className={styles.big}>{data?.sub_title as string}</p>
+          <p className="w-xl-80 mx-auto line-height-md">
+            {data?.description as string}
+          </p>
+        </div>
+      </Container>
+    </div>
   );
 }
 

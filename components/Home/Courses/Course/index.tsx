@@ -2,6 +2,7 @@
 import Link from 'next/link';
 //== Modules
 import Grid from '@mui/material/Grid';
+import { Icon } from '@iconify/react';
 //= Types
 import type { Course as ICourse } from '@/types';
 //== Styles
@@ -25,7 +26,7 @@ const Course: React.FC<CourseProps> = ({ data }) => {
               <ul className={styles.nav}>
                 <li className={styles.navItem}>
                   <div className={styles.icon}>
-                    <i className="fa-regular fa-clock"></i>
+                    <Icon icon="ri:time-fill" />
                   </div>
                   <div className={styles.text}>{data.course_duration} دقيقة</div>
                 </li>

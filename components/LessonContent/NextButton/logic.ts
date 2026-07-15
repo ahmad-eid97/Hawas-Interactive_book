@@ -1,4 +1,6 @@
 "use client";
+//= Utils
+import { isDemo } from "@/utils/isDemo";
 //== Hooks
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -11,7 +13,9 @@ export default function useLogic() {
     setMounted(true);
   }, []);
 
-  const goToNextLesson = (lessonId: string) => {
+  const goToNextLesson = (lessonId: string, sort: number) => {
+    if (isDemo() && sort > 3) return;
+
     router.push(`/lessons/${lessonId}`);
   }
 

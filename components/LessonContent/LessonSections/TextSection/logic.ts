@@ -1,4 +1,10 @@
+'use client';
+import { useState } from "react";
+
 export default function useLogic() {
+  const [openViewNotesModal, setOpenViewNotesModal] = useState(false);
+  const [openAddNoteModal, setOpenAddNoteModal] = useState(false);
+
   let interval: any;
   const startHoverHandler = () => {
     let timer = 0;
@@ -10,8 +16,13 @@ export default function useLogic() {
   const endHoverHandler = async () => {
     clearInterval(interval)
   }
+
   return {
     startHoverHandler,
-    endHoverHandler
+    endHoverHandler,
+    openViewNotesModal,
+    setOpenViewNotesModal,
+    openAddNoteModal,
+    setOpenAddNoteModal
   }
 }

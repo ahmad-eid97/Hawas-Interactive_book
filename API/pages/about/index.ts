@@ -1,21 +1,6 @@
-import { cache } from 'react';
-import API from "@/API/handlers";
-//= Helpers
-import { generateQuery, generateLanguageHeader, convertAboutDataArrayToObject } from '..';
-//= Types
-import type { AboutSectionData, TestimonialsDataResponse } from './types';
-import type { Filters } from '@/types';
+import type { Testimonial } from './types';
+import { aboutSection, testimonials } from '@/staticData/pages/about';
 
+export const getAboutSection = async () => aboutSection;
 
-export const getAboutSection = cache(async () => {
-  const response = await API.GET<AboutSectionData[]>(`/sections/about`, { headers: generateLanguageHeader() });
-  return convertAboutDataArrayToObject(response?.data?.data as AboutSectionData[]);
-});
-
-
-export const getAllTestimonials = cache(async (filters?: Filters) => {
-  const query = generateQuery(filters);
-
-  const response = await API.GET<TestimonialsDataResponse>(`/testimonials${query ? query : ''}`, { headers: generateLanguageHeader() });
-  return (response?.data?.data as TestimonialsDataResponse).testimonials;
-});
+export const getAllTestimonials = async (_filters?: any): Promise<Testimonial[]> => testimonials;

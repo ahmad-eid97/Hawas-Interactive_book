@@ -1,7 +1,19 @@
-//== Handlers
-import api from "../handlers";
+import { gamesList, lessonsList } from '@/staticData/ebooks';
+import type { Game } from "@/components/Lessons/types";
 
-export async function getBookLessons(bookId: number) {
-  const response = await api.GET(`/e-books/books/all_lessons_by_book/${bookId}`);
-  if (response.data.success) return response.data.data.data;
+export async function getBookLessons(_bookId: number) {
+  return lessonsList;
+}
+
+export async function getAllGames(): Promise<Game[]> {
+  return gamesList;
+}
+
+export interface GamesResponse {
+  id: number;
+  type: string;
+  key: string;
+  value: Game[];
+  meta_keywords: null;
+  meta_description: null;
 }

@@ -1,15 +1,4 @@
-import { cache } from 'react';
-import API from "@/API/handlers";
-//= Helpers
-import { generateQuery } from '..';
-//= Types
-import type { FaqDataResponse } from './types';
-import type { Filters } from '@/types';
+import type { FAQItem } from './types';
+import { faqsList } from '@/staticData/pages/faq';
 
-
-export const getAllFaqs = cache(async (filters?: Filters) => {
-  const query = generateQuery(filters);
-
-  const response = await API.GET<FaqDataResponse>(`/faqs${query ? query : ''}`, { headers: { 'Accept-Language': 'ar' } });
-  return (response?.data?.data as FaqDataResponse).faqs;
-});
+export const getAllFaqs = async (_filters?: any): Promise<FAQItem[]> => faqsList;

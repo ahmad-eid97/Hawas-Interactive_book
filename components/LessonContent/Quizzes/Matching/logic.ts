@@ -40,14 +40,15 @@ export default function useLogic({ questionData }: CProps) {
         // @ts-ignore
         if (element.from === arr1[i].from && element.to === arr1[i].to) {
           resultArray.push(element)
+          score += 1
         }
       })
     }
-    resultArray.forEach((element: any, index: number) => {
-      if (element.from === arr2[index].from && element.to === arr2[index].to) {
-        score += 1
-      }
-    })
+    // resultArray.forEach((element: any, index: number) => {
+    //   if (element.from === arr2[index].from && element.to === arr2[index].to) {
+    //     score += 1
+    //   }
+    // })
     if (resultArray.length !== arr2.length) {
       return score;
     }

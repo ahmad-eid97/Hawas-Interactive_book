@@ -3,12 +3,34 @@
 .card {
   position: relative;
   padding: 8px;
-  box-shadow: 0 8px 12px rgba(140, 152, 164, 0.1);
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-  border-radius: 16px;
+  border-radius: 8px;
   cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+
+    .cardImgContainer img {
+      transform: rotate(-1deg) scale(1.02);
+      box-shadow: 0 14px 28px rgba(29, 83, 153, 0.18);
+    }
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    left: 0;
+    top: 52%;
+    background-color: #fff;
+    border-radius: 15% 15% 15% 15% / 15% 15% 15% 15%;
+    box-shadow: 0 8px 12px rgba(140, 152, 164, 0.1);
+  }
 
   .cardImgContainer {
     overflow: hidden;
@@ -67,12 +89,15 @@
       height: 300px;
       max-height: 300px;
       object-fit: cover;
-      width: 100%;
+      width: 95%;
+      margin: auto;
+      box-sizing: border-box;
       transition:
         filter 0.3s,
         -webkit-filter 0.3s;
       box-shadow: 0 1.5rem 4rem rgba(140, 152, 164, 0.05);
-      border-radius: 10px;
+      border-radius: 24px 24px 24px 60px;
+      border: 5px solid #fff;
       transition: all 0.3s ease;
     }
     .badgeBottom {
@@ -164,6 +189,11 @@
           display: flex;
           align-items: center;
           gap: 5px;
+
+          svg {
+            color: var(--alt-color);
+          }
+
           .text {
             font-size: 14px;
             @include xs {
@@ -180,9 +210,6 @@
         transform: translateY(0) translateZ(0);
         opacity: 1;
         visibility: visible;
-      }
-      img {
-        transform: scale(1.1);
       }
       .badgeBottom {
         transform: translateY(0) translateZ(0);

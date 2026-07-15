@@ -13,8 +13,11 @@ const LoginForm = () => {
 
   return (
     <>
-      <form className={styles.loginForm} onSubmit={(e) => login(e)}>
+      <form className={styles.loginForm}>
         <div className={styles.head}>
+          <Link href="/">
+            الصفحة الرئيسية
+          </Link>
           <Link href="/">
             <img src="/images/navbar/navbar_logo.png" alt="logo" />
           </Link>
@@ -37,10 +40,10 @@ const LoginForm = () => {
           <input type="password" name='password' id="loginPassword" placeholder='كلمة المرور' autoComplete='off' value={loginData.password} onChange={(e) => handleFields(e)} />
         </div>
         <div className={`${styles.inputGroup} ${styles.inputGroup3}`}>
-          <button id="login">تسجيل الدخول</button>
+          <button id="login" type='button' onClick={login}>تسجيل الدخول</button>
         </div>
         <p className={styles.switch}>
-          تسجيل دخول ك <Link href="/parent-login">ولي أمر </Link> أو <Link href="/school-login">مدرسة </Link>
+          تسجيل دخول ك <Link href="/school-login">مدرسة </Link> أو <Link href="/teacher-login">معلم </Link>
         </p>
       </form>
     </>

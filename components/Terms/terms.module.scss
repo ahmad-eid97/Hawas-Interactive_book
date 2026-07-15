@@ -1,7 +1,8 @@
 @import "../../styles/mixins.scss";
 
 .policy {
-  padding-bottom: 50px;
+  padding-block: 120px;
+
   h2 {
     text-align: center !important;
     color: var(--main-color);
@@ -19,6 +20,7 @@
     }
     p {
       margin-bottom: 15px;
+      color: var(--main-color);
     }
   }
 }

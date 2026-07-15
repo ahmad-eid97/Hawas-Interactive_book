@@ -1,14 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
-@import '../../../styles/mixins.scss';
-
+@import "../../../styles/mixins.scss";
 
 .navbar {
   top: 0;
   right: 0;
   left: 0;
-  background-color: var(--main-color);
-  color: #fff;
   z-index: 10;
+  background-color: #2058a2;
+  // box-shadow: inset 0 15px 10px #2058a2;
+
   .topContainer {
     z-index: 1;
     position: relative;
@@ -73,14 +72,14 @@
           transform: translate(0, 0);
           left: 0;
           display: block;
-          box-shadow: 0 1.5rem 4rem rgba(140, 152, 164, .15);
+          box-shadow: 0 1.5rem 4rem rgba(140, 152, 164, 0.15);
           border-radius: 4px;
           margin-top: -16px;
           top: 100%;
           animation: show 0.3s forwards;
           li {
             border-left: 5px solid transparent;
-            transition: all .2s ease-in-out;
+            transition: all 0.2s ease-in-out;
             width: auto;
             min-width: 100%;
             padding: 12.5px 28px;
@@ -104,18 +103,81 @@
         padding-left: 0;
         margin-bottom: 0;
         list-style: none;
+        position: relative;
+
         .link {
           position: relative !important;
-          padding: 24px 26.24px;
+          padding: 5px 30px 5px 20px;
           cursor: pointer;
+          background-color: #fff;
+          -webkit-mask-image: url("https://wdtninos.wpengine.com/wp-content/uploads/2022/09/image_mask.png");
+          -webkit-mask-size: 90%;
+          -webkit-mask-position: center;
+          -webkit-mask-repeat: no-repeat;
+          transition: all 0.3s ease;
+          border: 2px solid #fff;
+          box-shadow: inset 0 0 5px #00000049;
+          border-radius: 93% 7% 94% 6% / 6% 93% 7% 94%;
+          margin-inline-end: 5px;
+          position: relative;
+
+          &:hover {
+            background-color: var(--main-color);
+            -webkit-mask-size: 180%;
+            a {
+              span {
+                color: #fff;
+              }
+            }
+          }
+
+          a {
+            span {
+              font-family: "Playpen Sans Arabic", sans-serif;
+              font-size: 18px;
+              font-weight: 700 !important;
+            }
+          }
+
+          &:nth-of-type(1) {
+            a {
+              color: #0f8ac2;
+            }
+          }
+
+          &:nth-of-type(2) {
+            a {
+              color: #4e35a3;
+            }
+          }
+
+          &:nth-of-type(3) {
+            a {
+              color: #febe44;
+            }
+          }
+
+          &:nth-of-type(4) {
+            a {
+              color: #4caa5f;
+            }
+          }
+
+          &:nth-of-type(5) {
+            a {
+              color: #ff8e71;
+            }
+          }
+
           &.maxWidth {
             position: static;
           }
+
           .linkDropdown2 {
             padding: 26px 48px;
             position: absolute;
             display: block;
-            box-shadow: 0 1.5rem 4rem rgba(140, 152, 164, .15);
+            box-shadow: 0 1.5rem 4rem rgba(140, 152, 164, 0.15);
             border-radius: 4px;
             top: 100%;
             left: 50%;
@@ -139,7 +201,7 @@
                 margin-left: 23.3333px;
                 margin-right: 23.3333px;
                 border: 1px solid #e7e7ec !important;
-                box-shadow: 0 .5rem .937rem rgba(140, 152, 164, .1) !important;
+                box-shadow: 0 0.5rem 0.937rem rgba(140, 152, 164, 0.1) !important;
               }
               h6 {
                 font-size: 16px;
@@ -184,6 +246,22 @@
               }
             }
           }
+        }
+
+        .number {
+          position: absolute;
+          z-index: 9;
+          top: -15px;
+          left: 0px;
+          display: block;
+          background-color: var(--delete-warn);
+          min-width: 30px;
+          min-height: 30px;
+          border-radius: 50%;
+          display: grid;
+          place-content: center;
+          color: #fff;
+          box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
         }
       }
     }

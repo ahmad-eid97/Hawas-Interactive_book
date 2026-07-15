@@ -1,17 +1,22 @@
-@import '../../../styles/mixins.scss';
+@import "../../../styles/mixins.scss";
 
 .courses {
-  padding-bottom: 128px;
+  padding-bottom: 200px;
   padding-top: 96px;
-  background-color: var(--main-color);
+  position: relative;
+  z-index: 11;
+  background-color: var(--alt-color);
+
   @include lg {
     padding-right: 64px;
     padding-left: 64px;
   }
+
   @include xs {
     padding-right: 0;
     padding-left: 0;
   }
+
   .parallaxCursor {
     position: absolute;
     right: 0;
@@ -21,6 +26,7 @@
     div {
       height: 100%;
       position: absolute;
+      opacity: 0.8;
       img {
         object-fit: contain;
       }
@@ -35,6 +41,15 @@
       font-weight: 600;
       color: #fff;
       text-align: center !important;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 160px;
+        height: 15px;
+        margin: 4px auto 0;
+        background: url("/images/shapes/title-squiggle-white.svg") no-repeat center / contain;
+      }
     }
     p {
       font-size: 18px;
@@ -71,6 +86,75 @@
         width: 20px;
         background-color: #fff;
         border-radius: 20px;
+      }
+    }
+  }
+
+  .divider {
+    overflow: hidden;
+    position: absolute;
+    top: -130px;
+    height: 150px;
+    transform: rotate(180deg);
+    left: 0;
+    width: 100%;
+
+    &.bottom {
+      top: unset;
+      bottom: -130px;
+      transform: rotate(0);
+    }
+  }
+
+  .divider::before {
+    content: "";
+    font-family: "shape divider from ShapeDividers.com";
+    position: absolute;
+    z-index: 3;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    bottom: -0.1vw;
+    left: -0.1vw;
+    right: -0.1vw;
+    top: -0.1vw;
+    background-size: 100% 152px;
+    background-position: 50% 0%;
+    transform: rotateY(180deg);
+    background-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35.278 3.62" preserveAspectRatio="none"><path d="M35.278.092S8.238.267 0 3.62V.092z" opacity=".2" fill="%232058a2"/><path d="M35.278.092S8.238.246 0 3.194V.092z" opacity=".2" fill="%232058a2"/><path d="M35.278.092S8.238.223 0 2.738V.092zM35.278.092H0V0h35.278z" fill="%232058a2"/></svg>');
+  }
+
+  @media (min-width: 2100px) {
+    .divider::before {
+      background-size: 106% calc(2vw + 31px);
+    }
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+
+    a {
+      background-color: #fff;
+      border-radius: 50px;
+      box-shadow: 0 6px 0 rgba(0, 0, 0, 0.18);
+      cursor: pointer;
+      min-width: 100px;
+      padding: 14px 32px;
+      overflow: hidden;
+      text-align: center !important;
+      font-weight: 600;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 9px 0 rgba(0, 0, 0, 0.18);
+      }
+
+      &:active {
+        transform: translateY(2px);
+        box-shadow: 0 3px 0 rgba(0, 0, 0, 0.18);
       }
     }
   }

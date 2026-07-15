@@ -381,7 +381,7 @@ function Matching({
         <div className={classes.righthand}>
           <h3>{columnsData?.righthand.title}</h3>
           {
-            columnsData?.righthand.items.length ?
+            columnsData?.righthand?.items?.length ?
               (
                 columnsData?.righthand.items.map((matchingItem: any, index: number) => (
                   <p key={index} className={`${options?.itemsClassName || ''} ${columnsData?.righthand.type === 'image' ? classes.big : ''}`}>
@@ -428,7 +428,7 @@ function Matching({
         <div className={classes.lefthand}>
           <h3>{columnsData?.lefthand.title}</h3>
           {
-            columnsData?.lefthand.items.length ?
+            columnsData?.lefthand?.items?.length ?
               (
                 columnsData.lefthand.items.map((matchingItem: any, index: number) => (
                   <p key={index} onMouseUp={handleMouseUp} onClick={handleMouseUp} className={options?.itemsClassName || ''}>

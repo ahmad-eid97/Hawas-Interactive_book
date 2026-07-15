@@ -1,7 +1,8 @@
 "use client"
 //== Modules
-import { createContext } from "react";
+import { createContext, useEffect } from "react";
 import { createTheme, ThemeProvider } from "@mui/material";
+import { readStyles } from "@/utils/descriptionCompiler";
 
 export const ThemeContext = createContext({});
 type ExtendedBreakpoints = {
@@ -41,6 +42,10 @@ const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
     typography: {
     },
   });
+
+  useEffect(() => {
+    readStyles(1);
+  }, []);
 
   return (
     <ThemeContext.Provider value={theme}>

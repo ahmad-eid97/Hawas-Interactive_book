@@ -1,7 +1,7 @@
 import { Links, Link, Meta } from "../types";
 
 export interface FaqDataResponse {
-  faqs: FAQItem[];
+  fags: FAQItem[];
   links: Links;
   meta: Meta;
 }

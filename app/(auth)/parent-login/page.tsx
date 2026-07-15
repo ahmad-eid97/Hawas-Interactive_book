@@ -1,7 +1,7 @@
 //== Components
 import { ParentLoginWrapper } from "@/components";
 
-const Login = () => {
+const ParentLogin = () => {
   return (
     <>
       <ParentLoginWrapper />
@@ -9,4 +9,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default ParentLogin;

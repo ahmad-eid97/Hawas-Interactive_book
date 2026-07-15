@@ -2,7 +2,6 @@
 //== Utils
 import Link from 'next/link';
 //== Components
-import Svg from './Svg';
 import { AnimatedIcons } from '@/components';
 //== Component Logic
 import useLogic from './logic';
@@ -11,13 +10,16 @@ import animatedPicture from '../../../public/animatedPictures/School2.json';
 //== Styles
 import styles from './loginForm.module.scss';
 
-const LoginForm = () => {
+const SchoolLogin = () => {
   const { loginData, handleFields, login, showMyPassword, showPassword } = useLogic();
 
   return (
     <>
       <form className={styles.loginForm}>
         <div className={styles.head}>
+          <Link href="/">
+            الصفحة الرئيسية
+          </Link>
           <Link href="/">
             <img src="/images/navbar/navbar_logo.png" alt="logo" />
           </Link>
@@ -47,11 +49,11 @@ const LoginForm = () => {
           <button id="login" onClick={login}>تسجيل الدخول</button>
         </div>
         <p className={styles.switch}>
-          تسجيل دخول ك <Link href="/login">طالب </Link> أو <Link href="/parent-login">ولي أمر </Link>
+          تسجيل دخول ك <Link href="/login">طالب </Link> أو <Link href="/teacher-login">معلم </Link>
         </p>
       </form>
     </>
   )
 }
 
-export default LoginForm
+export default SchoolLogin

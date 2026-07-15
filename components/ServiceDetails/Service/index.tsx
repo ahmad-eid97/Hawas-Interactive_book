@@ -34,7 +34,7 @@ const Service: React.FC<ServiceProps> = ({ data }) => {
               <div className={styles.services}>
                 <ul>
                   {
-                    data?.features.length ?
+                    data?.features?.length ?
                       data.features.map((feature) => (
                         <li key={feature.id}>
                           <i className="fa-solid fa-circle-dot"></i>
@@ -53,7 +53,7 @@ const Service: React.FC<ServiceProps> = ({ data }) => {
               <h3 className={styles.title}>المعرض</h3>
               <ul className={styles.gallery}>
                 {
-                  items.length ?
+                  items?.length ?
                     items.map((item, idx) => (
                       <li className={styles.gallery} key={item.id}>
                         <div onClick={() => openImage(idx)}>

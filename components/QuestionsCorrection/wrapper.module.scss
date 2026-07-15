@@ -1,0 +1,19 @@
+.wrapper {
+  padding: 50px 0;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--main-color);
+    font-size: clamp(25px, 5vw, 35px);
+    font-weight: 700;
+  }
+
+  .noQuestions {
+    text-align: center;
+    font-size: 18px;
+    opacity: 0.7;
+    font-weight: 700;
+    padding: 50px 0 100px;
+  }
+}

@@ -1,6 +1,7 @@
 "use client";
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useCallback, forwardRef } from "react";
+import { readHighlightStyles } from "@/API/teacherPanel";
 import flipSound from "./assets/page-flip.mp3";
 import paper from "./assets/paper.jpg";
 import classes from "./Flippy.module.css";
@@ -49,9 +50,9 @@ const Flippy = (
 
   useEffect(() => {
     if (
-      totalPages.middlePages.length &&
+      totalPages?.middlePages?.length &&
       currentPage > 0 &&
-      currentPage < totalPages.middlePages.length + 1
+      currentPage < totalPages?.middlePages?.length + 1
     ) {
       if (immediateFlipping) return setPageChangerContentIndex(currentPage);
 
@@ -91,6 +92,10 @@ const Flippy = (
     }
   }, [backSkin, flippingTime]);
 
+  useEffect(() => {
+    readHighlightStyles(1);
+  }, []);
+
   /***
    * @description
    * Combine each two pages into one mutli-faced page
@@ -108,24 +113,24 @@ const Flippy = (
       const foldedPages = [{ zIndex: 0, pages: [children[0], ""] }];
 
       // Cutoff the covers
-      let pagesWithoutCovers = children.slice(1, children.length - 1);
+      let pagesWithoutCovers = children.slice(1, children?.length - 1);
 
       if (window.innerWidth > breakpoint) {
         // Set Full-Width mode for the book pages to false
         setIsFullWidth(false);
 
         // Expand the container width to fit the double-page
-        if (cPage > 0 && cPage < totalPages.middlePages.length + 1)
+        if (cPage > 0 && cPage < totalPages.middlePages?.length + 1)
           setWidth((pageWidth || 500) * 2);
 
         // Make sure pages are double
-        for (var i = 0; i < pagesWithoutCovers.length; i++) {
+        for (var i = 0; i < pagesWithoutCovers?.length; i++) {
           if (i % 2 !== 0) continue;
 
           let page1 = pagesWithoutCovers[i];
           let page2 = pagesWithoutCovers[i + 1];
 
-          if (i + 1 <= pagesWithoutCovers.length) {
+          if (i + 1 <= pagesWithoutCovers?.length) {
             page2 = pagesWithoutCovers[i + 1];
           } else {
             page2 = "";
@@ -147,7 +152,7 @@ const Flippy = (
         setWidth(pageWidth || 500);
 
         // Make sure pages are single
-        for (var w = 0; w < pagesWithoutCovers.length; w++) {
+        for (var w = 0; w < pagesWithoutCovers?.length; w++) {
           foldedPages.push({
             zIndex: w + 1,
             pages: [pagesWithoutCovers[w], ""],
@@ -164,28 +169,28 @@ const Flippy = (
       // Add the last page
       foldedPages.push({
         zIndex: children.length - 1,
-        pages: ["", children[children.length - 1]],
+        pages: ["", children[children?.length - 1]],
       });
 
       /**
        * Make sure the last page is always backfaced
        */
-      if (children.length % 2 !== 0) {
-        let [page1, page2] = foldedPages[foldedPages.length - 1].pages;
-        foldedPages[foldedPages.length - 1].pages = [page2, page1];
+      if (children?.length % 2 !== 0) {
+        let [page1, page2] = foldedPages[foldedPages?.length - 1].pages;
+        foldedPages[foldedPages?.length - 1].pages = [page2, page1];
       }
       /**
        * Setup pages z-indexes order
        */
       foldedPages.map((page, idx) => {
-        page.zIndex = foldedPages.length - idx;
+        page.zIndex = foldedPages?.length - idx;
         return page;
       });
 
       setTotalPages({
         coverPage: foldedPages[0],
-        middlePages: foldedPages.slice(1, foldedPages.length - 1),
-        coverEndPage: foldedPages[foldedPages.length - 1],
+        middlePages: foldedPages.slice(1, foldedPages?.length - 1),
+        coverEndPage: foldedPages[foldedPages?.length - 1],
       });
     },
     [children, breakpoint, currentPage]
@@ -195,11 +200,11 @@ const Flippy = (
     combinePages();
 
     if (isPagesDouble) {
-      if (totalPages.middlePages.length * 2 + 2 !== children.length) {
+      if (totalPages.middlePages?.length * 2 + 2 !== children?.length) {
         combinePages(currentPage, isPagesDouble, true);
       }
     } else {
-      if (totalPages.middlePages.length + 2 !== children.length) {
+      if (totalPages.middlePages?.length + 2 !== children?.length) {
         combinePages(currentPage, isPagesDouble, true);
       }
     }

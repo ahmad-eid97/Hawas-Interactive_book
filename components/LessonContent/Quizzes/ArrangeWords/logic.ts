@@ -50,7 +50,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   const drop = (e: React.DragEvent<HTMLDivElement>, index: number, droppapleIndex: number) => {
     e.preventDefault();
     e.currentTarget.style.backgroundColor = "rgb(250, 250, 212)";
-    if (draggableItem && !e.currentTarget.children.length) e.currentTarget.appendChild(draggableItem);
+    if (draggableItem && !e.currentTarget.children?.length) e.currentTarget.appendChild(draggableItem);
     setStudentAnswer({ ...studentAnswer, [index]: { ...studentAnswer[index], [droppapleIndex]: draggableItem?.innerText } })
   }
 
@@ -64,7 +64,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   const dropByClick = (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>, index: number, droppapleIndex: number) => {
-    if (e.currentTarget.children.length > 0) return;
+    if (e.currentTarget.children?.length > 0) return;
     clickedItem?.classList.remove('activeBGForDragging');
     if (clickedItem) e.currentTarget.appendChild(clickedItem);
     setClickedItem(null);
@@ -90,8 +90,8 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
 
   const compareObjects = (object1: any, object2: any) => {
     if (!object2) return false
-    if (Object.keys(object1)?.length !== Object.keys(object2).length) return false
-    for (let i = 0; i < Object.keys(object1).length; i++) {
+    if (Object.keys(object1)?.length !== Object.keys(object2)?.length) return false
+    for (let i = 0; i < Object.keys(object1)?.length; i++) {
       if (object1[i] !== object2[i]) return false
     }
     return true;
@@ -99,10 +99,10 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
 
   const correctAnswer = () => {
     const answers: any = []
-    for (let i = 0; i < Object.keys(data?.correctAnswer).length; i++) {
+    for (let i = 0; i < Object.keys(data?.correctAnswer)?.length; i++) {
       answers.push(compareObjects(data?.correctAnswer[i], studentAnswer[i]))
     }
-    const score = data?.items.length - answers.filter((item: any) => !item).length
+    const score = data?.items?.length - answers.filter((item: any) => !item).length
     if (answers.every((answer: any) => answer === true)) {
       dispatch(checkAnswer(true))
       setTimeout(() => {
@@ -112,7 +112,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         correct: true,
         data: [
           "أحسنت",
-          `لقد حصلت على علامة ${score} من ${data?.items.length}`,
+          `لقد حصلت على علامة ${score} من ${data?.items?.length}`,
         ]
       })
     } else {
@@ -124,7 +124,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         correct: false,
         data: [
           "حاول مرّة أخرى",
-          `لقد حصلت على علامة ${score} من ${data?.items.length}`,
+          `لقد حصلت على علامة ${score} من ${data?.items?.length}`,
         ]
       })
     }

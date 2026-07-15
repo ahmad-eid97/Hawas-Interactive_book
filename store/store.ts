@@ -2,10 +2,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 // REDUCERS ( SLICES )
 import commonReducer from './slices/common';
+import teacherReducer from './slices/teacher';
 
 export const store = configureStore({
   reducer: {
-    common: commonReducer
+    common: commonReducer,
+    teacher: teacherReducer
   },
   devTools: process.env.NODE_ENV !== 'production'
 });

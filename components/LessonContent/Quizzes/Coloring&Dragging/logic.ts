@@ -45,13 +45,13 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   const dragLeave = (e: React.DragEvent<HTMLDivElement>) => {
-    e.currentTarget.style.backgroundColor = "rgb(250, 250, 212)";
+    e.currentTarget.style.backgroundColor = "transparent";
   }
 
   const drop = (e: React.DragEvent<HTMLDivElement>, index: number) => {
     e.preventDefault();
     e.currentTarget.style.backgroundColor = "rgb(250, 250, 212)";
-    if (draggableItem && !e.currentTarget.children.length) e.currentTarget.appendChild(draggableItem);
+    if (draggableItem && !e.currentTarget?.children?.length) e.currentTarget.appendChild(draggableItem);
     setStudentAnswer({ ...studentAnswer, [index]: draggableItem?.innerText })
   }
 
@@ -62,7 +62,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   const dropByClick = (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>, index: number) => {
-    if (e.currentTarget.children.length > 0) return;
+    if (e.currentTarget?.children?.length > 0) return;
     clickedItem?.classList.remove('activeForDragging');
     if (clickedItem) e.currentTarget.appendChild(clickedItem);
     setClickedItem(null);
@@ -76,8 +76,8 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
 
   const compareObjects = (object1: any, object2: any) => {
     if (!object2) return false
-    if (Object.keys(object1)?.length !== Object.keys(object2).length) return false
-    for (let i = 0; i < Object.keys(object1).length; i++) {
+    if (Object.keys(object1)?.length !== Object.keys(object2)?.length) return false
+    for (let i = 0; i < Object.keys(object1)?.length; i++) {
       if (object1[i] !== object2[i]) return false
     }
     return true;
@@ -86,8 +86,8 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   const correctAnswer = () => {
     if (clickedItem) setClickedItem(null);
     setColoredLetters(0)
-    const correctLetters = compareObjects(data?.correctChoices, studentAnswer)
-    if (correctLetters && coloredLetters >= 2 && data?.rightColor === choosedColor) {
+    const checkedCorrectAnswers = compareObjects(data?.correctChoices, studentAnswer);
+    if (checkedCorrectAnswers && coloredLetters >= 2 && data?.rightColor === choosedColor) {
       dispatch(checkAnswer(true))
       setTimeout(() => {
         dispatch(checkAnswer(false))
@@ -117,6 +117,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   const retry = () => {
     if (clickedItem) setClickedItem(null);
     setRendered(false);
+    setShowCorrection(null);
     setTimeout(() => {
       setRendered(true)
     }, 20)

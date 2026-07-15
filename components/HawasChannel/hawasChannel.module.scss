@@ -1,7 +1,17 @@
 .hawasChannel {
+  padding: 100px 0;
+
   h2 {
     text-align: center;
+    color: var(--main-color);
+    font-weight: bold !important;
     margin-bottom: 50px;
+    font-size: 20px;
+
+    p {
+      color: var(--main-color);
+      font-weight: bold !important;
+    }
   }
 
   .channel {
@@ -13,11 +23,11 @@
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-    border: 1px solid #ff0000;
-    background-color: rgba($color: #ff0000, $alpha: 0.1);
+    border: 1px solid var(--alt-color);
+    background-color: rgba(var(--alt-color-rgb), 0.1);
 
     i {
-      color: #ff0000;
+      color: var(--alt-color);
       font-size: 50px;
     }
   }

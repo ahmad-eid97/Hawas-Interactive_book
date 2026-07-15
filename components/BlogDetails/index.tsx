@@ -7,6 +7,8 @@ import Link from 'next/link';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Lightbox from "yet-another-react-lightbox";
+//== Components
+import { Icon } from '@iconify/react';
 //== Component Logic
 import useLogic from './logic';
 //= Types
@@ -30,15 +32,15 @@ const BlogDetails: React.FC<BlogDetailsProps> = ({ data }) => {
             <Grid item lg={9} md={10} sm={11} xs={12} className={styles.blogBody}>
               <img src={data?.image || ''} alt="" />
               <div className={styles.content}>
-                <div className={styles.meta}>
-                  <ul>
-                    <li>
-                      <a href="#" className={styles.postAdmin}>
-                        كتابة {data?.username || ''}
-                      </a>
-                    </li>
-                    <li>{format(new Date(data?.publish_date || ''), 'dd MMMM yyy', { locale: ar })}</li>
-                  </ul>
+                <div className={styles.data}>
+                  <div className={styles.user}>
+                    <Icon icon="solar:user-linear" />
+                    <span>{data?.username || ''}</span>
+                  </div>
+                  <div className={styles.date}>
+                    <Icon icon="fontisto:date" />
+                    {format(new Date(data?.publish_date || ''), 'dd MMMM yyy', { locale: ar })}
+                  </div>
                 </div>
                 <h2 className={styles.blogTitle}>{data?.title || ''}</h2>
                 <div dangerouslySetInnerHTML={{ __html: data?.description || '' }}></div>
@@ -59,10 +61,10 @@ const BlogDetails: React.FC<BlogDetailsProps> = ({ data }) => {
             </Grid>
             <Grid item lg={3} md={10} sm={11} xs={12}>
               <aside>
-                <div className={styles.widget}>
+                <div className={`${styles.widget} ${styles.list}`}>
                   <h3 className={styles.title}>الفئات</h3>
                   <ul>
-                    <li><Link href="/blogs">{data?.category.name}</Link></li>
+                    <li><Icon icon="ph:dot-duotone" /> <Link href="/blogs">{data?.category.name}</Link></li>
                   </ul>
                 </div>
                 <div className={styles.widget}>

@@ -18,7 +18,10 @@
     padding: 8px 0;
     border-bottom: 1px solid #dfdfdf;
     cursor: pointer;
-    a {
+    position: relative;
+
+    a,
+    span {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -27,6 +30,23 @@
         font-size: 1.3rem;
       }
     }
+
+    .number {
+      position: absolute;
+      z-index: 9;
+      top: 5px;
+      left: 0px;
+      display: block;
+      background-color: var(--delete-warn);
+      min-width: 30px;
+      min-height: 30px;
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      color: #fff;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
     &:hover {
       color: var(--main-color);
     }

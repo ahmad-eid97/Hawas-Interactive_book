@@ -1,26 +1,32 @@
 @import "../../styles/mixins.scss";
 
 .blogDetails {
-  margin-bottom: 40px;
+  padding: 80px 0 120px;
+
   .widget {
     position: relative;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     .title {
-      font-size: 21px;
+      font-size: 1.1rem;
       font-weight: 500;
-      padding-right: 18px;
       position: relative;
-      margin-bottom: 30px;
-      padding-bottom: 5px;
-      border-bottom: 1px solid #e2e4f4;
-      &::before {
-        top: 4px;
-        right: 0px;
-        width: 3px;
-        content: "";
-        height: 30px;
-        position: absolute;
-        background-color: var(--main-color);
+      margin-bottom: 15px;
+      padding: 10px 20px;
+      background-color: rgba(var(--alt-color-rgb), 0.05);
+      border-right: 4px solid var(--alt-color);
+    }
+
+    &.list {
+      ul {
+        li {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          svg {
+            transform: scale(1.8);
+            color: var(--alt-color);
+          }
+        }
       }
     }
     ul {
@@ -131,59 +137,49 @@
     img {
       margin-bottom: 30px;
       width: 100%;
-      max-height: 600px;
-      border-radius: 15px;
+      max-height: 500px;
+      border-radius: 8px;
     }
     .content {
       color: var(--text-color);
-      .meta {
+      .data {
         margin-bottom: 30px;
-        ul {
-          margin: 0px;
-          padding: 0px;
-          display: table;
-          li {
-            position: relative;
-            margin-right: 14px;
-            padding-right: 14px;
-            float: left;
-            font-size: 14px;
-            .postAdmin {
-              display: table;
-              font-size: 14px;
-              color: var(--main-color);
-              span {
-                float: left;
-                width: 40px;
-                height: 40px;
-                overflow: hidden;
-                margin: -9px 0px;
-                margin-right: 0px;
-                margin-right: 10px;
-                border-radius: 100%;
-                border: 1px solid var(--main-color);
-                background-color: var(--main-color);
-              }
-            }
-            &::after {
-              top: 0px;
-              content: "/";
-              right: -2.5px;
-              position: absolute;
-            }
-            &:last-of-type {
-              &::after {
-                content: none;
-              }
-            }
+        display: flex;
+        align-items: center;
+        gap: 30px;
+
+        .user {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          svg {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: var(--alt-color);
+            color: #fff;
+            padding: 7px;
           }
+
+          span {
+            font-weight: 700;
+          }
+        }
+
+        .date {
+          display: flex;
+          align-items: center;
+          gap: 10px;
         }
       }
       .blogTitle {
-        font-size: 30px;
+        font-size: 1.6rem;
         font-weight: 500;
         margin-bottom: 30px;
-        color: var(--main-color);
+        padding: 10px 20px;
+        background-color: rgba(var(--alt-color-rgb), 0.05);
+        border-right: 4px solid var(--alt-color);
       }
       p {
         margin-bottom: 30px;
@@ -205,9 +201,9 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding-top: 10px;
-        border-top: 1px solid #dbdbdc;
-        opacity: 0.7;
+        padding: 10px 20px;
+        background-color: rgba(var(--alt-color-rgb), 0.05);
+        border-right: 4px solid var(--alt-color);
         ul {
           margin: 0px;
           padding: 0px;
@@ -216,6 +212,10 @@
           li {
             margin-right: 20px;
             float: left;
+
+            &:hover {
+              color: var(--alt-color);
+            }
           }
         }
       }

@@ -1,4 +1,6 @@
 "use client";
+//= Utils
+import { isDemo } from "@/utils/isDemo";
 //== Hooks
 import Link from 'next/link';
 //== Component Logic
@@ -36,7 +38,7 @@ const NextButton = ({ bookId, nextLesson, prevLesson, flippy }: CProps) => {
       <button className={styles.smallScreenBtn} onClick={() => flippy.flipNext()}><i className="fa-solid fa-angles-left"></i></button>
       {
         nextLesson ?
-          <button onClick={() => goToNextLesson(nextLesson.id)} className={styles.last}>
+          <button disabled={isDemo() && nextLesson.sort > 3 ? true : false} onClick={() => goToNextLesson(nextLesson.id, nextLesson.sort)} className={styles.last}>
             التالي: {nextLesson.title}
             <i className="fa-duotone fa-arrow-left"></i>
           </button>

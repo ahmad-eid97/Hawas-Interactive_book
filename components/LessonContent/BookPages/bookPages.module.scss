@@ -3,6 +3,8 @@
 .bookPages {
   display: flex;
   justify-content: center;
+  position: relative;
+
   @include md {
     margin-top: 0px;
   }
@@ -11,5 +13,17 @@
   }
   @include xs {
     margin-top: 20px;
+  }
+
+  .drawing_area {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99999999;
+
+    &>div {
+      background-color: transparent !important;
+    }
   }
 }

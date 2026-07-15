@@ -1,10 +1,12 @@
 //== Hooks
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+//== Moddules
+import Cookies from "universal-cookie";
+//== Utils
+import { errorNotify } from "@/utils/toast";
 //== API
 import { studentLogin } from "@/API/auth";
-//== Utils
-import Cookies from "universal-cookie";
 
 type LoginData = {
   email: string,
@@ -26,16 +28,29 @@ export default function useLogic() {
       [e.target.name]: e.target.value
     })
   }
-  const login = async (e: React.FormEvent<HTMLFormElement>) => {
+  const login = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    // const response = await studentLogin(loginData);
-    // console.log(response);
-    if (loginData.email === 'admin@hawas.com' && loginData.password === '12345678') {
-      cookies.set('hawas-auth', 'true', { path: '/' });
-      setTimeout(() => {
-        location.href = '/';
-      }, 1000)
+    const btn = e.currentTarget;
+    btn.classList.add('loading-btn');
+    try {
+      const response = await studentLogin(loginData);
+      if (response.success) {
+        cookies.set('hawas-auth', response.data.access_token, { path: '/' });
+        cookies.set('hawas-user', {
+          name: response.data.student.name,
+          email: response.data.student.email,
+          photo_file: response.data.student.photo_file,
+          role: "student"
+        }, { path: '/' });
+        setTimeout(() => {
+          window.location.href = '/books';
+        }, 500)
+      } else {
+        errorNotify('البريد الإلكتروني أو كلمة المرور غير صحيحة');
+      }
+    } catch (err) {
     }
+    btn.classList.remove('loading-btn');
   }
 
   return {

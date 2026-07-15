@@ -1,0 +1,67 @@
+@import "@/styles/mixins.scss";
+
+.item {
+  &:not(:last-of-type) {
+    border-bottom: 2px dashed var(--box-background);
+    padding-bottom: 30px;
+  }
+  h2 {
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 1.3rem;
+    @include sm {
+      font-size: 15px;
+    }
+  }
+  .choices {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border: 2px dashed var(--main-color);
+    padding: 20px;
+    border-radius: 20px;
+    background: url("/images/quizzes/small.svg");
+    background-position: center;
+    background-size: cover;
+    span {
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      .wrong {
+        color: var(--delete-warn);
+      }
+      .correct {
+        color: var(--success);
+      }
+      &:hover {
+        color: var(--main-color);
+      }
+    }
+
+    @include sm {
+      span {
+        font-size: 13px;
+      }
+    }
+  }
+
+  .actions {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    button {
+      padding: 8px 25px;
+      border-radius: 5px;
+      background-color: var(--main-color);
+      border: 1px solid var(--alt-color);
+      cursor: pointer;
+      color: #fff;
+    }
+  }
+}

@@ -3,6 +3,8 @@
 import Link from 'next/link';
 //== Component Logic
 import useLogic from "./logic";
+//== Components
+import { Icon } from '@iconify/react';
 //== Types
 import { Lesson } from "../types";
 //== Styles
@@ -29,9 +31,11 @@ const LessonBox = ({ index, lesson }: CProps) => {
           </Link>
         </div>
         <div className={styles.cardFooter}>
-          {/* <Link href="#"><span className={styles.cat}>{lesson.title}</span></Link> */}
           <div className={styles.details}>
+            <Icon icon="basil:book-solid" />
             <h4>{lesson.title}</h4>
+            {/* <Icon icon="icon-park-twotone:game-three" /> */}
+            <Icon icon="game-icons:burning-book" />
           </div>
         </div>
       </div>

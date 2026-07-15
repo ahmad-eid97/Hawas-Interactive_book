@@ -1,0 +1,16 @@
+@import "@/styles/extends.scss";
+@import "@/styles/mixins.scss";
+
+.multipleChoose {
+  max-width: 100%;
+
+  .itemsWrapper {
+    max-width: 600px;
+    width: 90%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+}

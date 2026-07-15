@@ -1,5 +1,5 @@
 //== Components
-import { BookPagesWrapper } from "@/components";
+import Wrapper from "@/components/LessonContent/BookPagesWrapper";
 //== API
 import { getLessonPages } from "@/API/lessonPages";
 
@@ -10,10 +10,9 @@ export const metadata = {
 
 const Book = async ({ params }: { params: { id: number } }) => {
   const response = await getLessonPages(params.id);
-
   return (
     <>
-      <BookPagesWrapper data={response?.data?.data} bookId={response?.data?.data?.book.id} nextLesson={response?.data?.data?.next_lesson} prevLesson={response?.data?.data?.prev_lesson} />
+      <Wrapper data={response?.data?.data} bookId={response?.data?.data?.book.id} nextLesson={response?.data?.data?.next_lesson} prevLesson={response?.data?.data?.prev_lesson} lessonId={params.id} />
     </>
   )
 }

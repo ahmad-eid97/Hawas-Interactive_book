@@ -1,7 +1,8 @@
 "use client";
 //== Hooks
-import { useState } from "react";
+import { useEffect, useState } from "react";
 //== Modules
+import { readHighlightStyles } from "@/API/teacherPanel";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
@@ -12,6 +13,10 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       },
     },
   }));
+
+  useEffect(() => {
+    readHighlightStyles(1);
+  }, []);
 
   return (
     <QueryClientProvider client={client}>

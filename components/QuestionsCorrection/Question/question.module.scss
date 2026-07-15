@@ -1,0 +1,117 @@
+@import "@/styles/extends";
+
+.questionWrapper {
+  margin-bottom: 50px;
+
+  .user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+    }
+
+    .details {
+      display: flex;
+      flex-direction: column;
+
+      p {
+        font-weight: 700;
+        font-size: 18px;
+        margin: 0;
+      }
+
+      span {
+        opacity: 0.7;
+        font-size: 13px;
+      }
+    }
+  }
+
+  .question {
+    p {
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 10px;
+
+      span {
+        color: var(--delete-warn);
+        font-weight: 700;
+      }
+    }
+  }
+
+  .questionBlock {
+    border: 3px solid var(--main-color);
+    box-shadow:
+      6px 6px 2px rgba(var(--main-color), 0.4),
+      -6px -6px 2px rgba(var(--main-color), 0.4) !important;
+    border-radius: 8px;
+    position: relative;
+    background-color: #fff;
+
+    &::before {
+      content: "";
+      border: 4px solid var(--main-color);
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+      border-radius: 11% 11% 12% 14% / 4% 2% 6% 7%;
+    }
+
+    .textarea {
+      min-height: 60px;
+      font-size: clamp(16px, 2vw, 20px);
+      margin-bottom: 10px;
+      border-radius: 8px;
+      padding: 10px 15px;
+      border: 0;
+      background-color: #fff;
+    }
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // flex-direction: column;
+    gap: 10px;
+    position: relative;
+    z-index: 9;
+    margin-top: 20px;
+
+    input {
+      border-radius: 4px;
+      text-align: center;
+      outline: none;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+      font-size: 18px;
+      padding: 8px 0;
+      border: 2px solid var(--main-color);
+      box-shadow:
+        6px 6px 2px rgba(var(--main-color), 0.4),
+        -6px -6px 2px rgba(var(--main-color), 0.4) !important;
+      border-radius: 8px;
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        position: relative;
+      }
+    }
+
+    button {
+      @extend %mainBtn;
+      font-size: 15px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+  }
+}

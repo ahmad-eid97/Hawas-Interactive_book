@@ -1,41 +1,22 @@
-import { cache } from 'react';
-import API from "@/API/handlers";
-//= Utils
-import { generateLanguageHeader } from '..';
-//= Types
 import type { LibrayPageResponse, PlaysPageResponse, FilmsPageResponse, LecturesPageResponse, WorkshopsPageResponse, ICategory } from '@/types';
+import {
+  categoriesBySlug,
+  libraryPageData,
+  playsPageData,
+  filmsPageData,
+  lecturesPageData,
+  workshopsPageData,
+} from '@/staticData/pages/categories';
 
+export const getCategoryBySlug = async (slug: string): Promise<ICategory | undefined> =>
+  categoriesBySlug[slug];
 
-export const getCategoryBySlug = cache(async (slug: string) => {
-  const response = await API.GET<ICategory>(`/categories/${slug}/slug`, { headers: generateLanguageHeader() });
-  return (response?.data?.data as ICategory);
-});
+export const getLibraryPageData = async (): Promise<LibrayPageResponse> => libraryPageData;
 
-export const getLibraryPageData = cache(async () => {
-  const response = await API.GET<LibrayPageResponse>(`/pages/5`, { headers: { 'Accept-Language': 'ar' } });
-  return (response.data.data as LibrayPageResponse);
-});
+export const getPlaysPageData = async (): Promise<PlaysPageResponse> => playsPageData;
 
+export const getFilmsPageData = async (): Promise<FilmsPageResponse> => filmsPageData;
 
-export const getPlaysPageData = cache(async () => {
-  const response = await API.GET<PlaysPageResponse>(`/pages/6`, { headers: { 'Accept-Language': 'ar' } });
-  return (response.data.data as PlaysPageResponse);
-});
+export const getLecturesPageData = async (): Promise<LecturesPageResponse> => lecturesPageData;
 
-
-export const getFilmsPageData = cache(async () => {
-  const response = await API.GET<FilmsPageResponse>(`/pages/7`, { headers: { 'Accept-Language': 'ar' } });
-  return (response.data.data as FilmsPageResponse);
-});
-
-
-export const getLecturesPageData = cache(async () => {
-  const response = await API.GET<LecturesPageResponse>(`/pages/8`, { headers: { 'Accept-Language': 'ar' } });
-  return (response.data.data as LecturesPageResponse);
-});
-
-
-export const getWorkshopsPageData = cache(async () => {
-  const response = await API.GET<WorkshopsPageResponse>(`/pages/9`, { headers: { 'Accept-Language': 'ar' } });
-  return (response.data.data as WorkshopsPageResponse);
-});
+export const getWorkshopsPageData = async (): Promise<WorkshopsPageResponse> => workshopsPageData;

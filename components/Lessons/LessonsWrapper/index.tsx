@@ -1,30 +1,83 @@
 "use client";
-//== Components
-import { LessonBox } from '@/components';
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
 //== Modules
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
+//== Components
+import { LessonBox } from '@/components';
+//== Utils
+import { Icon } from "@iconify/react";
+import { isDemo } from '@/utils/isDemo';
 //== Types
 import { Lesson } from '../types';
 //== Styles
 import styles from './lessonsWrapper.module.scss';
 
+const PDFViewer = dynamic(() => import('./PDFViewer'), { ssr: false });
+
 interface CProps {
-  lessons: Lesson[]
+  lessons: Lesson[];
 }
 
 const BooksWrapper = ({ lessons }: CProps) => {
-  return (
-    <Container maxWidth="xl" className={styles.courses}>
-      <div className={styles.header} >
-        <p>تم العثور علي {lessons?.length} فصل</p>
+  const renderedLessons = isDemo() ? lessons.slice(0, 3) : lessons;
+  const [showPdf, setShowPdf] = useState<boolean>(false);
+  const docs = [
+    { uri: lessons[0].unit.book.pdf_url, fileType: 'pdf' },
+  ];
 
-        <form>
+  return (
+    // @ts-ignore
+    <Container maxWidth="xxl" className={styles.courses}>
+      <div className={styles.header} >
+        <div className={styles.things}>
+          <p>تم العثور علي {lessons?.length} فصل</p>
+          <div className={styles.item}>
+            <img src="/images/quizzes/audio2.gif" alt="audio" />
+            ملف صوتي
+          </div>
+          <div className={styles.item}>
+            <img src="/images/quizzes/video.gif" alt="projector_image" />
+            ملف فيديو
+          </div>
+        </div>
+
+        {
+          showPdf ?
+            <div className={styles.pdfViewer}>
+              <div className={styles.backdrop} onClick={() => setShowPdf(false)}></div>
+              {
+                typeof window !== 'undefined' &&
+                <PDFViewer docs={docs} />
+              }
+              <div className={styles.close} onClick={() => setShowPdf(false)}>
+                <Icon icon="mdi:close-outline" />
+              </div>
+            </div>
+            : null
+        }
+
+        <div className={styles.form}>
           <div className={styles.inputGroup}>
+            <div className={styles.cardFooter}>
+              {lessons[0].unit.book.pdf_url ?
+                <div className={styles.details}>
+                  {/* <button onClick={() => setShowPdf(true)}>
+                    <span>
+                      <Icon icon="ph:eye-bold" /> الكتاب الرقمي
+                    </span>
+                  </button> */}
+                  <a href={lessons[0].unit.book.pdf_url}>
+                    <span>
+                      <Icon icon="line-md:download-outline-loop" /> تحميل الكتاب الرقمي
+                    </span>
+                  </a>
+                </div>
+                :
+                null
+              }
+            </div>
             <input type="search" placeholder="إبحث عن فصل" />
             <div className={styles.inputGroupBtn}>
               <button className="btn btn-sm btn-outline-white border-start-0 text-dark bg-transparent" type="submit">
@@ -36,43 +89,19 @@ const BooksWrapper = ({ lessons }: CProps) => {
               </button>
             </div>
           </div>
-        </form>
-        {/* <FormControl sx={{ m: 1, minWidth: 150 }} className={styles.select}>
-          <InputLabel id="demo-simple-select-helper-label">Category</InputLabel>
-          <Select
-            labelId="demo-simple-select-helper-label"
-            id="demo-simple-select-helper"
-            // value={age}
-            label="Category"
-          // onChange={handleChange}
-          >
-            <MenuItem value={20}>All Subjects</MenuItem>
-            <MenuItem value={10}>Another option</MenuItem>
-            <MenuItem value={30}>Something else here</MenuItem>
-          </Select>
-        </FormControl>
-        <FormControl sx={{ m: 1, minWidth: 150 }} className={styles.select}>
-          <InputLabel id="demo-simple-select-helper-label">Sort by</InputLabel>
-          <Select
-            labelId="demo-simple-select-helper-label"
-            id="demo-simple-select-helper"
-            // value={age}
-            label="Sort By"
-          // onChange={handleChange}
-          >
-            <MenuItem value={20}>All Subjects</MenuItem>
-            <MenuItem value={10}>Another option</MenuItem>
-            <MenuItem value={30}>Something else here</MenuItem>
-          </Select>
-        </FormControl> */}
+        </div>
       </div>
-      <Grid container spacing={3}>
-        {lessons?.map((lesson, index) => (
-          <Grid item xs={12} md={6} key={lesson.id}>
-            <LessonBox index={index} lesson={lesson} />
-          </Grid>
+      <div className={styles.wrapper}>
+        {renderedLessons?.map((lesson, index) => (
+          <LessonBox index={index} lesson={lesson} key={index} />
         ))}
-      </Grid>
+      </div>
+      {
+        isDemo() ?
+          <p className={styles.text}>هذا الحساب تجريبي ولا يعرض كل المحتوي. سجل معنا للحصول علي المحتوي كاملاَ</p>
+          :
+          null
+      }
     </Container>
   )
 }

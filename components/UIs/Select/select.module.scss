@@ -1,0 +1,152 @@
+@import "@/styles/mixins";
+
+.box {
+  position: relative;
+  width: 100%;
+
+  svg {
+    z-index: 1;
+    position: absolute;
+    left: 15px;
+    top: -12px;
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+    padding: 5px;
+    color: #77838f;
+    border: 1px solid #e1e1e6;
+    border-radius: 50%;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .select_box {
+    cursor: pointer;
+    margin-top: 5px !important;
+    border-radius: 8px;
+    display: block;
+    width: 100%;
+    min-height: 45px;
+    padding: 9px 16px;
+    box-shadow: none;
+    color: #555d65;
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 1px solid rgba(var(--main-color-rgb), 0.2);
+    transition:
+      background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out;
+    outline: none;
+    box-sizing: border-box;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, #ccc 50%),
+      linear-gradient(135deg, #ccc 50%, transparent 50%);
+    background-position:
+      calc(100% - 17px) calc(1em + 5px),
+      calc(100% - 12px) calc(1em + 5px);
+    background-size:
+      5px 5px,
+      5px 5px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+
+    @include xs {
+      padding: 8px 15px;
+      min-height: unset;
+      background-position:
+        calc(100% - 17px) calc(1em + 2px),
+        calc(100% - 12px) calc(1em + 2px);
+      font-size: 14px;
+    }
+
+    &.small {
+      padding: 8px 20px;
+      min-height: 40px;
+      font-size: 15px;
+      background-position:
+        calc(100% - 17px) calc(1em + 0px),
+        calc(100% - 12px) calc(1em + 0px);
+    }
+
+    &:focus {
+      background-image: linear-gradient(45deg, transparent 50%, var(--main-color) 50%),
+        linear-gradient(135deg, var(--main-color) 50%, transparent 50%);
+
+      background-color: rgba(#fff, 0.8);
+      border-color: rgba(var(--main-color-rgb), 0.5);
+      outline: 2px solid rgba(var(--main-color-rgb), 0.5);
+    }
+
+    &:disabled {
+      cursor: auto;
+      color: #6e6e6e;
+    }
+
+    optgroup {
+      font-size: 18px;
+      color: var(--main-color);
+      background-color: rgba(var(--main-background-rgb), 0);
+    }
+
+    option {
+      padding-inline-start: 10px;
+      color: var(--main-color);
+      background-color: rgba(var(--main-background-rgb), 0);
+    }
+  }
+
+  &:hover {
+    .select_box:not(:disabled) {
+      border-color: var(--main-color);
+      background-image: linear-gradient(45deg, transparent 50%, var(--main-color) 50%),
+        linear-gradient(135deg, var(--main-color) 50%, transparent 50%);
+    }
+
+    svg {
+      border-color: var(--main-color);
+      color: var(--main-color);
+    }
+  }
+
+  &.noFocus {
+    .select_box:not(:disabled) {
+      border: 1px solid #e7e7ec;
+      color: #77838f;
+      background-image: linear-gradient(45deg, transparent 50%, var(--main-color) 50%),
+        linear-gradient(135deg, var(--main-color) 50%, transparent 50%);
+    }
+
+    svg {
+      border-color: var(--main-color);
+      color: var(--main-color);
+    }
+  }
+
+  &.ar {
+    &::before {
+      right: 4px;
+      left: unset;
+    }
+
+    .select_box {
+      background-position:
+        calc(12px) calc(1em + 5px),
+        calc(17px) calc(1em + 5px);
+    }
+  }
+}
+
+[class="dark"] .box {
+  .select_box {
+    color: var(--text-color-main);
+
+    &::placeholder {
+      color: rgba(var(--text-color-main-rgb), 0.4);
+    }
+
+    &:focus {
+      background-color: rgba(var(--main-color-rgb), 0.1);
+    }
+  }
+}

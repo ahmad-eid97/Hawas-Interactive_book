@@ -1,10 +1,25 @@
 "use client";
 //== Hooks
-import { Fragment } from "react";
+import { Fragment, useMemo } from "react";
 //== Modules
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  TouchSensor,
+  useSensor,
+  useSensors,
+} from '@dnd-kit/core';
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  verticalListSortingStrategy,
+} from '@dnd-kit/sortable';
 //== Components
 import { PageLoader } from '@/components';
+import SortableItem from "./SortableItem";
 //== Component Logic
 import useLogic from './logic';
 //== Types
@@ -13,11 +28,20 @@ import { QuestionData } from "../types";
 import styles from "./sortDragging.module.scss";
 
 interface Cprops {
-  questionData: QuestionData
+  questionData: QuestionData;
 }
 
 function SortDragging({ questionData }: Cprops) {
-  const { items, handleOndragEnd, correctAnswer, showCorrection, retry, rendered, isLoading } = useLogic({ questionData });
+  const { items, handleDragEnd, correctAnswer, showCorrection, retry, rendered, isLoading } = useLogic({ questionData });
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(TouchSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
+
+  const itemIds = useMemo(() => items?.map((item: any) => item.id), [items]);
 
   if (!rendered) return null;
   if (isLoading) return <PageLoader />
@@ -25,36 +49,22 @@ function SortDragging({ questionData }: Cprops) {
     <>
       <h2 className={styles.title}>{questionData.title}</h2>
       <div className={styles.sorting}>
-        <DragDropContext onDragEnd={handleOndragEnd}>
-          <div className={styles.droppableWrapper}>
-            <Droppable droppableId="ordering">
-              {(provided) => (
-                <div {...provided.droppableProps} ref={provided.innerRef} className={styles.items}>
-                  {items.map((item: any, index: number) => (
-                    <Draggable
-                      key={item.id}
-                      draggableId={`${item.id}`}
-                      index={index}
-                    >
-                      {(provided) => (
-                        <div
-                          className={styles.item}
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                        >
-                          {item.image && <img src={item.image} alt="choice_img" />}
-                          {item.title}
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
-          </div>
-        </DragDropContext>
+        <div className={styles.droppableWrapper}>
+          <DndContext
+            sensors={sensors}
+            collisionDetection={closestCenter}
+            onDragEnd={handleDragEnd}
+          >
+            <SortableContext
+              items={items?.map((item: any) => item.id)}
+              strategy={verticalListSortingStrategy}
+            >
+              {items.map((item: any) => (
+                <SortableItem key={item.id} id={item} />
+              ))}
+            </SortableContext>
+          </DndContext>
+        </div>
       </div>
       {showCorrection &&
         <div className={`correctData ${showCorrection.correct ? 'correct' : 'wrong'}`}>

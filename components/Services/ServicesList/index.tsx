@@ -30,7 +30,7 @@ const ServicesList: React.FC<ServicesListProps> = ({ data }) => {
         </div>
         <Grid container spacing={3}>
           {
-            data.length > 0 &&
+            data?.length > 0 &&
             data.map((item, index) => (
               <Grid item md={4} sm={6} xs={12} key={index}>
                 <Service item={item} />

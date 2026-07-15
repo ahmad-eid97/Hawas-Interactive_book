@@ -1,18 +1,20 @@
-//== Cairo font
-@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap");
+//== Playpen Sans Arabic font (handwritten, playful Arabic — perfect for kids education)
+@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans+Arabic:wght@300;400;500;600;700;800&display=swap");
 //== Styles
+@import url("hover.css/css/hover-min.css");
 @import "./variables.scss";
 @import "./mixins.scss";
+@import "./UIs/sweetalert-reset";
 
 html {
   overflow-x: hidden;
 }
 
 body {
-  font-family: "Cairo", sans-serif;
+  font-family: "Playpen Sans Arabic", sans-serif;
   margin: 0;
   padding: 0;
-  background-color: var(--main-background);
+  background-color: #f2f2fe;
   color: var(--text-color);
   overflow-x: hidden;
   direction: rtl !important;
@@ -27,13 +29,14 @@ body {
 ::-webkit-scrollbar-thumb {
   width: 7px;
   height: 7px;
-  background: var(--main-color);
+  border-radius: 4px;
+  background: var(--alt-color);
 }
 
 button,
 input,
 textarea {
-  font-family: "Cairo", sans-serif;
+  font-family: var(--main-font), "Playpen Sans Arabic", sans-serif;
 }
 
 * {
@@ -59,6 +62,7 @@ h5,
 h6,
 p {
   margin: 0;
+  font-family: var(--main-font);
 }
 
 a {
@@ -215,5 +219,142 @@ ul {
     justify-content: center;
     align-items: center;
     background-color: #eee;
+  }
+}
+
+#mouse-parallax-container {
+  overflow: visible !important;
+}
+
+.hvr-sweep-to-left:before {
+  background-color: var(--sec-color) !important;
+}
+
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+  display: none;
+}
+
+.notes_buttons {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+
+  button {
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    background-color: transparent;
+    cursor: pointer;
+
+    svg {
+      width: 26px;
+      height: 26px;
+      color: var(--main-color);
+    }
+  }
+}
+
+.YourHighlightClass {
+  background-color: rgb(245, 245, 47);
+}
+
+.highlighted {
+  background-color: rgba(245, 245, 47, 0.5);
+  font-size: inherit;
+  font-weight: inherit;
+
+  .delete-highlight {
+    display: none;
+  }
+}
+
+.edit-highlight-mode {
+  .highlighted {
+    position: relative;
+    user-select: none !important;
+
+    .delete-highlight {
+      display: block;
+      font-style: normal;
+      position: absolute;
+      right: -15px;
+      top: -15px;
+      width: 20px;
+      height: 20px;
+      background-color: rgb(204, 6, 6);
+      font-size: 16px;
+      cursor: pointer;
+      color: #fff;
+      z-index: 100;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+/****************| Decorative Shapes & Animations |****************/
+@keyframes deco-float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+@keyframes deco-float-x {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  50% { transform: translateX(12px) rotate(4deg); }
+}
+
+@keyframes deco-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes deco-wiggle {
+  0%, 100% { transform: rotate(-7deg); }
+  50% { transform: rotate(7deg); }
+}
+
+@keyframes deco-pop {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+@keyframes deco-pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55); }
+  100% { box-shadow: 0 0 0 26px rgba(255, 255, 255, 0); }
+}
+
+.deco-shape {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
+.anim-float { animation: deco-float-y 6s ease-in-out infinite; }
+.anim-float-slow { animation: deco-float-y 9s ease-in-out infinite; }
+.anim-drift { animation: deco-float-x 8s ease-in-out infinite; }
+.anim-spin { animation: deco-spin 22s linear infinite; }
+.anim-wiggle { animation: deco-wiggle 4.5s ease-in-out infinite; }
+.anim-pop { animation: deco-pop 5s ease-in-out infinite; }
+
+.anim-delay-1 { animation-delay: 1.2s; }
+.anim-delay-2 { animation-delay: 2.4s; }
+.anim-delay-3 { animation-delay: 3.6s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-float,
+  .anim-float-slow,
+  .anim-drift,
+  .anim-spin,
+  .anim-wiggle,
+  .anim-pop {
+    animation: none;
   }
 }

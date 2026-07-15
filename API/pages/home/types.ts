@@ -24,8 +24,8 @@ export interface SlidersDataResponse {
 
 export interface Slider {
   id: number;
-  title: null;
-  description: null;
+  title: string | null;
+  description: string | null;
   order: string;
   image: string;
   image2: null;

@@ -1,0 +1,21 @@
+@import "@/styles/extends.scss";
+@import "@/styles/mixins.scss";
+
+.chooseLetter {
+  max-width: 100%;
+  h2 {
+    margin-bottom: 20px;
+    @include sm {
+      font-size: 15px;
+    }
+  }
+  .itemsWrapper {
+    max-width: 600px;
+    width: 90%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+}

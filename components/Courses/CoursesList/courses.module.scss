@@ -3,16 +3,6 @@
 .courses {
   padding-bottom: 128px;
 
-  @include lg {
-    padding-right: 64px;
-    padding-left: 64px;
-  }
-
-  @include xs {
-    padding-right: 0;
-    padding-left: 0;
-  }
-
   .header {
     margin-bottom: 24px;
     h1 {

@@ -1,9 +1,11 @@
 "use client";
+import { useAppSelector } from '@/store/hooks';
 //== Modules
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
 //== Utils
 import Link from 'next/link';
+//== Utils
+import Cookies from "universal-cookie"
 //== Components
 import TopBar from './TopBar';
 import MobileMenu from './MobileMenu';
@@ -12,7 +14,7 @@ import useLogic from './logic';
 //= Api
 import { getAllSettings } from '@/API/pages';
 //= Types
-import { FooterSocialLinks, MenuItem } from '@/types';
+import { MenuItem } from '@/types';
 //== Styles
 import styles from './navbar.module.scss';
 
@@ -23,17 +25,20 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ menus, settingsData }) => {
   const { navDropdown, setNavDropdown } = useLogic();
+  const cookie = new Cookies();
+  const user = cookie.get('hawas-user');
+  const teacher = useAppSelector((state) => state.teacher);
 
   return (
     <header className={`${styles.navbar}`}>
-      <Container maxWidth="xl" className={styles.topContainer}>
+      <Container maxWidth="xl" className={styles.topContainer} suppressHydrationWarning>
         <TopBar settingsData={settingsData} />
       </Container>
-      <Container maxWidth="xl" className={styles.container}>
+      <Container maxWidth="xl" className={styles.container} suppressHydrationWarning>
         <Link className={styles.logo} href="/">
           <img src="/images/navbar/navbar_logo.png" alt="hawas_logo" />
         </Link>
-        <div className={styles.links}>
+        <div className={styles.links} suppressHydrationWarning>
           <ul className={`${styles.navLinks}`}>
             {
               menus.map((menu) => (
@@ -44,11 +49,28 @@ const Navbar: React.FC<NavbarProps> = ({ menus, settingsData }) => {
                 </li>
               ))
             }
+            {user?.role === 'teacher' ?
+              <>
+                <li className={styles.link}>
+                  <Link href="/teacher-panel">
+                    <span>لوحة المعلم</span>
+                  </Link>
+                </li>
+                {
+                  teacher?.questions?.data?.length ?
+                    <span className={styles.number}>{teacher.questions.data.length}</span>
+                    :
+                    null
+                }
+              </>
+              :
+              null
+            }
           </ul>
         </div>
         <ul className={styles.drawers}>
           <li className={`${styles.drawerItem} ${styles.mobileNave}`}>
-            <MobileMenu />
+            <MobileMenu menus={menus} user={user} />
           </li>
         </ul>
       </Container>

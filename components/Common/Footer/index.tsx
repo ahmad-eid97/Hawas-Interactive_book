@@ -20,23 +20,27 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ data: { links, settingsData } }) => {
-
   async function handleSubscribeToNewsLetter(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
     const btn = event.currentTarget;
-    btn.setAttribute('disabled', 'disabled');
+    btn.classList.add('loading-btn');
+
     const email = document.querySelector<HTMLInputElement>('#newsletter-email')!;
+
     const response = await subscribeToNewsletter(email.value);
+
     if (response && response.success) {
       toast.success('شكراً لتواصلك معنا, تم إشتراكك بنجاح');
       email.value = ''
     }
-    btn.removeAttribute('disabled');
+
+    btn.classList.remove('loading-btn');
   }
 
   return (
     <footer className={`${styles.footer}`}>
-      <Container maxWidth="xl" >
+      <div className={`${styles.divider}`}></div>
+      <Container maxWidth="xl" style={{ position: 'relative', 'zIndex': '1' }}>
         <Grid container>
           <Grid item lg={4} md={4} xs={12}>
             <Link href='/'>

@@ -77,17 +77,16 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
       ...studentAnswer,
       [index]: [...studentAnswer[index], clickedItem?.innerText]
     })
-    console.log(e.currentTarget, index)
   }
 
   const areArraysEqual = (arr1: any, arr2: any) => {
-    if (arr1.length !== arr2.length) {
+    if (arr1?.length !== arr2?.length) {
       return false;
     }
 
     const resultArray: any = []
 
-    for (let i = 0; i < arr1.length; i++) {
+    for (let i = 0; i < arr1?.length; i++) {
       arr2.forEach((element: string) => {
         if (element === arr1[i]) {
           resultArray.push(element)
@@ -95,7 +94,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
       })
     }
 
-    if (resultArray.length !== arr2.length) {
+    if (resultArray?.length !== arr2?.length) {
       return false;
     }
 

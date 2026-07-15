@@ -1,5 +1,8 @@
 .gallery {
+  padding-block: 100px;
+  padding-bottom: 180px;
   margin-bottom: 48px;
+
   .nav {
     margin-bottom: 48px;
     display: flex;
@@ -9,21 +12,28 @@
     border-bottom: 1px solid #e7e7ec;
     padding: 0;
     list-style: none;
+
     li {
       cursor: pointer;
       a {
         padding: 16px 24px;
         display: block;
-        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+        transition:
+          color 0.15s ease-in-out,
+          background-color 0.15s ease-in-out,
+          border-color 0.15s ease-in-out;
         font-size: 20px;
-        font-weight: 500;
+        font-weight: bold;
+        color: var(--main-color);
+
         &.active {
-          color: #2f2d51;
+          color: var(--main-color);
           position: relative;
+
           &::after {
             content: "";
             height: 3px;
-            background-color: #2f2d51;
+            background-color: var(--main-color);
             position: absolute;
             bottom: 0;
             right: 0;
@@ -50,7 +60,7 @@
       transform: translate(-50%, -50%);
       opacity: 0;
       visibility: hidden;
-      transition: all .3s ease;
+      transition: all 0.3s ease;
       text-transform: capitalize;
       text-align: center !important;
       position: absolute;

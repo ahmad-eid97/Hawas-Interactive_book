@@ -21,7 +21,7 @@ const TopBar: React.FC<TopBarProps> = ({ settingsData }) => {
   const { logout } = useLogic();
 
   return (
-    <div className={styles.topBar}>
+    <div className={styles.topBar} suppressHydrationWarning>
       <ul className={styles.nav}>
         <li className={styles.item}>
           {

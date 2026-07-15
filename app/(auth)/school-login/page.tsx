@@ -1,7 +1,7 @@
 //== Components
 import { SchoolLoginWrapper } from "@/components";
 
-const Login = () => {
+const SchoolLogin = () => {
   return (
     <>
       <SchoolLoginWrapper />
@@ -9,4 +9,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default SchoolLogin;

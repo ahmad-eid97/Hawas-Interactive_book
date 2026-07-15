@@ -56,7 +56,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
   const drop = (e: React.DragEvent<HTMLDivElement>, index: number) => {
     e.preventDefault();
     // e.currentTarget.style.backgroundColor = "rgb(250, 250, 212)";
-    if (draggableItem && !e.currentTarget.children.length) e.currentTarget.appendChild(draggableItem);
+    if (draggableItem && !e.currentTarget?.children?.length) e.currentTarget.appendChild(draggableItem);
     setStudentAnswer([...studentAnswer, draggableItem?.innerText])
   }
 
@@ -70,7 +70,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
   }
 
   const dropByClick = (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>, index: number) => {
-    if (e.currentTarget.children.length > 0) return;
+    if (e.currentTarget?.children?.length > 0) return;
     clickedItem?.classList.remove('activeBGForDragging');
     if (clickedItem) e.currentTarget.appendChild(clickedItem);
     setClickedItem(null);
@@ -87,7 +87,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
 
   const compareArrays = (array1: any, array2: any) => {
     // Step 1
-    if (array1.length !== array2.length) {
+    if (array1?.length !== array2?.length) {
       return false
     } else {
       // Step 2
@@ -95,7 +95,7 @@ export default function useLogic({ questionData }: { questionData: any }) {
       const sortedArray2 = [...array2].sort();
       // Step 3
       let equal = true;
-      for (let i = 0; i < sortedArray1.length; i++) {
+      for (let i = 0; i < sortedArray1?.length; i++) {
         if (sortedArray1[i] !== sortedArray2[i]) {
           equal = false;
           break;

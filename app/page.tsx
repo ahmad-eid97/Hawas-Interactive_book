@@ -101,8 +101,8 @@ export default async function Home() {
       <Experince data={experinceData} />
       <Video data={videoData} />
       <Courses data={coursesData} />
-      <EventsList data={eventsData} />
       <CountUp data={countersData} />
+      <EventsList data={eventsData} />
       <News data={blogsData} />
       <Gallery data={galleryData} />
       <Footer data={{ links: footerLinksData, settingsData }} />

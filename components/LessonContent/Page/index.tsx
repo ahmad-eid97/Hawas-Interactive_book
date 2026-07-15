@@ -7,18 +7,19 @@ import { Pagination, Success, Fail } from '@/components';
 import styles from './page.module.scss';
 
 interface CProps {
-  quizzes: any[]
+  quizzes: any[];
+  bookId: number;
 }
 
-const Page = ({ quizzes }: CProps) => {
-  const { renderQuiz, changePage, correctAnswer, wrongAnswer } = useLogic({ quizzes });
+const Page = ({ quizzes, bookId }: CProps) => {
+  const { renderQuiz, changePage, correctAnswer, wrongAnswer } = useLogic({ quizzes, bookId });
 
   return (
     <div className={styles.page}>
       <div className={styles.quiz}>
         {renderQuiz()}
       </div>
-      <Pagination count={quizzes.length} changePage={changePage} />
+      <Pagination count={quizzes?.length} changePage={changePage} />
       {correctAnswer && <Success />}
       {wrongAnswer && <Fail />}
     </div>

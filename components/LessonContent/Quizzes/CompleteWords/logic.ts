@@ -50,7 +50,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   const drop = (e: React.DragEvent<HTMLDivElement>, index: number) => {
     e.preventDefault();
     e.currentTarget.style.backgroundColor = "rgb(250, 250, 212)";
-    if (draggableItem && !e.currentTarget.children.length) e.currentTarget.appendChild(draggableItem);
+    if (draggableItem && !e.currentTarget?.children?.length) e.currentTarget.appendChild(draggableItem);
     setStudentAnswer({ ...studentAnswer, [index]: draggableItem?.innerText })
   }
 
@@ -78,7 +78,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
 
   const correctAnswer = () => {
     const score = compareObjects(data?.correctAnswer, studentAnswer)
-    if (score === data?.items.length) {
+    if (score === data?.items?.length) {
       dispatch(checkAnswer(true))
       setTimeout(() => {
         dispatch(checkAnswer(false))
@@ -87,7 +87,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         correct: true,
         data: [
           "أحسنت",
-          `لقد حصلت على علامة ${score} من ${data?.items.length}`,
+          `لقد حصلت على علامة ${score} من ${data?.items?.length}`,
         ]
       })
     } else {
@@ -99,7 +99,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
         correct: false,
         data: [
           "حاول مرّة أخرى",
-          `لقد حصلت على علامة ${score} من ${data?.items.length}`,
+          `لقد حصلت على علامة ${score} من ${data?.items?.length}`,
         ]
       })
     }

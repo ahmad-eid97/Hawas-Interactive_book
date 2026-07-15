@@ -2,13 +2,13 @@
 
 .card {
   position: relative;
-  padding: 8px;
   box-shadow: 0 8px 12px rgba(140, 152, 164, 0.1);
   display: flex;
   flex-direction: column;
   background-color: #fff;
   border-radius: 16px;
   cursor: pointer;
+  overflow: hidden;
 
   .cardImgContainer {
     overflow: hidden;
@@ -64,7 +64,7 @@
     img {
       height: auto;
       display: block;
-      min-height: 200px;
+      height: 250px;
       width: 100%;
       transition:
         filter 0.3s,
@@ -97,9 +97,36 @@
     }
   }
   .cardFooter {
-    padding: 16px 8px 8px;
     margin-bottom: 4px;
     position: relative;
+    .top {
+      position: absolute;
+      top: -70px;
+      left: 0px;
+      width: 100%;
+      z-index: 1;
+      filter: drop-shadow(5px -1px 0px #c1c1c1);
+
+      @include lg {
+        top: -50px;
+      }
+
+      @include md {
+        top: -60px;
+      }
+
+      @include sm {
+        top: -50px;
+      }
+
+      @include xs {
+        top: -65px;
+      }
+
+      @include xxs {
+        top: -55px;
+      }
+    }
     .avatar {
       width: 66px;
       height: 66px;
@@ -122,6 +149,8 @@
     }
     .details {
       position: relative;
+      padding: 0 15px 15px;
+      z-index: 2;
       h4 {
         text-overflow: ellipsis;
         overflow: hidden;
@@ -133,9 +162,11 @@
         font-size: 20px;
         color: var(--text-dark);
         font-weight: 600;
+        position: relative;
+        z-index: 3;
       }
 
-      & > p {
+      &>p {
         overflow: hidden;
         display: -webkit-box;
         -webkit-line-clamp: 2;
@@ -174,6 +205,11 @@
           display: flex;
           align-items: center;
           gap: 5px;
+
+          svg {
+            color: var(--alt-color);
+          }
+
           .text {
             font-size: 14px;
             @include xs {

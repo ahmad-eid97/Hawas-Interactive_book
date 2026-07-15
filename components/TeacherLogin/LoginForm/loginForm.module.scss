@@ -1,0 +1,243 @@
+@import "@/styles/extends.scss";
+
+.loginForm {
+  @extend %glassyBackground;
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 0;
+  border-radius: 0;
+  padding: 7em 2.25em 2.25em 2.25em;
+  box-sizing: border-box;
+  position: relative;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, .2);
+  overflow: hidden;
+  .head {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    background-color: var(--alt-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 20px;
+    img {
+      height: 70px;
+      object-fit: contain;
+    }
+
+    a {
+      color: #f3fafd;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .animatedPicture {
+    display: flex;
+    justify-content: center;
+    margin: -5px auto;
+    svg {
+      width: 230px !important;
+      height: 230px !important;
+      g {
+        width: 100% !important;
+        height: 100% !important;
+      }
+    }
+  }
+  .svgContainer {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 1em;
+    border-radius: 50%;
+    pointer-events: none;
+    div {
+      position: relative;
+      width: 100%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 50%;
+      padding-bottom: 100%;
+    }
+    .mySVG {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      width: inherit;
+      height: inherit;
+      box-sizing: border-box;
+      border: solid 2.5px var(--main-color);
+      border-radius: 50%;
+    }
+  }
+  .inputGroup {
+    margin: 0 0 1.2em;
+    padding: 0;
+    position: relative;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+  label {
+    margin: 0 0 5px;
+    display: block;
+    font-size: 1em;
+    color: var(--main-color);
+    font-weight: 600;
+  }
+  input[type='email'],
+  input[type="text"],
+  input[type="number"],
+  input[type="url"],
+  input[type="search"],
+  input[type="password"] {
+    display: block;
+    margin: 0;
+    padding: 5px 20px;
+    background-color: #f3fafd;
+    border: solid 2px var(--main-color);
+    border-radius: 4px;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    width: 100%;
+    height: 60px;
+    font-size: 1em;
+    color: #353538;
+    font-weight: 600;
+    transition: box-shadow .2s linear, border-color .25s ease-out;
+    &:focus {
+      outline: none;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, .1);
+      border: solid 2px var(--main-color);
+    }
+  }
+  button {
+    display: block;
+    margin: 0;
+    background-color: var(--alt-color);
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: none;
+    width: 100%;
+    height: 60px;
+    font-size: 1rem;
+    color: #FFF;
+    font-weight: 600;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+    &:hover,
+    &:active {
+      background-color: var(--main-color);
+    }
+  }
+
+  .switch {
+    margin-top: 10px;
+    font-weight: 600;
+    a {
+      color: var(--main-color);
+      font-weight: 700;
+      margin: 0 5px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .inputGroup1 {
+    .helper1 {
+      top: 0;
+      left: 0;
+      transform: translate(1em, 2.2em) scale(1);
+      transform-origin: 0 0;
+      color: var(--main-color);
+      font-size: 1.55em;
+      font-weight: 400;
+      opacity: .65;
+      pointer-events: none;
+      transition: transform .2s ease-out, opacity .2s linear;
+    }
+
+    &.focusWithText .helper {
+      transform: translate(1em, 1.55em) scale(.6);
+      opacity: 1;
+    }
+  }
+  .inputGroup2 {
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #showPasswordToggle {
+      display: block;
+      padding: 0 0 0 1.45em;
+      position: absolute;
+      top: .25em;
+      right: 0;
+      font-size: 1em;
+      input {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+      }
+      .indicator {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: .85em;
+        width: .85em;
+        background-color: #f3fafd;
+        border: solid 2px var(--main-color);
+        border-radius: 3px;
+        &:after {
+          content: "";
+          position: absolute;
+          left: .25em;
+          top: .025em;
+          width: .2em;
+          height: .5em;
+          border: solid var(--main-color);
+          border-width: 0 3px 3px 0;
+          transform: rotate(45deg);
+          visibility: hidden;
+        }
+      }
+      input:checked~.indicator {
+        cursor: pointer;
+        &:after {
+          visibility: visible;
+        }
+      }
+      input:focus~.indicator,
+      input:hover~.indicator {
+        border-color: var(--main-color);
+      }
+      input:disabled~.indicator {
+        opacity: .5;
+        &:after {
+          visibility: hidden;
+        }
+      }
+    }
+    label {
+      input {
+        cursor: pointer;
+      }
+    }
+  }
+}

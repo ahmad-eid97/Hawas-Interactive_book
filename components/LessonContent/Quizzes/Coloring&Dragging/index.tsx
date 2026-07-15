@@ -30,7 +30,7 @@ export default function ColoringAndDragging({ questionData }: { questionData: Qu
               {questionDetails?.word.split('').map((letter: string, index: number) => (
                 <Fragment key={index}>
                   {index === questionDetails.letterIndex ?
-                    <span onClick={(e) => colorLetter(e)}>{questionDetails?.word[questionDetails.letterIndex]}{questionDetails.letterIndex !== 0 && questionDetails.letterIndex !== questionDetails.word.length - 1 ? 'ـ' : ''}
+                    <span onClick={(e) => colorLetter(e)}>{questionDetails?.word[questionDetails.letterIndex]}{questionDetails.letterIndex !== 0 && questionDetails.letterIndex !== questionDetails?.word?.length - 1 ? 'ـ' : ''}
                       <span className={styles.layer}></span></span>
                     :
                     <p key={index}>{letter}</p>

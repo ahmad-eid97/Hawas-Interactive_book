@@ -1,5 +1,5 @@
 //== API
-import { getBookLessons } from "@/API/lessons";
+import { getAllGames, getBookLessons } from "@/API/lessons";
 import { PageHeader, LessonsWrapper } from "@/components";
 
 export async function generateMetadata() {

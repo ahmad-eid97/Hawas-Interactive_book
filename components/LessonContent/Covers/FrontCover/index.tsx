@@ -1,11 +1,10 @@
 //== Styles
 import styles from './frontCover.module.scss';
 
-const FrontCover = ({ cover, lessonNumber, lessonTitle }: { cover: string, lessonNumber: number, lessonTitle: string }) => {
-  console.log(lessonNumber)
+const FrontCover = ({ cover, lessonTitle }: { cover: string, lessonTitle: string }) => {
   return (
     <div className={styles.frontCover}>
-      <img src={`/images/lesson/${lessonNumber}.png`} alt="logo_file" />
+      <img src={cover} alt="logo_file" />
       <button>{lessonTitle}</button>
     </div>
   )

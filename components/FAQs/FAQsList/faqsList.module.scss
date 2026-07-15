@@ -1,12 +1,16 @@
 @import "../../../styles/mixins.scss";
 
 .faqs {
-  padding-bottom: 50px;
+  padding-block: 100px;
+  padding-bottom: 180px;
+
   h2 {
     text-align: center !important;
     color: var(--main-color);
-    font-size: 42px;
+    font-size: 28px;
+    font-weight: bold;
     margin-bottom: 30px;
+    color: var(--main-color);
   }
   h5 {
     font-size: 1.1rem;
@@ -19,7 +23,7 @@
   :global(.MuiAccordion-root) {
     border-radius: 15px !important;
     background-color: var(--background-light);
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     :global(.MuiAccordionSummary-root) {
       background-color: var(--main-color);
       border-radius: 15px;
@@ -32,7 +36,7 @@
       }
     }
     :global(.MuiCollapse-root) {
-      color: var(--main-color)
+      color: var(--main-color);
     }
   }
 }

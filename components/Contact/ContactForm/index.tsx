@@ -43,56 +43,58 @@ const ContactForm: React.FC<ContactFormProps> = ({ data }) => {
   }
 
   return (
-    <Container maxWidth="xl" className={styles.contact}>
-      <div className={styles.heading}>
-        <h2>
-          ابقى على تواصل!
-        </h2>
-      </div>
-      <div className={styles.contactForm}>
-        <Grid container>
-          <Grid item xs={12} md={7}>
-            <form autoComplete="off">
-              <div className={styles.formControl}>
-                <input type="text" placeholder="الإسم" required={true} id="name" />
+    <div style={{ backgroundColor: '#fff' }}>
+      <Container maxWidth="xl" className={styles.contact}>
+        <div className={styles.heading}>
+          <h2>
+            ابقى على تواصل
+          </h2>
+        </div>
+        <div className={styles.contactForm}>
+          <Grid container spacing={4}>
+            <Grid item xs={12} md={7}>
+              <form autoComplete="off">
+                <div className={styles.formControl}>
+                  <input type="text" placeholder="الإسم" required={true} id="name" />
+                </div>
+                <div className={styles.formControl}>
+                  <input type="email" placeholder="البريد الإلكتروني" required={true} id="email" />
+                </div>
+                <div className={styles.formControl}>
+                  <input type="text" placeholder="رقم الهاتف" id="phone" />
+                </div>
+                <div className={styles.formControl}>
+                  <textarea className="accountInfo__contact-inputs w-100 rounded" name="message" placeholder="الرسالة" rows={15} cols={10} required={true} id="message"></textarea>
+                </div>
+                <button className={styles.btn} onClick={handleSendContactForm}>إرسال الرسالة</button>
+              </form>
+            </Grid>
+            <Grid item xs={12} md={5}>
+              <div className={styles.text}>
+                <h3><b>تحدث إلى فريقنا</b></h3>
+                <p>اذا كان لديك اي استفسار او طلب يمكنلك ملئ النموذج بالاسفل, شكراً لتواصلك معنا</p>
+                <hr />
+                <ul>
+                  <li>
+                    <i className="fas fa-phone"></i>
+                    <span>{data?.contact_phone}</span>
+                  </li>
+                  <li>
+                    <i className="fas fa-envelope"></i>
+                    <span>{data?.contact_email}</span>
+                  </li>
+                  <li>
+                    <i className="fas fa-map-pin"></i>
+                    <span>{data?.contact_address}</span>
+                  </li>
+                </ul>
+                <hr />
               </div>
-              <div className={styles.formControl}>
-                <input type="email" placeholder="البريد الإلكتروني" required={true} id="email" />
-              </div>
-              <div className={styles.formControl}>
-                <input type="text" placeholder="رقم الهاتف" id="phone" />
-              </div>
-              <div className={styles.formControl}>
-                <textarea className="accountInfo__contact-inputs w-100 rounded" name="message" placeholder="الرسالة" required={true} id="message"></textarea>
-              </div>
-              <button className={styles.btn} onClick={handleSendContactForm}>إرسال الرسالة</button>
-            </form>
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={5}>
-            <div className={styles.text}>
-              <h3><b>تحدث إلى فريقنا</b></h3>
-              <p>اذا كان لديك اي استفسار او طلب يمكنلك ملئ النموذج بالاسفل, شكراً لتواصلك معنا</p>
-              <hr />
-              <ul>
-                <li>
-                  <i className="fas fa-phone"></i>
-                  <span>{data?.contact_phone}</span>
-                </li>
-                <li>
-                  <i className="fas fa-envelope"></i>
-                  <span>{data?.contact_email}</span>
-                </li>
-                <li>
-                  <i className="fas fa-map-pin"></i>
-                  <span>{data?.contact_address}</span>
-                </li>
-              </ul>
-              <hr />
-            </div>
-          </Grid>
-        </Grid>
-      </div>
-    </Container>
+        </div>
+      </Container>
+    </div>
   );
 }
 

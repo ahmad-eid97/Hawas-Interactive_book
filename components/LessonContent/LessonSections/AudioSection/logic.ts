@@ -3,6 +3,8 @@
 import { useState, useRef } from "react";
 
 export default function useLogic() {
+  const [openViewNotesModal, setOpenViewNotesModal] = useState(false);
+  const [openAddNoteModal, setOpenAddNoteModal] = useState(false);
   const [audioOpened, setAudioOpened] = useState(false);
   const Audio = useRef<HTMLAudioElement | null>(null);
 
@@ -23,6 +25,10 @@ export default function useLogic() {
     Audio,
     openAudio,
     audioOpened,
-    setAudioOpened
+    setAudioOpened,
+    openViewNotesModal,
+    setOpenViewNotesModal,
+    openAddNoteModal,
+    setOpenAddNoteModal
   }
 }

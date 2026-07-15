@@ -30,7 +30,7 @@ const Galleries: React.FC<GalleriesProps> = ({ data, categories }) => {
             </a>
           </li>
           {
-            categories.length > 0 &&
+            categories?.length > 0 &&
             categories.map((category) => (
               <li className="nav-item" key={category.id}>
                 <a onClick={() => handleFilterClick(category.name)} className={filter === category.name ? styles.active : ''}>

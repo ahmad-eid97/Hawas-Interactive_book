@@ -5,6 +5,8 @@
   align-items: flex-start;
   gap: 10px;
   grid-template-columns: repeat(2, 1fr);
+  position: relative;
+
   p,
   img {
     width: 220px;

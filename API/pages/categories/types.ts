@@ -32,6 +32,7 @@ export interface IPlay {
   title: string;
   description: string;
   image: string;
+  video: string;
 }
 
 
@@ -45,7 +46,7 @@ export interface FilmsPageResponse {
   options: {
     title: string;
     video: string;
-    image: null;
+    image: null | string;
   }[];
   status: number;
   code: null;
@@ -62,7 +63,7 @@ export interface LecturesPageResponse {
   options: {
     title: string;
     video: string;
-    image: null;
+    image: null | string;
   }[];
   status: number;
   code: null;

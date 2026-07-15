@@ -1,6 +1,7 @@
 @import "@/styles/mixins.scss";
 
 .videoSection {
+  position: relative;
   .head {
     position: relative;
     h3 {

@@ -35,28 +35,34 @@ export default function useLogic({ questionData }: LogicProps) {
     }
   })
 
-  // function handleDragEnd(event: any) {
-  //   const { active, over } = event;
-  //   if (active.id !== over.id) {
-  //     setItems((items) => {
-  //       const activeIndex = items.indexOf(active.id);
-  //       const overIndex = items.indexOf(over.id);
-  //       return arrayMove(items, activeIndex, overIndex);
-  //     });
-  //   }
-  // }
+  function handleDragEnd(event: any) {
+    const { active, over } = event;
 
-  const handleOndragEnd = (result: any) => {
-    if (!result.destination) return;
-    const allAnswers = Array.from(items);
-    const [reorderedItem] = allAnswers.splice(result.source.index, 1);
-    allAnswers.splice(result.destination.index, 0, reorderedItem);
-    setItems(allAnswers);
-  };
+    if (active.id !== over.id) {
+      const activeIndex = items.findIndex(item => item.id === active.id);
+      const overIndex = items.findIndex(item => item.id === over.id);
+
+      setItems((items) => {
+        return arrayMove(items, activeIndex, overIndex);
+      });
+      // const allAnswers = Array.from(items);
+      // const [reorderedItem] = allAnswers.splice(overIndex, 1);
+      // allAnswers.splice(activeIndex, 0, reorderedItem);
+      // setItems(allAnswers);
+    }
+  }
+
+  // const handleOndragEnd = (result: any) => {
+  //   if (!result.destination) return;
+  //   const allAnswers = Array.from(items);
+  //   const [reorderedItem] = allAnswers.splice(result.source.index, 1);
+  //   allAnswers.splice(result.destination.index, 0, reorderedItem);
+  //   setItems(allAnswers);
+  // };
 
   const correctAnswer = () => {
     if (!data?.correctAnswers) return;
-    for (let i = 0; i < items.length; i++) {
+    for (let i = 0; i < items?.length; i++) {
       if (items[i].title !== data?.correctAnswers[i]) {
         dispatch(checkWrong(true))
         setTimeout(() => {
@@ -95,8 +101,10 @@ export default function useLogic({ questionData }: LogicProps) {
   }
 
   return {
-    items: items.length > 1 ? items : data?.items,
-    handleOndragEnd,
+    items: items?.length > 1 ? items : data?.items,
+    setItems,
+    // handleOndragEnd,
+    handleDragEnd,
     correctAnswer,
     showCorrection,
     retry,

@@ -13,7 +13,7 @@ export default function useLogic({ data, categories }: GalleriesProps) {
   const [filter, setFilter] = useState('all');
   const [imageIndex, setImageIndex] = useState(0);
   const images =
-    data.length ?
+    data?.length ?
       data.map(img => ({
         id: img.id,
         src: img.images[0],

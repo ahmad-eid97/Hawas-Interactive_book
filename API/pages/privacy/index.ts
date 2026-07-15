@@ -1,9 +1,4 @@
-import { cache } from 'react';
-import API from "@/API/handlers";
-//= Types
 import type { PrivacyData } from './types';
+import { privacyData } from '@/staticData/pages/legal';
 
-export const getPrivacy = cache(async () => {
-  const response = await API.GET<PrivacyData>('pages/3', { headers: { 'Accept-Language': 'ar' } });
-  return (response.data.data as PrivacyData);
-});
+export const getPrivacy = async (): Promise<PrivacyData> => privacyData;

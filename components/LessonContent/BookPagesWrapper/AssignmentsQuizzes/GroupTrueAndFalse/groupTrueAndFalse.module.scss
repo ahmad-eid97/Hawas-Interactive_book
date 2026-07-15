@@ -1,0 +1,98 @@
+@import "@/styles/mixins.scss";
+
+.groupTrueAndFalse {
+  h2 {
+    margin-bottom: 20px;
+    background-color: #d8e6f3;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: var(--main-color);
+
+    @include sm {
+      font-size: 15px;
+    }
+  }
+
+  ul {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 0;
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0px 20px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      position: relative;
+      &:not(:last-of-type) {
+        border-bottom: 1px solid var(--border-color);
+      }
+      span {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        position: relative;
+        height: 100%;
+        min-height: 50px;
+        // border-right: 1px solid var(--border-color);
+        padding-right: 20px;
+        margin-right: 10px;
+        i {
+          width: 30px;
+          height: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #ccc;
+          cursor: pointer;
+          &.trueChoosed {
+            background-color: #218838;
+            color: #fff;
+          }
+          &.falseChoosed {
+            background-color: var(--delete-warn);
+            color: #fff;
+          }
+        }
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 107px;
+        height: 100%;
+        width: 1px;
+        border-right: 1px solid var(--border-color);
+      }
+
+      @include sm {
+        font-size: 13px;
+
+        span {
+          i {
+            width: 25px;
+            height: 25px;
+          }
+        }
+      }
+    }
+  }
+
+  .actions {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    button {
+      padding: 8px 25px;
+      border-radius: 5px;
+      border: 1px solid var(--main-color);
+      cursor: pointer;
+      background-color: var(--main-color);
+      color: #fff;
+    }
+  }
+}

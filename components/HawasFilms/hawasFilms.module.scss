@@ -1,7 +1,20 @@
+@import "../../styles/mixins.scss";
+
 .hawasFilms {
+  padding-block: 100px;
+  padding-bottom: 180px;
+
   h2 {
     text-align: center;
+    color: var(--main-color);
+    font-weight: bold !important;
     margin-bottom: 50px;
+    font-size: 20px;
+
+    p {
+      color: var(--main-color);
+      font-weight: bold !important;
+    }
   }
 
   .filmsList {
@@ -11,6 +24,7 @@
       box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       cursor: pointer;
+      border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
 
       .image {
         position: relative;
@@ -52,8 +66,33 @@
 
       .content {
         padding: 0 20px 20px;
+        position: relative;
+
+        .top {
+          position: absolute;
+          top: -70px;
+          left: 0px;
+          width: 100%;
+          z-index: 1;
+          filter: drop-shadow(5px -1px 0px #c1c1c1);
+
+          @include md {
+            top: -55px;
+          }
+
+          @include sm {
+            top: -50px;
+          }
+
+          @include xs {
+            top: -70px;
+          }
+        }
+
         p {
           text-align: center;
+          position: relative;
+          z-index: 2;
           font-weight: 700;
         }
       }

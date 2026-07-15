@@ -1,0 +1,103 @@
+@import "@/styles/extends";
+@import "@/styles/mixins";
+
+.pagination {
+  width: 100%;
+  margin-top: 25px;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  position: relative;
+  padding-top: 25px;
+  border-top: 1px solid rgba(var(--main-color-rgb), 0.2);
+
+  .loading {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: -5px;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      width: 60px;
+      height: 60px;
+      color: var(--text-color);
+    }
+  }
+
+  button {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border-radius: 12px;
+    background-color: transparent;
+    border: 1px solid rgba(var(--main-color-rgb), 0.2);
+    cursor: pointer;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    position: relative;
+    text-align: center !important;
+    font-weight: bold;
+    display: grid;
+    place-content: center;
+    padding-bottom: 5px;
+
+    &.active {
+      border-color: rgba(var(--main-color-rgb), 1) !important;
+      background-color: rgba(var(--main-color-rgb), 1);
+      color: #fff;
+
+      svg {
+        color: #fff;
+      }
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      top: -1px;
+      margin: 0;
+      // color: var(--text-color);
+    }
+
+    &:disabled {
+      // background-color: #b1b0b4 !important;
+      border: 1px solid #b1b0b4 !important;
+      pointer-events: none;
+      border-color: transparent;
+      color: #b1b0b4;
+
+      svg {
+        color: var(--pale-text-color);
+      }
+    }
+
+    &:hover {
+      background-color: rgba(var(--main-color-rgb), 1);
+      color: #fff;
+
+      svg {
+        color: #fff;
+      }
+    }
+  }
+
+  &.ar {
+    button {
+      padding-top: 4px;
+
+      svg {
+        top: -2px;
+      }
+    }
+  }
+}

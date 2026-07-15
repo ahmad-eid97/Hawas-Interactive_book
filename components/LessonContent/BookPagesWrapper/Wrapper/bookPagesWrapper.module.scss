@@ -1,0 +1,270 @@
+@import "@/styles/mixins";
+
+.icons {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  z-index: 9999;
+
+  @include xs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    top: 5px;
+    right: 20px;
+  }
+
+  .highlight,
+  .draw {
+    svg {
+      font-size: 25px;
+      background-color: var(--main-color);
+      color: #fff;
+      padding: 10px;
+      border-radius: 100%;
+      cursor: pointer;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+      border: 2px solid var(--main-color);
+
+      @include sm {
+        font-size: 25px;
+      }
+
+      @include xs {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .draw {
+    svg {
+      background-color: #fff;
+      color: var(--main-color);
+    }
+  }
+}
+
+.search_box {
+  // .layer {
+  //   position: fixed;
+  //   top: 0px;
+  //   left: -0%;
+  //   width: 100%;
+  //   height: 100vh;
+  //   z-index: 99;
+  //   background-color: transparent;
+  // }
+
+  input {
+    position: absolute;
+    top: 20px;
+    left: calc(50% - 150px);
+    width: 300px;
+    height: 60px;
+    z-index: 999;
+    border: none;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 0 20px;
+    outline: none;
+
+    @include xs {
+      top: 60px;
+    }
+  }
+}
+
+.assignments {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  @include xl {
+    top: 20px;
+    right: 20px;
+  }
+
+  @include md {
+    position: relative;
+    padding: 20px 20px 50px;
+  }
+
+  p {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    font-weight: 700;
+    margin-bottom: 10px;
+
+    svg {
+      height: 40px;
+      width: 40px;
+      animation: animating 3s infinite;
+      color: #079992;
+    }
+
+    @keyframes animating {
+      0% {
+        transform: rotate(0deg);
+      }
+      30% {
+        transform: rotate(45deg);
+      }
+      60% {
+        transform: rotate(-45deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  .item {
+    padding: 7px 20px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    max-width: 220px;
+    margin: 0 auto 15px;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+
+    &.item1 {
+      background: #0f8ac2;
+      background: linear-gradient(0deg, #0f8ac2 0%, #129edf 91%);
+      box-shadow:
+        3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+        rgba(15, 138, 194, 0.3) 5px 5px,
+        rgba(15, 138, 194, 0.15) 10px 10px,
+        rgba(15, 138, 194, 0.07) 15px 15px;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow:
+          3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+          rgba(15, 138, 194, 0.3) 1px 1px,
+          rgba(15, 138, 194, 0.15) 3px 3px,
+          rgba(15, 138, 194, 0.07) 6px 6px;
+      }
+    }
+    &.item2 {
+      background: #8166d9;
+      background: linear-gradient(0deg, #8166d9 0%, #8166d9 91%);
+      box-shadow:
+        3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+        rgba(78, 53, 163, 0.3) 5px 5px,
+        rgba(78, 53, 163, 0.15) 10px 10px,
+        rgba(78, 53, 163, 0.07) 15px 15px;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow:
+          3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+          rgba(78, 53, 163, 0.3) 1px 1px,
+          rgba(78, 53, 163, 0.15) 3px 3px,
+          rgba(78, 53, 163, 0.07) 6px 6px;
+      }
+    }
+    &.item3 {
+      background: rgb(254, 190, 68);
+      background: linear-gradient(0deg, #febe44 0%, #ffc456 91%);
+      box-shadow:
+        3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+        rgba(254, 190, 68, 0.3) 5px 5px,
+        rgba(254, 190, 68, 0.15) 10px 10px,
+        rgba(254, 190, 68, 0.07) 15px 15px;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow:
+          3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+          rgba(254, 190, 68, 0.3) 1px 1px,
+          rgba(254, 190, 68, 0.15) 3px 3px,
+          rgba(254, 190, 68, 0.07) 6px 6px;
+      }
+    }
+    &.item4 {
+      background: rgb(76, 170, 95);
+      background: linear-gradient(0deg, #4caa5f 0%, #4dca66 91%);
+      box-shadow:
+        3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+        rgba(76, 170, 95, 0.3) 5px 5px,
+        rgba(76, 170, 95, 0.15) 10px 10px,
+        rgba(76, 170, 95, 0.07) 15px 15px;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow:
+          3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+          rgba(76, 170, 95, 0.3) 1px 1px,
+          rgba(76, 170, 95, 0.15) 3px 3px,
+          rgba(76, 170, 95, 0.07) 6px 6px;
+      }
+    }
+    &.item5 {
+      background: rgb(208, 57, 171);
+      background: linear-gradient(0deg, #d039ab 0%, #ef41c3 91%);
+      box-shadow:
+        3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+        rgba(208, 57, 171, 0.3) 5px 5px,
+        rgba(208, 57, 171, 0.15) 10px 10px,
+        rgba(208, 57, 171, 0.07) 15px 15px;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow:
+          3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+          rgba(208, 57, 171, 0.3) 1px 1px,
+          rgba(208, 57, 171, 0.15) 3px 3px,
+          rgba(208, 57, 171, 0.07) 6px 6px;
+      }
+    }
+    &.item6 {
+      background: rgb(255, 142, 113);
+      background: linear-gradient(0deg, #ff8e71 0%, #ff9f87 91%);
+      box-shadow:
+        3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+        rgba(255, 142, 113, 0.3) 5px 5px,
+        rgba(255, 142, 113, 0.15) 10px 10px,
+        rgba(255, 142, 113, 0.07) 15px 15px;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow:
+          3px 15px 8px -10px rgba(0, 0, 0, 0.3),
+          rgba(255, 142, 113, 0.3) 1px 1px,
+          rgba(255, 142, 113, 0.15) 3px 3px,
+          rgba(255, 142, 113, 0.07) 6px 6px;
+      }
+    }
+
+    &:hover {
+      background-color: var(--alt-color);
+      color: #fff;
+    }
+  }
+}
+
+.add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    background-color: #fff;
+    padding: 5px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow:
+      3px 15px 8px -10px rgba(0, 0, 0, 0.3);
+
+    &:hover {
+      background-color: var(--alt-color);
+      color: #fff;
+    }
+  }
+}

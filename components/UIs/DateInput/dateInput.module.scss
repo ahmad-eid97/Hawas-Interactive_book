@@ -1,0 +1,86 @@
+@import "@/styles/mixins.scss";
+
+.formGroup {
+  label {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25.6px;
+    pointer-events: auto;
+    text-align: start !important;
+    color: var(--text-color);
+    display: inline-block;
+    margin-bottom: 3px;
+
+    @include sm {
+      font-size: 15px;
+    }
+  }
+
+  .field {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e7e7ec;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    gap: 5px;
+
+    input {
+      display: block;
+      width: 100%;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.64;
+      color: #000;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: none;
+      padding: 10px 20px 10px 60px;
+
+      &::placeholder {
+        color: #77838f;
+      }
+
+      &:focus {
+        background-color: #fff;
+        border-color: #090761;
+        outline: 0;
+        box-shadow:
+          inset 0 1px 2px rgba(22, 28, 45, 0.075),
+          0 0 0 0 transparent;
+      }
+
+      &::-webkit-calendar-picker-indicator {
+        position: absolute;
+        left: 0;
+        width: 50px;
+        background-color: var(--bg-main);
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23575757" d="M22 2.25h-3.25V.75a.75.75 0 0 0-1.5-.001V2.25h-4.5V.75a.75.75 0 0 0-1.5-.001V2.25h-4.5V.75a.75.75 0 0 0-1.5-.001V2.25H2a2 2 0 0 0-2 1.999v17.75a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2V4.249a2 2 0 0 0-2-1.999zM22.5 22a.5.5 0 0 1-.499.5H2a.5.5 0 0 1-.5-.5V4.25a.5.5 0 0 1 .5-.499h3.25v1.5a.75.75 0 0 0 1.5.001V3.751h4.5v1.5a.75.75 0 0 0 1.5.001V3.751h4.5v1.5a.75.75 0 0 0 1.5.001V3.751H22a.5.5 0 0 1 .499.499z" /><path fill="%23575757" d="M5.25 9h3v2.25h-3zm0 3.75h3V15h-3zm0 3.75h3v2.25h-3zm5.25 0h3v2.25h-3zm0-3.75h3V15h-3zm0-3.75h3v2.25h-3zm5.25 7.5h3v2.25h-3zm0-3.75h3V15h-3zm0-3.75h3v2.25h-3z" /></svg>');
+        background-position: center;
+        cursor: pointer;
+        padding: 15px 0;
+        font-size: 20px;
+      }
+      @include sm {
+        font-size: 15px;
+      }
+      @include xs {
+        padding: 7px 60px;
+        font-size: 14px;
+      }
+    }
+
+    &.ar {
+      input {
+        padding: 10px 60px 10px 20px;
+        text-align: left !important;
+        direction: ltr !important;
+
+        &::-webkit-calendar-picker-indicator {
+          left: unset;
+          right: 0;
+        }
+      }
+    }
+  }
+}

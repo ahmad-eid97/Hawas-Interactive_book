@@ -1,24 +1,135 @@
 @import "../../../styles/mixins.scss";
 
+.section_wrapper {
+  background: linear-gradient(0deg, #f2f2fe, #fff);
+  position: relative !important;
+
+  .parallaxCursor {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    @include lg {
+      display: none;
+    }
+
+    div {
+      width: 120px;
+      position: absolute;
+      z-index: 1;
+
+      @include xl {
+        width: 80px;
+      }
+
+      &:nth-of-type(1) {
+        right: 3%;
+      }
+
+      &:nth-of-type(2) {
+        left: 1%;
+
+        @include xl {
+          width: 40px;
+          left: 3%;
+        }
+      }
+
+      &:nth-of-type(3) {
+        top: -15%;
+        left: 24%;
+
+        @include xl {
+          top: -10%;
+        }
+      }
+
+      &:nth-of-type(4) {
+        left: 8%;
+        bottom: 15px;
+      }
+
+      &:nth-of-type(5) {
+        right: 0;
+        bottom: 15px;
+      }
+
+      img {
+        object-fit: fill;
+        height: auto;
+      }
+    }
+  }
+}
+
 .why {
-  padding-bottom: 128px;
-  padding-top: 128px;
-  background-color: #e0eeff;
+  padding-block: 100px;
+  padding-bottom: 120px;
+  -webkit-mask-image: url(https://wdtninos.wpengine.com/wp-content/uploads/2022/11/counter_bg_img.png);
+  -webkit-mask-size: cover;
+  -webkit-mask-position: center center;
+  background-color: var(--sec-color2);
+  position: relative;
+
   @include md {
     padding-right: 64px;
     padding-left: 64px;
   }
-  @include sm {
-    padding-top: 64px;
-    padding-bottom: 64px;
-  }
+
   @include xs {
     padding-right: 16px;
     padding-left: 16px;
   }
-  img {
-    border-radius: 4px;
-    width: 100%;
+
+  .imageWrapper {
+    position: relative;
+
+    .decoDots {
+      width: 120px;
+      top: -35px;
+      right: -35px;
+      opacity: 0.8;
+      z-index: 0;
+
+      @include sm {
+        width: 80px;
+        top: -20px;
+        right: -15px;
+      }
+    }
+
+    .decoSparkle {
+      width: 40px;
+      bottom: -18px;
+      left: -14px;
+      z-index: 2;
+    }
+
+    img {
+      position: relative;
+      z-index: 1;
+      border-radius: 30px 30px 30px 90px;
+      width: 100%;
+      box-shadow: 16px 16px rgba(0, 0, 0, 0.15);
+      transition: all 0.4s ease;
+      border: 4px solid #fff;
+
+      &:hover {
+        transform: rotate(-1.5deg) scale(1.01);
+        border-radius: 90px 30px 30px 30px;
+        box-shadow: 10px 10px rgba(0, 0, 0, 0.25);
+      }
+    }
+  }
+  .title::after {
+    content: "";
+    display: block;
+    width: 160px;
+    height: 15px;
+    margin-top: 6px;
+    background: url("/images/shapes/title-squiggle-white.svg") no-repeat center / contain;
   }
   h1 {
     font-size: 34.992px;
@@ -27,7 +138,8 @@
     margin-bottom: 16px;
     margin-top: 0px;
     text-align: start !important;
-    color: #2f2d51;
+    color: #fff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   }
   p {
     font-size: 16px;
@@ -36,23 +148,77 @@
     margin-bottom: 24px;
     margin-top: 0px;
     text-align: start !important;
+    color: #fff;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
   }
+
   a {
-    background-color: #feb800;
-    border-radius: 16px;
-    box-shadow:
-      rgba(255, 255, 255, 0.15) 0px 1px 0px 0px inset,
-      rgba(22, 28, 45, 0.075) 0px 1px 1px 0px;
+    background-color: #2098d1;
+    border-radius: 50px;
+    box-shadow: 0 6px 0 rgba(0, 0, 0, 0.18);
     color: #fff;
     cursor: pointer;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 26px;
     min-width: 100px;
-    padding: 16px 20px;
+    padding: 14px 30px;
+    overflow: hidden;
     text-align: center !important;
-    i {
+    display: inline-block;
+    font-weight: 600;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 9px 0 rgba(0, 0, 0, 0.18);
+    }
+
+    &:active {
+      transform: translateY(2px);
+      box-shadow: 0 3px 0 rgba(0, 0, 0, 0.18);
+    }
+
+    svg {
       margin: 0 5px;
+      position: relative;
+      top: 2px;
     }
   }
+
+  // .divider {
+  //   overflow: hidden;
+  //   position: absolute;
+  //   top: -130px;
+  //   height: 150px;
+  //   transform: rotate(180deg);
+  //   left: 0;
+  //   width: 100%;
+
+  //   &.bottom {
+  //     top: unset;
+  //     bottom: -130px;
+  //     transform: rotate(0);
+  //   }
+  // }
+
+  // .divider::before {
+  //   content: "";
+  //   font-family: "shape divider from ShapeDividers.com";
+  //   position: absolute;
+  //   z-index: 3;
+  //   pointer-events: none;
+  //   background-repeat: no-repeat;
+  //   bottom: -0.1vw;
+  //   left: -0.1vw;
+  //   right: -0.1vw;
+  //   top: -0.1vw;
+  //   background-size: 100% 152px;
+  //   background-position: 50% 0%;
+  //   transform: rotateY(180deg);
+  //   background-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35.278 3.62" preserveAspectRatio="none"><path d="M35.278.092S8.238.267 0 3.62V.092z" opacity=".2" fill="%232058a2"/><path d="M35.278.092S8.238.246 0 3.194V.092z" opacity=".2" fill="%232058a2"/><path d="M35.278.092S8.238.223 0 2.738V.092zM35.278.092H0V0h35.278z" fill="%232058a2"/></svg>');
+  // }
+
+  // @media (min-width: 2100px) {
+  //   .divider::before {
+  //     background-size: 106% calc(2vw + 31px);
+  //   }
+  // }
 }

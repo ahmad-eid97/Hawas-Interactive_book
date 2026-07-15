@@ -16,6 +16,16 @@
     }
   }
 
+  .question_img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      max-height: 250px;
+      object-fit: contain;
+    }
+  }
+
   .itemsWrapper {
     max-width: 600px;
     width: 90%;

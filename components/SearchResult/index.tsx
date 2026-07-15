@@ -26,7 +26,7 @@ const SearchResult: React.FC<SearchResultProps> = ({ data }) => {
         </Grid>
         <Grid container spacing={4}>
           {
-            data.blogs && data.blogs.length > 0 ?
+            data?.blogs && data?.blogs?.length > 0 ?
               data.blogs.map(article => (
                 <Grid item xs={12} sm={6} lg={4} key={article.id}>
                   <BlogItem data={article} />
@@ -47,7 +47,7 @@ const SearchResult: React.FC<SearchResultProps> = ({ data }) => {
         </Grid>
         <Grid container spacing={3}>
           {
-            data.events && data.events.length > 0 ?
+            data?.events && data.events?.length > 0 ?
               data.events.map(event => (
                 <Grid item xs={12} key={event.id}>
                   <SingleEvent data={event} />
@@ -68,7 +68,7 @@ const SearchResult: React.FC<SearchResultProps> = ({ data }) => {
         </Grid>
         <Grid container spacing={3}>
           {
-            data.services && data.services.length > 0 ?
+            data?.services && data?.services?.length > 0 ?
               data.services.map(service => (
                 <Grid item xs={12} key={service.id}>
                   <Service item={service} />

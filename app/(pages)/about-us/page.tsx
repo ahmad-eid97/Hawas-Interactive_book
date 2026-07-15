@@ -41,7 +41,7 @@ const About: React.FC = async () => {
 
   return (
     <>
-      <PageHeader title="من نحن !؟" />
+      <PageHeader title="من نحن" />
       <AboutDetails data={aboutData} />
       <Video data={videoData} />
       <CountUp data={countersData} />

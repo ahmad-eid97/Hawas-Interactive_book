@@ -1,9 +1,14 @@
-//== API
-import api from "../handlers";
 //== Types
 import { LoginData } from "./types";
 
-export function studentLogin(payload: LoginData) {
-  const response = api.POST(`/users/auth/login`, payload);
-  if (response) return response;
+export async function studentLogin(_payload: LoginData) {
+  return null as any;
+}
+
+export async function parentLogin(_payload: LoginData) {
+  return null as any;
+}
+
+export async function teacherLogin(_payload: LoginData) {
+  return null as any;
 }

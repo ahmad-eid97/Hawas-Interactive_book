@@ -10,8 +10,9 @@ export default function useLogic() {
 
   const logout = () => {
     cookie.remove("hawas-auth");
+    cookie.remove("hawas-user");
     setTimeout(() => {
-      location.href = '/login';
+      window.location.href = '/login';
     }, 200)
   }
 

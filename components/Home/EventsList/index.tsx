@@ -16,18 +16,21 @@ interface EventsListProps {
 const EventsList: React.FC<EventsListProps> = ({ data }) => {
   return (
     <section className={styles.events}>
+      <img src="/images/shapes/book.svg" alt="" className={`deco-shape anim-float ${styles.decoBook}`} />
+      <img src="/images/shapes/sparkle.svg" alt="" className={`deco-shape anim-pop anim-delay-1 ${styles.decoSparkle}`} />
+      <img src="/images/shapes/ring-blue.svg" alt="" className={`deco-shape anim-float-slow anim-delay-2 ${styles.decoRing}`} />
       <Container maxWidth="xl">
         <Grid container className={styles.header} alignItems="center">
-          <Grid item xs >
+          <Grid item xs>
             <h1>مناسبات واحداث قادمة</h1>
             <p>اكتشف برنامجك المثالي في دوراتنا.</p>
           </Grid>
         </Grid>
-        <Grid container spacing={3}>
+        <Grid container spacing={3} justifyContent="center">
           {
             data.length > 0 &&
             data.map((event) => (
-              <Grid item xs={12} key={event.id}>
+              <Grid item xs={12} sm={6} md={4} key={event.id}>
                 <SingleEvent data={event} />
               </Grid>
             ))

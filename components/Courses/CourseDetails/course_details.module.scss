@@ -32,7 +32,7 @@
         box-sizing: border-box;
         height: 400px;
         margin-bottom: 30px;
-        background-color: rgba(#000, 0.1);
+        background-color: rgba(var(--alt-color-rgb), 0.1);
         border-radius: 15px;
         padding: 25px;
         display: flex;
@@ -75,7 +75,7 @@
           transition: all 0.25s ease;
 
           &:hover {
-            background-color: #373737;
+            background-color: var(--alt-color);
             color: #fff;
           }
         }
@@ -96,11 +96,13 @@
         margin-bottom: 30px;
       }
 
-      h3 {
-        font-size: 20px;
+      h2 {
+        font-size: 1.4rem !important;
         font-weight: 500;
         margin-bottom: 30px;
-        color: var(--main-color);
+        padding: 10px 15px;
+        border-right: 4px solid var(--alt-color);
+        background-color: rgba(var(--alt-color-rgb), 0.05);
       }
 
       blockquote {
@@ -115,9 +117,9 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding-top: 10px;
-        border-top: 1px solid #dbdbdc;
-        opacity: 0.7;
+        padding: 10px 15px;
+        border-right: 4px solid var(--alt-color);
+        background-color: rgba(var(--alt-color-rgb), 0.05);
 
         ul {
           margin: 0px;
@@ -128,6 +130,10 @@
           li {
             margin-right: 20px;
             float: left;
+
+            &:hover {
+              color: var(--alt-color);
+            }
           }
         }
       }

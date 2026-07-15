@@ -8,6 +8,8 @@ export { default as Fail } from './Common/Fail';
 export { default as Navbar } from './Common/Navbar';
 export { default as Footer } from './Common/Footer';
 export { default as PageHeader } from './Common/PageHeader';
+export { default as Modal } from './UIs/Modal';
+export { default as DateInput } from './UIs/DateInput';
 //== UIs Components
 export { default as AnimatedIcons } from './UIs/AnimatedIcons/AnimatedIcons';
 //== 404 page components
@@ -20,6 +22,9 @@ export { default as LoginForm } from './login/LoginForm';
 //== Parent Login Components
 export { default as ParentLoginWrapper } from './ParentLogin/LoginWrapper';
 export { default as ParentLoginForm } from './ParentLogin/LoginForm';
+//== Teacher Login Components
+export { default as TeacherLoginWrapper } from './TeacherLogin/LoginWrapper';
+export { default as TeacherLoginForm } from './TeacherLogin/LoginForm';
 //== School Login Components
 export { default as SchoolLoginWrapper } from './SchoolLogin/LoginWrapper';
 export { default as SchoolLoginForm } from './SchoolLogin/LoginForm';
@@ -27,7 +32,7 @@ export { default as SchoolLoginForm } from './SchoolLogin/LoginForm';
 export { default as Flippy } from './Flippy/Flippy';
 export { default as FrontCover } from './LessonContent/Covers/FrontCover';
 export { default as BackCover } from './LessonContent/Covers/BackCover';
-export { default as BookPagesWrapper } from './LessonContent/BookPagesWrapper';
+export { default as BookPagesWrapper } from './LessonContent/BookPagesWrapper/Wrapper';
 export { default as BookPages } from './LessonContent/BookPages';
 export { default as Page } from './LessonContent/Page';
 export { default as Lesson } from './LessonContent/Lesson';
@@ -74,6 +79,9 @@ export { default as ImagesPuzzle } from './LessonContent/Quizzes/ImagesPuzzle';
 export { default as MultipleChoose } from './LessonContent/Quizzes/MultipleChoose';
 export { default as ListSingleChoice } from './LessonContent/Quizzes/ListSingleChoice';
 export { default as ColoringAndDragging } from './LessonContent/Quizzes/Coloring&Dragging';
+export { default as OpenEnded } from './LessonContent/Quizzes/OpenEnded';
+export { default as GroupOpenEnded } from './LessonContent/Quizzes/GroupOpenEnded';
+export { default as GroupShortAnswer2 } from './LessonContent/Quizzes/GroupShortAnswer2';
 //== Lesson Sections
 export { default as TextSection } from './LessonContent/LessonSections/TextSection';
 export { default as ImageSection } from './LessonContent/LessonSections/ImageSection';
@@ -92,6 +100,7 @@ export { default as BookBox } from './Books/BookBox';
 //== Lessons page Components
 export { default as LessonsWrapper } from './Lessons/LessonsWrapper';
 export { default as LessonBox } from './Lessons/LessonBox';
+export { default as GameBox } from './Lessons/GameBox';
 //== Home page components
 export { default as Banner } from './Home/Banner';
 export { default as MainSections } from './Home/MainSections';
@@ -143,3 +152,7 @@ export { default as HawasLectures } from './HawasLectures';
 export { default as HawasWorkshops } from './HawasWorkshops';
 //== Plays page components
 export { default as HawasChannel } from './HawasChannel';
+//== Questions page components
+export { default as QuestionsCorrection } from './QuestionsCorrection';
+//== Teacher Panel page components
+export { default as TeacherPanelWrapper } from './TeacherPanel';

@@ -21,7 +21,7 @@
   transition: transform 0.5s, width 0.3s, box-shadow 0.3s;
 }
 .flippy_container .flippy.bookOpen::after {
-  content: "";
+  content: '';
   position: absolute;
   top: -10px;
   left: -25px;
@@ -30,6 +30,7 @@
   background-color: var(--flippyBackSkin);
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 .flippy_container .flippy .page_changer {
   position: absolute;
@@ -75,10 +76,10 @@
     left var(--flippyFlippingTime);
   overflow: hidden;
 }
-.flippy_container .flippy .page_changer .flipped_page>div {
+.flippy_container .flippy .page_changer .flipped_page > div {
   opacity: 0;
 }
-.flippy_container .flippy .page_changer .flipped_page.flipping>div {
+.flippy_container .flippy .page_changer .flipped_page.flipping > div {
   opacity: 1 !important;
 }
 .flippy_container .flippy .page_changer.page_changer_right {
@@ -174,6 +175,14 @@
   -o-user-select: none;
   user-select: none;
 }
+[class='edit-highlight-mode'] .flippy_container .flippy .page .face * {
+  -webkit-user-select: auto;
+  -khtml-user-select: auto;
+  -moz-user-select: auto;
+  -o-user-select: auto;
+  user-select: auto;
+}
+
 .flippy_container .flippy .page.full_width .face.front {
   width: 100%;
 }
@@ -263,7 +272,7 @@
   border: none;
   box-shadow: inset 10px 0 30px -7px rgba(0, 0, 0, 0.35);
 }
-.flippy_container .flippy .page.flipped.cover .face.back>div {
+.flippy_container .flippy .page.flipped.cover .face.back > div {
   transform: rotateY(180deg);
 }
 .flippy_container .flippy .page.flipped.cover_end {
@@ -319,7 +328,10 @@
   right: unset !important;
   left: 10px !important;
 }
-.flippy_container .flippy.rtl .page_changer.page_changer_right:hover .flipped_page {
+.flippy_container
+  .flippy.rtl
+  .page_changer.page_changer_right:hover
+  .flipped_page {
   right: unset !important;
   left: 15px !important;
 }
@@ -331,7 +343,10 @@
   left: unset !important;
   right: 10px !important;
 }
-.flippy_container .flippy.rtl .page_changer.page_changer_left:hover .flipped_page {
+.flippy_container
+  .flippy.rtl
+  .page_changer.page_changer_left:hover
+  .flipped_page {
   left: unset !important;
   right: 15px !important;
 }
@@ -407,7 +422,7 @@
   border: none;
   box-shadow: inset -10px 0 30px -7px rgba(0, 0, 0, 0.35);
 }
-.flippy_container .flippy.rtl .page.flipped.cover .face.back>div {
+.flippy_container .flippy.rtl .page.flipped.cover .face.back > div {
   transform: rotateY(180deg);
 }
 .flippy_container .flippy.rtl .page.flipped.cover_end {

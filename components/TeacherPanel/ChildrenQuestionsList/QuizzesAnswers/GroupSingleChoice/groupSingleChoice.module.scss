@@ -1,0 +1,66 @@
+@import "@/styles/extends";
+
+.groupSingleChoice {
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .title {
+    font-weight: 700;
+  }
+
+  .answers {
+    margin-top: 20px;
+
+    .answer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+
+      .input {
+        flex: 1;
+      }
+
+      .switch {
+        display: flex;
+        align-content: center;
+        gap: 10px;
+      }
+
+      .delete {
+        width: 40px;
+        height: 40px;
+        border-radius: 4px;
+        background-color: var(--delete-warn);
+        color: #fff;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+    }
+
+    .addAnswer {
+      @extend %mainBtn;
+      padding: 6px 15px;
+      font-size: 13px;
+    }
+  }
+
+  .actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+    button {
+      @extend %mainBtn;
+      padding: 6px 15px;
+      font-size: 13px;
+    }
+  }
+}

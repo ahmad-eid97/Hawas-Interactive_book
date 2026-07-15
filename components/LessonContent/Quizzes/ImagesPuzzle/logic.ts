@@ -45,7 +45,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
 
   const drop = (e: React.DragEvent<HTMLDivElement>, index: number) => {
     e.preventDefault();
-    if (e.currentTarget.children.length >= 1) return;
+    if (e.currentTarget?.children?.length >= 1) return;
     e.currentTarget.appendChild(draggableItem);
     setStudentAnswer({ ...studentAnswer, [index]: draggableItemIndex });
   }
@@ -58,7 +58,7 @@ export default function useLogic({ questionData }: { questionData: QuestionData 
   }
 
   const dropByClick = (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>, index: number) => {
-    if (e.currentTarget.children.length > 0) return;
+    if (e.currentTarget?.children?.length > 0) return;
     clickedItem?.classList.remove('activeBGForDragging');
     if (clickedItem) e.currentTarget.appendChild(clickedItem);
     setClickedItem(null);

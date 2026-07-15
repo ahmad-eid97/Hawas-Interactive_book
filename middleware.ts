@@ -20,7 +20,7 @@ export const config = {
     '/',
     '/login',
     '/parent-login',
-    '/school-login',
+    '/teacher-login',
     '/about-us',
     '/contact-us',
     '/faqs',

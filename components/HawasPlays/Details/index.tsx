@@ -29,6 +29,8 @@ const PlayDetails: React.FC<PlayDetailsProps> = ({ data }) => {
                 </div> */}
                 <h2 className={styles.title}>{data?.title}</h2>
                 <div dangerouslySetInnerHTML={{ __html: data?.description || '' }} />
+                <h4>فيديو المسرحية</h4>
+                <iframe src={data?.video} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
               </div>
             </Grid>
           </Grid>

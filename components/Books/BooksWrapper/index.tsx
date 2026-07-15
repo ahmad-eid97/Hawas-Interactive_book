@@ -8,6 +8,8 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+//= Utils
+import { isDemo } from '@/utils/isDemo';
 //== Types
 import { Book } from '../types';
 //== Styles
@@ -18,6 +20,8 @@ interface CProps {
 }
 
 const BooksWrapper = ({ books }: CProps) => {
+  const renderedBooks = isDemo() ? books.slice(0, 2) : books;
+
   return (
     <Container maxWidth="xl" className={styles.courses}>
       <div className={styles.header} >
@@ -35,42 +39,20 @@ const BooksWrapper = ({ books }: CProps) => {
             </div>
           </div>
         </form>
-        {/* <FormControl sx={{ m: 1, minWidth: 150 }} className={styles.select}>
-          <InputLabel id="demo-simple-select-helper-label">Category</InputLabel>
-          <Select
-            labelId="demo-simple-select-helper-label"
-            id="demo-simple-select-helper"
-            // value={age}
-            label="Category"
-          // onChange={handleChange}
-          >
-            <MenuItem value={20}>All Subjects</MenuItem>
-            <MenuItem value={10}>Another option</MenuItem>
-            <MenuItem value={30}>Something else here</MenuItem>
-          </Select>
-        </FormControl>
-        <FormControl sx={{ m: 1, minWidth: 150 }} className={styles.select}>
-          <InputLabel id="demo-simple-select-helper-label">Sort by</InputLabel>
-          <Select
-            labelId="demo-simple-select-helper-label"
-            id="demo-simple-select-helper"
-            // value={age}
-            label="Sort By"
-          // onChange={handleChange}
-          >
-            <MenuItem value={20}>All Subjects</MenuItem>
-            <MenuItem value={10}>Another option</MenuItem>
-            <MenuItem value={30}>Something else here</MenuItem>
-          </Select>
-        </FormControl> */}
       </div>
       <Grid container spacing={3}>
-        {books.map(book => (
+        {renderedBooks.map(book => (
           <Grid item xs={12} sm={6} lg={4} key={book.id}>
             <BookBox book={book} />
           </Grid>
         ))}
       </Grid>
+      {
+        isDemo() ?
+          <p className={styles.text}>هذا الحساب تجريبي ولا يعرض كل المحتوي. سجل معنا للحصول علي المحتوي كاملاَ</p>
+          :
+          null
+      }
     </Container >
   )
 }

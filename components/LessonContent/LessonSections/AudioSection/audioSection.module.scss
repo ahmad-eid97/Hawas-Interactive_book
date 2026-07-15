@@ -1,6 +1,8 @@
 @import "@/styles/mixins.scss";
 
 .audioSection {
+  position: relative;
+
   h3 {
     font-size: 1.2rem;
     font-weight: 600;
